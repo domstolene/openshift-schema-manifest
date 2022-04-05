@@ -1,0 +1,673 @@
+{
+  "description": "An Elasticsearch cluster instance",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "logging.openshift.io/v1"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "Elasticsearch"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta_v2"
+    },
+    "spec": {
+      "description": "Specification of the desired behavior of the Elasticsearch cluster",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "managementState",
+        "redundancyPolicy"
+      ],
+      "properties": {
+        "indexManagement": {
+          "description": "Management spec for indicies"
+        },
+        "managementState": {
+          "description": "ManagementState indicates whether and how the operator should manage the component. Indicator if the resource is 'Managed' or 'Unmanaged' by the operator.",
+          "type": "string",
+          "enum": [
+            "Managed",
+            "Unmanaged"
+          ]
+        },
+        "nodeSpec": {
+          "description": "Default specification applied to all Elasticsearch nodes",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "image": {
+              "description": "The image to use for the Elasticsearch nodes"
+            },
+            "nodeSelector": {
+              "description": "Define which Nodes the Pods are scheduled on.",
+              "additionalProperties": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "proxyResources": {
+              "description": "The resource requirements for the Elasticsearch proxy"
+            },
+            "resources": {
+              "description": "The resource requirements for the Elasticsearch nodes"
+            },
+            "tolerations": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "description": "The pod this Toleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "effect": {
+                    "description": "Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "key": {
+                    "description": "Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "operator": {
+                    "description": "Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a pod can tolerate all taints of a particular category.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "tolerationSeconds": {
+                    "description": "TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.",
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "format": "int64"
+                  },
+                  "value": {
+                    "description": "Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "nodes": {
+          "description": "Specification of the different Elasticsearch nodes",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "ElasticsearchNode struct represents individual node in Elasticsearch cluster",
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "genUUID": {
+                "description": "GenUUID will be populated by the operator if not provided"
+              },
+              "nodeCount": {
+                "description": "Number of nodes to deploy",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32"
+              },
+              "nodeSelector": {
+                "description": "Define which Nodes the Pods are scheduled on.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "additionalProperties": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "proxyResources": {
+                "description": "The resource requirements for the Elasticsearch proxy",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "limits": {
+                    "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "additionalProperties": {
+                      "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                      "x-kubernetes-int-or-string": true
+                    }
+                  },
+                  "requests": {
+                    "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "additionalProperties": {
+                      "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                      "x-kubernetes-int-or-string": true
+                    }
+                  }
+                }
+              },
+              "resources": {
+                "description": "The resource requirements for the Elasticsearch node"
+              },
+              "roles": {
+                "description": "The specific Elasticsearch cluster roles the node should perform",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "enum": [
+                    "master",
+                    "client",
+                    "data"
+                  ]
+                }
+              },
+              "storage": {
+                "description": "The type of backing storage that should be used for the node",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "size": {
+                    "description": "The max storage capacity for the node to provision.",
+                    "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                    "x-kubernetes-int-or-string": true
+                  },
+                  "storageClassName": {
+                    "description": "The name of the storage class to use with creating the node's PVC. More info: https://kubernetes.io/docs/concepts/storage/storage-classes/",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              },
+              "tolerations": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "description": "The pod this Toleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "effect": {
+                      "description": "Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "key": {
+                      "description": "Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "operator": {
+                      "description": "Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a pod can tolerate all taints of a particular category.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "tolerationSeconds": {
+                      "description": "TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.",
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "format": "int64"
+                    },
+                    "value": {
+                      "description": "Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "redundancyPolicy": {
+          "description": "The policy towards data redundancy to specify the number of redundant primary shards",
+          "type": "string",
+          "enum": [
+            "FullRedundancy",
+            "MultipleRedundancy",
+            "SingleRedundancy",
+            "ZeroRedundancy"
+          ]
+        }
+      }
+    },
+    "status": {
+      "description": "ElasticsearchStatus defines the observed state of Elasticsearch",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "cluster": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "activePrimaryShards",
+            "activeShards",
+            "initializingShards",
+            "numDataNodes",
+            "numNodes",
+            "pendingTasks",
+            "relocatingShards",
+            "status",
+            "unassignedShards"
+          ],
+          "properties": {
+            "activePrimaryShards": {
+              "description": "The number of Active Primary Shards for the Elasticsearch Cluster",
+              "type": "integer",
+              "format": "int32"
+            },
+            "activeShards": {
+              "description": "The number of Active Shards for the Elasticsearch Cluster",
+              "type": "integer",
+              "format": "int32"
+            },
+            "initializingShards": {
+              "description": "The number of Initializing Shards for the Elasticsearch Cluster",
+              "type": "integer",
+              "format": "int32"
+            },
+            "numDataNodes": {
+              "description": "The number of Data Nodes for the Elasticsearch Cluster",
+              "type": "integer",
+              "format": "int32"
+            },
+            "numNodes": {
+              "description": "The number of Nodes for the Elasticsearch Cluster",
+              "type": "integer",
+              "format": "int32"
+            },
+            "pendingTasks": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "relocatingShards": {
+              "description": "The number of Relocating Shards for the Elasticsearch Cluster",
+              "type": "integer",
+              "format": "int32"
+            },
+            "status": {
+              "description": "The current Status of the Elasticsearch Cluster",
+              "type": "string"
+            },
+            "unassignedShards": {
+              "description": "The number of Unassigned Shards for the Elasticsearch Cluster",
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        },
+        "clusterHealth": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "conditions": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "lastTransitionTime",
+              "status",
+              "type"
+            ],
+            "properties": {
+              "lastTransitionTime": {
+                "description": "Last time the condition transitioned from one status to another.",
+                "type": "string",
+                "format": "date-time"
+              },
+              "message": {
+                "description": "Human-readable message indicating details about last transition.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "reason": {
+                "description": "Unique, one-word, CamelCase reason for the condition's last transition.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "status": {
+                "type": "string"
+              },
+              "type": {
+                "description": "ClusterConditionType is a valid value for ClusterCondition.Type",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "indexManagement": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "lastUpdated": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "date-time"
+            },
+            "mappings": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "conditions": {
+                    "description": "Reasons for the state of the corresponding mapping for this status",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "message": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "reason": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "status": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "type": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "lastUpdated": {
+                    "description": "LastUpdated represents the last time that the status was updated.",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "format": "date-time"
+                  },
+                  "message": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "name": {
+                    "description": "Name of the corresponding mapping for this status",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "reason": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "state": {
+                    "description": "State of the corresponding mapping for this status",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              }
+            },
+            "message": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "policies": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "conditions": {
+                    "description": "Reasons for the state of the corresponding policy for this status",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "message": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "reason": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "status": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "type": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "lastUpdated": {
+                    "description": "LastUpdated represents the last time that the status was updated.",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "format": "date-time"
+                  },
+                  "message": {
+                    "description": "Message about the corresponding policy",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "name": {
+                    "description": "Name of the corresponding policy for this status",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "reason": {
+                    "description": "Reasons for the state of the corresponding policy for this status",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "state": {
+                    "description": "State of the corresponding policy for this status",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              }
+            },
+            "reason": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "state": {
+              "description": "IndexManagementState of IndexManagment",
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "nodes": {},
+        "pods": {
+          "additionalProperties": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "additionalProperties": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "shardAllocationEnabled": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "logging.openshift.io",
+      "kind": "Elasticsearch",
+      "version": "v1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

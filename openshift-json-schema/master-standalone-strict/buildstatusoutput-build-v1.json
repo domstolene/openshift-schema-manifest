@@ -1,0 +1,12 @@
+{
+  "description": "BuildStatusOutput contains the status of the built image.",
+  "type": "object",
+  "properties": {
+    "to": {
+      "description": "to describes the status of the built image being pushed to a registry.",
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.BuildStatusOutputTo"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}
