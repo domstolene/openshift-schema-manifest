@@ -392,6 +392,13 @@
                         "additionalProperties": false
                       }
                     },
+                    "ignoreMissingValueFiles": {
+                      "description": "IgnoreMissingValueFiles prevents helm template from failing when valueFiles do not exist locally by not appending them to helm template --values",
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    },
                     "parameters": {
                       "description": "Parameters is a list of Helm parameters which are passed to the helm template command upon manifest generation",
                       "type": [
@@ -441,6 +448,13 @@
                       "description": "ReleaseName is the Helm release name to use. If omitted it will use the application name",
                       "type": [
                         "string",
+                        "null"
+                      ]
+                    },
+                    "skipCrds": {
+                      "description": "SkipCrds skips custom resource definition installation step (Helm's --skip-crds)",
+                      "type": [
+                        "boolean",
                         "null"
                       ]
                     },
@@ -556,6 +570,20 @@
                           "null"
                         ]
                       }
+                    },
+                    "forceCommonAnnotations": {
+                      "description": "ForceCommonAnnotations specifies whether to force applying common annotations to resources for Kustomize apps",
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    },
+                    "forceCommonLabels": {
+                      "description": "ForceCommonLabels specifies whether to force applying common labels to resources for Kustomize apps",
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
                     },
                     "images": {
                       "description": "Images is a list of Kustomize image override specifications",
@@ -777,7 +805,6 @@
               "null"
             ],
             "required": [
-              "jsonPointers",
               "kind"
             ],
             "properties": {
@@ -787,8 +814,23 @@
                   "null"
                 ]
               },
+              "jqPathExpressions": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
               "jsonPointers": {
-                "type": "array",
+                "type": [
+                  "array",
+                  "null"
+                ],
                 "items": {
                   "type": [
                     "string",
@@ -798,6 +840,19 @@
               },
               "kind": {
                 "type": "string"
+              },
+              "managedFieldsManagers": {
+                "description": "ManagedFieldsManagers is a list of trusted managers. Fields mutated by those managers will take precedence over the desired state defined in the SCM and won't be displayed in diffs",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
               },
               "name": {
                 "type": [
@@ -1025,6 +1080,13 @@
                     "additionalProperties": false
                   }
                 },
+                "ignoreMissingValueFiles": {
+                  "description": "IgnoreMissingValueFiles prevents helm template from failing when valueFiles do not exist locally by not appending them to helm template --values",
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
                 "parameters": {
                   "description": "Parameters is a list of Helm parameters which are passed to the helm template command upon manifest generation",
                   "type": [
@@ -1074,6 +1136,13 @@
                   "description": "ReleaseName is the Helm release name to use. If omitted it will use the application name",
                   "type": [
                     "string",
+                    "null"
+                  ]
+                },
+                "skipCrds": {
+                  "description": "SkipCrds skips custom resource definition installation step (Helm's --skip-crds)",
+                  "type": [
+                    "boolean",
                     "null"
                   ]
                 },
@@ -1189,6 +1258,20 @@
                       "null"
                     ]
                   }
+                },
+                "forceCommonAnnotations": {
+                  "description": "ForceCommonAnnotations specifies whether to force applying common annotations to resources for Kustomize apps",
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "forceCommonLabels": {
+                  "description": "ForceCommonLabels specifies whether to force applying common labels to resources for Kustomize apps",
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
                 },
                 "images": {
                   "description": "Images is a list of Kustomize image override specifications",
@@ -1684,6 +1767,13 @@
                           "additionalProperties": false
                         }
                       },
+                      "ignoreMissingValueFiles": {
+                        "description": "IgnoreMissingValueFiles prevents helm template from failing when valueFiles do not exist locally by not appending them to helm template --values",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
                       "parameters": {
                         "description": "Parameters is a list of Helm parameters which are passed to the helm template command upon manifest generation",
                         "type": [
@@ -1733,6 +1823,13 @@
                         "description": "ReleaseName is the Helm release name to use. If omitted it will use the application name",
                         "type": [
                           "string",
+                          "null"
+                        ]
+                      },
+                      "skipCrds": {
+                        "description": "SkipCrds skips custom resource definition installation step (Helm's --skip-crds)",
+                        "type": [
+                          "boolean",
                           "null"
                         ]
                       },
@@ -1848,6 +1945,20 @@
                             "null"
                           ]
                         }
+                      },
+                      "forceCommonAnnotations": {
+                        "description": "ForceCommonAnnotations specifies whether to force applying common annotations to resources for Kustomize apps",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "forceCommonLabels": {
+                        "description": "ForceCommonLabels specifies whether to force applying common labels to resources for Kustomize apps",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
                       },
                       "images": {
                         "description": "Images is a list of Kustomize image override specifications",
@@ -2351,6 +2462,13 @@
                                 "additionalProperties": false
                               }
                             },
+                            "ignoreMissingValueFiles": {
+                              "description": "IgnoreMissingValueFiles prevents helm template from failing when valueFiles do not exist locally by not appending them to helm template --values",
+                              "type": [
+                                "boolean",
+                                "null"
+                              ]
+                            },
                             "parameters": {
                               "description": "Parameters is a list of Helm parameters which are passed to the helm template command upon manifest generation",
                               "type": [
@@ -2400,6 +2518,13 @@
                               "description": "ReleaseName is the Helm release name to use. If omitted it will use the application name",
                               "type": [
                                 "string",
+                                "null"
+                              ]
+                            },
+                            "skipCrds": {
+                              "description": "SkipCrds skips custom resource definition installation step (Helm's --skip-crds)",
+                              "type": [
+                                "boolean",
                                 "null"
                               ]
                             },
@@ -2515,6 +2640,20 @@
                                   "null"
                                 ]
                               }
+                            },
+                            "forceCommonAnnotations": {
+                              "description": "ForceCommonAnnotations specifies whether to force applying common annotations to resources for Kustomize apps",
+                              "type": [
+                                "boolean",
+                                "null"
+                              ]
+                            },
+                            "forceCommonLabels": {
+                              "description": "ForceCommonLabels specifies whether to force applying common labels to resources for Kustomize apps",
+                              "type": [
+                                "boolean",
+                                "null"
+                              ]
                             },
                             "images": {
                               "description": "Images is a list of Kustomize image override specifications",
@@ -2968,6 +3107,13 @@
                             "additionalProperties": false
                           }
                         },
+                        "ignoreMissingValueFiles": {
+                          "description": "IgnoreMissingValueFiles prevents helm template from failing when valueFiles do not exist locally by not appending them to helm template --values",
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
                         "parameters": {
                           "description": "Parameters is a list of Helm parameters which are passed to the helm template command upon manifest generation",
                           "type": [
@@ -3017,6 +3163,13 @@
                           "description": "ReleaseName is the Helm release name to use. If omitted it will use the application name",
                           "type": [
                             "string",
+                            "null"
+                          ]
+                        },
+                        "skipCrds": {
+                          "description": "SkipCrds skips custom resource definition installation step (Helm's --skip-crds)",
+                          "type": [
+                            "boolean",
                             "null"
                           ]
                         },
@@ -3132,6 +3285,20 @@
                               "null"
                             ]
                           }
+                        },
+                        "forceCommonAnnotations": {
+                          "description": "ForceCommonAnnotations specifies whether to force applying common annotations to resources for Kustomize apps",
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
+                        "forceCommonLabels": {
+                          "description": "ForceCommonLabels specifies whether to force applying common labels to resources for Kustomize apps",
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
                         },
                         "images": {
                           "description": "Images is a list of Kustomize image override specifications",
@@ -3605,6 +3772,13 @@
                             "additionalProperties": false
                           }
                         },
+                        "ignoreMissingValueFiles": {
+                          "description": "IgnoreMissingValueFiles prevents helm template from failing when valueFiles do not exist locally by not appending them to helm template --values",
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
                         "parameters": {
                           "description": "Parameters is a list of Helm parameters which are passed to the helm template command upon manifest generation",
                           "type": [
@@ -3654,6 +3828,13 @@
                           "description": "ReleaseName is the Helm release name to use. If omitted it will use the application name",
                           "type": [
                             "string",
+                            "null"
+                          ]
+                        },
+                        "skipCrds": {
+                          "description": "SkipCrds skips custom resource definition installation step (Helm's --skip-crds)",
+                          "type": [
+                            "boolean",
                             "null"
                           ]
                         },
@@ -3769,6 +3950,20 @@
                               "null"
                             ]
                           }
+                        },
+                        "forceCommonAnnotations": {
+                          "description": "ForceCommonAnnotations specifies whether to force applying common annotations to resources for Kustomize apps",
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
+                        "forceCommonLabels": {
+                          "description": "ForceCommonLabels specifies whether to force applying common labels to resources for Kustomize apps",
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
                         },
                         "images": {
                           "description": "Images is a list of Kustomize image override specifications",

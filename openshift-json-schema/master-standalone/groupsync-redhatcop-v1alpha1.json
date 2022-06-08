@@ -59,6 +59,13 @@
                   "credentialsSecret"
                 ],
                 "properties": {
+                  "authorityHost": {
+                    "description": "AuthorityHost is the location of the Azure Active Directory endpoint",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
                   "baseGroups": {
                     "description": "BaseGroups allows for a set of groups to be specified to start searching from instead of searching all groups in the directory",
                     "type": [
@@ -139,13 +146,6 @@
                     "description": "Prune Whether to prune groups that are no longer in Azure. Default is false",
                     "type": [
                       "boolean",
-                      "null"
-                    ]
-                  },
-                  "url": {
-                    "description": "URL is the location of the Azure platform",
-                    "type": [
-                      "string",
                       "null"
                     ]
                   },
