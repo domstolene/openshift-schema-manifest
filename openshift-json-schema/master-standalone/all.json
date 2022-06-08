@@ -109,6 +109,24 @@
       "$ref": "_definitions.json#/definitions/com.coreos.operators.v2.OperatorConditionList"
     },
     {
+      "$ref": "_definitions.json#/definitions/com.crunchydata.postgres-operator.v1beta1.PostgresCluster"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.crunchydata.postgres-operator.v1beta1.PostgresClusterList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.dynatrace.v1alpha1.DynaKube"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.dynatrace.v1alpha1.DynaKubeList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.dynatrace.v1beta1.DynaKube"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.dynatrace.v1beta1.DynaKubeList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/com.github.openshift.api.apps.v1.CustomDeploymentStrategyParams"
     },
     {
@@ -2921,6 +2939,12 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.openshift.tuned.v1.TunedList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.opster.opensearch.v1.OpenSearchCluster"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.opster.opensearch.v1.OpenSearchClusterList"
     },
     {
       "$ref": "_definitions.json#/definitions/io.redhat.redhatcop.v1alpha1.GroupSync"

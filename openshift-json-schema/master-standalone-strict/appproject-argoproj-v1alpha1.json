@@ -320,7 +320,7 @@
                 "type": "string"
               },
               "policies": {
-                "description": "Policies Stores a list of casbin formated strings that define access policies for the role in the project",
+                "description": "Policies Stores a list of casbin formatted strings that define access policies for the role in the project",
                 "type": [
                   "array",
                   "null"
@@ -448,6 +448,13 @@
               },
               "schedule": {
                 "description": "Schedule is the time the window will begin, specified in cron format",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "timeZone": {
+                "description": "TimeZone of the sync that will be applied to the schedule",
                 "type": [
                   "string",
                   "null"
