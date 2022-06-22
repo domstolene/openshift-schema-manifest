@@ -1,0 +1,924 @@
+{
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "broker.amq.io/v1alpha1"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "ActiveMQArtemisSecurity"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta_v2"
+    },
+    "spec": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "applyToCrNames": {
+          "description": "Apply to the broker crs in the current namespace A value of * means applying to all broker crs. Default apply to all broker crs.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "minItems": 0,
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "loginModules": {
+          "description": "the login modules",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "guestLoginModules": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "guestRole": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "guestUser": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "name": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "keycloakLoginModules": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "configuration": {
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "allowAnyHostName": {
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "alwaysRefreshToken": {
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "authServerUrl": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "autoDetectBearerOnly": {
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "bearerOnly": {
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "clientKeyPassword": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "clientKeyStore": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "clientKeyStorePassword": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "confidentialPort": {
+                        "type": [
+                          "integer",
+                          "null"
+                        ]
+                      },
+                      "connectionPoolSize": {
+                        "type": [
+                          "integer",
+                          "null"
+                        ]
+                      },
+                      "corsAllowedHeaders": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "corsAllowedMethods": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "corsExposedHeaders": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "corsMaxAge": {
+                        "type": [
+                          "integer",
+                          "null"
+                        ]
+                      },
+                      "credentials": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "key": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "value": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "disableTrustManager": {
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "enableBasicAuth": {
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "enableCors": {
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "exposeToken": {
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "ignoreOauthQueryParameter": {
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "minTimeBetweenJwksRequests": {
+                        "type": [
+                          "integer",
+                          "null"
+                        ]
+                      },
+                      "principalAttribute": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "proxyUrl": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "publicClient": {
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "publicKeyCacheTtl": {
+                        "type": [
+                          "integer",
+                          "null"
+                        ]
+                      },
+                      "realm": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "realmPublicKey": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "redirectRewriteRules": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "key": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "value": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "registerNodeAtStartup": {
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "registerNodePeriod": {
+                        "type": [
+                          "integer",
+                          "null"
+                        ]
+                      },
+                      "resource": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "scope": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "sslRequired": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "tokenCookiePath": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "tokenMinimumTimeToLive": {
+                        "type": [
+                          "integer",
+                          "null"
+                        ]
+                      },
+                      "tokenStore": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "trustStore": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "trustStorePassword": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "turnOffChangeSessionIdOnLogin": {
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "useResourceRoleMappings": {
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "verifyTokenAudience": {
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "moduleType": {
+                    "description": "one of directAccess or bearerToken",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "name": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "propertiesLoginModules": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "name": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "users": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "name": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "password": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "roles": {
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "securityDomains": {
+          "description": "the security domains for the broker",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "brokerDomain": {
+              "description": "the broker domain config",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "loginModules": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "debug": {
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "flag": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "name": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "reload": {
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "name": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            },
+            "consoleDomain": {
+              "description": "the console domain config",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "loginModules": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "debug": {
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "flag": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "name": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "reload": {
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "name": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "securitySettings": {
+          "description": "permission control configuration",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "broker": {
+              "description": "security settings in broker.xml",
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "match": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "permissions": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "operationType": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "roles": {
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "management": {
+              "description": "management api access control",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "authorisation": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "allowedList": {
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {
+                          "domain": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "key": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "defaultAccess": {
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {
+                          "method": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "roles": {
+                            "type": [
+                              "array",
+                              "null"
+                            ],
+                            "items": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            }
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "roleAccess": {
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {
+                          "accessList": {
+                            "type": [
+                              "array",
+                              "null"
+                            ],
+                            "items": {
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "properties": {
+                                "method": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "roles": {
+                                  "type": [
+                                    "array",
+                                    "null"
+                                  ],
+                                  "items": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          },
+                          "domain": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "key": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "connector": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "authenticatorType": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "host": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "jmxRealm": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "keyStorePassword": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "keyStorePath": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "keyStoreProvider": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "objectName": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "passwordCodec": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "port": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ]
+                    },
+                    "rmiRegistryPort": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ]
+                    },
+                    "secured": {
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    },
+                    "trustStorePassword": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "trustStorePath": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "trustStoreProvider": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "hawtioRoles": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "status": {
+      "type": [
+        "object",
+        "null"
+      ]
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "broker.amq.io",
+      "kind": "ActiveMQArtemisSecurity",
+      "version": "v1alpha1"
+    }
+  ],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

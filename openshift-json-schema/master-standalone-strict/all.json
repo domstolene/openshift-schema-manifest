@@ -754,6 +754,66 @@
       "$ref": "_definitions.json#/definitions/com.stakater.forecastle.v1alpha1.ForecastleAppList"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.amq.broker.v1alpha1.ActiveMQArtemisSecurity"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.amq.broker.v1alpha1.ActiveMQArtemisSecurityList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.amq.broker.v2alpha1.ActiveMQArtemis"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.amq.broker.v2alpha1.ActiveMQArtemisAddress"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.amq.broker.v2alpha1.ActiveMQArtemisAddressList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.amq.broker.v2alpha1.ActiveMQArtemisList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.amq.broker.v2alpha1.ActiveMQArtemisScaledown"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.amq.broker.v2alpha1.ActiveMQArtemisScaledownList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.amq.broker.v2alpha2.ActiveMQArtemis"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.amq.broker.v2alpha2.ActiveMQArtemisAddress"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.amq.broker.v2alpha2.ActiveMQArtemisAddressList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.amq.broker.v2alpha2.ActiveMQArtemisList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.amq.broker.v2alpha3.ActiveMQArtemis"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.amq.broker.v2alpha3.ActiveMQArtemisAddress"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.amq.broker.v2alpha3.ActiveMQArtemisAddressList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.amq.broker.v2alpha3.ActiveMQArtemisList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.amq.broker.v2alpha4.ActiveMQArtemis"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.amq.broker.v2alpha4.ActiveMQArtemisList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.amq.broker.v2alpha5.ActiveMQArtemis"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.amq.broker.v2alpha5.ActiveMQArtemisList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.AppProject"
     },
     {
@@ -2951,6 +3011,48 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.redhat.redhatcop.v1alpha1.GroupSyncList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.keycloak.k8s.v2alpha1.Keycloak"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.keycloak.k8s.v2alpha1.KeycloakList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.keycloak.k8s.v2alpha1.KeycloakRealmImport"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.keycloak.k8s.v2alpha1.KeycloakRealmImportList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.keycloak.v1alpha1.Keycloak"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.keycloak.v1alpha1.KeycloakBackup"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.keycloak.v1alpha1.KeycloakBackupList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.keycloak.v1alpha1.KeycloakClient"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.keycloak.v1alpha1.KeycloakClientList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.keycloak.v1alpha1.KeycloakList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.keycloak.v1alpha1.KeycloakRealm"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.keycloak.v1alpha1.KeycloakRealmList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.keycloak.v1alpha1.KeycloakUser"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.keycloak.v1alpha1.KeycloakUserList"
     },
     {
       "$ref": "_definitions.json#/definitions/org.ovn.k8s.v1.EgressFirewall"
