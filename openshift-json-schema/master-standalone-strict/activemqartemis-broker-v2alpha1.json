@@ -1,0 +1,455 @@
+{
+  "type": "object",
+  "required": [
+    "spec"
+  ],
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "broker.amq.io/v2alpha1"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "ActiveMQArtemis"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta_v2"
+    },
+    "spec": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "acceptors": {
+          "description": "Configuration of all acceptors",
+          "type": [
+            "array",
+            "null"
+          ],
+          "minItems": 0,
+          "items": {
+            "description": "A single acceptor configuration",
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "anycastPrefix": {
+                "description": "To indicate which kind of routing type to use.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "connectionsAllowed": {
+                "description": "Limits the number of connections which the acceptor will allow. When this limit is reached a DEBUG level message is issued to the log, and the connection is refused.",
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "enabledCipherSuites": {
+                "description": "Comma separated list of cipher suites used for SSL communication.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "enabledProtocols": {
+                "description": "Comma separated list of protocols used for SSL communication.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "expose": {
+                "description": "Whether or not to expose this acceptor",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "multicastPrefix": {
+                "description": "To indicate which kind of routing type to use.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "name": {
+                "description": "The name of the acceptor",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "needClientAuth": {
+                "description": "Tells a client connecting to this acceptor that 2-way SSL is required. This property takes precedence over wantClientAuth.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "port": {
+                "description": "Port number",
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "protocols": {
+                "description": "The protocols to enable for this acceptor",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "sniHost": {
+                "description": "A regular expression used to match the server_name extension on incoming SSL connections. If the name doesn't match then the connection to the acceptor will be rejected.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "sslEnabled": {
+                "description": "Whether or not to enable SSL on this port",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "sslProvider": {
+                "description": "Used to change the SSL Provider between JDK and OPENSSL. The default is JDK.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "sslSecret": {
+                "description": "Name of the secret to use for ssl information",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "verifyHost": {
+                "description": "The CN of the connecting client's SSL certificate will be compared to its hostname to verify they match. This is useful only for 2-way SSL.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "wantClientAuth": {
+                "description": "Tells a client connecting to this acceptor that 2-way SSL is requested but not required. Overridden by needClientAuth.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "adminPassword": {
+          "description": "Password for standard broker user. It is required for connecting to the broker. If left empty, it will be generated.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "adminUser": {
+          "description": "User name for standard broker user. It is required for connecting to the broker. If left empty, it will be generated.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "connectors": {
+          "description": "Configuration of all connectors",
+          "type": [
+            "array",
+            "null"
+          ],
+          "minItems": 0,
+          "items": {
+            "description": "A single connector configuration",
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "enabledCipherSuites": {
+                "description": "Comma separated list of cipher suites used for SSL communication.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "enabledProtocols": {
+                "description": "Comma separated list of protocols used for SSL communication.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "expose": {
+                "description": "Whether or not to expose this connector",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "host": {
+                "description": "Hostname or IP to connect to",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "name": {
+                "description": "The name of the acceptor",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "needClientAuth": {
+                "description": "Tells a client connecting to this acceptor that 2-way SSL is required. This property takes precedence over wantClientAuth.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "port": {
+                "description": "Port number",
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "sniHost": {
+                "description": "A regular expression used to match the server_name extension on incoming SSL connections. If the name doesn't match then the connection to the acceptor will be rejected.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "sslEnabled": {
+                "description": "Whether or not to enable SSL on this port",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "sslProvider": {
+                "description": "Used to change the SSL Provider between JDK and OPENSSL. The default is JDK.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "sslSecret": {
+                "description": "Name of the secret to use for ssl information",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "type": {
+                "description": "The type either tcp or vm",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "verifyHost": {
+                "description": "The CN of the connecting client's SSL certificate will be compared to its hostname to verify they match. This is useful only for 2-way SSL.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "wantClientAuth": {
+                "description": "Tells a client connecting to this acceptor that 2-way SSL is requested but not required. Overridden by needClientAuth.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "console": {
+          "description": "Configuration for the embedded web console",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "expose": {
+              "description": "Whether or not to expose this port",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "sslEnabled": {
+              "description": "Whether or not to enable SSL on this port",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "sslSecret": {
+              "description": "Name of the secret to use for ssl information",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "useClientAuth": {
+              "description": "If the embedded server requires client authentication",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "deploymentPlan": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "image": {
+              "description": "The image used for the broker deployment",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "journalType": {
+              "description": "If aio use ASYNCIO, if nio use NIO for journal IO",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "messageMigration": {
+              "description": "If true migrate messages on scaledown",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "persistenceEnabled": {
+              "description": "If true use persistent volume via persistent volume claim for journal storage",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "requireLogin": {
+              "description": "If true require user password login credentials for broker protocol ports",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "size": {
+              "description": "The number of broker pods to deploy",
+              "type": [
+                "integer",
+                "null"
+              ],
+              "maximum": 16,
+              "minimum": 0
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "status": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "podStatus"
+      ],
+      "properties": {
+        "podStatus": {
+          "type": "object",
+          "properties": {
+            "ready": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "starting": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "stopped": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "broker.amq.io",
+      "kind": "ActiveMQArtemis",
+      "version": "v2alpha1"
+    }
+  ],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}
