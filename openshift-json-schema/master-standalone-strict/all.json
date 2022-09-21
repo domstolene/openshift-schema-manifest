@@ -760,6 +760,30 @@
       "$ref": "_definitions.json#/definitions/io.amq.broker.v1alpha1.ActiveMQArtemisSecurityList"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.amq.broker.v1beta1.ActiveMQArtemis"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.amq.broker.v1beta1.ActiveMQArtemisAddress"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.amq.broker.v1beta1.ActiveMQArtemisAddressList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.amq.broker.v1beta1.ActiveMQArtemisList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.amq.broker.v1beta1.ActiveMQArtemisScaledown"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.amq.broker.v1beta1.ActiveMQArtemisScaledownList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.amq.broker.v1beta1.ActiveMQArtemisSecurity"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.amq.broker.v1beta1.ActiveMQArtemisSecurityList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.amq.broker.v2alpha1.ActiveMQArtemis"
     },
     {

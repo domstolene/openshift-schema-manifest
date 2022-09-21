@@ -1,4 +1,5 @@
 {
+  "description": "ActiveMQArtemisSecurity is the Schema for the activemqartemissecurities API",
   "type": "object",
   "properties": {
     "apiVersion": {
@@ -26,18 +27,17 @@
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta_v2"
     },
     "spec": {
+      "description": "ActiveMQArtemisSecuritySpec defines the desired state of ActiveMQArtemisSecurity",
       "type": [
         "object",
         "null"
       ],
       "properties": {
         "applyToCrNames": {
-          "description": "Apply to the broker crs in the current namespace A value of * means applying to all broker crs. Default apply to all broker crs.",
           "type": [
             "array",
             "null"
           ],
-          "minItems": 0,
           "items": {
             "type": [
               "string",
@@ -46,7 +46,6 @@
           }
         },
         "loginModules": {
-          "description": "the login modules",
           "type": [
             "object",
             "null"
@@ -99,6 +98,9 @@
                     "type": [
                       "object",
                       "null"
+                    ],
+                    "required": [
+                      "enableBasicAuth"
                     ],
                     "properties": {
                       "allowAnyHostName": {
@@ -153,13 +155,15 @@
                         "type": [
                           "integer",
                           "null"
-                        ]
+                        ],
+                        "format": "int32"
                       },
                       "connectionPoolSize": {
                         "type": [
                           "integer",
                           "null"
-                        ]
+                        ],
+                        "format": "int64"
                       },
                       "corsAllowedHeaders": {
                         "type": [
@@ -183,7 +187,8 @@
                         "type": [
                           "integer",
                           "null"
-                        ]
+                        ],
+                        "format": "int64"
                       },
                       "credentials": {
                         "type": [
@@ -218,10 +223,7 @@
                         ]
                       },
                       "enableBasicAuth": {
-                        "type": [
-                          "boolean",
-                          "null"
-                        ]
+                        "type": "boolean"
                       },
                       "enableCors": {
                         "type": [
@@ -245,7 +247,8 @@
                         "type": [
                           "integer",
                           "null"
-                        ]
+                        ],
+                        "format": "int64"
                       },
                       "principalAttribute": {
                         "type": [
@@ -269,7 +272,8 @@
                         "type": [
                           "integer",
                           "null"
-                        ]
+                        ],
+                        "format": "int64"
                       },
                       "realm": {
                         "type": [
@@ -319,7 +323,8 @@
                         "type": [
                           "integer",
                           "null"
-                        ]
+                        ],
+                        "format": "int64"
                       },
                       "resource": {
                         "type": [
@@ -349,7 +354,8 @@
                         "type": [
                           "integer",
                           "null"
-                        ]
+                        ],
+                        "format": "int64"
                       },
                       "tokenStore": {
                         "type": [
@@ -390,7 +396,6 @@
                     }
                   },
                   "moduleType": {
-                    "description": "one of directAccess or bearerToken",
                     "type": [
                       "string",
                       "null"
@@ -466,14 +471,12 @@
           }
         },
         "securityDomains": {
-          "description": "the security domains for the broker",
           "type": [
             "object",
             "null"
           ],
           "properties": {
             "brokerDomain": {
-              "description": "the broker domain config",
               "type": [
                 "object",
                 "null"
@@ -526,7 +529,6 @@
               }
             },
             "consoleDomain": {
-              "description": "the console domain config",
               "type": [
                 "object",
                 "null"
@@ -581,14 +583,12 @@
           }
         },
         "securitySettings": {
-          "description": "permission control configuration",
           "type": [
             "object",
             "null"
           ],
           "properties": {
             "broker": {
-              "description": "security settings in broker.xml",
               "type": [
                 "array",
                 "null"
@@ -615,12 +615,12 @@
                         "object",
                         "null"
                       ],
+                      "required": [
+                        "operationType"
+                      ],
                       "properties": {
                         "operationType": {
-                          "type": [
-                            "string",
-                            "null"
-                          ]
+                          "type": "string"
                         },
                         "roles": {
                           "type": [
@@ -641,7 +641,6 @@
               }
             },
             "management": {
-              "description": "management api access control",
               "type": [
                 "object",
                 "null"
@@ -829,13 +828,15 @@
                       "type": [
                         "integer",
                         "null"
-                      ]
+                      ],
+                      "format": "int32"
                     },
                     "rmiRegistryPort": {
                       "type": [
                         "integer",
                         "null"
-                      ]
+                      ],
+                      "format": "int32"
                     },
                     "secured": {
                       "type": [
@@ -882,6 +883,7 @@
       }
     },
     "status": {
+      "description": "ActiveMQArtemisSecurityStatus defines the observed state of ActiveMQArtemisSecurity",
       "type": [
         "object",
         "null"

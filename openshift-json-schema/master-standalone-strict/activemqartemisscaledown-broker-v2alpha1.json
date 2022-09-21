@@ -1,4 +1,5 @@
 {
+  "description": "ActiveMQArtemisScaledown is the Schema for the activemqartemisscaledowns API",
   "type": "object",
   "properties": {
     "apiVersion": {
@@ -26,6 +27,7 @@
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta_v2"
     },
     "spec": {
+      "description": "ActiveMQArtemisScaledownSpec defines the desired state of ActiveMQArtemisScaledown",
       "type": [
         "object",
         "null"
@@ -35,13 +37,14 @@
       ],
       "properties": {
         "localOnly": {
-          "description": "If enabled, the controller only handles StatefulSets in a single namespace instead of across all namespaces.",
+          "description": "Triggered by main ActiveMQArtemis CRD messageMigration entry",
           "type": "boolean"
         }
       },
       "additionalProperties": false
     },
     "status": {
+      "description": "ActiveMQArtemisScaledownStatus defines the observed state of ActiveMQArtemisScaledown",
       "type": [
         "object",
         "null"

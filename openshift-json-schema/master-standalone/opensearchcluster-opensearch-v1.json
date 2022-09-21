@@ -79,11 +79,59 @@
             "version"
           ],
           "properties": {
+            "additionalConfig": {
+              "description": "Additional properties for opensearch_dashboards.yaml",
+              "type": [
+                "object",
+                "null"
+              ],
+              "additionalProperties": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
             "enable": {
               "type": [
                 "boolean",
                 "null"
               ]
+            },
+            "image": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "imagePullPolicy": {
+              "description": "PullPolicy describes a policy for if/when to pull a container image",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "imagePullSecrets": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "name": {
+                    "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              }
             },
             "opensearchCredentialsSecret": {
               "description": "Secret that contains fields username and password for dashboards to use to login to opensearch, must only be supplied if a custom securityconfig is provided",
@@ -1277,11 +1325,172 @@
                   "null"
                 ]
               },
+              "env": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "description": "EnvVar represents an environment variable present in a Container.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "name"
+                  ],
+                  "properties": {
+                    "name": {
+                      "description": "Name of the environment variable. Must be a C_IDENTIFIER.",
+                      "type": "string"
+                    },
+                    "value": {
+                      "description": "Variable references $(VAR_NAME) are expanded using the previously defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. \"$$(VAR_NAME)\" will produce the string literal \"$(VAR_NAME)\". Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to \"\".",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "valueFrom": {
+                      "description": "Source for the environment variable's value. Cannot be used if value is not empty.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "configMapKeyRef": {
+                          "description": "Selects a key of a ConfigMap.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "required": [
+                            "key"
+                          ],
+                          "properties": {
+                            "key": {
+                              "description": "The key to select.",
+                              "type": "string"
+                            },
+                            "name": {
+                              "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "optional": {
+                              "description": "Specify whether the ConfigMap or its key must be defined",
+                              "type": [
+                                "boolean",
+                                "null"
+                              ]
+                            }
+                          }
+                        },
+                        "fieldRef": {
+                          "description": "Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`, spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "required": [
+                            "fieldPath"
+                          ],
+                          "properties": {
+                            "apiVersion": {
+                              "description": "Version of the schema the FieldPath is written in terms of, defaults to \"v1\".",
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "fieldPath": {
+                              "description": "Path of the field to select in the specified API version.",
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "resourceFieldRef": {
+                          "description": "Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "required": [
+                            "resource"
+                          ],
+                          "properties": {
+                            "containerName": {
+                              "description": "Container name: required for volumes, optional for env vars",
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "divisor": {
+                              "description": "Specifies the output format of the exposed resources, defaults to \"1\"",
+                              "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                              "x-kubernetes-int-or-string": true
+                            },
+                            "resource": {
+                              "description": "Required: resource to select",
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "secretKeyRef": {
+                          "description": "Selects a key of a secret in the pod's namespace",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "required": [
+                            "key"
+                          ],
+                          "properties": {
+                            "key": {
+                              "description": "The key of the secret to select from.  Must be a valid secret key.",
+                              "type": "string"
+                            },
+                            "name": {
+                              "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "optional": {
+                              "description": "Specify whether the Secret or its key must be defined",
+                              "type": [
+                                "boolean",
+                                "null"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
               "jvm": {
                 "type": [
                   "string",
                   "null"
                 ]
+              },
+              "labels": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "additionalProperties": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
               },
               "nodeSelector": {
                 "type": [

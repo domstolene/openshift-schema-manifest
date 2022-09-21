@@ -33,6 +33,20 @@
         "null"
       ],
       "properties": {
+        "DisableDefaultServiceMonitor": {
+          "description": "Disables the integration with Application Monitoring Operator. When set to true, the operator doesn't create default PrometheusRule, ServiceMonitor and GrafanaDashboard objects and users will have to create them manually, if needed.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "disableReplicasSyncing": {
+          "description": "Specify whether disabling the syncing of instances from the Keycloak CR to the statefulset replicas should be enabled or disabled. This option could be used when enabling HPA(horizontal pod autoscaler). Defaults to false.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
         "extensions": {
           "description": "A list of extensions, where each one is a URL to a JAR files that will be deployed in Keycloak.",
           "type": [
@@ -127,7 +141,7 @@
           ]
         },
         "keycloakDeploymentSpec": {
-          "description": "Resources (Requests and Limits) for KeycloakDeployment.",
+          "description": "Resources (Requests and Limits) and ImagePullPolicy for KeycloakDeployment.",
           "type": [
             "object",
             "null"
@@ -1150,6 +1164,31 @@
               },
               "additionalProperties": false
             },
+            "imagePullPolicy": {
+              "description": "ImagePullPolicy for the Containers.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "enum": [
+                "Always",
+                "Never",
+                "IfNotPresent"
+              ]
+            },
+            "podannotations": {
+              "description": "List of annotations to set in the keycloak pods",
+              "type": [
+                "object",
+                "null"
+              ],
+              "additionalProperties": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
             "podlabels": {
               "description": "List of labels to set in the keycloak pods",
               "type": [
@@ -1250,7 +1289,7 @@
           "additionalProperties": false
         },
         "podDisruptionBudget": {
-          "description": "Specify PodDisruptionBudget configuration.",
+          "description": "Specify PodDisruptionBudget configuration. This field is deprecated and will be ignored on K8s >=1.25",
           "type": [
             "object",
             "null"
@@ -1267,12 +1306,24 @@
           "additionalProperties": false
         },
         "postgresDeploymentSpec": {
-          "description": "Resources (Requests and Limits) for PostgresDeployment.",
+          "description": "Resources (Requests and Limits) and ImagePullPolicy for PostgresDeployment.",
           "type": [
             "object",
             "null"
           ],
           "properties": {
+            "imagePullPolicy": {
+              "description": "ImagePullPolicy for the Containers.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "enum": [
+                "Always",
+                "Never",
+                "IfNotPresent"
+              ]
+            },
             "resources": {
               "description": "Resources (Requests and Limits) for the Pods.",
               "type": [

@@ -1607,6 +1607,38 @@
             }
           },
           "additionalProperties": false
+        },
+        "serviceAccountClientRoles": {
+          "description": "Service account client roles for this client.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "serviceAccountRealmRoles": {
+          "description": "Service account realm roles for this client.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
         }
       },
       "additionalProperties": false

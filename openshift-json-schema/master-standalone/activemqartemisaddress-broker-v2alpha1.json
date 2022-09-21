@@ -1,4 +1,5 @@
 {
+  "description": "ActiveMQArtemisAddress is the Schema for the activemqartemisaddresses API",
   "type": "object",
   "properties": {
     "apiVersion": {
@@ -26,6 +27,7 @@
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta_v2"
     },
     "spec": {
+      "description": "ActiveMQArtemisAddressSpec defines the desired state of ActiveMQArtemisAddress",
       "type": [
         "object",
         "null"
@@ -48,6 +50,7 @@
       }
     },
     "status": {
+      "description": "ActiveMQArtemisAddressStatus defines the observed state of ActiveMQArtemisAddress",
       "type": [
         "object",
         "null"
