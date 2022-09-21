@@ -1617,6 +1617,19 @@
                 "additionalProperties": false
               }
             },
+            "defaultDefaultClientScopes": {
+              "description": "Default client scopes to add to all new clients",
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
             "defaultLocale": {
               "description": "Default Locale",
               "type": [
@@ -1976,6 +1989,65 @@
                 "null"
               ],
               "format": "int32"
+            },
+            "otpPolicyAlgorithm": {
+              "description": "OTP Policy Algorithm",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "otpPolicyDigits": {
+              "description": "OTP Policy Digits",
+              "type": [
+                "integer",
+                "null"
+              ],
+              "format": "int32"
+            },
+            "otpPolicyInitialCounter": {
+              "description": "OTP Policy Initial Counter",
+              "type": [
+                "integer",
+                "null"
+              ],
+              "format": "int32"
+            },
+            "otpPolicyLookAheadWindow": {
+              "description": "OTP Policy Look Ahead Window",
+              "type": [
+                "integer",
+                "null"
+              ],
+              "format": "int32"
+            },
+            "otpPolicyPeriod": {
+              "description": "OTP Policy Period",
+              "type": [
+                "integer",
+                "null"
+              ],
+              "format": "int32"
+            },
+            "otpPolicyType": {
+              "description": "OTP Policy Type",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "otpSupportedApplications": {
+              "description": "OTP Supported Applications",
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
             },
             "passwordPolicy": {
               "description": "Realm Password Policy",
@@ -2439,6 +2511,13 @@
                   "null"
                 ],
                 "properties": {
+                  "changedSyncPeriod": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "format": "int32"
+                  },
                   "config": {
                     "description": "User federation provider config.",
                     "type": [

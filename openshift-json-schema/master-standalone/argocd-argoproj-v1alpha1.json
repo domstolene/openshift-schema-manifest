@@ -5519,6 +5519,13 @@
                 }
               }
             },
+            "rootCA": {
+              "description": "Custom root CA certificate for communicating with the Keycloak OIDC provider",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
             "verifyTLS": {
               "description": "VerifyTLS set to false disables strict TLS validation.",
               "type": [
