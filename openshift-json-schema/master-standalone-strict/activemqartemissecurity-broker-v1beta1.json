@@ -1,0 +1,1016 @@
+{
+  "description": "ActiveMQArtemisSecurity is the Schema for the activemqartemissecurities API",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "broker.amq.io/v1beta1"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "ActiveMQArtemisSecurity"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta_v2"
+    },
+    "spec": {
+      "description": "ActiveMQArtemisSecuritySpec defines the desired state of ActiveMQArtemisSecurity",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "applyToCrNames": {
+          "description": "Apply this security config to the broker crs in the current namespace. A value of * or empty string means applying to all broker crs. Default apply to all broker crs",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "loginModules": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "guestLoginModules": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "guestRole": {
+                    "description": "The guest user role",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "guestUser": {
+                    "description": "The guest user name",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "name": {
+                    "description": "Name for GuestLoginModule",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "keycloakLoginModules": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "configuration": {
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "allowAnyHostName": {
+                        "description": "If to allow any host name",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "alwaysRefreshToken": {
+                        "description": "If always refresh token",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "authServerUrl": {
+                        "description": "URL of the keycloak authentication server",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "autoDetectBearerOnly": {
+                        "description": "If auto-detect bearer token only",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "bearerOnly": {
+                        "description": "If only verify bearer token",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "clientKeyPassword": {
+                        "description": "Client key password",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "clientKeyStore": {
+                        "description": "Path of a client keystore",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "clientKeyStorePassword": {
+                        "description": "Client keystore password",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "confidentialPort": {
+                        "description": "The confidential port used by the Keycloak server for secure connections over SSL/TLS",
+                        "type": [
+                          "integer",
+                          "null"
+                        ],
+                        "format": "int32"
+                      },
+                      "connectionPoolSize": {
+                        "description": "Size of the connection pool",
+                        "type": [
+                          "integer",
+                          "null"
+                        ],
+                        "format": "int64"
+                      },
+                      "corsAllowedHeaders": {
+                        "description": "CORS allowed headers",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "corsAllowedMethods": {
+                        "description": "CORS allowed methods",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "corsExposedHeaders": {
+                        "description": "CORS exposed headers",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "corsMaxAge": {
+                        "description": "CORS max age",
+                        "type": [
+                          "integer",
+                          "null"
+                        ],
+                        "format": "int64"
+                      },
+                      "credentials": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "key": {
+                              "description": "The credentials key",
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "value": {
+                              "description": "The credentials value",
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "disableTrustManager": {
+                        "description": "If to disable trust manager",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "enableBasicAuth": {
+                        "description": "Whether to support basic authentication",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "enableCors": {
+                        "description": "If to enable CORS",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "exposeToken": {
+                        "description": "If to expose access token",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "ignoreOauthQueryParameter": {
+                        "description": "Whether to turn off processing of the access_token query parameter for bearer token processing",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "minTimeBetweenJwksRequests": {
+                        "description": "Minimum interval between two requests to Keycloak to retrieve new public keys",
+                        "type": [
+                          "integer",
+                          "null"
+                        ],
+                        "format": "int64"
+                      },
+                      "principalAttribute": {
+                        "description": "OpenID Connect ID Token attribute to populate the UserPrincipal name with",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "proxyUrl": {
+                        "description": "The proxy URL",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "publicClient": {
+                        "description": "If it is public client",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "publicKeyCacheTtl": {
+                        "description": "Maximum interval between two requests to Keycloak to retrieve new public keys",
+                        "type": [
+                          "integer",
+                          "null"
+                        ],
+                        "format": "int64"
+                      },
+                      "realm": {
+                        "description": "Realm for KeycloakLoginModule",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "realmPublicKey": {
+                        "description": "Public key for the realm",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "redirectRewriteRules": {
+                        "description": "The regular expression to which the Redirect URI is to be matched value is the replacement String",
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "key": {
+                              "description": "The credentials key",
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "value": {
+                              "description": "The credentials value",
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "registerNodeAtStartup": {
+                        "description": "If register node at startup",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "registerNodePeriod": {
+                        "description": "Period for re-registering node",
+                        "type": [
+                          "integer",
+                          "null"
+                        ],
+                        "format": "int64"
+                      },
+                      "resource": {
+                        "description": "Resource Name",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "scope": {
+                        "description": "The OAuth2 scope parameter for DirectAccessGrantsLoginModule",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "sslRequired": {
+                        "description": "How SSL is required",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "tokenCookiePath": {
+                        "description": "Cookie path for a cookie store",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "tokenMinimumTimeToLive": {
+                        "description": "Minimum time to refresh an active access token",
+                        "type": [
+                          "integer",
+                          "null"
+                        ],
+                        "format": "int64"
+                      },
+                      "tokenStore": {
+                        "description": "Type of token store. session or cookie",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "trustStore": {
+                        "description": "Path of a trust store",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "trustStorePassword": {
+                        "description": "Truststore password",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "turnOffChangeSessionIdOnLogin": {
+                        "description": "If not to change session id on a successful login",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "useResourceRoleMappings": {
+                        "description": "If to use resource role mappings",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "verifyTokenAudience": {
+                        "description": "Verify whether the token contains this client name (resource) as an audience",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "moduleType": {
+                    "description": "Type of KeycloakLoginModule directAccess or bearerToken",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "name": {
+                    "description": "Name for KeycloakLoginModule",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "propertiesLoginModules": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "name": {
+                    "description": "Name for PropertiesLoginModule",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "users": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "name": {
+                          "description": "User name to be defined in properties login module",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "password": {
+                          "description": "Password to be defined in properties login module",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "roles": {
+                          "description": "Roles to be defined in properties login module",
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "securityDomains": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "brokerDomain": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "loginModules": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "debug": {
+                        "description": "Debug option of login modules for broker/console domain",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "flag": {
+                        "description": "Flag of login modules for broker/console domain",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "name": {
+                        "description": "Name for login modules for broker/console domain",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "reload": {
+                        "description": "Reload option of login modules for broker/console domain",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "name": {
+                  "description": "Name for the broker/console domain",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            },
+            "consoleDomain": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "loginModules": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "debug": {
+                        "description": "Debug option of login modules for broker/console domain",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "flag": {
+                        "description": "Flag of login modules for broker/console domain",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "name": {
+                        "description": "Name for login modules for broker/console domain",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "reload": {
+                        "description": "Reload option of login modules for broker/console domain",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "name": {
+                  "description": "Name for the broker/console domain",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "securitySettings": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "broker": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "match": {
+                    "description": "The address match pattern of a security setting",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "permissions": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "required": [
+                        "operationType"
+                      ],
+                      "properties": {
+                        "operationType": {
+                          "description": "The operation type of a security setting",
+                          "type": "string"
+                        },
+                        "roles": {
+                          "description": "The roles of a security setting",
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "management": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "authorisation": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "allowedList": {
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {
+                          "domain": {
+                            "description": "The domain of allowedList",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "key": {
+                            "description": "The key of allowedList",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "defaultAccess": {
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {
+                          "method": {
+                            "description": "The method of defaultAccess/roleAccess List",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "roles": {
+                            "description": "The roles of defaultAccess/roleAccess List",
+                            "type": [
+                              "array",
+                              "null"
+                            ],
+                            "items": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            }
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "roleAccess": {
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {
+                          "accessList": {
+                            "type": [
+                              "array",
+                              "null"
+                            ],
+                            "items": {
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "properties": {
+                                "method": {
+                                  "description": "The method of defaultAccess/roleAccess List",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "roles": {
+                                  "description": "The roles of defaultAccess/roleAccess List",
+                                  "type": [
+                                    "array",
+                                    "null"
+                                  ],
+                                  "items": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          },
+                          "domain": {
+                            "description": "The domain of roleAccess List",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "key": {
+                            "description": "The key of roleAccess List",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "connector": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "authenticatorType": {
+                      "description": "The management authentication type",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "host": {
+                      "description": "The connector host for connecting to management",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "jmxRealm": {
+                      "description": "The JMX realm of management",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "keyStorePassword": {
+                      "description": "The keystore password for management connector",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "keyStorePath": {
+                      "description": "The keystore path for management connector",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "keyStoreProvider": {
+                      "description": "The keystore provider for management connector",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "objectName": {
+                      "description": "The JMX object name of management",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "passwordCodec": {
+                      "description": "The password codec for management connector",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "port": {
+                      "description": "The connector port for connecting to management",
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "format": "int32"
+                    },
+                    "rmiRegistryPort": {
+                      "description": "The RMI registry port for management",
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "format": "int32"
+                    },
+                    "secured": {
+                      "description": "Whether management connection is secured",
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    },
+                    "trustStorePassword": {
+                      "description": "The truststore password for management connector",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "trustStorePath": {
+                      "description": "The truststore path for management connector",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "trustStoreProvider": {
+                      "description": "The truststore provider for management connector",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "hawtioRoles": {
+                  "description": "The roles allowed to login hawtio",
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "status": {
+      "description": "ActiveMQArtemisSecurityStatus defines the observed state of ActiveMQArtemisSecurity",
+      "type": [
+        "object",
+        "null"
+      ]
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "broker.amq.io",
+      "kind": "ActiveMQArtemisSecurity",
+      "version": "v1beta1"
+    }
+  ],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}
