@@ -1,0 +1,102 @@
+{
+  "description": "Rule is the Schema for the rules API",
+  "type": "object",
+  "required": [
+    "id",
+    "title"
+  ],
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "compliance.openshift.io/v1alpha1"
+      ]
+    },
+    "availableFixes": {
+      "description": "The Available fixes",
+      "x-kubernetes-list-type": "atomic"
+    },
+    "checkType": {
+      "description": "What type of check will this rule execute: Platform, Node or none (represented by an empty string)",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "description": {
+      "description": "The description of the Rule",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "id": {
+      "description": "The XCCDF ID",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "instructions": {
+      "description": "Instructions for auditing this specific rule",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "Rule"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta_v2"
+    },
+    "rationale": {
+      "description": "The rationale of the Rule",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "severity": {
+      "description": "The severity level",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "title": {
+      "description": "The title of the Rule",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "warning": {
+      "description": "A discretionary warning about the of the Rule",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "compliance.openshift.io",
+      "kind": "Rule",
+      "version": "v1alpha1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}
