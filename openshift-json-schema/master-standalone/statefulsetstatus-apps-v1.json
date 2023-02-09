@@ -2,11 +2,12 @@
   "description": "StatefulSetStatus represents the current state of a StatefulSet.",
   "type": "object",
   "required": [
-    "replicas"
+    "replicas",
+    "availableReplicas"
   ],
   "properties": {
     "availableReplicas": {
-      "description": "Total number of available pods (ready for at least minReadySeconds) targeted by this statefulset. This is an alpha field and requires enabling StatefulSetMinReadySeconds feature gate. Remove omitempty when graduating to beta",
+      "description": "Total number of available pods (ready for at least minReadySeconds) targeted by this statefulset. This is a beta field and enabled/disabled by StatefulSetMinReadySeconds feature gate.",
       "type": [
         "integer",
         "null"
@@ -57,7 +58,7 @@
       "format": "int64"
     },
     "readyReplicas": {
-      "description": "readyReplicas is the number of Pods created by the StatefulSet controller that have a Ready Condition.",
+      "description": "readyReplicas is the number of pods created for this StatefulSet with a Ready Condition.",
       "type": [
         "integer",
         "null"

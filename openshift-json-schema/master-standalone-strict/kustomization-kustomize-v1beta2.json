@@ -66,7 +66,7 @@
               ],
               "properties": {
                 "name": {
-                  "description": "Name of the referent",
+                  "description": "Name of the referent.",
                   "type": "string"
                 }
               },
@@ -76,13 +76,13 @@
           "additionalProperties": false
         },
         "dependsOn": {
-          "description": "DependsOn may contain a dependency.CrossNamespaceDependencyReference slice with references to Kustomization resources that must be ready before this Kustomization can be reconciled.",
+          "description": "DependsOn may contain a meta.NamespacedObjectReference slice with references to Kustomization resources that must be ready before this Kustomization can be reconciled.",
           "type": [
             "array",
             "null"
           ],
           "items": {
-            "description": "CrossNamespaceDependencyReference holds the reference to a dependency.",
+            "description": "NamespacedObjectReference contains enough information to locate the referenced Kubernetes resource object in any namespace.",
             "type": [
               "object",
               "null"
@@ -92,11 +92,11 @@
             ],
             "properties": {
               "name": {
-                "description": "Name holds the name reference of a dependency.",
+                "description": "Name of the referent.",
                 "type": "string"
               },
               "namespace": {
-                "description": "Namespace holds the namespace reference of a dependency.",
+                "description": "Namespace of the referent, when not specified it acts as LocalObjectReference.",
                 "type": [
                   "string",
                   "null"
@@ -120,7 +120,7 @@
             "null"
           ],
           "items": {
-            "description": "NamespacedObjectKindReference contains enough information to let you locate the typed referenced object in any namespace",
+            "description": "NamespacedObjectKindReference contains enough information to locate the typed referenced Kubernetes resource object in any namespace.",
             "type": [
               "object",
               "null"
@@ -131,22 +131,22 @@
             ],
             "properties": {
               "apiVersion": {
-                "description": "API version of the referent, if not specified the Kubernetes preferred version will be used",
+                "description": "API version of the referent, if not specified the Kubernetes preferred version will be used.",
                 "type": [
                   "string",
                   "null"
                 ]
               },
               "kind": {
-                "description": "Kind of the referent",
+                "description": "Kind of the referent.",
                 "type": "string"
               },
               "name": {
-                "description": "Name of the referent",
+                "description": "Name of the referent.",
                 "type": "string"
               },
               "namespace": {
-                "description": "Namespace of the referent, when not specified it acts as LocalObjectReference",
+                "description": "Namespace of the referent, when not specified it acts as LocalObjectReference.",
                 "type": [
                   "string",
                   "null"
@@ -203,27 +203,35 @@
         },
         "interval": {
           "description": "The interval at which to reconcile the Kustomization.",
-          "type": "string"
+          "type": "string",
+          "pattern": "^([0-9]+(\\.[0-9]+)?(ms|s|m|h))+$"
         },
         "kubeConfig": {
-          "description": "The KubeConfig for reconciling the Kustomization on a remote cluster. When specified, KubeConfig takes precedence over ServiceAccountName.",
+          "description": "The KubeConfig for reconciling the Kustomization on a remote cluster. When used in combination with KustomizationSpec.ServiceAccountName, forces the controller to act on behalf of that Service Account at the target cluster. If the --default-service-account flag is set, its value will be used as a controller level fallback for when KustomizationSpec.ServiceAccountName is empty.",
           "type": [
             "object",
             "null"
           ],
+          "required": [
+            "secretRef"
+          ],
           "properties": {
             "secretRef": {
-              "description": "SecretRef holds the name to a secret that contains a 'value' key with the kubeconfig file as the value. It must be in the same namespace as the Kustomization. It is recommended that the kubeconfig is self-contained, and the secret is regularly updated if credentials such as a cloud-access-token expire. Cloud specific `cmd-path` auth helpers will not function without adding binaries and credentials to the Pod that is responsible for reconciling the Kustomization.",
-              "type": [
-                "object",
-                "null"
-              ],
+              "description": "SecretRef holds the name of a secret that contains a key with the kubeconfig file as the value. If no key is set, the key will default to 'value'. It is recommended that the kubeconfig is self-contained, and the secret is regularly updated if credentials such as a cloud-access-token expire. Cloud specific `cmd-path` auth helpers will not function without adding binaries and credentials to the Pod that is responsible for reconciling Kubernetes resources.",
+              "type": "object",
               "required": [
                 "name"
               ],
               "properties": {
+                "key": {
+                  "description": "Key in the Secret, when not specified an implementation-specific default key is used.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
                 "name": {
-                  "description": "Name of the referent",
+                  "description": "Name of the Secret.",
                   "type": "string"
                 }
               },
@@ -504,6 +512,13 @@
                     "type": "string",
                     "maxLength": 253,
                     "minLength": 1
+                  },
+                  "optional": {
+                    "description": "Optional indicates whether the referenced resource must exist, or whether to tolerate its absence. If true and the referenced resource is absent, proceed as if the resource was present but empty, without any variables defined.",
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
                   }
                 },
                 "additionalProperties": false
@@ -521,7 +536,8 @@
           "type": [
             "string",
             "null"
-          ]
+          ],
+          "pattern": "^([0-9]+(\\.[0-9]+)?(ms|s|m|h))+$"
         },
         "serviceAccountName": {
           "description": "The name of the Kubernetes service account to impersonate when reconciling this Kustomization.",
@@ -549,6 +565,7 @@
               "description": "Kind of the referent.",
               "type": "string",
               "enum": [
+                "OCIRepository",
                 "GitRepository",
                 "Bucket"
               ]
@@ -588,7 +605,8 @@
           "type": [
             "string",
             "null"
-          ]
+          ],
+          "pattern": "^([0-9]+(\\.[0-9]+)?(ms|s|m|h))+$"
         },
         "validation": {
           "description": "Deprecated: Not used in v1beta2.",
@@ -625,7 +643,7 @@
             "null"
           ],
           "items": {
-            "description": "Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example, type FooStatus struct{     // Represents the observations of a foo's current state.     // Known .status.conditions.type are: \"Available\", \"Progressing\", and \"Degraded\"     // +patchMergeKey=type     // +patchStrategy=merge     // +listType=map     // +listMapKey=type     Conditions []metav1.Condition `json:\"conditions,omitempty\" patchStrategy:\"merge\" patchMergeKey:\"type\" protobuf:\"bytes,1,rep,name=conditions\"` \n     // other fields }",
+            "description": "Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example, \n type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: \"Available\", \"Progressing\", and \"Degraded\" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:\"conditions,omitempty\" patchStrategy:\"merge\" patchMergeKey:\"type\" protobuf:\"bytes,1,rep,name=conditions\"` \n // other fields }",
             "type": [
               "object",
               "null"
@@ -737,7 +755,7 @@
           ]
         },
         "lastHandledReconcileAt": {
-          "description": "LastHandledReconcileAt holds the value of the most recent reconcile request value, so a change can be detected.",
+          "description": "LastHandledReconcileAt holds the value of the most recent reconcile request value, so a change of the annotation value can be detected.",
           "type": [
             "string",
             "null"

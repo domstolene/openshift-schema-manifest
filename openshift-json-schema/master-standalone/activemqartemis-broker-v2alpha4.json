@@ -504,9 +504,8 @@
                     ]
                   },
                   "redeliveryCollisionAvoidanceFactor": {
-                    "description": "currentl controller-gen doesn't support float type RedeliveryCollisionAvoidanceFactor *float32 `json:\"redeliveryCollisionAvoidanceFactor,omitempty\"`",
                     "type": [
-                      "string",
+                      "number",
                       "null"
                     ]
                   },

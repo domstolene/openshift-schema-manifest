@@ -39,7 +39,7 @@
       "format": "int64"
     },
     "readyReplicas": {
-      "description": "Total number of ready pods targeted by this deployment.",
+      "description": "readyReplicas is the number of pods targeted by this Deployment with a Ready Condition.",
       "type": [
         "integer",
         "null"

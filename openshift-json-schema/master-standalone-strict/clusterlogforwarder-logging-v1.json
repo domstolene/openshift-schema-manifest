@@ -211,7 +211,7 @@
             ],
             "properties": {
               "cloudwatch": {
-                "description": "Cloudwatch provides configuration for the output type `cloudwatch`",
+                "description": "Cloudwatch provides configuration for the output type `cloudwatch` \n Note: the cloudwatch output recognizes the following additional keys in the Secret: \n \t`aws_secret_access_key`: AWS secret access key. \t`aws_access_key_id`:AWS secret access key ID.",
                 "type": [
                   "object",
                   "null"
@@ -269,6 +269,7 @@
                 "additionalProperties": false
               },
               "fluentdForward": {
+                "description": "FluentdForward does not provide additional fields, but note that the fluentforward output allows this additional keys in the Secret: \n   `shared_key`: (string) Key to enable fluent-forward shared-key authentication.",
                 "type": [
                   "object",
                   "null"
@@ -339,7 +340,7 @@
                 "type": "string"
               },
               "secret": {
-                "description": "Secret for authentication. Name of a secret in the same namespace as the cluster logging operator. \n For client authentication, set secret keys `tls.crt` and `tls.key` to the client certificate and private key. \n To use your own certificate authority, set secret key `ca-bundle.crt`. \n Depending on the `type` there may be other secret keys that have meaning.",
+                "description": "Secret for authentication. Name of a secret in the same namespace as the cluster logging operator. \n All sensitive authentication information is provided via a kubernetes Secret object. A Secret is a key:value map, common keys are described here. Some output types support additional specialized keys, documented with the output-specific configuration field. All secret keys are optional, enable the security features you want by setting the relevant keys. \n Transport Layer Security (TLS) \n Using a TLS URL ('https://...' or 'tls://...') without any secret enables basic TLS: client authenticates server using system default certificate authority. \n Additional TLS features are enabled by including a Secret and setting the following optional fields: \n   `tls.crt`: (string) File name containing a client certificate.     Enables mutual authentication. Requires `tls.key`.   `tls.key`: (string) File name containing the private key to unlock the client certificate.     Requires `tls.crt`   `passphrase`: (string) Passphrase to decode an encoded TLS private key.     Requires tls.key.   `ca-bundle.crt`: (string) File name of a custom CA for server authentication. \n   `tls.insecure`: If this key is present (with any value) accept server certificates that are self-signed or have an incorrect hostname.     This is INSECURE, the connection is susceptible to man-in-the-middle attacks.     This is ONLY for development and testing when valid certificates are not available. \n Username and Password \n   `username`: (string) Authentication user name. Requires `password`.   `password`: (string) Authentication password. Requires `username`. \n Simple Authentication Security Layer (SASL) \n   `sasl.enable`: (boolean) Explicitly enable or disable SASL.     If missing, SASL is automatically enabled when any of the other `sasl.` keys are set.   `sasl.mechanisms`: (array) List of allowed SASL mechanism names.     If missing or empty, the system defaults are used.   `sasl.allow-insecure`: (boolean) Allow mechanisms that send clear-text passwords.     Default false.",
                 "type": [
                   "object",
                   "null"
@@ -479,6 +480,13 @@
               "outputRefs"
             ],
             "properties": {
+              "detectMultilineErrors": {
+                "description": "DetectMultilineErrors enables multiline error detection of container logs",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
               "inputRefs": {
                 "description": "InputRefs lists the names (`input.name`) of inputs to this pipeline. \n The following built-in input names are always available: \n `application` selects all logs from application pods. \n `infrastructure` selects logs from openshift and kubernetes pods and some node logs. \n `audit` selects node logs related to security audits.",
                 "type": "array",
@@ -537,7 +545,7 @@
       "additionalProperties": false
     },
     "status": {
-      "description": "ClusterLogForwarder represents the current status of ClusterLogForwarder",
+      "description": "ClusterLogForwarderStatus defines the observed state of ClusterLogForwarder",
       "type": [
         "object",
         "null"

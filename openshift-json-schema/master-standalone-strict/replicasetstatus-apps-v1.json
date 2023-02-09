@@ -42,7 +42,7 @@
       "format": "int64"
     },
     "readyReplicas": {
-      "description": "The number of ready replicas for this replica set.",
+      "description": "readyReplicas is the number of pods targeted by this ReplicaSet with a Ready Condition.",
       "type": [
         "integer",
         "null"

@@ -1,5 +1,5 @@
 {
-  "description": "MachineHealthCheck is the Schema for the machinehealthchecks API",
+  "description": "MachineHealthCheck is the Schema for the machinehealthchecks API Compatibility level 2: Stable within a major release for a minimum of 9 months or 3 minor releases (whichever is longer).",
   "type": "object",
   "properties": {
     "apiVersion": {
@@ -31,10 +31,6 @@
       "type": [
         "object",
         "null"
-      ],
-      "required": [
-        "selector",
-        "unhealthyConditions"
       ],
       "properties": {
         "maxUnhealthy": {
@@ -111,7 +107,10 @@
         },
         "selector": {
           "description": "Label selector to match machines whose health will be exercised. Note: An empty selector will match all machines.",
-          "type": "object",
+          "type": [
+            "object",
+            "null"
+          ],
           "properties": {
             "matchExpressions": {
               "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed.",
@@ -173,7 +172,10 @@
         },
         "unhealthyConditions": {
           "description": "UnhealthyConditions contains a list of the conditions that determine whether a node is considered unhealthy.  The conditions are combined in a logical OR, i.e. if any of the conditions is met, the node is unhealthy.",
-          "type": "array",
+          "type": [
+            "array",
+            "null"
+          ],
           "minItems": 1,
           "items": {
             "description": "UnhealthyCondition represents a Node condition type and value with a timeout specified as a duration.  When the named condition has been in the given status for at least the timeout value, a node is considered unhealthy.",
@@ -181,23 +183,27 @@
               "object",
               "null"
             ],
-            "required": [
-              "status",
-              "timeout",
-              "type"
-            ],
             "properties": {
               "status": {
-                "type": "string",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "minLength": 1
               },
               "timeout": {
                 "description": "Expects an unsigned duration string of decimal numbers each with optional fraction and a unit suffix, eg \"300ms\", \"1.5h\" or \"2h45m\". Valid time units are \"ns\", \"us\" (or \"\u00b5s\"), \"ms\", \"s\", \"m\", \"h\".",
-                "type": "string",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "pattern": "^([0-9]+(\\.[0-9]+)?(ns|us|\u00b5s|ms|s|m|h))+$"
               },
               "type": {
-                "type": "string",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "minLength": 1
               }
             },
@@ -213,10 +219,6 @@
         "object",
         "null"
       ],
-      "required": [
-        "currentHealthy",
-        "expectedMachines"
-      ],
       "properties": {
         "conditions": {
           "description": "Conditions defines the current state of the MachineHealthCheck",
@@ -229,10 +231,6 @@
             "type": [
               "object",
               "null"
-            ],
-            "required": [
-              "status",
-              "type"
             ],
             "properties": {
               "lastTransitionTime": {
@@ -266,11 +264,17 @@
               },
               "status": {
                 "description": "Status of the condition, one of True, False, Unknown.",
-                "type": "string"
+                "type": [
+                  "string",
+                  "null"
+                ]
               },
               "type": {
                 "description": "Type of condition in CamelCase or in foo.example.com/CamelCase. Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be useful (see .node.status.conditions), the ability to deconflict is important.",
-                "type": "string"
+                "type": [
+                  "string",
+                  "null"
+                ]
               }
             },
             "additionalProperties": false
@@ -278,12 +282,18 @@
         },
         "currentHealthy": {
           "description": "total number of machines counted by this machine health check",
-          "type": "integer",
+          "type": [
+            "integer",
+            "null"
+          ],
           "minimum": 0
         },
         "expectedMachines": {
           "description": "total number of machines counted by this machine health check",
-          "type": "integer",
+          "type": [
+            "integer",
+            "null"
+          ],
           "minimum": 0
         },
         "remediationsAllowed": {

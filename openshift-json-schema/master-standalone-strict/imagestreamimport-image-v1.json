@@ -35,7 +35,7 @@
       "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.ImageStreamImportSpec"
     },
     "status": {
-      "description": "Status is the the result of importing the image",
+      "description": "Status is the result of importing the image",
       "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.ImageStreamImportStatus"
     }
   },

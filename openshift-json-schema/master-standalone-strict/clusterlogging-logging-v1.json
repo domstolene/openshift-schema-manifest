@@ -1,5 +1,5 @@
 {
-  "description": "ClusterLogging is the Schema for the clusterloggings API \n ClusterLogging is the Schema for the clusterloggings API",
+  "description": "ClusterLogging is the Schema for the clusterloggings API",
   "type": "object",
   "properties": {
     "apiVersion": {
@@ -27,7 +27,7 @@
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta_v2"
     },
     "spec": {
-      "description": "Specification of the desired behavior of the Logging cluster.",
+      "description": "ClusterLoggingSpec defines the desired state of ClusterLogging",
       "type": [
         "object",
         "null"
@@ -374,22 +374,27 @@
                     ],
                     "properties": {
                       "activePrimaryShards": {
+                        "description": "The number of Active Primary Shards for the Elasticsearch Cluster",
                         "type": "integer",
                         "format": "int32"
                       },
                       "activeShards": {
+                        "description": "The number of Active Shards for the Elasticsearch Cluster",
                         "type": "integer",
                         "format": "int32"
                       },
                       "initializingShards": {
+                        "description": "The number of Initializing Shards for the Elasticsearch Cluster",
                         "type": "integer",
                         "format": "int32"
                       },
                       "numDataNodes": {
+                        "description": "The number of Data Nodes for the Elasticsearch Cluster",
                         "type": "integer",
                         "format": "int32"
                       },
                       "numNodes": {
+                        "description": "The number of Nodes for the Elasticsearch Cluster",
                         "type": "integer",
                         "format": "int32"
                       },
@@ -398,13 +403,16 @@
                         "format": "int32"
                       },
                       "relocatingShards": {
+                        "description": "The number of Relocating Shards for the Elasticsearch Cluster",
                         "type": "integer",
                         "format": "int32"
                       },
                       "status": {
+                        "description": "The current Status of the Elasticsearch Cluster",
                         "type": "string"
                       },
                       "unassignedShards": {
+                        "description": "The number of Unassigned Shards for the Elasticsearch Cluster",
                         "type": "integer",
                         "format": "int32"
                       }
@@ -618,12 +626,6 @@
                   "object",
                   "null"
                 ],
-                "required": [
-                  "deployment",
-                  "pods",
-                  "replicaSets",
-                  "replicas"
-                ],
                 "properties": {
                   "clusterCondition": {
                     "type": [
@@ -678,10 +680,17 @@
                     }
                   },
                   "deployment": {
-                    "type": "string"
+                    "type": [
+                      "string",
+                      "null"
+                    ]
                   },
                   "pods": {
-                    "type": "object",
+                    "description": "The status for each of the Kibana pods for the Visualization component",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
                     "additionalProperties": {
                       "type": [
                         "array",
@@ -696,7 +705,10 @@
                     }
                   },
                   "replicaSets": {
-                    "type": "array",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
                     "items": {
                       "type": [
                         "string",
@@ -705,7 +717,10 @@
                     }
                   },
                   "replicas": {
-                    "type": "integer",
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
                     "format": "int32"
                   }
                 },

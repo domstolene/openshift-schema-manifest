@@ -55,7 +55,7 @@
           ],
           "properties": {
             "name": {
-              "description": "Name of the referent",
+              "description": "Name of the referent.",
               "type": "string"
             }
           }
@@ -86,7 +86,7 @@
           ],
           "properties": {
             "name": {
-              "description": "Name of the referent",
+              "description": "Name of the referent.",
               "type": "string"
             }
           }
@@ -98,6 +98,14 @@
             "null"
           ]
         },
+        "timeout": {
+          "description": "Timeout for sending alerts to the provider.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^([0-9]+(\\.[0-9]+)?(ms|s|m))+$"
+        },
         "type": {
           "description": "Type of provider",
           "type": "string",
@@ -107,6 +115,7 @@
             "msteams",
             "rocket",
             "generic",
+            "generic-hmac",
             "github",
             "gitlab",
             "bitbucket",
@@ -119,7 +128,9 @@
             "lark",
             "matrix",
             "opsgenie",
-            "alertmanager"
+            "alertmanager",
+            "grafana",
+            "githubdispatch"
           ]
         },
         "username": {
@@ -144,7 +155,7 @@
             "null"
           ],
           "items": {
-            "description": "Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example, type FooStatus struct{     // Represents the observations of a foo's current state.     // Known .status.conditions.type are: \"Available\", \"Progressing\", and \"Degraded\"     // +patchMergeKey=type     // +patchStrategy=merge     // +listType=map     // +listMapKey=type     Conditions []metav1.Condition `json:\"conditions,omitempty\" patchStrategy:\"merge\" patchMergeKey:\"type\" protobuf:\"bytes,1,rep,name=conditions\"` \n     // other fields }",
+            "description": "Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example, \n type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: \"Available\", \"Progressing\", and \"Degraded\" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:\"conditions,omitempty\" patchStrategy:\"merge\" patchMergeKey:\"type\" protobuf:\"bytes,1,rep,name=conditions\"` \n // other fields }",
             "type": [
               "object",
               "null"

@@ -7,7 +7,7 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1.RollingUpdateStatefulSetStrategy"
     },
     "type": {
-      "description": "Type indicates the type of the StatefulSetUpdateStrategy. Default is RollingUpdate.",
+      "description": "Type indicates the type of the StatefulSetUpdateStrategy. Default is RollingUpdate.\n\n",
       "type": [
         "string",
         "null"

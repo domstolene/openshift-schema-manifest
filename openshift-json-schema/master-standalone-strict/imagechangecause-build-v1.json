@@ -7,7 +7,7 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference"
     },
     "imageID": {
-      "description": "imageID is the ID of the image that triggered a a new build.",
+      "description": "imageID is the ID of the image that triggered a new build.",
       "type": [
         "string",
         "null"

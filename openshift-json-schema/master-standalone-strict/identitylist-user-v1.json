@@ -1,5 +1,5 @@
 {
-  "description": "IdentityList is a collection of Identities",
+  "description": "IdentityList is a collection of Identities\n\nCompatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
   "type": "object",
   "required": [
     "items"

@@ -1,5 +1,5 @@
 {
-  "description": "OAuthClientList is a collection of OAuth clients",
+  "description": "OAuthClientList is a collection of OAuth clients\n\nCompatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
   "type": "object",
   "required": [
     "items"
