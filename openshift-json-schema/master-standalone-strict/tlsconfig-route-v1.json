@@ -13,7 +13,7 @@
       ]
     },
     "certificate": {
-      "description": "certificate provides certificate contents",
+      "description": "certificate provides certificate contents. This should be a single serving certificate, not a certificate chain. Do not include a CA certificate.",
       "type": [
         "string",
         "null"

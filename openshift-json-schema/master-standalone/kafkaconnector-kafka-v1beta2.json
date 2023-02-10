@@ -1,0 +1,162 @@
+{
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "kafka.strimzi.io/v1beta2"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "KafkaConnector"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta_v2"
+    },
+    "spec": {
+      "description": "The specification of the Kafka Connector.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "class": {
+          "description": "The Class for the Kafka Connector.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "config": {
+          "description": "The Kafka Connector configuration. The following properties cannot be set: connector.class, tasks.max.",
+          "x-kubernetes-preserve-unknown-fields": true
+        },
+        "pause": {
+          "description": "Whether the connector should be paused. Defaults to false.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "tasksMax": {
+          "description": "The maximum number of tasks for the Kafka Connector.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        }
+      }
+    },
+    "status": {
+      "description": "The status of the Kafka Connector.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "conditions": {
+          "description": "List of status conditions.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "lastTransitionTime": {
+                "description": "Last time the condition of a type changed from one status to another. The required format is 'yyyy-MM-ddTHH:mm:ssZ', in the UTC time zone.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "message": {
+                "description": "Human-readable message indicating details about the condition's last transition.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "reason": {
+                "description": "The reason for the condition's last transition (a single word in CamelCase).",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "status": {
+                "description": "The status of the condition, either True, False or Unknown.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "type": {
+                "description": "The unique identifier of a condition, used to distinguish between other conditions in the resource.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "connectorStatus": {
+          "description": "The connector status, as reported by the Kafka Connect REST API.",
+          "x-kubernetes-preserve-unknown-fields": true
+        },
+        "observedGeneration": {
+          "description": "The generation of the CRD that was last reconciled by the operator.",
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "tasksMax": {
+          "description": "The maximum number of tasks for the Kafka Connector.",
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "topics": {
+          "description": "The list of topics used by the Kafka Connector.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "kafka.strimzi.io",
+      "kind": "KafkaConnector",
+      "version": "v1beta2"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

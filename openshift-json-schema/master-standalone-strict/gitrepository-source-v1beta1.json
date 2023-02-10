@@ -126,7 +126,7 @@
                 ],
                 "properties": {
                   "name": {
-                    "description": "Name of the referent",
+                    "description": "Name of the referent.",
                     "type": "string"
                   }
                 },
@@ -193,7 +193,7 @@
           "additionalProperties": false
         },
         "secretRef": {
-          "description": "The secret name containing the Git credentials. For HTTPS repositories the secret must contain username and password fields. For SSH repositories the secret must contain identity, identity.pub and known_hosts fields.",
+          "description": "The secret name containing the Git credentials. For HTTPS repositories the secret must contain username and password fields. For SSH repositories the secret must contain identity and known_hosts fields.",
           "type": [
             "object",
             "null"
@@ -203,7 +203,7 @@
           ],
           "properties": {
             "name": {
-              "description": "Name of the referent",
+              "description": "Name of the referent.",
               "type": "string"
             }
           },
@@ -226,7 +226,7 @@
         "url": {
           "description": "The repository URL, can be a HTTP/S or SSH address.",
           "type": "string",
-          "pattern": "^(http|https|ssh)://"
+          "pattern": "^(http|https|ssh)://.*$"
         },
         "verify": {
           "description": "Verify OpenPGP signature for the Git commit HEAD points to.",
@@ -256,7 +256,7 @@
               ],
               "properties": {
                 "name": {
-                  "description": "Name of the referent",
+                  "description": "Name of the referent.",
                   "type": "string"
                 }
               },
@@ -326,7 +326,7 @@
             "null"
           ],
           "items": {
-            "description": "Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example, type FooStatus struct{     // Represents the observations of a foo's current state.     // Known .status.conditions.type are: \"Available\", \"Progressing\", and \"Degraded\"     // +patchMergeKey=type     // +patchStrategy=merge     // +listType=map     // +listMapKey=type     Conditions []metav1.Condition `json:\"conditions,omitempty\" patchStrategy:\"merge\" patchMergeKey:\"type\" protobuf:\"bytes,1,rep,name=conditions\"` \n     // other fields }",
+            "description": "Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example, \n type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: \"Available\", \"Progressing\", and \"Degraded\" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:\"conditions,omitempty\" patchStrategy:\"merge\" patchMergeKey:\"type\" protobuf:\"bytes,1,rep,name=conditions\"` \n // other fields }",
             "type": [
               "object",
               "null"
@@ -436,7 +436,7 @@
           }
         },
         "lastHandledReconcileAt": {
-          "description": "LastHandledReconcileAt holds the value of the most recent reconcile request value, so a change can be detected.",
+          "description": "LastHandledReconcileAt holds the value of the most recent reconcile request value, so a change of the annotation value can be detected.",
           "type": [
             "string",
             "null"

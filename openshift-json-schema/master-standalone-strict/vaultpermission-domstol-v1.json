@@ -1,0 +1,110 @@
+{
+  "description": "VaultPermission is the Schema for the vaultpermissions API",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "domstol.no/v1"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "VaultPermission"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta_v2"
+    },
+    "spec": {
+      "description": "VaultPermissionSpec defines the desired state of VaultPermission",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "subjects"
+      ],
+      "properties": {
+        "subjects": {
+          "description": "Foo is an example field of VaultPermission. Edit vaultpermission_types.go to remove/update",
+          "type": "array",
+          "items": {
+            "description": "Subject contains a reference to the object or user identities a role binding applies to.  This can either hold a direct API object reference, or a value for non-objects such as user and group names.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "kind",
+              "name"
+            ],
+            "properties": {
+              "apiGroup": {
+                "description": "APIGroup holds the API group of the referenced subject. Defaults to \"\" for ServiceAccount subjects. Defaults to \"rbac.authorization.k8s.io\" for User and Group subjects.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "kind": {
+                "description": "Kind of object being referenced. Values defined by this API group are \"User\", \"Group\", and \"ServiceAccount\". If the Authorizer does not recognized the kind value, the Authorizer should report an error.",
+                "type": "string"
+              },
+              "name": {
+                "description": "Name of the object being referenced.",
+                "type": "string"
+              },
+              "namespace": {
+                "description": "Namespace of the referenced object.  If the object kind is non-namespace, such as \"User\" or \"Group\", and this value is not empty the Authorizer should report an error.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "x-kubernetes-map-type": "atomic",
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "status": {
+      "description": "VaultPermissionStatus defines the observed state of VaultPermission",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "phase"
+      ],
+      "properties": {
+        "phase": {
+          "description": "INSERT ADDITIONAL STATUS FIELD - define observed state of cluster Important: Run \"make\" to regenerate code after modifying this file",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "domstol.no",
+      "kind": "VaultPermission",
+      "version": "v1"
+    }
+  ],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

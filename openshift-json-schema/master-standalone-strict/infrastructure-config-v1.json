@@ -66,6 +66,13 @@
             "null"
           ],
           "properties": {
+            "alibabaCloud": {
+              "description": "AlibabaCloud contains settings specific to the Alibaba Cloud infrastructure provider.",
+              "type": [
+                "object",
+                "null"
+              ]
+            },
             "aws": {
               "description": "AWS contains settings specific to the Amazon Web Services infrastructure provider.",
               "type": [
@@ -165,8 +172,54 @@
                 "null"
               ]
             },
+            "powervs": {
+              "description": "PowerVS contains settings specific to the IBM Power Systems Virtual Servers infrastructure provider.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "serviceEndpoints": {
+                  "description": "serviceEndpoints is a list of custom endpoints which will override the default service endpoints of a Power VS service.",
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "description": "PowervsServiceEndpoint stores the configuration of a custom url to override existing defaults of PowerVS Services.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "required": [
+                      "name",
+                      "url"
+                    ],
+                    "properties": {
+                      "name": {
+                        "description": "name is the name of the Power VS service. Few of the services are IAM - https://cloud.ibm.com/apidocs/iam-identity-token-api ResourceController - https://cloud.ibm.com/apidocs/resource-controller/resource-controller Power Cloud - https://cloud.ibm.com/apidocs/power-cloud",
+                        "type": "string",
+                        "pattern": "^[a-z0-9-]+$"
+                      },
+                      "url": {
+                        "description": "url is fully qualified URI with scheme https, that overrides the default generated endpoint for a client. This must be provided and cannot be empty.",
+                        "type": "string",
+                        "format": "uri",
+                        "pattern": "^https://"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "x-kubernetes-list-map-keys": [
+                    "name"
+                  ],
+                  "x-kubernetes-list-type": "map"
+                }
+              },
+              "additionalProperties": false
+            },
             "type": {
-              "description": "type is the underlying infrastructure provider for the cluster. This value controls whether infrastructure automation such as service load balancers, dynamic volume provisioning, machine creation and deletion, and other integrations are enabled. If None, no infrastructure automation is enabled. Allowed values are \"AWS\", \"Azure\", \"BareMetal\", \"GCP\", \"Libvirt\", \"OpenStack\", \"VSphere\", \"oVirt\", \"KubeVirt\", \"EquinixMetal\", and \"None\". Individual components may not support all platforms, and must handle unrecognized platforms as None if they do not support that platform.",
+              "description": "type is the underlying infrastructure provider for the cluster. This value controls whether infrastructure automation such as service load balancers, dynamic volume provisioning, machine creation and deletion, and other integrations are enabled. If None, no infrastructure automation is enabled. Allowed values are \"AWS\", \"Azure\", \"BareMetal\", \"GCP\", \"Libvirt\", \"OpenStack\", \"VSphere\", \"oVirt\", \"KubeVirt\", \"EquinixMetal\", \"PowerVS\", \"AlibabaCloud\" and \"None\". Individual components may not support all platforms, and must handle unrecognized platforms as None if they do not support that platform.",
               "type": [
                 "string",
                 "null"
@@ -184,7 +237,9 @@
                 "oVirt",
                 "IBMCloud",
                 "KubeVirt",
-                "EquinixMetal"
+                "EquinixMetal",
+                "PowerVS",
+                "AlibabaCloud"
               ]
             },
             "vsphere": {
@@ -277,7 +332,9 @@
             "oVirt",
             "IBMCloud",
             "KubeVirt",
-            "EquinixMetal"
+            "EquinixMetal",
+            "PowerVS",
+            "AlibabaCloud"
           ]
         },
         "platformStatus": {
@@ -287,6 +344,70 @@
             "null"
           ],
           "properties": {
+            "alibabaCloud": {
+              "description": "AlibabaCloud contains settings specific to the Alibaba Cloud infrastructure provider.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "required": [
+                "region"
+              ],
+              "properties": {
+                "region": {
+                  "description": "region specifies the region for Alibaba Cloud resources created for the cluster.",
+                  "type": "string",
+                  "pattern": "^[0-9A-Za-z-]+$"
+                },
+                "resourceGroupID": {
+                  "description": "resourceGroupID is the ID of the resource group for the cluster.",
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "^(rg-[0-9A-Za-z]+)?$"
+                },
+                "resourceTags": {
+                  "description": "resourceTags is a list of additional tags to apply to Alibaba Cloud resources created for the cluster.",
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "maxItems": 20,
+                  "items": {
+                    "description": "AlibabaCloudResourceTag is the set of tags to add to apply to resources.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "required": [
+                      "key",
+                      "value"
+                    ],
+                    "properties": {
+                      "key": {
+                        "description": "key is the key of the tag.",
+                        "type": "string",
+                        "maxLength": 128,
+                        "minLength": 1
+                      },
+                      "value": {
+                        "description": "value is the value of the tag.",
+                        "type": "string",
+                        "maxLength": 128,
+                        "minLength": 1
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "x-kubernetes-list-map-keys": [
+                    "key"
+                  ],
+                  "x-kubernetes-list-type": "map"
+                }
+              },
+              "additionalProperties": false
+            },
             "aws": {
               "description": "AWS contains settings specific to the Amazon Web Services infrastructure provider.",
               "type": [
@@ -629,8 +750,71 @@
               },
               "additionalProperties": false
             },
+            "powervs": {
+              "description": "PowerVS contains settings specific to the Power Systems Virtual Servers infrastructure provider.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "cisInstanceCRN": {
+                  "description": "CISInstanceCRN is the CRN of the Cloud Internet Services instance managing the DNS zone for the cluster's base domain",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "region": {
+                  "description": "region holds the default Power VS region for new Power VS resources created by the cluster.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "serviceEndpoints": {
+                  "description": "serviceEndpoints is a list of custom endpoints which will override the default service endpoints of a Power VS service.",
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "description": "PowervsServiceEndpoint stores the configuration of a custom url to override existing defaults of PowerVS Services.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "required": [
+                      "name",
+                      "url"
+                    ],
+                    "properties": {
+                      "name": {
+                        "description": "name is the name of the Power VS service. Few of the services are IAM - https://cloud.ibm.com/apidocs/iam-identity-token-api ResourceController - https://cloud.ibm.com/apidocs/resource-controller/resource-controller Power Cloud - https://cloud.ibm.com/apidocs/power-cloud",
+                        "type": "string",
+                        "pattern": "^[a-z0-9-]+$"
+                      },
+                      "url": {
+                        "description": "url is fully qualified URI with scheme https, that overrides the default generated endpoint for a client. This must be provided and cannot be empty.",
+                        "type": "string",
+                        "format": "uri",
+                        "pattern": "^https://"
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "zone": {
+                  "description": "zone holds the default zone for the new Power VS resources created by the cluster. Note: Currently only single-zone OCP clusters are supported",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            },
             "type": {
-              "description": "type is the underlying infrastructure provider for the cluster. This value controls whether infrastructure automation such as service load balancers, dynamic volume provisioning, machine creation and deletion, and other integrations are enabled. If None, no infrastructure automation is enabled. Allowed values are \"AWS\", \"Azure\", \"BareMetal\", \"GCP\", \"Libvirt\", \"OpenStack\", \"VSphere\", \"oVirt\", \"EquinixMetal\", and \"None\". Individual components may not support all platforms, and must handle unrecognized platforms as None if they do not support that platform. \n This value will be synced with to the `status.platform` and `status.platformStatus.type`. Currently this value cannot be changed once set.",
+              "description": "type is the underlying infrastructure provider for the cluster. This value controls whether infrastructure automation such as service load balancers, dynamic volume provisioning, machine creation and deletion, and other integrations are enabled. If None, no infrastructure automation is enabled. Allowed values are \"AWS\", \"Azure\", \"BareMetal\", \"GCP\", \"Libvirt\", \"OpenStack\", \"VSphere\", \"oVirt\", \"EquinixMetal\", \"PowerVS\", \"AlibabaCloud\" and \"None\". Individual components may not support all platforms, and must handle unrecognized platforms as None if they do not support that platform. \n This value will be synced with to the `status.platform` and `status.platformStatus.type`. Currently this value cannot be changed once set.",
               "type": [
                 "string",
                 "null"
@@ -648,7 +832,9 @@
                 "oVirt",
                 "IBMCloud",
                 "KubeVirt",
-                "EquinixMetal"
+                "EquinixMetal",
+                "PowerVS",
+                "AlibabaCloud"
               ]
             },
             "vsphere": {

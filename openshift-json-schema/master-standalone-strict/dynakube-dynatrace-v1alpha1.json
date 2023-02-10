@@ -161,6 +161,7 @@
                             ]
                           }
                         },
+                        "x-kubernetes-map-type": "atomic",
                         "additionalProperties": false
                       },
                       "fieldRef": {
@@ -185,6 +186,7 @@
                             "type": "string"
                           }
                         },
+                        "x-kubernetes-map-type": "atomic",
                         "additionalProperties": false
                       },
                       "resourceFieldRef": {
@@ -214,6 +216,7 @@
                             "type": "string"
                           }
                         },
+                        "x-kubernetes-map-type": "atomic",
                         "additionalProperties": false
                       },
                       "secretKeyRef": {
@@ -245,6 +248,7 @@
                             ]
                           }
                         },
+                        "x-kubernetes-map-type": "atomic",
                         "additionalProperties": false
                       }
                     },
@@ -419,7 +423,7 @@
           ]
         },
         "kubernetesMonitoring": {
-          "description": " Configuration for Kubernetes Monitoring",
+          "description": "Configuration for Kubernetes Monitoring",
           "type": [
             "object",
             "null"
@@ -530,6 +534,7 @@
                             ]
                           }
                         },
+                        "x-kubernetes-map-type": "atomic",
                         "additionalProperties": false
                       },
                       "fieldRef": {
@@ -554,6 +559,7 @@
                             "type": "string"
                           }
                         },
+                        "x-kubernetes-map-type": "atomic",
                         "additionalProperties": false
                       },
                       "resourceFieldRef": {
@@ -583,6 +589,7 @@
                             "type": "string"
                           }
                         },
+                        "x-kubernetes-map-type": "atomic",
                         "additionalProperties": false
                       },
                       "secretKeyRef": {
@@ -614,6 +621,7 @@
                             ]
                           }
                         },
+                        "x-kubernetes-map-type": "atomic",
                         "additionalProperties": false
                       }
                     },
@@ -820,7 +828,7 @@
           "additionalProperties": false
         },
         "routing": {
-          "description": " Configuration for Routing",
+          "description": "Configuration for Routing",
           "type": [
             "object",
             "null"
@@ -931,6 +939,7 @@
                             ]
                           }
                         },
+                        "x-kubernetes-map-type": "atomic",
                         "additionalProperties": false
                       },
                       "fieldRef": {
@@ -955,6 +964,7 @@
                             "type": "string"
                           }
                         },
+                        "x-kubernetes-map-type": "atomic",
                         "additionalProperties": false
                       },
                       "resourceFieldRef": {
@@ -984,6 +994,7 @@
                             "type": "string"
                           }
                         },
+                        "x-kubernetes-map-type": "atomic",
                         "additionalProperties": false
                       },
                       "secretKeyRef": {
@@ -1015,6 +1026,7 @@
                             ]
                           }
                         },
+                        "x-kubernetes-map-type": "atomic",
                         "additionalProperties": false
                       }
                     },
@@ -1229,7 +1241,7 @@
             "null"
           ],
           "items": {
-            "description": "Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example, type FooStatus struct{     // Represents the observations of a foo's current state.     // Known .status.conditions.type are: \"Available\", \"Progressing\", and \"Degraded\"     // +patchMergeKey=type     // +patchStrategy=merge     // +listType=map     // +listMapKey=type     Conditions []metav1.Condition `json:\"conditions,omitempty\" patchStrategy:\"merge\" patchMergeKey:\"type\" protobuf:\"bytes,1,rep,name=conditions\"` \n     // other fields }",
+            "description": "Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example, \n type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: \"Available\", \"Progressing\", and \"Degraded\" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:\"conditions,omitempty\" patchStrategy:\"merge\" patchMergeKey:\"type\" protobuf:\"bytes,1,rep,name=conditions\"` \n // other fields }",
             "type": [
               "object",
               "null"

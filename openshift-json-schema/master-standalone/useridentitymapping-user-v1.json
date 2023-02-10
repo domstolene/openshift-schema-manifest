@@ -1,5 +1,5 @@
 {
-  "description": "UserIdentityMapping maps a user to an identity",
+  "description": "UserIdentityMapping maps a user to an identity\n\nCompatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
   "type": "object",
   "properties": {
     "apiVersion": {
@@ -14,7 +14,7 @@
     },
     "identity": {
       "description": "Identity is a reference to an identity",
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference_v2"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference"
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
@@ -31,7 +31,7 @@
     },
     "user": {
       "description": "User is a reference to a user",
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference_v2"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference"
     }
   },
   "x-kubernetes-group-version-kind": [

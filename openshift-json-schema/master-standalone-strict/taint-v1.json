@@ -7,7 +7,7 @@
   ],
   "properties": {
     "effect": {
-      "description": "Required. The effect of the taint on pods that do not tolerate the taint. Valid effects are NoSchedule, PreferNoSchedule and NoExecute.",
+      "description": "Required. The effect of the taint on pods that do not tolerate the taint. Valid effects are NoSchedule, PreferNoSchedule and NoExecute.\n\n",
       "type": [
         "string",
         "null"

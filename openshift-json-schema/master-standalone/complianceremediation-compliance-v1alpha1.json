@@ -1,0 +1,115 @@
+{
+  "description": "ComplianceRemediation represents a remediation that can be applied to the cluster to fix the found issues.",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "compliance.openshift.io/v1alpha1"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "ComplianceRemediation"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta_v2"
+    },
+    "spec": {
+      "description": "Contains the definition of what the remediation should be",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "apply"
+      ],
+      "properties": {
+        "apply": {
+          "description": "Whether the remediation should be picked up and applied by the operator",
+          "type": "boolean"
+        },
+        "current": {
+          "description": "Defines the remediation that is proposed by the scan. If there is no \"outdated\" remediation in this object, the \"current\" remediation is what will be applied.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "object": {
+              "description": "The remediation payload. This would normally be a full Kubernetes object.",
+              "x-kubernetes-embedded-resource": true,
+              "x-kubernetes-preserve-unknown-fields": true
+            }
+          }
+        },
+        "outdated": {
+          "description": "In case there was a previous remediation proposed by a previous scan, and that remediation now differs, the old remediation will be kept in this \"outdated\" key. This requires admin intervention to remove this outdated object and ensure the current is what's applied.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "object": {
+              "description": "The remediation payload. This would normally be a full Kubernetes object.",
+              "x-kubernetes-embedded-resource": true,
+              "x-kubernetes-preserve-unknown-fields": true
+            }
+          }
+        },
+        "type": {
+          "description": "The type of remediation that this object applies. The available types are: Configuration and Enforcement. Where the Configuration type fixes a configuration to match a compliance expectation. The Enforcement type, on the other hand, ensures that the cluster stays in compliance via means of authorization.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "Configuration",
+            "Enforcement"
+          ]
+        }
+      }
+    },
+    "status": {
+      "description": "Contains information on the remediation (whether it's applied or not)",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "applicationState": {
+          "description": "Whether the remediation is already applied or not",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "errorMessage": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "compliance.openshift.io",
+      "kind": "ComplianceRemediation",
+      "version": "v1alpha1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -530,7 +530,7 @@
                   },
                   "redeliveryCollisionAvoidanceFactor": {
                     "type": [
-                      "string",
+                      "number",
                       "null"
                     ]
                   },
@@ -542,9 +542,8 @@
                     "format": "int32"
                   },
                   "redeliveryDelayMultiplier": {
-                    "description": "controller-gen currently doesn't support float types RedeliveryDelayMultiplier            *float32 `json:\"redeliveryDelayMultiplier,omitempty\"` RedeliveryCollisionAvoidanceFactor   *float32 `json:\"redeliveryCollisionAvoidanceFactor,omitempty\"`",
                     "type": [
-                      "string",
+                      "number",
                       "null"
                     ]
                   },

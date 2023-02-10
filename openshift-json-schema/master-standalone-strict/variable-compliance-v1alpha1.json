@@ -1,0 +1,88 @@
+{
+  "description": "Variable describes a tunable in the XCCDF profile",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "type"
+  ],
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "compliance.openshift.io/v1alpha1"
+      ]
+    },
+    "description": {
+      "description": "The description of the Variable",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "id": {
+      "description": "the ID of the variable",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "Variable"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta_v2"
+    },
+    "selections": {
+      "description": "Enumerates what values are allowed for this variable. Can be empty.",
+      "x-kubernetes-list-type": "atomic"
+    },
+    "title": {
+      "description": "The title of the Variable",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "type": {
+      "description": "The type of the variable",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "number",
+        "bool",
+        "string"
+      ]
+    },
+    "value": {
+      "description": "The value of the variable",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "compliance.openshift.io",
+      "kind": "Variable",
+      "version": "v1alpha1"
+    }
+  ],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

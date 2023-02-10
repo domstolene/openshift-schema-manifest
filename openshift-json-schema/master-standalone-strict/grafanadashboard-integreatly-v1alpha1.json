@@ -1,0 +1,277 @@
+{
+  "description": "GrafanaDashboard is the Schema for the grafanadashboards API",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "integreatly.org/v1alpha1"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "GrafanaDashboard"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta_v2"
+    },
+    "spec": {
+      "description": "GrafanaDashboardSpec defines the desired state of GrafanaDashboard",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "configMapRef": {
+          "description": "ConfigMapRef is a reference to a ConfigMap data field containing the dashboard's JSON",
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "key"
+          ],
+          "properties": {
+            "key": {
+              "description": "The key to select.",
+              "type": "string"
+            },
+            "name": {
+              "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "optional": {
+              "description": "Specify whether the ConfigMap or its key must be defined",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "contentCacheDuration": {
+          "description": "ContentCacheDuration sets how often the operator should resync with the external source when using the `grafanaCom.id` or `url` field to specify the source of the dashboard. The default value is decided by the `dashboardContentCacheDuration` field in the `Grafana` resource. The default is 0 which is interpreted as never refetching.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "customFolderName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "datasources": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "datasourceName",
+              "inputName"
+            ],
+            "properties": {
+              "datasourceName": {
+                "type": "string"
+              },
+              "inputName": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "grafanaCom": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "revision": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "gzipConfigMapRef": {
+          "description": "GzipConfigMapRef is a reference to a ConfigMap binaryData field containing the dashboard's JSON, compressed with Gzip.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "key"
+          ],
+          "properties": {
+            "key": {
+              "description": "The key to select.",
+              "type": "string"
+            },
+            "name": {
+              "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "optional": {
+              "description": "Specify whether the ConfigMap or its key must be defined",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "gzipJson": {
+          "description": "GzipJson the dashboard's JSON compressed with Gzip. Base64-encoded when in YAML.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "byte"
+        },
+        "json": {
+          "description": "Json is the dashboard's JSON",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "jsonnet": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "plugins": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "GrafanaPlugin contains information about a single plugin",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "name",
+              "version"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "version": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "status": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "contentCache": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "byte"
+        },
+        "contentTimestamp": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "contentUrl": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "error": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "code",
+            "error"
+          ],
+          "properties": {
+            "code": {
+              "type": "integer"
+            },
+            "error": {
+              "type": "string"
+            },
+            "retries": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "integreatly.org",
+      "kind": "GrafanaDashboard",
+      "version": "v1alpha1"
+    }
+  ],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

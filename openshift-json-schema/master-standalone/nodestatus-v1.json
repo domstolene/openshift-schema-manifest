@@ -69,7 +69,7 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeSystemInfo"
     },
     "phase": {
-      "description": "NodePhase is the recently observed lifecycle phase of the node. More info: https://kubernetes.io/docs/concepts/nodes/node/#phase The field is never populated, and now is deprecated.",
+      "description": "NodePhase is the recently observed lifecycle phase of the node. More info: https://kubernetes.io/docs/concepts/nodes/node/#phase The field is never populated, and now is deprecated.\n\n",
       "type": [
         "string",
         "null"

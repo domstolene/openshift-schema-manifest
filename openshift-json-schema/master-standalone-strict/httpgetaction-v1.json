@@ -34,7 +34,7 @@
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
     },
     "scheme": {
-      "description": "Scheme to use for connecting to the host. Defaults to HTTP.",
+      "description": "Scheme to use for connecting to the host. Defaults to HTTP.\n\n",
       "type": [
         "string",
         "null"

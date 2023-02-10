@@ -1,12 +1,6 @@
 {
   "oneOf": [
     {
-      "$ref": "_definitions.json#/definitions/com.bitnami.v1alpha1.SealedSecret"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/com.bitnami.v1alpha1.SealedSecretList"
-    },
-    {
       "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.Alertmanager"
     },
     {
@@ -53,6 +47,12 @@
     },
     {
       "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.AlertmanagerConfigList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.operators.v1.OLMConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.operators.v1.OLMConfigList"
     },
     {
       "$ref": "_definitions.json#/definitions/com.coreos.operators.v1.Operator"
@@ -886,6 +886,90 @@
       "$ref": "_definitions.json#/definitions/io.cncf.cni.whereabouts.v1alpha1.OverlappingRangeIPReservationList"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.ACRAccessToken"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.ACRAccessTokenList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.ECRAuthorizationToken"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.ECRAuthorizationTokenList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.Fake"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.FakeList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.GCRAccessToken"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.GCRAccessTokenList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.Password"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.PasswordList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.operator.v1alpha1.OperatorConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.operator.v1alpha1.OperatorConfigList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1alpha1.ClusterSecretStore"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1alpha1.ClusterSecretStoreList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1alpha1.ExternalSecret"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1alpha1.ExternalSecretList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1alpha1.PushSecret"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1alpha1.PushSecretList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1alpha1.SecretStore"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1alpha1.SecretStoreList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1beta1.ClusterExternalSecret"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1beta1.ClusterExternalSecretList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1beta1.ClusterSecretStore"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1beta1.ClusterSecretStoreList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1beta1.ExternalSecret"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1beta1.ExternalSecretList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1beta1.SecretStore"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1beta1.SecretStoreList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.helm.v2beta1.HelmRelease"
     },
     {
@@ -944,6 +1028,42 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta1.HelmRepositoryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta2.Bucket"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta2.BucketList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta2.GitRepository"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta2.GitRepositoryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta2.HelmChart"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta2.HelmChartList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta2.HelmRepository"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta2.HelmRepositoryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta2.OCIRepository"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta2.OCIRepositoryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.jaegertracing.v1.Jaeger"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.jaegertracing.v1.JaegerList"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.admissionregistration.v1.MutatingWebhook"
@@ -1048,6 +1168,9 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1.StatefulSetList"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1.StatefulSetPersistentVolumeClaimRetentionPolicy"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1.StatefulSetSpec"
     },
     {
@@ -1076,9 +1199,6 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.authentication.v1.TokenReviewStatus"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.authentication.v1.TokenReview_v2"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.authentication.v1.UserInfo"
@@ -1148,6 +1268,78 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v1.Scale_v2"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2.ContainerResourceMetricSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2.ContainerResourceMetricStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2.CrossVersionObjectReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2.ExternalMetricSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2.ExternalMetricStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2.HPAScalingPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2.HPAScalingRules"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2.HorizontalPodAutoscaler"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2.HorizontalPodAutoscalerBehavior"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2.HorizontalPodAutoscalerCondition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2.HorizontalPodAutoscalerList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2.HorizontalPodAutoscalerSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2.HorizontalPodAutoscalerStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2.MetricIdentifier"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2.MetricSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2.MetricStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2.MetricTarget"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2.MetricValueStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2.ObjectMetricSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2.ObjectMetricStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2.PodsMetricSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2.PodsMetricStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2.ResourceMetricSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2.ResourceMetricStatus"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2beta1.ContainerResourceMetricSource"
@@ -1432,6 +1624,9 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ContainerPort"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ContainerPort_v2"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ContainerState"
     },
     {
@@ -1445,6 +1640,9 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ContainerStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Container_v2"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.DaemonEndpoint"
@@ -1489,6 +1687,9 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EphemeralContainer"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EphemeralContainer_v2"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EphemeralVolumeSource"
     },
     {
@@ -1522,6 +1723,9 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.GCEPersistentDiskVolumeSource"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.GRPCAction"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.GitRepoVolumeSource"
     },
     {
@@ -1534,10 +1738,10 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.HTTPGetAction"
     },
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.HTTPHeader"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.HTTPGetAction_v2"
     },
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Handler"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.HTTPHeader"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.HostAlias"
@@ -1556,6 +1760,9 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Lifecycle"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.LifecycleHandler"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.LimitRange"
@@ -1589,6 +1796,9 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NamespaceCondition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NamespaceCondition_v2"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NamespaceList"
@@ -1630,6 +1840,9 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeSelectorRequirement"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeSelectorRequirement_v2"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeSelectorTerm"
     },
     {
@@ -1646,9 +1859,6 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference_v2"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PersistentVolume"
@@ -1714,13 +1924,22 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodList"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodOS"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodReadinessGate"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodReadinessGate_v2"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodSecurityContext"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodSpec_v2"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodStatus"
@@ -1807,7 +2026,13 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ScopedResourceSelectorRequirement"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ScopedResourceSelectorRequirement_v2"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SeccompProfile"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SeccompProfile_v2"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Secret"
@@ -1879,6 +2104,9 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Toleration"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Toleration_v2"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.TopologySelectorLabelRequirement"
     },
     {
@@ -1886,6 +2114,9 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.TopologySpreadConstraint"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.TopologySpreadConstraint_v2"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.TypedLocalObjectReference"
@@ -2048,6 +2279,72 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.flowcontrol.v1beta1.UserSubject"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.flowcontrol.v1beta2.FlowDistinguisherMethod"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.flowcontrol.v1beta2.FlowSchema"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.flowcontrol.v1beta2.FlowSchemaCondition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.flowcontrol.v1beta2.FlowSchemaList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.flowcontrol.v1beta2.FlowSchemaSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.flowcontrol.v1beta2.FlowSchemaStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.flowcontrol.v1beta2.GroupSubject"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.flowcontrol.v1beta2.LimitResponse"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.flowcontrol.v1beta2.LimitedPriorityLevelConfiguration"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.flowcontrol.v1beta2.NonResourcePolicyRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.flowcontrol.v1beta2.PolicyRulesWithSubjects"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.flowcontrol.v1beta2.PriorityLevelConfiguration"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.flowcontrol.v1beta2.PriorityLevelConfigurationCondition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.flowcontrol.v1beta2.PriorityLevelConfigurationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.flowcontrol.v1beta2.PriorityLevelConfigurationReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.flowcontrol.v1beta2.PriorityLevelConfigurationSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.flowcontrol.v1beta2.PriorityLevelConfigurationStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.flowcontrol.v1beta2.QueuingConfiguration"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.flowcontrol.v1beta2.ResourcePolicyRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.flowcontrol.v1beta2.ServiceAccountSubject"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.flowcontrol.v1beta2.Subject"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.flowcontrol.v1beta2.UserSubject"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.networking.v1.HTTPIngressPath"
@@ -2371,6 +2668,9 @@
       "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.ServiceReference"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.ValidationRule"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.WebhookClientConfig"
     },
     {
@@ -2428,9 +2728,6 @@
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry"
     },
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry_v2"
-    },
-    {
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.MicroTime"
     },
     {
@@ -2444,9 +2741,6 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference_v2"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference_v3"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Patch"
@@ -2569,10 +2863,34 @@
       "$ref": "_definitions.json#/definitions/io.k8s.storage.snapshot.v1beta1.VolumeSnapshotList"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.metal3.v1alpha1.BMCEventSubscription"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.metal3.v1alpha1.BMCEventSubscriptionList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.metal3.v1alpha1.BareMetalHost"
     },
     {
       "$ref": "_definitions.json#/definitions/io.metal3.v1alpha1.BareMetalHostList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.metal3.v1alpha1.FirmwareSchema"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.metal3.v1alpha1.FirmwareSchemaList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.metal3.v1alpha1.HostFirmwareSettings"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.metal3.v1alpha1.HostFirmwareSettingsList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.metal3.v1alpha1.PreprovisioningImage"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.metal3.v1alpha1.PreprovisioningImageList"
     },
     {
       "$ref": "_definitions.json#/definitions/io.metal3.v1alpha1.Provisioning"
@@ -2609,6 +2927,72 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.openshift.cloudcredential.v1.CredentialsRequestList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.compliance.v1alpha1.ComplianceCheckResult"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.compliance.v1alpha1.ComplianceCheckResultList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.compliance.v1alpha1.ComplianceRemediation"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.compliance.v1alpha1.ComplianceRemediationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.compliance.v1alpha1.ComplianceScan"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.compliance.v1alpha1.ComplianceScanList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.compliance.v1alpha1.ComplianceSuite"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.compliance.v1alpha1.ComplianceSuiteList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.compliance.v1alpha1.Profile"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.compliance.v1alpha1.ProfileBundle"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.compliance.v1alpha1.ProfileBundleList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.compliance.v1alpha1.ProfileList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.compliance.v1alpha1.Rule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.compliance.v1alpha1.RuleList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.compliance.v1alpha1.ScanSetting"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.compliance.v1alpha1.ScanSettingBinding"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.compliance.v1alpha1.ScanSettingBindingList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.compliance.v1alpha1.ScanSettingList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.compliance.v1alpha1.TailoredProfile"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.compliance.v1alpha1.TailoredProfileList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.compliance.v1alpha1.Variable"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.compliance.v1alpha1.VariableList"
     },
     {
       "$ref": "_definitions.json#/definitions/io.openshift.config.v1.APIServer"
@@ -2660,6 +3044,12 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.openshift.config.v1.Image"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.config.v1.ImageContentPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.config.v1.ImageContentPolicyList"
     },
     {
       "$ref": "_definitions.json#/definitions/io.openshift.config.v1.ImageList"
@@ -2759,6 +3149,12 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.openshift.helm.v1beta1.HelmChartRepositoryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.helm.v1beta1.ProjectHelmChartRepository"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.helm.v1beta1.ProjectHelmChartRepositoryList"
     },
     {
       "$ref": "_definitions.json#/definitions/io.openshift.internal.security.v1.RangeAllocation"
@@ -3031,10 +3427,118 @@
       "$ref": "_definitions.json#/definitions/io.opster.opensearch.v1.OpenSearchClusterList"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.opster.opensearch.v1.OpensearchRole"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.opster.opensearch.v1.OpensearchRoleList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.opster.opensearch.v1.OpensearchUser"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.opster.opensearch.v1.OpensearchUserList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.opster.opensearch.v1.OpensearchUserRoleBinding"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.opster.opensearch.v1.OpensearchUserRoleBindingList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.redhat.redhatcop.v1alpha1.GroupSync"
     },
     {
       "$ref": "_definitions.json#/definitions/io.redhat.redhatcop.v1alpha1.GroupSyncList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.core.v1beta2.StrimziPodSet"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.core.v1beta2.StrimziPodSetList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1alpha1.KafkaTopic"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1alpha1.KafkaTopicList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1alpha1.KafkaUser"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1alpha1.KafkaUserList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta1.KafkaTopic"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta1.KafkaTopicList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta1.KafkaUser"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta1.KafkaUserList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.Kafka"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaBridge"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaBridgeList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaConnect"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaConnectList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaConnector"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaConnectorList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaMirrorMaker"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaMirrorMaker2"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaMirrorMaker2List"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaMirrorMakerList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaRebalance"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaRebalanceList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaTopic"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaTopicList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaUser"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaUserList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/no.domstol.v1.VaultPermission"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/no.domstol.v1.VaultPermissionList"
     },
     {
       "$ref": "_definitions.json#/definitions/org.keycloak.k8s.v2alpha1.Keycloak"

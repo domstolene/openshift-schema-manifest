@@ -1,5 +1,5 @@
 {
-  "description": "Config is the configuration object for a registry instance managed by the registry operator",
+  "description": "Config is the configuration object for a registry instance managed by the registry operator \n Compatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
   "type": "object",
   "required": [
     "metadata",
@@ -383,7 +383,7 @@
                             "additionalProperties": false
                           },
                           "namespaceSelector": {
-                            "description": "A label query over the set of namespaces that the term applies to. The term is applied to the union of the namespaces selected by this field and the ones listed in the namespaces field. null selector and null or empty namespaces list means \"this pod's namespace\". An empty selector ({}) matches all namespaces. This field is alpha-level and is only honored when PodAffinityNamespaceSelector feature is enabled.",
+                            "description": "A label query over the set of namespaces that the term applies to. The term is applied to the union of the namespaces selected by this field and the ones listed in the namespaces field. null selector and null or empty namespaces list means \"this pod's namespace\". An empty selector ({}) matches all namespaces. This field is beta-level and is only honored when PodAffinityNamespaceSelector feature is enabled.",
                             "type": [
                               "object",
                               "null"
@@ -558,7 +558,7 @@
                         "additionalProperties": false
                       },
                       "namespaceSelector": {
-                        "description": "A label query over the set of namespaces that the term applies to. The term is applied to the union of the namespaces selected by this field and the ones listed in the namespaces field. null selector and null or empty namespaces list means \"this pod's namespace\". An empty selector ({}) matches all namespaces. This field is alpha-level and is only honored when PodAffinityNamespaceSelector feature is enabled.",
+                        "description": "A label query over the set of namespaces that the term applies to. The term is applied to the union of the namespaces selected by this field and the ones listed in the namespaces field. null selector and null or empty namespaces list means \"this pod's namespace\". An empty selector ({}) matches all namespaces. This field is beta-level and is only honored when PodAffinityNamespaceSelector feature is enabled.",
                         "type": [
                           "object",
                           "null"
@@ -743,7 +743,7 @@
                             "additionalProperties": false
                           },
                           "namespaceSelector": {
-                            "description": "A label query over the set of namespaces that the term applies to. The term is applied to the union of the namespaces selected by this field and the ones listed in the namespaces field. null selector and null or empty namespaces list means \"this pod's namespace\". An empty selector ({}) matches all namespaces. This field is alpha-level and is only honored when PodAffinityNamespaceSelector feature is enabled.",
+                            "description": "A label query over the set of namespaces that the term applies to. The term is applied to the union of the namespaces selected by this field and the ones listed in the namespaces field. null selector and null or empty namespaces list means \"this pod's namespace\". An empty selector ({}) matches all namespaces. This field is beta-level and is only honored when PodAffinityNamespaceSelector feature is enabled.",
                             "type": [
                               "object",
                               "null"
@@ -918,7 +918,7 @@
                         "additionalProperties": false
                       },
                       "namespaceSelector": {
-                        "description": "A label query over the set of namespaces that the term applies to. The term is applied to the union of the namespaces selected by this field and the ones listed in the namespaces field. null selector and null or empty namespaces list means \"this pod's namespace\". An empty selector ({}) matches all namespaces. This field is alpha-level and is only honored when PodAffinityNamespaceSelector feature is enabled.",
+                        "description": "A label query over the set of namespaces that the term applies to. The term is applied to the union of the namespaces selected by this field and the ones listed in the namespaces field. null selector and null or empty namespaces list means \"this pod's namespace\". An empty selector ({}) matches all namespaces. This field is beta-level and is only honored when PodAffinityNamespaceSelector feature is enabled.",
                         "type": [
                           "object",
                           "null"
@@ -1423,6 +1423,84 @@
                 "null"
               ],
               "pattern": "^(Managed|Unmanaged)$"
+            },
+            "oss": {
+              "description": "Oss represents configuration that uses Alibaba Cloud Object Storage Service.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "bucket": {
+                  "description": "Bucket is the bucket name in which you want to store the registry's data. About Bucket naming, more details you can look at the [official documentation](https://www.alibabacloud.com/help/doc-detail/257087.htm) Empty value means no opinion and the platform chooses the a default, which is subject to change over time. Currently the default will be autogenerated in the form of <clusterid>-image-registry-<region>-<random string 27 chars>",
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "maxLength": 63,
+                  "minLength": 3,
+                  "pattern": "^[0-9a-z]+(-[0-9a-z]+)*$"
+                },
+                "encryption": {
+                  "description": "Encryption specifies whether you would like your data encrypted on the server side. More details, you can look cat the [official documentation](https://www.alibabacloud.com/help/doc-detail/117914.htm)",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "kms": {
+                      "description": "KMS (key management service) is an encryption type that holds the struct for KMS KeyID",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "required": [
+                        "keyID"
+                      ],
+                      "properties": {
+                        "keyID": {
+                          "description": "KeyID holds the KMS encryption key ID",
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "method": {
+                      "description": "Method defines the different encrytion modes available Empty value means no opinion and the platform chooses the a default, which is subject to change over time. Currently the default is `AES256`.",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "enum": [
+                        "KMS",
+                        "AES256"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "endpointAccessibility": {
+                  "description": "EndpointAccessibility specifies whether the registry use the OSS VPC internal endpoint Empty value means no opinion and the platform chooses the a default, which is subject to change over time. Currently the default is `Internal`.",
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "enum": [
+                    "Internal",
+                    "Public",
+                    ""
+                  ]
+                },
+                "region": {
+                  "description": "Region is the Alibaba Cloud Region in which your bucket exists. For a list of regions, you can look at the [official documentation](https://www.alibabacloud.com/help/doc-detail/31837.html). Empty value means no opinion and the platform chooses the a default, which is subject to change over time. Currently the default will be based on the installed Alibaba Cloud Region.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": false
             },
             "pvc": {
               "description": "pvc represents configuration that uses a PersistentVolumeClaim.",
@@ -1953,6 +2031,84 @@
                 "null"
               ],
               "pattern": "^(Managed|Unmanaged)$"
+            },
+            "oss": {
+              "description": "Oss represents configuration that uses Alibaba Cloud Object Storage Service.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "bucket": {
+                  "description": "Bucket is the bucket name in which you want to store the registry's data. About Bucket naming, more details you can look at the [official documentation](https://www.alibabacloud.com/help/doc-detail/257087.htm) Empty value means no opinion and the platform chooses the a default, which is subject to change over time. Currently the default will be autogenerated in the form of <clusterid>-image-registry-<region>-<random string 27 chars>",
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "maxLength": 63,
+                  "minLength": 3,
+                  "pattern": "^[0-9a-z]+(-[0-9a-z]+)*$"
+                },
+                "encryption": {
+                  "description": "Encryption specifies whether you would like your data encrypted on the server side. More details, you can look cat the [official documentation](https://www.alibabacloud.com/help/doc-detail/117914.htm)",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "kms": {
+                      "description": "KMS (key management service) is an encryption type that holds the struct for KMS KeyID",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "required": [
+                        "keyID"
+                      ],
+                      "properties": {
+                        "keyID": {
+                          "description": "KeyID holds the KMS encryption key ID",
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "method": {
+                      "description": "Method defines the different encrytion modes available Empty value means no opinion and the platform chooses the a default, which is subject to change over time. Currently the default is `AES256`.",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "enum": [
+                        "KMS",
+                        "AES256"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "endpointAccessibility": {
+                  "description": "EndpointAccessibility specifies whether the registry use the OSS VPC internal endpoint Empty value means no opinion and the platform chooses the a default, which is subject to change over time. Currently the default is `Internal`.",
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "enum": [
+                    "Internal",
+                    "Public",
+                    ""
+                  ]
+                },
+                "region": {
+                  "description": "Region is the Alibaba Cloud Region in which your bucket exists. For a list of regions, you can look at the [official documentation](https://www.alibabacloud.com/help/doc-detail/31837.html). Empty value means no opinion and the platform chooses the a default, which is subject to change over time. Currently the default will be based on the installed Alibaba Cloud Region.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": false
             },
             "pvc": {
               "description": "pvc represents configuration that uses a PersistentVolumeClaim.",
