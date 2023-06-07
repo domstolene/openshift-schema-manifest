@@ -1,0 +1,100 @@
+{
+  "description": "VaultKubernetesAccess is the Schema for the vaultkubernetesaccesses API",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "domstol.no/v1"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "VaultKubernetesAccess"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "subject"
+      ],
+      "properties": {
+        "accessLevel": {
+          "description": "The access level given to the subject Valid values are READER, CREATOR, or ADMIN Ignored if policyName is set",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "subject": {
+          "description": "The subject (entity) that is given access",
+          "type": "object",
+          "required": [
+            "kind",
+            "name"
+          ],
+          "properties": {
+            "kind": {
+              "description": "The kind of the entity to be given access. Valid values are GROUP, USER or SERVICEACCOUNT",
+              "type": "string"
+            },
+            "name": {
+              "description": "The anem of the entity to be given access.",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "status": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "phase"
+      ],
+      "properties": {
+        "phase": {
+          "type": "string"
+        },
+        "policyName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "subjectName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "domstol.no",
+      "kind": "VaultKubernetesAccess",
+      "version": "v1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}
