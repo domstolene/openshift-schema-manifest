@@ -35,7 +35,6 @@
       ]
     },
     "type": {
-      "description": "\n\n\n",
       "type": [
         "string",
         "null"

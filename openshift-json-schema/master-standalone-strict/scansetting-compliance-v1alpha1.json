@@ -50,9 +50,16 @@
         "ScanSetting"
       ]
     },
+    "maxRetryOnTimeout": {
+      "description": "MaxRetryOnTimeout is the maximum number of times the scan will be retried if it times out.",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
     "metadata": {
       "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
-      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta_v2"
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     },
     "noExternalResources": {
       "description": "Defines that no external resources in the Data Stream should be used. External resources could be, for instance, CVE feeds. This is useful for disconnected installations without access to a proxy.",
@@ -276,6 +283,13 @@
       "description": "Defines whether the scan should proceed if we're not able to scan all the nodes or not. `true` means that the operator should be strict and error out. `false` means that we don't need to be strict and we can proceed.",
       "type": [
         "boolean",
+        "null"
+      ]
+    },
+    "timeout": {
+      "description": "Timeout is the maximum amount of time the scan can run. If the scan hasn't finished by then, it will be aborted.",
+      "type": [
+        "string",
         "null"
       ]
     }

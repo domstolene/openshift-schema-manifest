@@ -23,7 +23,7 @@
     },
     "metadata": {
       "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
-      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta_v2"
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     },
     "spec": {
       "description": "The specification of the Kafka MirrorMaker 2.0 cluster.",
@@ -183,6 +183,20 @@
                     "description": "Enable or disable OAuth metrics. Default value is `false`.",
                     "type": [
                       "boolean",
+                      "null"
+                    ]
+                  },
+                  "httpRetries": {
+                    "description": "The maximum number of retries to attempt if an initial HTTP request fails. If not set, the default is to not attempt any retries.",
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "httpRetryPauseMs": {
+                    "description": "The pause to take before retrying a failed HTTP request. If not set, the default is to not pause at all but to immediately repeat a request.",
+                    "type": [
+                      "integer",
                       "null"
                     ]
                   },
@@ -899,6 +913,23 @@
                   "null"
                 ],
                 "properties": {
+                  "autoRestart": {
+                    "description": "Automatic restart of connector and tasks configuration.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "enabled": {
+                        "description": "Whether automatic restart for failed connectors and tasks should be enabled or disabled.",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      }
+                    },
+                    "additionalProperties": false
+                  },
                   "config": {
                     "description": "The Kafka Connector configuration. The following properties cannot be set: connector.class, tasks.max.",
                     "x-kubernetes-preserve-unknown-fields": true
@@ -949,6 +980,23 @@
                   "null"
                 ],
                 "properties": {
+                  "autoRestart": {
+                    "description": "Automatic restart of connector and tasks configuration.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "enabled": {
+                        "description": "Whether automatic restart for failed connectors and tasks should be enabled or disabled.",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      }
+                    },
+                    "additionalProperties": false
+                  },
                   "config": {
                     "description": "The Kafka Connector configuration. The following properties cannot be set: connector.class, tasks.max.",
                     "x-kubernetes-preserve-unknown-fields": true
@@ -982,6 +1030,23 @@
                   "null"
                 ],
                 "properties": {
+                  "autoRestart": {
+                    "description": "Automatic restart of connector and tasks configuration.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "enabled": {
+                        "description": "Whether automatic restart for failed connectors and tasks should be enabled or disabled.",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      }
+                    },
+                    "additionalProperties": false
+                  },
                   "config": {
                     "description": "The Kafka Connector configuration. The following properties cannot be set: connector.class, tasks.max.",
                     "x-kubernetes-preserve-unknown-fields": true
@@ -2975,7 +3040,7 @@
               ],
               "properties": {
                 "deploymentStrategy": {
-                  "description": "DeploymentStrategy which will be used for this Deployment. Valid values are `RollingUpdate` and `Recreate`. Defaults to `RollingUpdate`.",
+                  "description": "Pod replacement strategy for deployment configuration changes. Valid values are `RollingUpdate` and `Recreate`. Defaults to `RollingUpdate`.",
                   "type": [
                     "string",
                     "null"
@@ -2983,6 +3048,63 @@
                   "enum": [
                     "RollingUpdate",
                     "Recreate"
+                  ]
+                },
+                "metadata": {
+                  "description": "Metadata applied to the resource.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "annotations": {
+                      "description": "Annotations added to the resource template. Can be applied to different resources such as `StatefulSets`, `Deployments`, `Pods`, and `Services`.",
+                      "x-kubernetes-preserve-unknown-fields": true
+                    },
+                    "labels": {
+                      "description": "Labels added to the resource template. Can be applied to different resources such as `StatefulSets`, `Deployments`, `Pods`, and `Services`.",
+                      "x-kubernetes-preserve-unknown-fields": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            },
+            "headlessService": {
+              "description": "Template for Kafka Connect headless `Service`.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "ipFamilies": {
+                  "description": "Specifies the IP Families used by the service. Available options are `IPv4` and `IPv6. If unspecified, Kubernetes will choose the default value based on the `ipFamilyPolicy` setting. Available on Kubernetes 1.20 and newer.",
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "enum": [
+                      "IPv4",
+                      "IPv6"
+                    ]
+                  }
+                },
+                "ipFamilyPolicy": {
+                  "description": "Specifies the IP Family Policy used by the service. Available options are `SingleStack`, `PreferDualStack` and `RequireDualStack`. `SingleStack` is for a single IP family. `PreferDualStack` is for two IP families on dual-stack configured clusters or a single IP family on single-stack clusters. `RequireDualStack` fails unless there are two IP families on dual-stack configured clusters. If unspecified, Kubernetes will choose the default value based on the service type. Available on Kubernetes 1.20 and newer.",
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "enum": [
+                    "SingleStack",
+                    "PreferDualStack",
+                    "RequireDualStack"
                   ]
                 },
                 "metadata": {
@@ -4547,6 +4669,34 @@
               },
               "additionalProperties": false
             },
+            "podSet": {
+              "description": "Template for Kafka Connect `StrimziPodSet` resource.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "metadata": {
+                  "description": "Metadata applied to the resource.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "annotations": {
+                      "description": "Annotations added to the resource template. Can be applied to different resources such as `StatefulSets`, `Deployments`, `Pods`, and `Services`.",
+                      "x-kubernetes-preserve-unknown-fields": true
+                    },
+                    "labels": {
+                      "description": "Labels added to the resource template. Can be applied to different resources such as `StatefulSets`, `Deployments`, `Pods`, and `Services`.",
+                      "x-kubernetes-preserve-unknown-fields": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            },
             "serviceAccount": {
               "description": "Template for the Kafka Connect service account.",
               "type": [
@@ -4616,6 +4766,43 @@
         "null"
       ],
       "properties": {
+        "autoRestartStatuses": {
+          "description": "List of MirrorMaker 2.0 connector auto restart statuses.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "connectorName": {
+                "description": "The name of the connector being restarted.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "count": {
+                "description": "The number of times the connector or task is restarted.",
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "lastRestartTimestamp": {
+                "description": "The last time the automatic restart was attempted. The required format is 'yyyy-MM-ddTHH:mm:ssZ' in the UTC time zone.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "additionalProperties": false
+          }
+        },
         "conditions": {
           "description": "List of status conditions.",
           "type": [

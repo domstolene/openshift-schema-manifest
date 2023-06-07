@@ -56,7 +56,7 @@
       }
     },
     "type": {
-      "description": "Type of resource that this limit applies to.\n\n",
+      "description": "Type of resource that this limit applies to.",
       "type": [
         "string",
         "null"

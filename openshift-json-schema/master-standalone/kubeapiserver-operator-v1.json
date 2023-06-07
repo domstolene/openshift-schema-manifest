@@ -27,7 +27,7 @@
     },
     "metadata": {
       "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
-      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta_v2"
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     },
     "spec": {
       "description": "spec is the specification of the desired behavior of the Kubernetes API Server",
@@ -337,6 +337,36 @@
             "null"
           ],
           "format": "int32"
+        },
+        "serviceAccountIssuers": {
+          "description": "serviceAccountIssuers tracks history of used service account issuers. The item without expiration time represents the currently used service account issuer. The other items represents service account issuers that were used previously and are still being trusted. The default expiration for the items is set by the platform and it defaults to 24h. see: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#service-account-token-volume-projection",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "expirationTime": {
+                "description": "expirationTime is the time after which this service account issuer will be pruned and removed from the trusted list of service account issuers.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time"
+              },
+              "name": {
+                "description": "name is the name of the service account issuer ---",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
         },
         "version": {
           "description": "version is the level this availability applies to",

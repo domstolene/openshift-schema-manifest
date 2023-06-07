@@ -29,7 +29,7 @@
       ]
     },
     "type": {
-      "description": "Type of namespace controller condition.\n\n",
+      "description": "Type of namespace controller condition.",
       "type": [
         "string",
         "null"

@@ -24,7 +24,7 @@
     },
     "metadata": {
       "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
-      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta_v2"
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     },
     "spec": {
       "description": "KeycloakRealmSpec defines the desired state of KeycloakRealm.",
@@ -1838,6 +1838,61 @@
                 "string",
                 "null"
               ]
+            },
+            "identityProviderMappers": {
+              "description": "A set of Identity Provider Mappers.",
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "config": {
+                    "description": "Identity Provider Mapper config.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "additionalProperties": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "id": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "identityProviderAlias": {
+                    "description": "Identity Provider Alias.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "identityProviderMapper": {
+                    "description": "Identity Provider Mapper.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "name": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              }
             },
             "identityProviders": {
               "description": "A set of Identity Providers.",

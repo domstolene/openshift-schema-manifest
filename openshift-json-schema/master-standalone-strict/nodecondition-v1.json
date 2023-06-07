@@ -36,7 +36,7 @@
       ]
     },
     "type": {
-      "description": "Type of node condition.\n\n",
+      "description": "Type of node condition.",
       "type": [
         "string",
         "null"
