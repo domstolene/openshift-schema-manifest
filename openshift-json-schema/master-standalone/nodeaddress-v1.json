@@ -14,7 +14,7 @@
       ]
     },
     "type": {
-      "description": "Node address type, one of Hostname, ExternalIP or InternalIP.\n\n",
+      "description": "Node address type, one of Hostname, ExternalIP or InternalIP.",
       "type": [
         "string",
         "null"

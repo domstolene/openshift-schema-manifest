@@ -24,7 +24,7 @@
     },
     "metadata": {
       "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
-      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta_v2"
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     },
     "spec": {
       "description": "GitopsServiceSpec defines the desired state of GitopsService",
@@ -33,6 +33,19 @@
         "null"
       ],
       "properties": {
+        "nodeSelector": {
+          "description": "NodeSelector is a map of key value pairs used for node selection in the default workloads",
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
         "runOnInfra": {
           "description": "InfraNodeEnabled will add infra NodeSelector to all the default workloads of gitops operator",
           "type": [
@@ -41,7 +54,7 @@
           ]
         },
         "tolerations": {
-          "description": "Tolerations allow the pods to schedule onto nodes with matching taints",
+          "description": "Tolerations allow the default workloads to schedule onto nodes with matching taints",
           "type": [
             "array",
             "null"

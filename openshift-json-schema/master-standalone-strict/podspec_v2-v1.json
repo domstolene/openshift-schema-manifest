@@ -200,7 +200,7 @@
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodReadinessGate_v2"
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodReadinessGate"
       }
     },
     "restartPolicy": {

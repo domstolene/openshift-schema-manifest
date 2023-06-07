@@ -24,7 +24,7 @@
     },
     "metadata": {
       "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
-      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta_v2"
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     },
     "spec": {
       "description": "The spec is the configuration for the compliance scan.",
@@ -58,6 +58,13 @@
           "description": "It is recommended to set the proxy via the config.openshift.io/Proxy object Defines a proxy for the scan to get external resources from. This is useful for disconnected installations with access to a proxy.",
           "type": [
             "string",
+            "null"
+          ]
+        },
+        "maxRetryOnTimeout": {
+          "description": "MaxRetryOnTimeout is the maximum number of times the scan will be retried if it times out.",
+          "type": [
+            "integer",
             "null"
           ]
         },
@@ -316,6 +323,13 @@
             }
           },
           "additionalProperties": false
+        },
+        "timeout": {
+          "description": "Timeout is the maximum amount of time the scan can run. If the scan hasn't finished by then, it will be aborted.",
+          "type": [
+            "string",
+            "null"
+          ]
         }
       },
       "additionalProperties": false
@@ -394,6 +408,13 @@
           "description": "Is the phase where the scan is at. Normally, one must wait for the scan to reach the phase DONE.",
           "type": [
             "string",
+            "null"
+          ]
+        },
+        "remainingRetries": {
+          "description": "Is the number of retries left for the scan on timeout",
+          "type": [
+            "integer",
             "null"
           ]
         },

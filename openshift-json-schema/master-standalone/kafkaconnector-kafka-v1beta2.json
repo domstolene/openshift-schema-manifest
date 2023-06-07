@@ -23,7 +23,7 @@
     },
     "metadata": {
       "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
-      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta_v2"
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     },
     "spec": {
       "description": "The specification of the Kafka Connector.",
@@ -32,6 +32,22 @@
         "null"
       ],
       "properties": {
+        "autoRestart": {
+          "description": "Automatic restart of connector and tasks configuration.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "enabled": {
+              "description": "Whether automatic restart for failed connectors and tasks should be enabled or disabled.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            }
+          }
+        },
         "class": {
           "description": "The Class for the Kafka Connector.",
           "type": [
@@ -67,6 +83,36 @@
         "null"
       ],
       "properties": {
+        "autoRestart": {
+          "description": "The auto restart status.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "connectorName": {
+              "description": "The name of the connector being restarted.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "count": {
+              "description": "The number of times the connector or task is restarted.",
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "lastRestartTimestamp": {
+              "description": "The last time the automatic restart was attempted. The required format is 'yyyy-MM-ddTHH:mm:ssZ' in the UTC time zone.",
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
         "conditions": {
           "description": "List of status conditions.",
           "type": [

@@ -28,7 +28,7 @@
     },
     "metadata": {
       "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
-      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta_v2"
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     },
     "spec": {
       "description": "AppProjectSpec is the specification of an AppProject",
@@ -235,6 +235,13 @@
             }
           }
         },
+        "permitOnlyProjectScopedClusters": {
+          "description": "PermitOnlyProjectScopedClusters determines whether destinations can only reference clusters which are project-scoped",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
         "roles": {
           "description": "Roles are user defined RBAC roles associated with this project",
           "type": [
@@ -348,6 +355,19 @@
                 "type": "string"
               }
             }
+          }
+        },
+        "sourceNamespaces": {
+          "description": "SourceNamespaces defines the namespaces application resources are allowed to be created in",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
           }
         },
         "sourceRepos": {
