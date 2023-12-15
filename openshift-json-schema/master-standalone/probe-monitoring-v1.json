@@ -71,7 +71,8 @@
                     "null"
                   ]
                 }
-              }
+              },
+              "x-kubernetes-map-type": "atomic"
             },
             "type": {
               "description": "Set the authentication type. Defaults to Bearer, Basic will cause an error",
@@ -117,7 +118,8 @@
                     "null"
                   ]
                 }
-              }
+              },
+              "x-kubernetes-map-type": "atomic"
             },
             "username": {
               "description": "The secret in the service monitor namespace that contains the username for authentication.",
@@ -147,7 +149,8 @@
                     "null"
                   ]
                 }
-              }
+              },
+              "x-kubernetes-map-type": "atomic"
             }
           }
         },
@@ -179,14 +182,16 @@
                 "null"
               ]
             }
-          }
+          },
+          "x-kubernetes-map-type": "atomic"
         },
         "interval": {
           "description": "Interval at which targets are probed using the configured prober. If not specified Prometheus' global scrape interval is used.",
           "type": [
             "string",
             "null"
-          ]
+          ],
+          "pattern": "^(0|(([0-9]+)y)?(([0-9]+)w)?(([0-9]+)d)?(([0-9]+)h)?(([0-9]+)m)?(([0-9]+)s)?(([0-9]+)ms)?)$"
         },
         "jobName": {
           "description": "The job name assigned to scraped metrics by default.",
@@ -233,10 +238,30 @@
             ],
             "properties": {
               "action": {
-                "description": "Action to perform based on regex matching. Default is 'replace'",
+                "description": "Action to perform based on regex matching. Default is 'replace'. uppercase and lowercase actions require Prometheus >= 2.36.",
                 "type": [
                   "string",
                   "null"
+                ],
+                "enum": [
+                  "replace",
+                  "Replace",
+                  "keep",
+                  "Keep",
+                  "drop",
+                  "Drop",
+                  "hashmod",
+                  "HashMod",
+                  "labelmap",
+                  "LabelMap",
+                  "labeldrop",
+                  "LabelDrop",
+                  "labelkeep",
+                  "LabelKeep",
+                  "lowercase",
+                  "Lowercase",
+                  "uppercase",
+                  "Uppercase"
                 ]
               },
               "modulus": {
@@ -275,10 +300,12 @@
                   "null"
                 ],
                 "items": {
+                  "description": "LabelName is a valid Prometheus label name which may only contain ASCII letters, numbers, as well as underscores.",
                   "type": [
                     "string",
                     "null"
-                  ]
+                  ],
+                  "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
                 }
               },
               "targetLabel": {
@@ -342,7 +369,8 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "x-kubernetes-map-type": "atomic"
                 },
                 "secret": {
                   "description": "Secret containing data to use for the targets.",
@@ -372,7 +400,8 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "x-kubernetes-map-type": "atomic"
                 }
               }
             },
@@ -401,7 +430,8 @@
                     "null"
                   ]
                 }
-              }
+              },
+              "x-kubernetes-map-type": "atomic"
             },
             "endpointParams": {
               "description": "Parameters to append to the token URL",
@@ -482,11 +512,12 @@
           "format": "int64"
         },
         "scrapeTimeout": {
-          "description": "Timeout for scraping metrics from the Prometheus exporter.",
+          "description": "Timeout for scraping metrics from the Prometheus exporter. If not specified, the Prometheus global scrape interval is used.",
           "type": [
             "string",
             "null"
-          ]
+          ],
+          "pattern": "^(0|(([0-9]+)y)?(([0-9]+)w)?(([0-9]+)d)?(([0-9]+)h)?(([0-9]+)m)?(([0-9]+)s)?(([0-9]+)ms)?)$"
         },
         "targetLimit": {
           "description": "TargetLimit defines a limit on the number of scraped targets that will be accepted.",
@@ -497,21 +528,21 @@
           "format": "int64"
         },
         "targets": {
-          "description": "Targets defines a set of static and/or dynamically discovered targets to be probed using the prober.",
+          "description": "Targets defines a set of static or dynamically discovered targets to probe.",
           "type": [
             "object",
             "null"
           ],
           "properties": {
             "ingress": {
-              "description": "Ingress defines the set of dynamically discovered ingress objects which hosts are considered for probing.",
+              "description": "ingress defines the Ingress objects to probe and the relabeling configuration. If `staticConfig` is also defined, `staticConfig` takes precedence.",
               "type": [
                 "object",
                 "null"
               ],
               "properties": {
                 "namespaceSelector": {
-                  "description": "Select Ingress objects by namespace.",
+                  "description": "From which namespaces to select Ingress objects.",
                   "type": [
                     "object",
                     "null"
@@ -525,7 +556,7 @@
                       ]
                     },
                     "matchNames": {
-                      "description": "List of namespace names.",
+                      "description": "List of namespace names to select from.",
                       "type": [
                         "array",
                         "null"
@@ -540,7 +571,7 @@
                   }
                 },
                 "relabelingConfigs": {
-                  "description": "RelabelConfigs to apply to samples before ingestion. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config",
+                  "description": "RelabelConfigs to apply to the label set of the target before it gets scraped. The original ingress address is available via the `__tmp_prometheus_ingress_address` label. It can be used to customize the probed URL. The original scrape job's name is available via the `__tmp_prometheus_job_name` label. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config",
                   "type": [
                     "array",
                     "null"
@@ -553,10 +584,30 @@
                     ],
                     "properties": {
                       "action": {
-                        "description": "Action to perform based on regex matching. Default is 'replace'",
+                        "description": "Action to perform based on regex matching. Default is 'replace'. uppercase and lowercase actions require Prometheus >= 2.36.",
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "replace",
+                          "Replace",
+                          "keep",
+                          "Keep",
+                          "drop",
+                          "Drop",
+                          "hashmod",
+                          "HashMod",
+                          "labelmap",
+                          "LabelMap",
+                          "labeldrop",
+                          "LabelDrop",
+                          "labelkeep",
+                          "LabelKeep",
+                          "lowercase",
+                          "Lowercase",
+                          "uppercase",
+                          "Uppercase"
                         ]
                       },
                       "modulus": {
@@ -595,10 +646,12 @@
                           "null"
                         ],
                         "items": {
+                          "description": "LabelName is a valid Prometheus label name which may only contain ASCII letters, numbers, as well as underscores.",
                           "type": [
                             "string",
                             "null"
-                          ]
+                          ],
+                          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
                         }
                       },
                       "targetLabel": {
@@ -612,7 +665,7 @@
                   }
                 },
                 "selector": {
-                  "description": "Select Ingress objects by labels.",
+                  "description": "Selector to select the Ingress objects.",
                   "type": [
                     "object",
                     "null"
@@ -672,12 +725,13 @@
                         ]
                       }
                     }
-                  }
+                  },
+                  "x-kubernetes-map-type": "atomic"
                 }
               }
             },
             "staticConfig": {
-              "description": "StaticConfig defines static targets which are considers for probing. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#static_config.",
+              "description": "staticConfig defines the static list of targets to probe and the relabeling configuration. If `ingress` is also defined, `staticConfig` takes precedence. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#static_config.",
               "type": [
                 "object",
                 "null"
@@ -697,7 +751,7 @@
                   }
                 },
                 "relabelingConfigs": {
-                  "description": "RelabelConfigs to apply to samples before ingestion. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config",
+                  "description": "RelabelConfigs to apply to the label set of the targets before it gets scraped. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config",
                   "type": [
                     "array",
                     "null"
@@ -710,10 +764,30 @@
                     ],
                     "properties": {
                       "action": {
-                        "description": "Action to perform based on regex matching. Default is 'replace'",
+                        "description": "Action to perform based on regex matching. Default is 'replace'. uppercase and lowercase actions require Prometheus >= 2.36.",
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "replace",
+                          "Replace",
+                          "keep",
+                          "Keep",
+                          "drop",
+                          "Drop",
+                          "hashmod",
+                          "HashMod",
+                          "labelmap",
+                          "LabelMap",
+                          "labeldrop",
+                          "LabelDrop",
+                          "labelkeep",
+                          "LabelKeep",
+                          "lowercase",
+                          "Lowercase",
+                          "uppercase",
+                          "Uppercase"
                         ]
                       },
                       "modulus": {
@@ -752,10 +826,12 @@
                           "null"
                         ],
                         "items": {
+                          "description": "LabelName is a valid Prometheus label name which may only contain ASCII letters, numbers, as well as underscores.",
                           "type": [
                             "string",
                             "null"
-                          ]
+                          ],
+                          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
                         }
                       },
                       "targetLabel": {
@@ -769,7 +845,7 @@
                   }
                 },
                 "static": {
-                  "description": "Targets is a list of URLs to probe using the configured prober.",
+                  "description": "The list of hosts to probe.",
                   "type": [
                     "array",
                     "null"
@@ -827,7 +903,8 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "x-kubernetes-map-type": "atomic"
                 },
                 "secret": {
                   "description": "Secret containing data to use for the targets.",
@@ -857,7 +934,8 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "x-kubernetes-map-type": "atomic"
                 }
               }
             },
@@ -896,7 +974,8 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "x-kubernetes-map-type": "atomic"
                 },
                 "secret": {
                   "description": "Secret containing data to use for the targets.",
@@ -926,7 +1005,8 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "x-kubernetes-map-type": "atomic"
                 }
               }
             },
@@ -965,7 +1045,8 @@
                     "null"
                   ]
                 }
-              }
+              },
+              "x-kubernetes-map-type": "atomic"
             },
             "serverName": {
               "description": "Used to verify the hostname for the targets.",

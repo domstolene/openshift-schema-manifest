@@ -1,5 +1,5 @@
 {
-  "description": "ConsoleLink is an extension for customizing OpenShift web console links. \n Compatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
+  "description": "ConsoleLink is an extension for customizing OpenShift web console links. \n Compatibility level 2: Stable within a major release for a minimum of 9 months or 3 minor releases (whichever is longer).",
   "type": "object",
   "required": [
     "spec"
@@ -142,7 +142,8 @@
                     ]
                   }
                 }
-              }
+              },
+              "x-kubernetes-map-type": "atomic"
             },
             "namespaces": {
               "description": "namespaces is an array of namespace names in which the dashboard link should appear.",

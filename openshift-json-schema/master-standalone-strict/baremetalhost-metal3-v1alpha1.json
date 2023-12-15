@@ -153,6 +153,7 @@
               ]
             }
           },
+          "x-kubernetes-map-type": "atomic",
           "additionalProperties": false
         },
         "customDeploy": {
@@ -294,20 +295,21 @@
           ],
           "properties": {
             "name": {
-              "description": "Name is unique within a namespace to reference a secret resource.",
+              "description": "name is unique within a namespace to reference a secret resource.",
               "type": [
                 "string",
                 "null"
               ]
             },
             "namespace": {
-              "description": "Namespace defines the space within which the secret name must be unique.",
+              "description": "namespace defines the space within which the secret name must be unique.",
               "type": [
                 "string",
                 "null"
               ]
             }
           },
+          "x-kubernetes-map-type": "atomic",
           "additionalProperties": false
         },
         "networkData": {
@@ -318,20 +320,21 @@
           ],
           "properties": {
             "name": {
-              "description": "Name is unique within a namespace to reference a secret resource.",
+              "description": "name is unique within a namespace to reference a secret resource.",
               "type": [
                 "string",
                 "null"
               ]
             },
             "namespace": {
-              "description": "Namespace defines the space within which the secret name must be unique.",
+              "description": "namespace defines the space within which the secret name must be unique.",
               "type": [
                 "string",
                 "null"
               ]
             }
           },
+          "x-kubernetes-map-type": "atomic",
           "additionalProperties": false
         },
         "online": {
@@ -495,20 +498,21 @@
           ],
           "properties": {
             "name": {
-              "description": "Name is unique within a namespace to reference a secret resource.",
+              "description": "name is unique within a namespace to reference a secret resource.",
               "type": [
                 "string",
                 "null"
               ]
             },
             "namespace": {
-              "description": "Namespace defines the space within which the secret name must be unique.",
+              "description": "namespace defines the space within which the secret name must be unique.",
               "type": [
                 "string",
                 "null"
               ]
             }
           },
+          "x-kubernetes-map-type": "atomic",
           "additionalProperties": false
         }
       },
@@ -567,20 +571,21 @@
               ],
               "properties": {
                 "name": {
-                  "description": "Name is unique within a namespace to reference a secret resource.",
+                  "description": "name is unique within a namespace to reference a secret resource.",
                   "type": [
                     "string",
                     "null"
                   ]
                 },
                 "namespace": {
-                  "description": "Namespace defines the space within which the secret name must be unique.",
+                  "description": "namespace defines the space within which the secret name must be unique.",
                   "type": [
                     "string",
                     "null"
                   ]
                 }
               },
+              "x-kubernetes-map-type": "atomic",
               "additionalProperties": false
             },
             "credentialsVersion": {
@@ -1288,20 +1293,21 @@
               ],
               "properties": {
                 "name": {
-                  "description": "Name is unique within a namespace to reference a secret resource.",
+                  "description": "name is unique within a namespace to reference a secret resource.",
                   "type": [
                     "string",
                     "null"
                   ]
                 },
                 "namespace": {
-                  "description": "Namespace defines the space within which the secret name must be unique.",
+                  "description": "namespace defines the space within which the secret name must be unique.",
                   "type": [
                     "string",
                     "null"
                   ]
                 }
               },
+              "x-kubernetes-map-type": "atomic",
               "additionalProperties": false
             },
             "credentialsVersion": {

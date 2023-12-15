@@ -392,6 +392,12 @@
               "status"
             ],
             "properties": {
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
               "resolving": {
                 "type": "string"
               },

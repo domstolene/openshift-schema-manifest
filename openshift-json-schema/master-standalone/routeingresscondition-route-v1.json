@@ -32,7 +32,7 @@
       ]
     },
     "type": {
-      "description": "Type is the type of the condition. Currently only Ready.",
+      "description": "Type is the type of the condition. Currently only Admitted.",
       "type": [
         "string",
         "null"

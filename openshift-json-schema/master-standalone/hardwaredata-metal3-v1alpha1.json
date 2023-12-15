@@ -1,0 +1,379 @@
+{
+  "description": "HardwareData is the Schema for the hardwaredata API",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "metal3.io/v1alpha1"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "HardwareData"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "description": "HardwareDataSpec defines the desired state of HardwareData",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "hardware": {
+          "description": "The hardware discovered on the host during its inspection.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "cpu": {
+              "description": "CPU describes one processor on the host.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "arch": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "clockMegahertz": {
+                  "description": "ClockSpeed is a clock speed in MHz",
+                  "type": [
+                    "number",
+                    "null"
+                  ],
+                  "format": "double"
+                },
+                "count": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "flags": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "model": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "firmware": {
+              "description": "Firmware describes the firmware on the host.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "bios": {
+                  "description": "The BIOS for this firmware",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "date": {
+                      "description": "The release/build date for this BIOS",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "vendor": {
+                      "description": "The vendor name for this BIOS",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "version": {
+                      "description": "The version of the BIOS",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "hostname": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "nics": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "description": "NIC describes one network interface on the host.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "ip": {
+                    "description": "The IP address of the interface. This will be an IPv4 or IPv6 address if one is present.  If both IPv4 and IPv6 addresses are present in a dual-stack environment, two nics will be output, one with each IP.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "mac": {
+                    "description": "The device MAC address",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "pattern": "[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}"
+                  },
+                  "model": {
+                    "description": "The vendor and product IDs of the NIC, e.g. \"0x8086 0x1572\"",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "name": {
+                    "description": "The name of the network interface, e.g. \"en0\"",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "pxe": {
+                    "description": "Whether the NIC is PXE Bootable",
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  },
+                  "speedGbps": {
+                    "description": "The speed of the device in Gigabits per second",
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "vlanId": {
+                    "description": "The untagged VLAN ID",
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "format": "int32",
+                    "maximum": 4094,
+                    "minimum": 0
+                  },
+                  "vlans": {
+                    "description": "The VLANs available",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "description": "VLAN represents the name and ID of a VLAN",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "id": {
+                          "description": "VLANID is a 12-bit 802.1Q VLAN identifier",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
+                          "format": "int32",
+                          "maximum": 4094,
+                          "minimum": 0
+                        },
+                        "name": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "ramMebibytes": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "storage": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "description": "Storage describes one storage device (disk, SSD, etc.) on the host.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "hctl": {
+                    "description": "The SCSI location of the device",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "model": {
+                    "description": "Hardware model",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "name": {
+                    "description": "The Linux device name of the disk, e.g. \"/dev/sda\". Note that this may not be stable across reboots.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "rotational": {
+                    "description": "Whether this disk represents rotational storage. This field is not recommended for usage, please prefer using 'Type' field instead, this field will be deprecated eventually.",
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  },
+                  "serialNumber": {
+                    "description": "The serial number of the device",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "sizeBytes": {
+                    "description": "The size of the disk in Bytes",
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "format": "int64"
+                  },
+                  "type": {
+                    "description": "Device type, one of: HDD, SSD, NVME.",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "enum": [
+                      "HDD",
+                      "SSD",
+                      "NVME"
+                    ]
+                  },
+                  "vendor": {
+                    "description": "The name of the vendor of the device",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "wwn": {
+                    "description": "The WWN of the device",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "wwnVendorExtension": {
+                    "description": "The WWN Vendor extension of the device",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "wwnWithExtension": {
+                    "description": "The WWN with the extension",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              }
+            },
+            "systemVendor": {
+              "description": "HardwareSystemVendor stores details about the whole hardware system.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "manufacturer": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "productName": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "serialNumber": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "metal3.io",
+      "kind": "HardwareData",
+      "version": "v1alpha1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

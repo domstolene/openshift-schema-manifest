@@ -42,6 +42,7 @@
         "ipFamilies",
         "kubeAPIServerServingCAData",
         "osImageURL",
+        "baseOSContainerImage",
         "releaseImage",
         "rootCAData"
       ],
@@ -49,6 +50,17 @@
         "additionalTrustBundle": {
           "description": "additionalTrustBundle is a certificate bundle that will be added to the nodes trusted certificate store.",
           "format": "byte"
+        },
+        "baseOSContainerImage": {
+          "description": "baseOSContainerImage is the new format operating system update image. See https://github.com/openshift/enhancements/pull/1032",
+          "type": "string"
+        },
+        "baseOSExtensionsContainerImage": {
+          "description": "baseOSExtensionsContainerImage is the extensions container matching new format operating system update image. See https://github.com/openshift/enhancements/pull/1032",
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "cloudProviderCAData": {
           "description": "cloudProvider specifies the cloud provider CA data",

@@ -307,7 +307,7 @@
                   "minimum": 0
                 },
                 "enablePortPoolsPrepopulation": {
-                  "description": "enablePortPoolsPrepopulation when true will make Kuryr prepopulate each newly created port pool with a minimum number of ports. Kuryr uses Neutron port pooling to fight the fact that it takes a significant amount of time to create one. Instead of creating it when pod is being deployed, Kuryr keeps a number of ports ready to be attached to pods. By default port prepopulation is disabled.",
+                  "description": "enablePortPoolsPrepopulation when true will make Kuryr prepopulate each newly created port pool with a minimum number of ports. Kuryr uses Neutron port pooling to fight the fact that it takes a significant amount of time to create one. It creates a number of ports when the first pod that is configured to use the dedicated network for pods is created in a namespace, and keeps them ready to be attached to pods. Port prepopulation is disabled by default.",
                   "type": [
                     "boolean",
                     "null"
@@ -412,6 +412,26 @@
                 "null"
               ],
               "properties": {
+                "egressIPConfig": {
+                  "description": "egressIPConfig holds the configuration for EgressIP options.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "reachabilityTotalTimeoutSeconds": {
+                      "description": "reachabilityTotalTimeout configures the EgressIP node reachability check total timeout in seconds. If the EgressIP node cannot be reached within this timeout, the node is declared down. Setting a large value may cause the EgressIP feature to react slowly to node changes. In particular, it may react slowly for EgressIP nodes that really have a genuine problem and are unreachable. When omitted, this means the user has no opinion and the platform is left to choose a reasonable default, which is subject to change over time. The current default is 1 second. A value of 0 disables the EgressIP node's reachability check.",
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "format": "int32",
+                      "maximum": 60,
+                      "minimum": 0
+                    }
+                  },
+                  "additionalProperties": false
+                },
                 "gatewayConfig": {
                   "description": "gatewayConfig holds the configuration for node gateway options.",
                   "type": [
@@ -544,6 +564,20 @@
                     }
                   },
                   "additionalProperties": false
+                },
+                "v4InternalSubnet": {
+                  "description": "v4InternalSubnet is a v4 subnet used internally by ovn-kubernetes in case the default one is being already used by something else. It must not overlap with any other subnet being used by OpenShift or by the node network. The size of the subnet must be larger than the number of nodes. The value cannot be changed after installation. Default is 100.64.0.0/16",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "v6InternalSubnet": {
+                  "description": "v6InternalSubnet is a v6 subnet used internally by ovn-kubernetes in case the default one is being already used by something else. It must not overlap with any other subnet being used by OpenShift or by the node network. The size of the subnet must be larger than the number of nodes. The value cannot be changed after installation. Default is fd98::/48",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 }
               },
               "additionalProperties": false
@@ -740,6 +774,37 @@
             "null"
           ],
           "properties": {
+            "features": {
+              "description": "features contains the features migration configuration. Set this to migrate feature configuration when changing the cluster default network provider. if unset, the default operation is to migrate all the configuration of supported features.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "egressFirewall": {
+                  "description": "egressFirewall specifies whether or not the Egress Firewall configuration is migrated automatically when changing the cluster default network provider. If unset, this property defaults to 'true' and Egress Firewall configure is migrated.",
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "egressIP": {
+                  "description": "egressIP specifies whether or not the Egress IP configuration is migrated automatically when changing the cluster default network provider. If unset, this property defaults to 'true' and Egress IP configure is migrated.",
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "multicast": {
+                  "description": "multicast specifies whether or not the multicast configuration is migrated automatically when changing the cluster default network provider. If unset, this property defaults to 'true' and multicast configure is migrated.",
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            },
             "mtu": {
               "description": "mtu contains the MTU migration configuration. Set this to allow changing the MTU values for the default network. If unset, the operation of changing the MTU for the default network will be rejected.",
               "type": [

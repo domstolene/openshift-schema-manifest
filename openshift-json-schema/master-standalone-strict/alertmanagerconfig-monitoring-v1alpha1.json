@@ -37,7 +37,7 @@
       ],
       "properties": {
         "inhibitRules": {
-          "description": "List of inhibition rules. The rules will only apply to alerts matching the resource\u2019s namespace.",
+          "description": "List of inhibition rules. The rules will only apply to alerts matching the resource's namespace.",
           "type": [
             "array",
             "null"
@@ -63,7 +63,7 @@
                 }
               },
               "sourceMatch": {
-                "description": "Matchers for which one or more alerts have to exist for the inhibition to take effect. The operator enforces that the alert matches the resource\u2019s namespace.",
+                "description": "Matchers for which one or more alerts have to exist for the inhibition to take effect. The operator enforces that the alert matches the resource's namespace.",
                 "type": [
                   "array",
                   "null"
@@ -115,7 +115,7 @@
                 }
               },
               "targetMatch": {
-                "description": "Matchers that have to be fulfilled in the alerts to be muted. The operator enforces that the alert matches the resource\u2019s namespace.",
+                "description": "Matchers that have to be fulfilled in the alerts to be muted. The operator enforces that the alert matches the resource's namespace.",
                 "type": [
                   "array",
                   "null"
@@ -551,6 +551,7 @@
                                   ]
                                 }
                               },
+                              "x-kubernetes-map-type": "atomic",
                               "additionalProperties": false
                             },
                             "secret": {
@@ -582,6 +583,7 @@
                                   ]
                                 }
                               },
+                              "x-kubernetes-map-type": "atomic",
                               "additionalProperties": false
                             }
                           },
@@ -623,6 +625,7 @@
                                   ]
                                 }
                               },
+                              "x-kubernetes-map-type": "atomic",
                               "additionalProperties": false
                             },
                             "secret": {
@@ -654,6 +657,7 @@
                                   ]
                                 }
                               },
+                              "x-kubernetes-map-type": "atomic",
                               "additionalProperties": false
                             }
                           },
@@ -695,6 +699,7 @@
                               ]
                             }
                           },
+                          "x-kubernetes-map-type": "atomic",
                           "additionalProperties": false
                         },
                         "serverName": {
@@ -736,6 +741,13 @@
                     "null"
                   ],
                   "properties": {
+                    "actions": {
+                      "description": "Comma separated list of actions that will be available for the alert.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
                     "apiKey": {
                       "description": "The secret's key that contains the OpsGenie API key. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
                       "type": [
@@ -811,6 +823,13 @@
                         "additionalProperties": false
                       }
                     },
+                    "entity": {
+                      "description": "Optional field that can be used to specify which domain alert is related to.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
                     "httpConfig": {
                       "description": "HTTP client configuration.",
                       "type": [
@@ -854,6 +873,7 @@
                                   ]
                                 }
                               },
+                              "x-kubernetes-map-type": "atomic",
                               "additionalProperties": false
                             },
                             "type": {
@@ -902,6 +922,7 @@
                                   ]
                                 }
                               },
+                              "x-kubernetes-map-type": "atomic",
                               "additionalProperties": false
                             },
                             "username": {
@@ -933,6 +954,7 @@
                                   ]
                                 }
                               },
+                              "x-kubernetes-map-type": "atomic",
                               "additionalProperties": false
                             }
                           },
@@ -965,6 +987,159 @@
                                 "boolean",
                                 "null"
                               ]
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "followRedirects": {
+                          "description": "FollowRedirects specifies whether the client should follow HTTP 3xx redirects.",
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
+                        "oauth2": {
+                          "description": "OAuth2 client credentials used to fetch a token for the targets.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "required": [
+                            "clientId",
+                            "clientSecret",
+                            "tokenUrl"
+                          ],
+                          "properties": {
+                            "clientId": {
+                              "description": "The secret or configmap containing the OAuth2 client id",
+                              "type": "object",
+                              "properties": {
+                                "configMap": {
+                                  "description": "ConfigMap containing data to use for the targets.",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "required": [
+                                    "key"
+                                  ],
+                                  "properties": {
+                                    "key": {
+                                      "description": "The key to select.",
+                                      "type": "string"
+                                    },
+                                    "name": {
+                                      "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "optional": {
+                                      "description": "Specify whether the ConfigMap or its key must be defined",
+                                      "type": [
+                                        "boolean",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
+                                },
+                                "secret": {
+                                  "description": "Secret containing data to use for the targets.",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "required": [
+                                    "key"
+                                  ],
+                                  "properties": {
+                                    "key": {
+                                      "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                      "type": "string"
+                                    },
+                                    "name": {
+                                      "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "optional": {
+                                      "description": "Specify whether the Secret or its key must be defined",
+                                      "type": [
+                                        "boolean",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "clientSecret": {
+                              "description": "The secret containing the OAuth2 client secret",
+                              "type": "object",
+                              "required": [
+                                "key"
+                              ],
+                              "properties": {
+                                "key": {
+                                  "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "optional": {
+                                  "description": "Specify whether the Secret or its key must be defined",
+                                  "type": [
+                                    "boolean",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
+                            },
+                            "endpointParams": {
+                              "description": "Parameters to append to the token URL",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "additionalProperties": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "scopes": {
+                              "description": "OAuth2 scopes used for the token request",
+                              "type": [
+                                "array",
+                                "null"
+                              ],
+                              "items": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "tokenUrl": {
+                              "description": "The URL to fetch the token from",
+                              "type": "string",
+                              "minLength": 1
                             }
                           },
                           "additionalProperties": false
@@ -1019,6 +1194,7 @@
                                       ]
                                     }
                                   },
+                                  "x-kubernetes-map-type": "atomic",
                                   "additionalProperties": false
                                 },
                                 "secret": {
@@ -1050,6 +1226,7 @@
                                       ]
                                     }
                                   },
+                                  "x-kubernetes-map-type": "atomic",
                                   "additionalProperties": false
                                 }
                               },
@@ -1091,6 +1268,7 @@
                                       ]
                                     }
                                   },
+                                  "x-kubernetes-map-type": "atomic",
                                   "additionalProperties": false
                                 },
                                 "secret": {
@@ -1122,6 +1300,7 @@
                                       ]
                                     }
                                   },
+                                  "x-kubernetes-map-type": "atomic",
                                   "additionalProperties": false
                                 }
                               },
@@ -1163,6 +1342,7 @@
                                   ]
                                 }
                               },
+                              "x-kubernetes-map-type": "atomic",
                               "additionalProperties": false
                             },
                             "serverName": {
@@ -1232,7 +1412,14 @@
                           "type": {
                             "description": "Type of responder.",
                             "type": "string",
-                            "minLength": 1
+                            "minLength": 1,
+                            "enum": [
+                              "team",
+                              "teams",
+                              "user",
+                              "escalation",
+                              "schedule"
+                            ]
                           },
                           "username": {
                             "description": "Username of the responder.",
@@ -1263,6 +1450,13 @@
                       "description": "Comma separated list of tags attached to the notifications.",
                       "type": [
                         "string",
+                        "null"
+                      ]
+                    },
+                    "updateAlerts": {
+                      "description": "Whether to update message and description of the alert in OpsGenie if it already exists By default, the alert is never updated in OpsGenie, the new message only appears in activity log.",
+                      "type": [
+                        "boolean",
                         "null"
                       ]
                     }
@@ -1398,6 +1592,7 @@
                                   ]
                                 }
                               },
+                              "x-kubernetes-map-type": "atomic",
                               "additionalProperties": false
                             },
                             "type": {
@@ -1446,6 +1641,7 @@
                                   ]
                                 }
                               },
+                              "x-kubernetes-map-type": "atomic",
                               "additionalProperties": false
                             },
                             "username": {
@@ -1477,6 +1673,7 @@
                                   ]
                                 }
                               },
+                              "x-kubernetes-map-type": "atomic",
                               "additionalProperties": false
                             }
                           },
@@ -1509,6 +1706,159 @@
                                 "boolean",
                                 "null"
                               ]
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "followRedirects": {
+                          "description": "FollowRedirects specifies whether the client should follow HTTP 3xx redirects.",
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
+                        "oauth2": {
+                          "description": "OAuth2 client credentials used to fetch a token for the targets.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "required": [
+                            "clientId",
+                            "clientSecret",
+                            "tokenUrl"
+                          ],
+                          "properties": {
+                            "clientId": {
+                              "description": "The secret or configmap containing the OAuth2 client id",
+                              "type": "object",
+                              "properties": {
+                                "configMap": {
+                                  "description": "ConfigMap containing data to use for the targets.",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "required": [
+                                    "key"
+                                  ],
+                                  "properties": {
+                                    "key": {
+                                      "description": "The key to select.",
+                                      "type": "string"
+                                    },
+                                    "name": {
+                                      "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "optional": {
+                                      "description": "Specify whether the ConfigMap or its key must be defined",
+                                      "type": [
+                                        "boolean",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
+                                },
+                                "secret": {
+                                  "description": "Secret containing data to use for the targets.",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "required": [
+                                    "key"
+                                  ],
+                                  "properties": {
+                                    "key": {
+                                      "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                      "type": "string"
+                                    },
+                                    "name": {
+                                      "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "optional": {
+                                      "description": "Specify whether the Secret or its key must be defined",
+                                      "type": [
+                                        "boolean",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "clientSecret": {
+                              "description": "The secret containing the OAuth2 client secret",
+                              "type": "object",
+                              "required": [
+                                "key"
+                              ],
+                              "properties": {
+                                "key": {
+                                  "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "optional": {
+                                  "description": "Specify whether the Secret or its key must be defined",
+                                  "type": [
+                                    "boolean",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
+                            },
+                            "endpointParams": {
+                              "description": "Parameters to append to the token URL",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "additionalProperties": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "scopes": {
+                              "description": "OAuth2 scopes used for the token request",
+                              "type": [
+                                "array",
+                                "null"
+                              ],
+                              "items": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "tokenUrl": {
+                              "description": "The URL to fetch the token from",
+                              "type": "string",
+                              "minLength": 1
                             }
                           },
                           "additionalProperties": false
@@ -1563,6 +1913,7 @@
                                       ]
                                     }
                                   },
+                                  "x-kubernetes-map-type": "atomic",
                                   "additionalProperties": false
                                 },
                                 "secret": {
@@ -1594,6 +1945,7 @@
                                       ]
                                     }
                                   },
+                                  "x-kubernetes-map-type": "atomic",
                                   "additionalProperties": false
                                 }
                               },
@@ -1635,6 +1987,7 @@
                                       ]
                                     }
                                   },
+                                  "x-kubernetes-map-type": "atomic",
                                   "additionalProperties": false
                                 },
                                 "secret": {
@@ -1666,6 +2019,7 @@
                                       ]
                                     }
                                   },
+                                  "x-kubernetes-map-type": "atomic",
                                   "additionalProperties": false
                                 }
                               },
@@ -1707,6 +2061,7 @@
                                   ]
                                 }
                               },
+                              "x-kubernetes-map-type": "atomic",
                               "additionalProperties": false
                             },
                             "serverName": {
@@ -1949,6 +2304,7 @@
                                   ]
                                 }
                               },
+                              "x-kubernetes-map-type": "atomic",
                               "additionalProperties": false
                             },
                             "type": {
@@ -1997,6 +2353,7 @@
                                   ]
                                 }
                               },
+                              "x-kubernetes-map-type": "atomic",
                               "additionalProperties": false
                             },
                             "username": {
@@ -2028,6 +2385,7 @@
                                   ]
                                 }
                               },
+                              "x-kubernetes-map-type": "atomic",
                               "additionalProperties": false
                             }
                           },
@@ -2060,6 +2418,159 @@
                                 "boolean",
                                 "null"
                               ]
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "followRedirects": {
+                          "description": "FollowRedirects specifies whether the client should follow HTTP 3xx redirects.",
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
+                        "oauth2": {
+                          "description": "OAuth2 client credentials used to fetch a token for the targets.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "required": [
+                            "clientId",
+                            "clientSecret",
+                            "tokenUrl"
+                          ],
+                          "properties": {
+                            "clientId": {
+                              "description": "The secret or configmap containing the OAuth2 client id",
+                              "type": "object",
+                              "properties": {
+                                "configMap": {
+                                  "description": "ConfigMap containing data to use for the targets.",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "required": [
+                                    "key"
+                                  ],
+                                  "properties": {
+                                    "key": {
+                                      "description": "The key to select.",
+                                      "type": "string"
+                                    },
+                                    "name": {
+                                      "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "optional": {
+                                      "description": "Specify whether the ConfigMap or its key must be defined",
+                                      "type": [
+                                        "boolean",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
+                                },
+                                "secret": {
+                                  "description": "Secret containing data to use for the targets.",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "required": [
+                                    "key"
+                                  ],
+                                  "properties": {
+                                    "key": {
+                                      "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                      "type": "string"
+                                    },
+                                    "name": {
+                                      "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "optional": {
+                                      "description": "Specify whether the Secret or its key must be defined",
+                                      "type": [
+                                        "boolean",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "clientSecret": {
+                              "description": "The secret containing the OAuth2 client secret",
+                              "type": "object",
+                              "required": [
+                                "key"
+                              ],
+                              "properties": {
+                                "key": {
+                                  "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "optional": {
+                                  "description": "Specify whether the Secret or its key must be defined",
+                                  "type": [
+                                    "boolean",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
+                            },
+                            "endpointParams": {
+                              "description": "Parameters to append to the token URL",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "additionalProperties": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "scopes": {
+                              "description": "OAuth2 scopes used for the token request",
+                              "type": [
+                                "array",
+                                "null"
+                              ],
+                              "items": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "tokenUrl": {
+                              "description": "The URL to fetch the token from",
+                              "type": "string",
+                              "minLength": 1
                             }
                           },
                           "additionalProperties": false
@@ -2114,6 +2625,7 @@
                                       ]
                                     }
                                   },
+                                  "x-kubernetes-map-type": "atomic",
                                   "additionalProperties": false
                                 },
                                 "secret": {
@@ -2145,6 +2657,7 @@
                                       ]
                                     }
                                   },
+                                  "x-kubernetes-map-type": "atomic",
                                   "additionalProperties": false
                                 }
                               },
@@ -2186,6 +2699,7 @@
                                       ]
                                     }
                                   },
+                                  "x-kubernetes-map-type": "atomic",
                                   "additionalProperties": false
                                 },
                                 "secret": {
@@ -2217,6 +2731,7 @@
                                       ]
                                     }
                                   },
+                                  "x-kubernetes-map-type": "atomic",
                                   "additionalProperties": false
                                 }
                               },
@@ -2258,6 +2773,7 @@
                                   ]
                                 }
                               },
+                              "x-kubernetes-map-type": "atomic",
                               "additionalProperties": false
                             },
                             "serverName": {
@@ -2317,7 +2833,7 @@
                       ]
                     },
                     "token": {
-                      "description": "The secret's key that contains the registered application\u2019s API token, see https://pushover.net/apps. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
+                      "description": "The secret's key that contains the registered application's API token, see https://pushover.net/apps. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
                       "type": [
                         "object",
                         "null"
@@ -2362,7 +2878,7 @@
                       ]
                     },
                     "userKey": {
-                      "description": "The secret's key that contains the recipient user\u2019s user key. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
+                      "description": "The secret's key that contains the recipient user's user key. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
                       "type": [
                         "object",
                         "null"
@@ -2637,6 +3153,7 @@
                                   ]
                                 }
                               },
+                              "x-kubernetes-map-type": "atomic",
                               "additionalProperties": false
                             },
                             "type": {
@@ -2685,6 +3202,7 @@
                                   ]
                                 }
                               },
+                              "x-kubernetes-map-type": "atomic",
                               "additionalProperties": false
                             },
                             "username": {
@@ -2716,6 +3234,7 @@
                                   ]
                                 }
                               },
+                              "x-kubernetes-map-type": "atomic",
                               "additionalProperties": false
                             }
                           },
@@ -2748,6 +3267,159 @@
                                 "boolean",
                                 "null"
                               ]
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "followRedirects": {
+                          "description": "FollowRedirects specifies whether the client should follow HTTP 3xx redirects.",
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
+                        "oauth2": {
+                          "description": "OAuth2 client credentials used to fetch a token for the targets.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "required": [
+                            "clientId",
+                            "clientSecret",
+                            "tokenUrl"
+                          ],
+                          "properties": {
+                            "clientId": {
+                              "description": "The secret or configmap containing the OAuth2 client id",
+                              "type": "object",
+                              "properties": {
+                                "configMap": {
+                                  "description": "ConfigMap containing data to use for the targets.",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "required": [
+                                    "key"
+                                  ],
+                                  "properties": {
+                                    "key": {
+                                      "description": "The key to select.",
+                                      "type": "string"
+                                    },
+                                    "name": {
+                                      "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "optional": {
+                                      "description": "Specify whether the ConfigMap or its key must be defined",
+                                      "type": [
+                                        "boolean",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
+                                },
+                                "secret": {
+                                  "description": "Secret containing data to use for the targets.",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "required": [
+                                    "key"
+                                  ],
+                                  "properties": {
+                                    "key": {
+                                      "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                      "type": "string"
+                                    },
+                                    "name": {
+                                      "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "optional": {
+                                      "description": "Specify whether the Secret or its key must be defined",
+                                      "type": [
+                                        "boolean",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "clientSecret": {
+                              "description": "The secret containing the OAuth2 client secret",
+                              "type": "object",
+                              "required": [
+                                "key"
+                              ],
+                              "properties": {
+                                "key": {
+                                  "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "optional": {
+                                  "description": "Specify whether the Secret or its key must be defined",
+                                  "type": [
+                                    "boolean",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
+                            },
+                            "endpointParams": {
+                              "description": "Parameters to append to the token URL",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "additionalProperties": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "scopes": {
+                              "description": "OAuth2 scopes used for the token request",
+                              "type": [
+                                "array",
+                                "null"
+                              ],
+                              "items": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "tokenUrl": {
+                              "description": "The URL to fetch the token from",
+                              "type": "string",
+                              "minLength": 1
                             }
                           },
                           "additionalProperties": false
@@ -2802,6 +3474,7 @@
                                       ]
                                     }
                                   },
+                                  "x-kubernetes-map-type": "atomic",
                                   "additionalProperties": false
                                 },
                                 "secret": {
@@ -2833,6 +3506,7 @@
                                       ]
                                     }
                                   },
+                                  "x-kubernetes-map-type": "atomic",
                                   "additionalProperties": false
                                 }
                               },
@@ -2874,6 +3548,7 @@
                                       ]
                                     }
                                   },
+                                  "x-kubernetes-map-type": "atomic",
                                   "additionalProperties": false
                                 },
                                 "secret": {
@@ -2905,6 +3580,7 @@
                                       ]
                                     }
                                   },
+                                  "x-kubernetes-map-type": "atomic",
                                   "additionalProperties": false
                                 }
                               },
@@ -2946,6 +3622,7 @@
                                   ]
                                 }
                               },
+                              "x-kubernetes-map-type": "atomic",
                               "additionalProperties": false
                             },
                             "serverName": {
@@ -3043,6 +3720,1332 @@
                     "username": {
                       "type": [
                         "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "snsConfigs": {
+                "description": "List of SNS configurations",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "description": "SNSConfig configures notifications via AWS SNS. See https://prometheus.io/docs/alerting/latest/configuration/#sns_configs",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "apiURL": {
+                      "description": "The SNS API URL i.e. https://sns.us-east-2.amazonaws.com. If not specified, the SNS API URL from the SNS SDK will be used.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "attributes": {
+                      "description": "SNS message attributes.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "additionalProperties": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "httpConfig": {
+                      "description": "HTTP client configuration.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "authorization": {
+                          "description": "Authorization header configuration for the client. This is mutually exclusive with BasicAuth and is only available starting from Alertmanager v0.22+.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "credentials": {
+                              "description": "The secret's key that contains the credentials of the request",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "required": [
+                                "key"
+                              ],
+                              "properties": {
+                                "key": {
+                                  "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "optional": {
+                                  "description": "Specify whether the Secret or its key must be defined",
+                                  "type": [
+                                    "boolean",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
+                            },
+                            "type": {
+                              "description": "Set the authentication type. Defaults to Bearer, Basic will cause an error",
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "basicAuth": {
+                          "description": "BasicAuth for the client. This is mutually exclusive with Authorization. If both are defined, BasicAuth takes precedence.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "password": {
+                              "description": "The secret in the service monitor namespace that contains the password for authentication.",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "required": [
+                                "key"
+                              ],
+                              "properties": {
+                                "key": {
+                                  "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "optional": {
+                                  "description": "Specify whether the Secret or its key must be defined",
+                                  "type": [
+                                    "boolean",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
+                            },
+                            "username": {
+                              "description": "The secret in the service monitor namespace that contains the username for authentication.",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "required": [
+                                "key"
+                              ],
+                              "properties": {
+                                "key": {
+                                  "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "optional": {
+                                  "description": "Specify whether the Secret or its key must be defined",
+                                  "type": [
+                                    "boolean",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "bearerTokenSecret": {
+                          "description": "The secret's key that contains the bearer token to be used by the client for authentication. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "required": [
+                            "key"
+                          ],
+                          "properties": {
+                            "key": {
+                              "description": "The key of the secret to select from.  Must be a valid secret key.",
+                              "type": "string"
+                            },
+                            "name": {
+                              "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "optional": {
+                              "description": "Specify whether the Secret or its key must be defined",
+                              "type": [
+                                "boolean",
+                                "null"
+                              ]
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "followRedirects": {
+                          "description": "FollowRedirects specifies whether the client should follow HTTP 3xx redirects.",
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
+                        "oauth2": {
+                          "description": "OAuth2 client credentials used to fetch a token for the targets.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "required": [
+                            "clientId",
+                            "clientSecret",
+                            "tokenUrl"
+                          ],
+                          "properties": {
+                            "clientId": {
+                              "description": "The secret or configmap containing the OAuth2 client id",
+                              "type": "object",
+                              "properties": {
+                                "configMap": {
+                                  "description": "ConfigMap containing data to use for the targets.",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "required": [
+                                    "key"
+                                  ],
+                                  "properties": {
+                                    "key": {
+                                      "description": "The key to select.",
+                                      "type": "string"
+                                    },
+                                    "name": {
+                                      "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "optional": {
+                                      "description": "Specify whether the ConfigMap or its key must be defined",
+                                      "type": [
+                                        "boolean",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
+                                },
+                                "secret": {
+                                  "description": "Secret containing data to use for the targets.",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "required": [
+                                    "key"
+                                  ],
+                                  "properties": {
+                                    "key": {
+                                      "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                      "type": "string"
+                                    },
+                                    "name": {
+                                      "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "optional": {
+                                      "description": "Specify whether the Secret or its key must be defined",
+                                      "type": [
+                                        "boolean",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "clientSecret": {
+                              "description": "The secret containing the OAuth2 client secret",
+                              "type": "object",
+                              "required": [
+                                "key"
+                              ],
+                              "properties": {
+                                "key": {
+                                  "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "optional": {
+                                  "description": "Specify whether the Secret or its key must be defined",
+                                  "type": [
+                                    "boolean",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
+                            },
+                            "endpointParams": {
+                              "description": "Parameters to append to the token URL",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "additionalProperties": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "scopes": {
+                              "description": "OAuth2 scopes used for the token request",
+                              "type": [
+                                "array",
+                                "null"
+                              ],
+                              "items": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "tokenUrl": {
+                              "description": "The URL to fetch the token from",
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "proxyURL": {
+                          "description": "Optional proxy URL.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "tlsConfig": {
+                          "description": "TLS configuration for the client.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "ca": {
+                              "description": "Struct containing the CA cert to use for the targets.",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "properties": {
+                                "configMap": {
+                                  "description": "ConfigMap containing data to use for the targets.",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "required": [
+                                    "key"
+                                  ],
+                                  "properties": {
+                                    "key": {
+                                      "description": "The key to select.",
+                                      "type": "string"
+                                    },
+                                    "name": {
+                                      "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "optional": {
+                                      "description": "Specify whether the ConfigMap or its key must be defined",
+                                      "type": [
+                                        "boolean",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
+                                },
+                                "secret": {
+                                  "description": "Secret containing data to use for the targets.",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "required": [
+                                    "key"
+                                  ],
+                                  "properties": {
+                                    "key": {
+                                      "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                      "type": "string"
+                                    },
+                                    "name": {
+                                      "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "optional": {
+                                      "description": "Specify whether the Secret or its key must be defined",
+                                      "type": [
+                                        "boolean",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "cert": {
+                              "description": "Struct containing the client cert file for the targets.",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "properties": {
+                                "configMap": {
+                                  "description": "ConfigMap containing data to use for the targets.",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "required": [
+                                    "key"
+                                  ],
+                                  "properties": {
+                                    "key": {
+                                      "description": "The key to select.",
+                                      "type": "string"
+                                    },
+                                    "name": {
+                                      "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "optional": {
+                                      "description": "Specify whether the ConfigMap or its key must be defined",
+                                      "type": [
+                                        "boolean",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
+                                },
+                                "secret": {
+                                  "description": "Secret containing data to use for the targets.",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "required": [
+                                    "key"
+                                  ],
+                                  "properties": {
+                                    "key": {
+                                      "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                      "type": "string"
+                                    },
+                                    "name": {
+                                      "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "optional": {
+                                      "description": "Specify whether the Secret or its key must be defined",
+                                      "type": [
+                                        "boolean",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "insecureSkipVerify": {
+                              "description": "Disable target certificate validation.",
+                              "type": [
+                                "boolean",
+                                "null"
+                              ]
+                            },
+                            "keySecret": {
+                              "description": "Secret containing the client key file for the targets.",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "required": [
+                                "key"
+                              ],
+                              "properties": {
+                                "key": {
+                                  "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "optional": {
+                                  "description": "Specify whether the Secret or its key must be defined",
+                                  "type": [
+                                    "boolean",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
+                            },
+                            "serverName": {
+                              "description": "Used to verify the hostname for the targets.",
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "message": {
+                      "description": "The message content of the SNS notification.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "phoneNumber": {
+                      "description": "Phone number if message is delivered via SMS in E.164 format. If you don't specify this value, you must specify a value for the TopicARN or TargetARN.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "sendResolved": {
+                      "description": "Whether or not to notify about resolved alerts.",
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    },
+                    "sigv4": {
+                      "description": "Configures AWS's Signature Verification 4 signing process to sign requests.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "accessKey": {
+                          "description": "AccessKey is the AWS API key. If blank, the environment variable `AWS_ACCESS_KEY_ID` is used.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "required": [
+                            "key"
+                          ],
+                          "properties": {
+                            "key": {
+                              "description": "The key of the secret to select from.  Must be a valid secret key.",
+                              "type": "string"
+                            },
+                            "name": {
+                              "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "optional": {
+                              "description": "Specify whether the Secret or its key must be defined",
+                              "type": [
+                                "boolean",
+                                "null"
+                              ]
+                            }
+                          },
+                          "x-kubernetes-map-type": "atomic",
+                          "additionalProperties": false
+                        },
+                        "profile": {
+                          "description": "Profile is the named AWS profile used to authenticate.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "region": {
+                          "description": "Region is the AWS region. If blank, the region from the default credentials chain used.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "roleArn": {
+                          "description": "RoleArn is the named AWS profile used to authenticate.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "secretKey": {
+                          "description": "SecretKey is the AWS API secret. If blank, the environment variable `AWS_SECRET_ACCESS_KEY` is used.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "required": [
+                            "key"
+                          ],
+                          "properties": {
+                            "key": {
+                              "description": "The key of the secret to select from.  Must be a valid secret key.",
+                              "type": "string"
+                            },
+                            "name": {
+                              "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "optional": {
+                              "description": "Specify whether the Secret or its key must be defined",
+                              "type": [
+                                "boolean",
+                                "null"
+                              ]
+                            }
+                          },
+                          "x-kubernetes-map-type": "atomic",
+                          "additionalProperties": false
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "subject": {
+                      "description": "Subject line when the message is delivered to email endpoints.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "targetARN": {
+                      "description": "The  mobile platform endpoint ARN if message is delivered via mobile notifications. If you don't specify this value, you must specify a value for the topic_arn or PhoneNumber.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "topicARN": {
+                      "description": "SNS topic ARN, i.e. arn:aws:sns:us-east-2:698519295917:My-Topic If you don't specify this value, you must specify a value for the PhoneNumber or TargetARN.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "telegramConfigs": {
+                "description": "List of Telegram configurations.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "description": "TelegramConfig configures notifications via Telegram. See https://prometheus.io/docs/alerting/latest/configuration/#telegram_config",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "apiURL": {
+                      "description": "The Telegram API URL i.e. https://api.telegram.org. If not specified, default API URL will be used.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "botToken": {
+                      "description": "Telegram bot token The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "required": [
+                        "key"
+                      ],
+                      "properties": {
+                        "key": {
+                          "description": "The key of the secret to select from.  Must be a valid secret key.",
+                          "type": "string"
+                        },
+                        "name": {
+                          "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "optional": {
+                          "description": "Specify whether the Secret or its key must be defined",
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "chatID": {
+                      "description": "The Telegram chat ID.",
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "format": "int64"
+                    },
+                    "disableNotifications": {
+                      "description": "Disable telegram notifications",
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    },
+                    "httpConfig": {
+                      "description": "HTTP client configuration.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "authorization": {
+                          "description": "Authorization header configuration for the client. This is mutually exclusive with BasicAuth and is only available starting from Alertmanager v0.22+.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "credentials": {
+                              "description": "The secret's key that contains the credentials of the request",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "required": [
+                                "key"
+                              ],
+                              "properties": {
+                                "key": {
+                                  "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "optional": {
+                                  "description": "Specify whether the Secret or its key must be defined",
+                                  "type": [
+                                    "boolean",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
+                            },
+                            "type": {
+                              "description": "Set the authentication type. Defaults to Bearer, Basic will cause an error",
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "basicAuth": {
+                          "description": "BasicAuth for the client. This is mutually exclusive with Authorization. If both are defined, BasicAuth takes precedence.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "password": {
+                              "description": "The secret in the service monitor namespace that contains the password for authentication.",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "required": [
+                                "key"
+                              ],
+                              "properties": {
+                                "key": {
+                                  "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "optional": {
+                                  "description": "Specify whether the Secret or its key must be defined",
+                                  "type": [
+                                    "boolean",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
+                            },
+                            "username": {
+                              "description": "The secret in the service monitor namespace that contains the username for authentication.",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "required": [
+                                "key"
+                              ],
+                              "properties": {
+                                "key": {
+                                  "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "optional": {
+                                  "description": "Specify whether the Secret or its key must be defined",
+                                  "type": [
+                                    "boolean",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "bearerTokenSecret": {
+                          "description": "The secret's key that contains the bearer token to be used by the client for authentication. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "required": [
+                            "key"
+                          ],
+                          "properties": {
+                            "key": {
+                              "description": "The key of the secret to select from.  Must be a valid secret key.",
+                              "type": "string"
+                            },
+                            "name": {
+                              "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "optional": {
+                              "description": "Specify whether the Secret or its key must be defined",
+                              "type": [
+                                "boolean",
+                                "null"
+                              ]
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "followRedirects": {
+                          "description": "FollowRedirects specifies whether the client should follow HTTP 3xx redirects.",
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
+                        "oauth2": {
+                          "description": "OAuth2 client credentials used to fetch a token for the targets.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "required": [
+                            "clientId",
+                            "clientSecret",
+                            "tokenUrl"
+                          ],
+                          "properties": {
+                            "clientId": {
+                              "description": "The secret or configmap containing the OAuth2 client id",
+                              "type": "object",
+                              "properties": {
+                                "configMap": {
+                                  "description": "ConfigMap containing data to use for the targets.",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "required": [
+                                    "key"
+                                  ],
+                                  "properties": {
+                                    "key": {
+                                      "description": "The key to select.",
+                                      "type": "string"
+                                    },
+                                    "name": {
+                                      "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "optional": {
+                                      "description": "Specify whether the ConfigMap or its key must be defined",
+                                      "type": [
+                                        "boolean",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
+                                },
+                                "secret": {
+                                  "description": "Secret containing data to use for the targets.",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "required": [
+                                    "key"
+                                  ],
+                                  "properties": {
+                                    "key": {
+                                      "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                      "type": "string"
+                                    },
+                                    "name": {
+                                      "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "optional": {
+                                      "description": "Specify whether the Secret or its key must be defined",
+                                      "type": [
+                                        "boolean",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "clientSecret": {
+                              "description": "The secret containing the OAuth2 client secret",
+                              "type": "object",
+                              "required": [
+                                "key"
+                              ],
+                              "properties": {
+                                "key": {
+                                  "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "optional": {
+                                  "description": "Specify whether the Secret or its key must be defined",
+                                  "type": [
+                                    "boolean",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
+                            },
+                            "endpointParams": {
+                              "description": "Parameters to append to the token URL",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "additionalProperties": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "scopes": {
+                              "description": "OAuth2 scopes used for the token request",
+                              "type": [
+                                "array",
+                                "null"
+                              ],
+                              "items": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "tokenUrl": {
+                              "description": "The URL to fetch the token from",
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "proxyURL": {
+                          "description": "Optional proxy URL.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "tlsConfig": {
+                          "description": "TLS configuration for the client.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "ca": {
+                              "description": "Struct containing the CA cert to use for the targets.",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "properties": {
+                                "configMap": {
+                                  "description": "ConfigMap containing data to use for the targets.",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "required": [
+                                    "key"
+                                  ],
+                                  "properties": {
+                                    "key": {
+                                      "description": "The key to select.",
+                                      "type": "string"
+                                    },
+                                    "name": {
+                                      "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "optional": {
+                                      "description": "Specify whether the ConfigMap or its key must be defined",
+                                      "type": [
+                                        "boolean",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
+                                },
+                                "secret": {
+                                  "description": "Secret containing data to use for the targets.",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "required": [
+                                    "key"
+                                  ],
+                                  "properties": {
+                                    "key": {
+                                      "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                      "type": "string"
+                                    },
+                                    "name": {
+                                      "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "optional": {
+                                      "description": "Specify whether the Secret or its key must be defined",
+                                      "type": [
+                                        "boolean",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "cert": {
+                              "description": "Struct containing the client cert file for the targets.",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "properties": {
+                                "configMap": {
+                                  "description": "ConfigMap containing data to use for the targets.",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "required": [
+                                    "key"
+                                  ],
+                                  "properties": {
+                                    "key": {
+                                      "description": "The key to select.",
+                                      "type": "string"
+                                    },
+                                    "name": {
+                                      "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "optional": {
+                                      "description": "Specify whether the ConfigMap or its key must be defined",
+                                      "type": [
+                                        "boolean",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
+                                },
+                                "secret": {
+                                  "description": "Secret containing data to use for the targets.",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "required": [
+                                    "key"
+                                  ],
+                                  "properties": {
+                                    "key": {
+                                      "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                      "type": "string"
+                                    },
+                                    "name": {
+                                      "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "optional": {
+                                      "description": "Specify whether the Secret or its key must be defined",
+                                      "type": [
+                                        "boolean",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "insecureSkipVerify": {
+                              "description": "Disable target certificate validation.",
+                              "type": [
+                                "boolean",
+                                "null"
+                              ]
+                            },
+                            "keySecret": {
+                              "description": "Secret containing the client key file for the targets.",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "required": [
+                                "key"
+                              ],
+                              "properties": {
+                                "key": {
+                                  "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "optional": {
+                                  "description": "Specify whether the Secret or its key must be defined",
+                                  "type": [
+                                    "boolean",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
+                            },
+                            "serverName": {
+                              "description": "Used to verify the hostname for the targets.",
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "message": {
+                      "description": "Message template",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "parseMode": {
+                      "description": "Parse mode for telegram message",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "enum": [
+                        "MarkdownV2",
+                        "Markdown",
+                        "HTML"
+                      ]
+                    },
+                    "sendResolved": {
+                      "description": "Whether to notify about resolved alerts.",
+                      "type": [
+                        "boolean",
                         "null"
                       ]
                     }
@@ -3181,6 +5184,7 @@
                                   ]
                                 }
                               },
+                              "x-kubernetes-map-type": "atomic",
                               "additionalProperties": false
                             },
                             "type": {
@@ -3229,6 +5233,7 @@
                                   ]
                                 }
                               },
+                              "x-kubernetes-map-type": "atomic",
                               "additionalProperties": false
                             },
                             "username": {
@@ -3260,6 +5265,7 @@
                                   ]
                                 }
                               },
+                              "x-kubernetes-map-type": "atomic",
                               "additionalProperties": false
                             }
                           },
@@ -3292,6 +5298,159 @@
                                 "boolean",
                                 "null"
                               ]
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "followRedirects": {
+                          "description": "FollowRedirects specifies whether the client should follow HTTP 3xx redirects.",
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
+                        "oauth2": {
+                          "description": "OAuth2 client credentials used to fetch a token for the targets.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "required": [
+                            "clientId",
+                            "clientSecret",
+                            "tokenUrl"
+                          ],
+                          "properties": {
+                            "clientId": {
+                              "description": "The secret or configmap containing the OAuth2 client id",
+                              "type": "object",
+                              "properties": {
+                                "configMap": {
+                                  "description": "ConfigMap containing data to use for the targets.",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "required": [
+                                    "key"
+                                  ],
+                                  "properties": {
+                                    "key": {
+                                      "description": "The key to select.",
+                                      "type": "string"
+                                    },
+                                    "name": {
+                                      "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "optional": {
+                                      "description": "Specify whether the ConfigMap or its key must be defined",
+                                      "type": [
+                                        "boolean",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
+                                },
+                                "secret": {
+                                  "description": "Secret containing data to use for the targets.",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "required": [
+                                    "key"
+                                  ],
+                                  "properties": {
+                                    "key": {
+                                      "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                      "type": "string"
+                                    },
+                                    "name": {
+                                      "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "optional": {
+                                      "description": "Specify whether the Secret or its key must be defined",
+                                      "type": [
+                                        "boolean",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "clientSecret": {
+                              "description": "The secret containing the OAuth2 client secret",
+                              "type": "object",
+                              "required": [
+                                "key"
+                              ],
+                              "properties": {
+                                "key": {
+                                  "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "optional": {
+                                  "description": "Specify whether the Secret or its key must be defined",
+                                  "type": [
+                                    "boolean",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
+                            },
+                            "endpointParams": {
+                              "description": "Parameters to append to the token URL",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "additionalProperties": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "scopes": {
+                              "description": "OAuth2 scopes used for the token request",
+                              "type": [
+                                "array",
+                                "null"
+                              ],
+                              "items": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "tokenUrl": {
+                              "description": "The URL to fetch the token from",
+                              "type": "string",
+                              "minLength": 1
                             }
                           },
                           "additionalProperties": false
@@ -3346,6 +5505,7 @@
                                       ]
                                     }
                                   },
+                                  "x-kubernetes-map-type": "atomic",
                                   "additionalProperties": false
                                 },
                                 "secret": {
@@ -3377,6 +5537,7 @@
                                       ]
                                     }
                                   },
+                                  "x-kubernetes-map-type": "atomic",
                                   "additionalProperties": false
                                 }
                               },
@@ -3418,6 +5579,7 @@
                                       ]
                                     }
                                   },
+                                  "x-kubernetes-map-type": "atomic",
                                   "additionalProperties": false
                                 },
                                 "secret": {
@@ -3449,6 +5611,7 @@
                                       ]
                                     }
                                   },
+                                  "x-kubernetes-map-type": "atomic",
                                   "additionalProperties": false
                                 }
                               },
@@ -3490,6 +5653,7 @@
                                   ]
                                 }
                               },
+                              "x-kubernetes-map-type": "atomic",
                               "additionalProperties": false
                             },
                             "serverName": {
@@ -3600,6 +5764,7 @@
                                   ]
                                 }
                               },
+                              "x-kubernetes-map-type": "atomic",
                               "additionalProperties": false
                             },
                             "type": {
@@ -3648,6 +5813,7 @@
                                   ]
                                 }
                               },
+                              "x-kubernetes-map-type": "atomic",
                               "additionalProperties": false
                             },
                             "username": {
@@ -3679,6 +5845,7 @@
                                   ]
                                 }
                               },
+                              "x-kubernetes-map-type": "atomic",
                               "additionalProperties": false
                             }
                           },
@@ -3711,6 +5878,159 @@
                                 "boolean",
                                 "null"
                               ]
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "followRedirects": {
+                          "description": "FollowRedirects specifies whether the client should follow HTTP 3xx redirects.",
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
+                        "oauth2": {
+                          "description": "OAuth2 client credentials used to fetch a token for the targets.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "required": [
+                            "clientId",
+                            "clientSecret",
+                            "tokenUrl"
+                          ],
+                          "properties": {
+                            "clientId": {
+                              "description": "The secret or configmap containing the OAuth2 client id",
+                              "type": "object",
+                              "properties": {
+                                "configMap": {
+                                  "description": "ConfigMap containing data to use for the targets.",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "required": [
+                                    "key"
+                                  ],
+                                  "properties": {
+                                    "key": {
+                                      "description": "The key to select.",
+                                      "type": "string"
+                                    },
+                                    "name": {
+                                      "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "optional": {
+                                      "description": "Specify whether the ConfigMap or its key must be defined",
+                                      "type": [
+                                        "boolean",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
+                                },
+                                "secret": {
+                                  "description": "Secret containing data to use for the targets.",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "required": [
+                                    "key"
+                                  ],
+                                  "properties": {
+                                    "key": {
+                                      "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                      "type": "string"
+                                    },
+                                    "name": {
+                                      "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "optional": {
+                                      "description": "Specify whether the Secret or its key must be defined",
+                                      "type": [
+                                        "boolean",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "clientSecret": {
+                              "description": "The secret containing the OAuth2 client secret",
+                              "type": "object",
+                              "required": [
+                                "key"
+                              ],
+                              "properties": {
+                                "key": {
+                                  "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "optional": {
+                                  "description": "Specify whether the Secret or its key must be defined",
+                                  "type": [
+                                    "boolean",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
+                            },
+                            "endpointParams": {
+                              "description": "Parameters to append to the token URL",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "additionalProperties": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "scopes": {
+                              "description": "OAuth2 scopes used for the token request",
+                              "type": [
+                                "array",
+                                "null"
+                              ],
+                              "items": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "tokenUrl": {
+                              "description": "The URL to fetch the token from",
+                              "type": "string",
+                              "minLength": 1
                             }
                           },
                           "additionalProperties": false
@@ -3765,6 +6085,7 @@
                                       ]
                                     }
                                   },
+                                  "x-kubernetes-map-type": "atomic",
                                   "additionalProperties": false
                                 },
                                 "secret": {
@@ -3796,6 +6117,7 @@
                                       ]
                                     }
                                   },
+                                  "x-kubernetes-map-type": "atomic",
                                   "additionalProperties": false
                                 }
                               },
@@ -3837,6 +6159,7 @@
                                       ]
                                     }
                                   },
+                                  "x-kubernetes-map-type": "atomic",
                                   "additionalProperties": false
                                 },
                                 "secret": {
@@ -3868,6 +6191,7 @@
                                       ]
                                     }
                                   },
+                                  "x-kubernetes-map-type": "atomic",
                                   "additionalProperties": false
                                 }
                               },
@@ -3909,6 +6233,7 @@
                                   ]
                                 }
                               },
+                              "x-kubernetes-map-type": "atomic",
                               "additionalProperties": false
                             },
                             "serverName": {
@@ -4089,6 +6414,7 @@
                                   ]
                                 }
                               },
+                              "x-kubernetes-map-type": "atomic",
                               "additionalProperties": false
                             },
                             "type": {
@@ -4137,6 +6463,7 @@
                                   ]
                                 }
                               },
+                              "x-kubernetes-map-type": "atomic",
                               "additionalProperties": false
                             },
                             "username": {
@@ -4168,6 +6495,7 @@
                                   ]
                                 }
                               },
+                              "x-kubernetes-map-type": "atomic",
                               "additionalProperties": false
                             }
                           },
@@ -4200,6 +6528,159 @@
                                 "boolean",
                                 "null"
                               ]
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "followRedirects": {
+                          "description": "FollowRedirects specifies whether the client should follow HTTP 3xx redirects.",
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
+                        "oauth2": {
+                          "description": "OAuth2 client credentials used to fetch a token for the targets.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "required": [
+                            "clientId",
+                            "clientSecret",
+                            "tokenUrl"
+                          ],
+                          "properties": {
+                            "clientId": {
+                              "description": "The secret or configmap containing the OAuth2 client id",
+                              "type": "object",
+                              "properties": {
+                                "configMap": {
+                                  "description": "ConfigMap containing data to use for the targets.",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "required": [
+                                    "key"
+                                  ],
+                                  "properties": {
+                                    "key": {
+                                      "description": "The key to select.",
+                                      "type": "string"
+                                    },
+                                    "name": {
+                                      "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "optional": {
+                                      "description": "Specify whether the ConfigMap or its key must be defined",
+                                      "type": [
+                                        "boolean",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
+                                },
+                                "secret": {
+                                  "description": "Secret containing data to use for the targets.",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "required": [
+                                    "key"
+                                  ],
+                                  "properties": {
+                                    "key": {
+                                      "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                      "type": "string"
+                                    },
+                                    "name": {
+                                      "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "optional": {
+                                      "description": "Specify whether the Secret or its key must be defined",
+                                      "type": [
+                                        "boolean",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "clientSecret": {
+                              "description": "The secret containing the OAuth2 client secret",
+                              "type": "object",
+                              "required": [
+                                "key"
+                              ],
+                              "properties": {
+                                "key": {
+                                  "description": "The key of the secret to select from.  Must be a valid secret key.",
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "optional": {
+                                  "description": "Specify whether the Secret or its key must be defined",
+                                  "type": [
+                                    "boolean",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
+                            },
+                            "endpointParams": {
+                              "description": "Parameters to append to the token URL",
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "additionalProperties": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "scopes": {
+                              "description": "OAuth2 scopes used for the token request",
+                              "type": [
+                                "array",
+                                "null"
+                              ],
+                              "items": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "tokenUrl": {
+                              "description": "The URL to fetch the token from",
+                              "type": "string",
+                              "minLength": 1
                             }
                           },
                           "additionalProperties": false
@@ -4254,6 +6735,7 @@
                                       ]
                                     }
                                   },
+                                  "x-kubernetes-map-type": "atomic",
                                   "additionalProperties": false
                                 },
                                 "secret": {
@@ -4285,6 +6767,7 @@
                                       ]
                                     }
                                   },
+                                  "x-kubernetes-map-type": "atomic",
                                   "additionalProperties": false
                                 }
                               },
@@ -4326,6 +6809,7 @@
                                       ]
                                     }
                                   },
+                                  "x-kubernetes-map-type": "atomic",
                                   "additionalProperties": false
                                 },
                                 "secret": {
@@ -4357,6 +6841,7 @@
                                       ]
                                     }
                                   },
+                                  "x-kubernetes-map-type": "atomic",
                                   "additionalProperties": false
                                 }
                               },
@@ -4398,6 +6883,7 @@
                                   ]
                                 }
                               },
+                              "x-kubernetes-map-type": "atomic",
                               "additionalProperties": false
                             },
                             "serverName": {
@@ -4460,7 +6946,7 @@
           }
         },
         "route": {
-          "description": "The Alertmanager route definition for alerts matching the resource\u2019s namespace. If present, it will be added to the generated Alertmanager configuration as a first-level route.",
+          "description": "The Alertmanager route definition for alerts matching the resource's namespace. If present, it will be added to the generated Alertmanager configuration as a first-level route.",
           "type": [
             "object",
             "null"
@@ -4501,7 +6987,7 @@
               ]
             },
             "matchers": {
-              "description": "List of matchers that the alert\u2019s labels should match. For the first level route, the operator removes any existing equality and regexp matcher on the `namespace` label and adds a `namespace: <object namespace>` matcher.",
+              "description": "List of matchers that the alert's labels should match. For the first level route, the operator removes any existing equality and regexp matcher on the `namespace` label and adds a `namespace: <object namespace>` matcher.",
               "type": [
                 "array",
                 "null"

@@ -106,6 +106,7 @@
                   }
                 }
               },
+              "x-kubernetes-map-type": "atomic",
               "additionalProperties": false
             },
             "scopes": {
@@ -139,7 +140,8 @@
               }
             },
             "labels": {
-              "description": "LabelSelector is used to select projects by label."
+              "description": "LabelSelector is used to select projects by label.",
+              "x-kubernetes-map-type": "atomic"
             }
           },
           "additionalProperties": false

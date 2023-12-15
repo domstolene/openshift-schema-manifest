@@ -103,6 +103,7 @@
               ]
             }
           },
+          "x-kubernetes-map-type": "atomic",
           "additionalProperties": false
         },
         "selector": {
@@ -168,6 +169,7 @@
               }
             }
           },
+          "x-kubernetes-map-type": "atomic",
           "additionalProperties": false
         },
         "unhealthyConditions": {

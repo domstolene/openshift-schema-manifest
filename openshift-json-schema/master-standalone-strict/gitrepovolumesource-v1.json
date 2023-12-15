@@ -6,21 +6,21 @@
   ],
   "properties": {
     "directory": {
-      "description": "Target directory name. Must not contain or start with '..'.  If '.' is supplied, the volume directory will be the git repository.  Otherwise, if specified, the volume will contain the git repository in the subdirectory with the given name.",
+      "description": "directory is the target directory name. Must not contain or start with '..'.  If '.' is supplied, the volume directory will be the git repository.  Otherwise, if specified, the volume will contain the git repository in the subdirectory with the given name.",
       "type": [
         "string",
         "null"
       ]
     },
     "repository": {
-      "description": "Repository URL",
+      "description": "repository is the URL",
       "type": [
         "string",
         "null"
       ]
     },
     "revision": {
-      "description": "Commit hash for the specified revision.",
+      "description": "revision is the commit hash for the specified revision.",
       "type": [
         "string",
         "null"

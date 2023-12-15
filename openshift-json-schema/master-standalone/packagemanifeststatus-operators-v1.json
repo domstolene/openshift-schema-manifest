@@ -25,7 +25,7 @@
       ]
     },
     "catalogSourceNamespace": {
-      "description": "\n CatalogSourceNamespace is the namespace of the owning CatalogSource",
+      "description": "CatalogSourceNamespace is the namespace of the owning CatalogSource",
       "type": [
         "string",
         "null"

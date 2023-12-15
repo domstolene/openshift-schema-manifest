@@ -59,7 +59,7 @@
       ]
     },
     "metadata": {
-      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta_v2"
     }
   },
   "x-kubernetes-group-version-kind": [

@@ -1,0 +1,215 @@
+{
+  "description": "Restore is the Schema for the restores API",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "infinispan.org/v2alpha1"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "Restore"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "description": "BackupSpec defines the desired state of Backup",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "backup",
+        "cluster"
+      ],
+      "properties": {
+        "backup": {
+          "description": "The Infinispan Backup to restore",
+          "type": "string"
+        },
+        "cluster": {
+          "description": "Infinispan cluster name",
+          "type": "string"
+        },
+        "container": {
+          "description": "InfinispanContainerSpec specify resource requirements per container",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "cliExtraJvmOpts": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "cpu": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "extraJvmOpts": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "memory": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "routerExtraJvmOpts": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "resources": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "cacheConfigs": {
+              "description": "Deprecated and to be removed on subsequent release. Use .Templates instead.",
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "caches": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "counters": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "protoSchemas": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "scripts": {
+              "description": "Deprecated and to be removed on subsequent release. Use .Tasks instead.",
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "tasks": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "templates": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "status": {
+      "description": "RestoreStatus defines the observed state of Restore",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "phase"
+      ],
+      "properties": {
+        "phase": {
+          "description": "Current phase of the restore operation",
+          "type": "string"
+        },
+        "reason": {
+          "description": "Reason indicates the reason for any restore related failures.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "infinispan.org",
+      "kind": "Restore",
+      "version": "v2alpha1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

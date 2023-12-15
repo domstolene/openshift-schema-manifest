@@ -33,6 +33,13 @@
         "null"
       ],
       "properties": {
+        "baseOSExtensionsContainerImage": {
+          "description": "baseOSExtensionsContainerImage specifies the remote location that will be used to fetch the extensions container matching a new-format OS image",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "config": {
           "description": "Config is a Ignition Config object.",
           "required": [
@@ -61,7 +68,7 @@
           ]
         },
         "osImageURL": {
-          "description": "OSImageURL specifies the remote location that will be used to fetch the OS to fetch the OS.",
+          "description": "OSImageURL specifies the remote location that will be used to fetch the OS",
           "type": [
             "string",
             "null"

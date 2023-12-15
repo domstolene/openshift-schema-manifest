@@ -40,6 +40,23 @@
         "selector"
       ],
       "properties": {
+        "attachMetadata": {
+          "description": "Attaches node metadata to discovered targets. Only valid for role: pod. Only valid in Prometheus versions 2.35.0 and newer.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "node": {
+              "description": "When set to true, Prometheus must have permissions to get Nodes.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
         "jobLabel": {
           "description": "The label to use to retrieve the job name from.",
           "type": [
@@ -86,7 +103,7 @@
               ]
             },
             "matchNames": {
-              "description": "List of namespace names.",
+              "description": "List of namespace names to select from.",
               "type": [
                 "array",
                 "null"
@@ -147,6 +164,7 @@
                         ]
                       }
                     },
+                    "x-kubernetes-map-type": "atomic",
                     "additionalProperties": false
                   },
                   "type": {
@@ -195,6 +213,7 @@
                         ]
                       }
                     },
+                    "x-kubernetes-map-type": "atomic",
                     "additionalProperties": false
                   },
                   "username": {
@@ -226,6 +245,7 @@
                         ]
                       }
                     },
+                    "x-kubernetes-map-type": "atomic",
                     "additionalProperties": false
                   }
                 },
@@ -260,7 +280,29 @@
                     ]
                   }
                 },
+                "x-kubernetes-map-type": "atomic",
                 "additionalProperties": false
+              },
+              "enableHttp2": {
+                "description": "Whether to enable HTTP2.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "filterRunning": {
+                "description": "Drop pods that are not running. (Failed, Succeeded). Enabled by default. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-phase",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "followRedirects": {
+                "description": "FollowRedirects configures whether scrape requests follow HTTP 3xx redirects.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
               },
               "honorLabels": {
                 "description": "HonorLabels chooses the metric's labels on collisions with target labels.",
@@ -277,11 +319,12 @@
                 ]
               },
               "interval": {
-                "description": "Interval at which metrics should be scraped",
+                "description": "Interval at which metrics should be scraped If not specified Prometheus' global scrape interval is used.",
                 "type": [
                   "string",
                   "null"
-                ]
+                ],
+                "pattern": "^(0|(([0-9]+)y)?(([0-9]+)w)?(([0-9]+)d)?(([0-9]+)h)?(([0-9]+)m)?(([0-9]+)s)?(([0-9]+)ms)?)$"
               },
               "metricRelabelings": {
                 "description": "MetricRelabelConfigs to apply to samples before ingestion.",
@@ -297,10 +340,30 @@
                   ],
                   "properties": {
                     "action": {
-                      "description": "Action to perform based on regex matching. Default is 'replace'",
+                      "description": "Action to perform based on regex matching. Default is 'replace'. uppercase and lowercase actions require Prometheus >= 2.36.",
                       "type": [
                         "string",
                         "null"
+                      ],
+                      "enum": [
+                        "replace",
+                        "Replace",
+                        "keep",
+                        "Keep",
+                        "drop",
+                        "Drop",
+                        "hashmod",
+                        "HashMod",
+                        "labelmap",
+                        "LabelMap",
+                        "labeldrop",
+                        "LabelDrop",
+                        "labelkeep",
+                        "LabelKeep",
+                        "lowercase",
+                        "Lowercase",
+                        "uppercase",
+                        "Uppercase"
                       ]
                     },
                     "modulus": {
@@ -339,10 +402,12 @@
                         "null"
                       ],
                       "items": {
+                        "description": "LabelName is a valid Prometheus label name which may only contain ASCII letters, numbers, as well as underscores.",
                         "type": [
                           "string",
                           "null"
-                        ]
+                        ],
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
                       }
                     },
                     "targetLabel": {
@@ -401,6 +466,7 @@
                             ]
                           }
                         },
+                        "x-kubernetes-map-type": "atomic",
                         "additionalProperties": false
                       },
                       "secret": {
@@ -432,6 +498,7 @@
                             ]
                           }
                         },
+                        "x-kubernetes-map-type": "atomic",
                         "additionalProperties": false
                       }
                     },
@@ -463,6 +530,7 @@
                         ]
                       }
                     },
+                    "x-kubernetes-map-type": "atomic",
                     "additionalProperties": false
                   },
                   "endpointParams": {
@@ -519,7 +587,7 @@
                 }
               },
               "path": {
-                "description": "HTTP path to scrape for metrics.",
+                "description": "HTTP path to scrape for metrics. If empty, Prometheus uses the default value (e.g. `/metrics`).",
                 "type": [
                   "string",
                   "null"
@@ -540,7 +608,7 @@
                 ]
               },
               "relabelings": {
-                "description": "RelabelConfigs to apply to samples before scraping. Prometheus Operator automatically adds relabelings for a few standard Kubernetes fields and replaces original scrape job name with __tmp_prometheus_job_name. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config",
+                "description": "RelabelConfigs to apply to samples before scraping. Prometheus Operator automatically adds relabelings for a few standard Kubernetes fields. The original scrape job's name is available via the `__tmp_prometheus_job_name` label. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config",
                 "type": [
                   "array",
                   "null"
@@ -553,10 +621,30 @@
                   ],
                   "properties": {
                     "action": {
-                      "description": "Action to perform based on regex matching. Default is 'replace'",
+                      "description": "Action to perform based on regex matching. Default is 'replace'. uppercase and lowercase actions require Prometheus >= 2.36.",
                       "type": [
                         "string",
                         "null"
+                      ],
+                      "enum": [
+                        "replace",
+                        "Replace",
+                        "keep",
+                        "Keep",
+                        "drop",
+                        "Drop",
+                        "hashmod",
+                        "HashMod",
+                        "labelmap",
+                        "LabelMap",
+                        "labeldrop",
+                        "LabelDrop",
+                        "labelkeep",
+                        "LabelKeep",
+                        "lowercase",
+                        "Lowercase",
+                        "uppercase",
+                        "Uppercase"
                       ]
                     },
                     "modulus": {
@@ -595,10 +683,12 @@
                         "null"
                       ],
                       "items": {
+                        "description": "LabelName is a valid Prometheus label name which may only contain ASCII letters, numbers, as well as underscores.",
                         "type": [
                           "string",
                           "null"
-                        ]
+                        ],
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
                       }
                     },
                     "targetLabel": {
@@ -620,11 +710,12 @@
                 ]
               },
               "scrapeTimeout": {
-                "description": "Timeout after which the scrape is ended",
+                "description": "Timeout after which the scrape is ended If not specified, the Prometheus global scrape interval is used.",
                 "type": [
                   "string",
                   "null"
-                ]
+                ],
+                "pattern": "^(0|(([0-9]+)y)?(([0-9]+)w)?(([0-9]+)d)?(([0-9]+)h)?(([0-9]+)m)?(([0-9]+)s)?(([0-9]+)ms)?)$"
               },
               "targetPort": {
                 "description": "Deprecated: Use 'port' instead.",
@@ -673,6 +764,7 @@
                             ]
                           }
                         },
+                        "x-kubernetes-map-type": "atomic",
                         "additionalProperties": false
                       },
                       "secret": {
@@ -704,6 +796,7 @@
                             ]
                           }
                         },
+                        "x-kubernetes-map-type": "atomic",
                         "additionalProperties": false
                       }
                     },
@@ -745,6 +838,7 @@
                             ]
                           }
                         },
+                        "x-kubernetes-map-type": "atomic",
                         "additionalProperties": false
                       },
                       "secret": {
@@ -776,6 +870,7 @@
                             ]
                           }
                         },
+                        "x-kubernetes-map-type": "atomic",
                         "additionalProperties": false
                       }
                     },
@@ -817,6 +912,7 @@
                         ]
                       }
                     },
+                    "x-kubernetes-map-type": "atomic",
                     "additionalProperties": false
                   },
                   "serverName": {
@@ -914,6 +1010,7 @@
               }
             }
           },
+          "x-kubernetes-map-type": "atomic",
           "additionalProperties": false
         },
         "targetLimit": {

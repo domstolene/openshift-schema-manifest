@@ -89,7 +89,7 @@
             "null"
           ],
           "items": {
-            "description": "Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example, type FooStatus struct{     // Represents the observations of a foo's current state.     // Known .status.conditions.type are: \"Available\", \"Progressing\", and \"Degraded\"     // +patchMergeKey=type     // +patchStrategy=merge     // +listType=map     // +listMapKey=type     Conditions []metav1.Condition `json:\"conditions,omitempty\" patchStrategy:\"merge\" patchMergeKey:\"type\" protobuf:\"bytes,1,rep,name=conditions\"` \n     // other fields }",
+            "description": "Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example, type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: \"Available\", \"Progressing\", and \"Degraded\" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:\"conditions,omitempty\" patchStrategy:\"merge\" patchMergeKey:\"type\" protobuf:\"bytes,1,rep,name=conditions\"` \n // other fields }",
             "type": [
               "object",
               "null"
@@ -151,6 +151,13 @@
           ],
           "x-kubernetes-list-type": "map"
         },
+        "extraKernelParams": {
+          "description": "extraKernelParams is a string with extra parameters to pass to the kernel when booting the image over network. Only makes sense for initrd images.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "format": {
           "description": "format is the type of image that is available at the download url: either iso or initrd.",
           "type": [
@@ -164,6 +171,13 @@
         },
         "imageUrl": {
           "description": "imageUrl is the URL from which the built image can be downloaded.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "kernelUrl": {
+          "description": "kernelUrl is the URL from which the kernel of the image can be downloaded. Only makes sense for initrd images.",
           "type": [
             "string",
             "null"

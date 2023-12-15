@@ -24,7 +24,7 @@
     },
     "metadata": {
       "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
-      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta_v2"
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     },
     "spec": {
       "type": [
@@ -232,7 +232,12 @@
                 "null"
               ],
               "properties": {
-                "allow_sign_up": {},
+                "allow_sign_up": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
                 "allowed_domains": {
                   "type": [
                     "string",
@@ -270,6 +275,7 @@
                   ]
                 },
                 "enabled": {},
+                "name": {},
                 "role_attribute_path": {
                   "type": [
                     "string",
@@ -323,6 +329,12 @@
                 "token_url": {
                   "type": [
                     "string",
+                    "null"
+                  ]
+                },
+                "use_pkce": {
+                  "type": [
+                    "boolean",
                     "null"
                   ]
                 }
@@ -394,6 +406,7 @@
                 "null"
               ],
               "properties": {
+                "allow_assign_grafana_admin": {},
                 "allow_sign_up": {},
                 "allowed_groups": {
                   "type": [
@@ -426,6 +439,13 @@
                   ]
                 },
                 "enabled": {},
+                "role_attribute_path": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "role_attribute_strict": {},
                 "scopes": {
                   "type": [
                     "string",
@@ -485,6 +505,111 @@
                   ]
                 },
                 "token_url": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            },
+            "auth.jwt": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "allow_assign_grafana_admin": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "auto_sign_up": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "cache_ttl": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "email_claim": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "enable_login_token": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "enabled": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "expect_claims": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "header_name": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "jwk_set_file": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "jwk_set_url": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "key_file": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "role_attribute_path": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "role_attribute_strict": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "skip_org_role_sync": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "url_login": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "username_claim": {
                   "type": [
                     "string",
                     "null"
@@ -756,6 +881,13 @@
                     "null"
                   ]
                 },
+                "min_refresh_interval": {
+                  "description": "Prevents users from setting the dashboard refresh interval to a lower value than a given interval value",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
                 "versions_to_keep": {}
               },
               "additionalProperties": false
@@ -857,9 +989,63 @@
                 "null"
               ],
               "properties": {
+                "dialTimeout": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "expect_continue_timeout_seconds": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "idle_conn_timeout_seconds": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "keep_alive_seconds": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
                 "logging": {},
+                "max_conns_per_host": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "max_idle_connections": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "response_limit": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "row_limit": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
                 "send_user_header": {},
-                "timeout": {}
+                "timeout": {},
+                "tls_handshake_timeout_seconds": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                }
               },
               "additionalProperties": false
             },
@@ -7496,6 +7682,12 @@
                   "null"
                 ]
               }
+            },
+            "appProtocol": {
+              "type": [
+                "string",
+                "null"
+              ]
             },
             "clusterIP": {
               "type": [
