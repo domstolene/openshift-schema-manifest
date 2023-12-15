@@ -515,6 +515,14 @@
                 ],
                 "format": "int64"
               },
+              "endTimestamp": {
+                "description": "Is the time when the scan was finished",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time"
+              },
               "errormsg": {
                 "description": "If there are issues on the scan, this will be filled up with an error message.",
                 "type": [
@@ -586,6 +594,14 @@
                     ]
                   }
                 }
+              },
+              "startTimestamp": {
+                "description": "Is the time when the scan was started",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time"
               },
               "warnings": {
                 "description": "If there are warnings on the scan, this will be filled up with warning messages.",

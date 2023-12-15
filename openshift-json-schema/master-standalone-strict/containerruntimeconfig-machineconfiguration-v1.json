@@ -43,6 +43,14 @@
           "description": "ContainerRuntimeConfiguration defines the tuneables of the container runtime. It's important to note that, since the fields of the ContainerRuntimeConfiguration are directly read by the upstream kubernetes golang client, the validation of those values is handled directly by that golang client which is outside of the controller for ContainerRuntimeConfiguration. Please ensure the valid values are used for those fields as invalid values may render cluster nodes unusable.",
           "type": "object",
           "properties": {
+            "defaultRuntime": {
+              "description": "defaultRuntime is the name of the OCI runtime to be used as the default.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^$|^runc$"
+            },
             "logLevel": {
               "description": "logLevel specifies the verbosity of the logs based on the level it is set to. Options are fatal, panic, error, warn, info, and debug.",
               "type": [

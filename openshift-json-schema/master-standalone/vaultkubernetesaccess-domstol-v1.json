@@ -71,6 +71,12 @@
         "phase"
       ],
       "properties": {
+        "message": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "phase": {
           "type": "string"
         },

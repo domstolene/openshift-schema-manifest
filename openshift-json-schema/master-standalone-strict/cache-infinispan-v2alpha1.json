@@ -1,0 +1,230 @@
+{
+  "description": "Cache is the Schema for the caches API",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "infinispan.org/v2alpha1"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "Cache"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "description": "CacheSpec defines the desired state of Cache",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "clusterName"
+      ],
+      "properties": {
+        "adminAuth": {
+          "description": "Deprecated. This no longer has any effect. The operator's admin credentials are now used to perform cache operations",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "password": {
+              "description": "Secret and key containing the admin password for authentication.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "required": [
+                "key"
+              ],
+              "properties": {
+                "key": {
+                  "description": "The key of the secret to select from.  Must be a valid secret key.",
+                  "type": "string"
+                },
+                "name": {
+                  "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "optional": {
+                  "description": "Specify whether the Secret or its key must be defined",
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            },
+            "secretName": {
+              "description": "The secret that contains user credentials.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "username": {
+              "description": "Secret and key containing the admin username for authentication.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "required": [
+                "key"
+              ],
+              "properties": {
+                "key": {
+                  "description": "The key of the secret to select from.  Must be a valid secret key.",
+                  "type": "string"
+                },
+                "name": {
+                  "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "optional": {
+                  "description": "Specify whether the Secret or its key must be defined",
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "clusterName": {
+          "description": "Infinispan cluster name",
+          "type": "string"
+        },
+        "name": {
+          "description": "Name of the cache to be created. If empty ObjectMeta.Name will be used",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "template": {
+          "description": "Cache template in XML format",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "templateName": {
+          "description": "Name of the template to be used to create this cache",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "updates": {
+          "description": "How updates to Cache CR template should be reconciled on the Infinispan server",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "strategy": {
+              "description": "How updates to Cache CR template should be applied on the Infinispan server",
+              "type": [
+                "string",
+                "null"
+              ],
+              "enum": [
+                "recreate",
+                "retain"
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "status": {
+      "description": "CacheStatus defines the observed state of Cache",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "conditions": {
+          "description": "Conditions list for this cache",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "CacheCondition define a condition of the cluster",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "status",
+              "type"
+            ],
+            "properties": {
+              "message": {
+                "description": "Human-readable message indicating details about last transition.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "status": {
+                "description": "Status is the status of the condition.",
+                "type": "string"
+              },
+              "type": {
+                "description": "Type is the type of the condition.",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "serviceName": {
+          "description": "Deprecated. This is no longer set. Service name that exposes the cache inside the cluster",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "infinispan.org",
+      "kind": "Cache",
+      "version": "v2alpha1"
+    }
+  ],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

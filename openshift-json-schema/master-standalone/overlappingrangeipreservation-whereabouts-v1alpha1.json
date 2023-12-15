@@ -41,6 +41,12 @@
       "properties": {
         "containerid": {
           "type": "string"
+        },
+        "podref": {
+          "type": [
+            "string",
+            "null"
+          ]
         }
       }
     }

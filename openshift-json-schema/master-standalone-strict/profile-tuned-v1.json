@@ -42,14 +42,38 @@
           ],
           "properties": {
             "debug": {
-              "description": "option to debug Tuned daemon execution",
+              "description": "option to debug TuneD daemon execution",
               "type": [
                 "boolean",
                 "null"
               ]
             },
+            "providerName": {
+              "description": "Name of the cloud provider as taken from the Node providerID: <ProviderName>://<ProviderSpecificNodeID>",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "tunedConfig": {
+              "description": "Global configuration for the TuneD daemon as defined in tuned-main.conf",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "reapply_sysctl": {
+                  "description": "turn reapply_sysctl functionality on/off for the TuneD daemon: true/false",
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            },
             "tunedProfile": {
-              "description": "Tuned profile to apply",
+              "description": "TuneD profile to apply",
               "type": "string"
             }
           },
@@ -69,7 +93,7 @@
       ],
       "properties": {
         "bootcmdline": {
-          "description": "kernel parameters calculated by tuned for the active Tuned profile",
+          "description": "kernel parameters calculated by tuned for the active Tuned profile; this field is OBSOLETE and will be removed, see OCPBUGS-19351",
           "type": [
             "string",
             "null"
@@ -123,13 +147,6 @@
             },
             "additionalProperties": false
           }
-        },
-        "stalld": {
-          "description": "deploy stall daemon: https://git.kernel.org/pub/scm/utils/stalld/stalld.git",
-          "type": [
-            "boolean",
-            "null"
-          ]
         },
         "tunedProfile": {
           "description": "the current profile in use by the Tuned daemon",

@@ -27,7 +27,7 @@
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     },
     "spec": {
-      "description": "ClusterLogForwarderSpec defines the desired state of ClusterLogForwarder",
+      "description": "Specification of the desired behavior of ClusterLogForwarder",
       "type": [
         "object",
         "null"
@@ -50,14 +50,14 @@
             ],
             "properties": {
               "application": {
-                "description": "Application, if present, enables `application` logs.",
+                "description": "Application, if present, enables named set of `application` logs that can specify a set of match criteria",
                 "type": [
                   "object",
                   "null"
                 ],
                 "properties": {
                   "namespaces": {
-                    "description": "Namespaces is a list of namespaces from which to collect application logs. If the list is empty, logs are collected from all namespaces.",
+                    "description": "Namespaces from which to collect application logs. Only messages from these namespaces are collected. If absent or empty, logs are collected from all namespaces.",
                     "type": [
                       "array",
                       "null"
@@ -70,53 +70,12 @@
                     }
                   },
                   "selector": {
-                    "description": "Selector selects logs from all pods with matching labels. For testing purpose, MatchLabels is only supported.",
+                    "description": "Selector for logs from pods with matching labels. Only messages from pods with these labels are collected. If absent or empty, logs are collected regardless of labels.",
                     "type": [
                       "object",
                       "null"
                     ],
                     "properties": {
-                      "matchExpressions": {
-                        "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed.",
-                        "type": [
-                          "array",
-                          "null"
-                        ],
-                        "items": {
-                          "description": "A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.",
-                          "type": [
-                            "object",
-                            "null"
-                          ],
-                          "required": [
-                            "key",
-                            "operator"
-                          ],
-                          "properties": {
-                            "key": {
-                              "description": "key is the label key that the selector applies to.",
-                              "type": "string"
-                            },
-                            "operator": {
-                              "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.",
-                              "type": "string"
-                            },
-                            "values": {
-                              "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.",
-                              "type": [
-                                "array",
-                                "null"
-                              ],
-                              "items": {
-                                "type": [
-                                  "string",
-                                  "null"
-                                ]
-                              }
-                            }
-                          }
-                        }
-                      },
                       "matchLabels": {
                         "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
                         "type": [
@@ -156,7 +115,7 @@
           }
         },
         "outputDefaults": {
-          "description": "OutputDefaults are used to specify default values for OutputSpec",
+          "description": "DEPRECATED OutputDefaults specify forwarder config explicitly for the default managed log store named 'default'.  If there is a need to spec the managed logstore, define an outputSpec like the following where the managed fields (e.g. URL, Secret.Name) will be replaced with the required values: spec: - outputs: - name: default type: elasticsearch elasticsearch: structuredTypeKey: kubernetes.labels.myvalue",
           "type": [
             "object",
             "null"
@@ -169,6 +128,13 @@
                 "null"
               ],
               "properties": {
+                "enableStructuredContainerLogs": {
+                  "description": "EnableStructuredContainerLogs enables multi-container structured logs to allow forwarding logs from containers within a pod to separate indices.  Annotating the pod with key 'containerType.logging.openshift.io/<container-name>' and value '<structure-type-name>' will forward those container logs to an alternate index from that defined by the other 'structured' keys here",
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
                 "structuredTypeKey": {
                   "description": "StructuredTypeKey specifies the metadata key to be used as name of elasticsearch index It takes precedence over StructuredTypeName",
                   "type": [
@@ -205,7 +171,7 @@
             ],
             "properties": {
               "cloudwatch": {
-                "description": "Cloudwatch provides configuration for the output type `cloudwatch` \n Note: the cloudwatch output recognizes the following additional keys in the Secret: \n \t`aws_secret_access_key`: AWS secret access key. \t`aws_access_key_id`:AWS secret access key ID.",
+                "description": "Cloudwatch provides configuration for the output type `cloudwatch` \n Note: the cloudwatch output recognizes the following keys in the Secret: \n `aws_secret_access_key`: AWS secret access key. `aws_access_key_id`: AWS secret access key ID. \n Or for sts-enabled clusters `credentials` or `role_arn` key specifying a properly formatted role arn",
                 "type": [
                   "object",
                   "null"
@@ -224,7 +190,7 @@
                     ]
                   },
                   "groupPrefix": {
-                    "description": "GroupPrefix Add this prefix to all group names.  Useful to avoid group name clashes if an AWS account is used for multiple clusters and  used verbatim (e.g. \"\" means no prefix)  The default prefix is cluster-name/log-type",
+                    "description": "GroupPrefix Add this prefix to all group names. Useful to avoid group name clashes if an AWS account is used for multiple clusters and used verbatim (e.g. \"\" means no prefix) The default prefix is cluster-name/log-type",
                     "type": [
                       "string",
                       "null"
@@ -244,6 +210,13 @@
                   "null"
                 ],
                 "properties": {
+                  "enableStructuredContainerLogs": {
+                    "description": "EnableStructuredContainerLogs enables multi-container structured logs to allow forwarding logs from containers within a pod to separate indices.  Annotating the pod with key 'containerType.logging.openshift.io/<container-name>' and value '<structure-type-name>' will forward those container logs to an alternate index from that defined by the other 'structured' keys here",
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  },
                   "structuredTypeKey": {
                     "description": "StructuredTypeKey specifies the metadata key to be used as name of elasticsearch index It takes precedence over StructuredTypeName",
                     "type": [
@@ -257,15 +230,109 @@
                       "string",
                       "null"
                     ]
+                  },
+                  "version": {
+                    "description": "Version specifies the version of Elasticsearch to be used. Must be one of: - 6 - Default for internal ES store - 7 - 8 - Latest for external ES store",
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 6
                   }
                 }
               },
               "fluentdForward": {
-                "description": "FluentdForward does not provide additional fields, but note that the fluentforward output allows this additional keys in the Secret: \n   `shared_key`: (string) Key to enable fluent-forward shared-key authentication.",
+                "description": "FluentdForward does not provide additional fields, but note that the fluentforward output allows this additional keys in the Secret: \n `shared_key`: (string) Key to enable fluent-forward shared-key authentication.",
                 "type": [
                   "object",
                   "null"
                 ]
+              },
+              "googleCloudLogging": {
+                "description": "GoogleCloudLogging provides configuration for sending logs to Google Cloud Logging",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "billingAccountId": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "folderId": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "logId": {
+                    "description": "LogID is the log ID to which to publish logs. This identifies log stream.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "organizationId": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "projectId": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              },
+              "http": {
+                "description": "Http provided configuration for sending json encoded logs to a generic http endpoint.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "headers": {
+                    "description": "Headers specify optional headers to be sent with the request",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "additionalProperties": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "method": {
+                    "description": "Method specifies the Http method to be used for sending logs. If not set, 'POST' is used.",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "enum": [
+                      "GET",
+                      "HEAD",
+                      "POST",
+                      "PUT",
+                      "DELETE",
+                      "OPTIONS",
+                      "TRACE",
+                      "PATCH"
+                    ]
+                  },
+                  "timeout": {
+                    "description": "Timeout specifies the Http request timeout in seconds. If not set, 10secs is used.",
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  }
+                }
               },
               "kafka": {
                 "description": "Kafka provides optional extra properties for `type: kafka`",
@@ -275,7 +342,7 @@
                 ],
                 "properties": {
                   "brokers": {
-                    "description": "Brokers specifies the list of brokers to register in addition to the main output URL on initial connect to enhance reliability.",
+                    "description": "Brokers specifies the list of broker endpoints of a Kafka cluster. The list represents only the initial set used by the collector's Kafka client for the first connection only. The collector's Kafka client fetches constantly an updated list from Kafka. These updates are not reconciled back to the collector configuration. If none provided the target URL from the OutputSpec is used as fallback.",
                     "type": [
                       "array",
                       "null"
@@ -304,7 +371,7 @@
                 ],
                 "properties": {
                   "labelKeys": {
-                    "description": "LabelKeys is a list of meta-data field keys to replace the default Loki labels. \n Loki label names must match the regular expression \"[a-zA-Z_:][a-zA-Z0-9_:]*\". Illegal characters in meta-data keys are replaced with \"_\" to form the label name. For example meta-data key \"kubernetes.labels.foo\" becomes Loki label \"kubernetes_labels_foo\". \n If LabelKeys is not set, the default keys are `[log_type, kubernetes.namespace_name, kubernetes.pod_name, kubernetes_host]` These keys are translated to Loki labels by replacing '.' with '_' as: `log_type`, `kubernetes_namespace_name`, `kubernetes_pod_name`, `kubernetes_host` Note that not all logs will include all of these keys: audit logs and infrastructure journal logs do not have namespace or pod name. \n Note: the set of labels should be small, Loki imposes limits on the size and number of labels allowed. See https://grafana.com/docs/loki/latest/configuration/#limits_config for more. You can still query based on any log record field using query filters.",
+                    "description": "LabelKeys is a list of log record keys that will be used as Loki labels with the corresponding log record value. \n If LabelKeys is not set, the default keys are `[log_type, kubernetes.namespace_name, kubernetes.pod_name, kubernetes_host]` \n Note: Loki label names must match the regular expression \"[a-zA-Z_:][a-zA-Z0-9_:]*\" Log record keys may contain characters like \".\" and \"/\" that are not allowed in Loki labels. Log record keys are translated to Loki labels by replacing any illegal characters with '_'. For example the default log record keys translate to these Loki labels: `log_type`, `kubernetes_namespace_name`, `kubernetes_pod_name`, `kubernetes_host` \n Note: the set of labels should be small, Loki imposes limits on the size and number of labels allowed. See https://grafana.com/docs/loki/latest/configuration/#limits_config for more. Loki queries can also query based on any log record field (not just labels) using query filters.",
                     "type": [
                       "array",
                       "null"
@@ -330,7 +397,7 @@
                 "type": "string"
               },
               "secret": {
-                "description": "Secret for authentication. Name of a secret in the same namespace as the cluster logging operator. \n All sensitive authentication information is provided via a kubernetes Secret object. A Secret is a key:value map, common keys are described here. Some output types support additional specialized keys, documented with the output-specific configuration field. All secret keys are optional, enable the security features you want by setting the relevant keys. \n Transport Layer Security (TLS) \n Using a TLS URL ('https://...' or 'tls://...') without any secret enables basic TLS: client authenticates server using system default certificate authority. \n Additional TLS features are enabled by including a Secret and setting the following optional fields: \n   `tls.crt`: (string) File name containing a client certificate.     Enables mutual authentication. Requires `tls.key`.   `tls.key`: (string) File name containing the private key to unlock the client certificate.     Requires `tls.crt`   `passphrase`: (string) Passphrase to decode an encoded TLS private key.     Requires tls.key.   `ca-bundle.crt`: (string) File name of a custom CA for server authentication. \n   `tls.insecure`: If this key is present (with any value) accept server certificates that are self-signed or have an incorrect hostname.     This is INSECURE, the connection is susceptible to man-in-the-middle attacks.     This is ONLY for development and testing when valid certificates are not available. \n Username and Password \n   `username`: (string) Authentication user name. Requires `password`.   `password`: (string) Authentication password. Requires `username`. \n Simple Authentication Security Layer (SASL) \n   `sasl.enable`: (boolean) Explicitly enable or disable SASL.     If missing, SASL is automatically enabled when any of the other `sasl.` keys are set.   `sasl.mechanisms`: (array) List of allowed SASL mechanism names.     If missing or empty, the system defaults are used.   `sasl.allow-insecure`: (boolean) Allow mechanisms that send clear-text passwords.     Default false.",
+                "description": "Secret for authentication. \n Names a secret in the same namespace as the ClusterLogForwarder. Sensitive authentication information is stored in a separate Secret object. A Secret is like a ConfigMap, where the keys are strings and the values are base64-encoded binary data, for example TLS certificates. \n Common keys are described here. Some output types support additional keys, documented with the output-specific configuration field. All secret keys are optional, enable the security features you want by setting the relevant keys. \n Transport Layer Security (TLS) \n Using a TLS URL (`https://...` or `tls://...`) without any secret enables basic TLS: client authenticates server using system default certificate authority. \n Additional TLS features are enabled by referencing a Secret with the following optional fields in its spec.data. All data fields are base64 encoded. \n * `tls.crt`: A client certificate, for mutual authentication. Requires `tls.key`. * `tls.key`: Private key to unlock the client certificate. Requires `tls.crt` * `passphrase`: Passphrase to decode an encoded TLS private key. Requires tls.key. * `ca-bundle.crt`: Custom CA to validate certificates. \n Username and Password \n * `username`: Authentication user name. Requires `password`. * `password`: Authentication password. Requires `username`. \n Simple Authentication Security Layer (SASL) \n * `sasl.enable`: (boolean) Explicitly enable or disable SASL. If missing, SASL is automatically enabled if any `sasl.*` keys are set. * `sasl.mechanisms`: (array of string) List of allowed SASL mechanism names. If missing or empty, the system defaults are used. * `sasl.allow-insecure`: (boolean) Allow mechanisms that send clear-text passwords. Default false.",
                 "type": [
                   "object",
                   "null"
@@ -342,6 +409,28 @@
                   "name": {
                     "description": "Name of a secret in the namespace configured for log forwarder secrets.",
                     "type": "string"
+                  }
+                }
+              },
+              "splunk": {
+                "description": "Splunk Deliver log data to Splunk\u2019s HTTP Event Collector Provides optional extra properties for `type: splunk_hec` ('splunk_hec_logs' after Vector 0.23",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "fields": {
+                    "description": "Fields to be added to Splunk index. https://docs.splunk.com/Documentation/Splunk/8.0.0/Data/IFXandHEC Should be a valid JSON object",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
                   }
                 }
               },
@@ -367,7 +456,7 @@
                     ]
                   },
                   "facility": {
-                    "description": "Facility to set on outgoing syslog records. \n Facility values are defined in https://tools.ietf.org/html/rfc5424#section-6.2.1. The value can be a decimal integer. Facility keywords are not standardized, this API recognizes at least the following case-insensitive keywords (defined by https://en.wikipedia.org/wiki/Syslog#Facility_Levels): \n     kernel user mail daemon auth syslog lpr news     uucp cron authpriv ftp ntp security console solaris-cron     local0 local1 local2 local3 local4 local5 local6 local7",
+                    "description": "Facility to set on outgoing syslog records. \n Facility values are defined in https://tools.ietf.org/html/rfc5424#section-6.2.1. The value can be a decimal integer. Facility keywords are not standardized, this API recognizes at least the following case-insensitive keywords (defined by https://en.wikipedia.org/wiki/Syslog#Facility_Levels): \n kernel user mail daemon auth syslog lpr news uucp cron authpriv ftp ntp security console solaris-cron local0 local1 local2 local3 local4 local5 local6 local7",
                     "type": [
                       "string",
                       "null"
@@ -395,7 +484,7 @@
                     ]
                   },
                   "rfc": {
-                    "description": "Rfc specifies the rfc to be used for sending syslog \n Rfc values can be one of:  - RFC3164 (https://tools.ietf.org/html/rfc3164)  - RFC5424 (https://tools.ietf.org/html/rfc5424) \n If unspecified, RFC5424 will be assumed.",
+                    "description": "Rfc specifies the rfc to be used for sending syslog \n Rfc values can be one of: - RFC3164 (https://tools.ietf.org/html/rfc3164) - RFC5424 (https://tools.ietf.org/html/rfc5424) \n If unspecified, RFC5424 will be assumed.",
                     "type": [
                       "string",
                       "null"
@@ -406,7 +495,7 @@
                     ]
                   },
                   "severity": {
-                    "description": "Severity to set on outgoing syslog records. \n Severity values are defined in https://tools.ietf.org/html/rfc5424#section-6.2.1 The value can be a decimal integer or one of these case-insensitive keywords: \n     Emergency Alert Critical Error Warning Notice Informational Debug",
+                    "description": "Severity to set on outgoing syslog records. \n Severity values are defined in https://tools.ietf.org/html/rfc5424#section-6.2.1 The value can be a decimal integer or one of these case-insensitive keywords: \n Emergency Alert Critical Error Warning Notice Informational Debug",
                     "type": [
                       "string",
                       "null"
@@ -428,6 +517,56 @@
                   }
                 }
               },
+              "tls": {
+                "description": "TLS contains settings for controlling options on TLS client connections.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "insecureSkipVerify": {
+                    "description": "If InsecureSkipVerify is true, then the TLS client will be configured to ignore errors with certificates. \n This option is *not* recommended for production configurations.",
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  },
+                  "securityProfile": {
+                    "description": "TLSSecurityProfile is the security profile to apply to the output connection",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "custom": {
+                        "description": "custom is a user-defined TLS security profile. Be extremely careful using a custom profile as invalid configurations can be catastrophic. An example custom profile looks like this: \n ciphers: - ECDHE-ECDSA-CHACHA20-POLY1305 - ECDHE-RSA-CHACHA20-POLY1305 - ECDHE-RSA-AES128-GCM-SHA256 - ECDHE-ECDSA-AES128-GCM-SHA256 minTLSVersion: TLSv1.1"
+                      },
+                      "intermediate": {
+                        "description": "intermediate is a TLS security profile based on: \n https://wiki.mozilla.org/Security/Server_Side_TLS#Intermediate_compatibility_.28recommended.29 \n and looks like this (yaml): \n ciphers: - TLS_AES_128_GCM_SHA256 - TLS_AES_256_GCM_SHA384 - TLS_CHACHA20_POLY1305_SHA256 - ECDHE-ECDSA-AES128-GCM-SHA256 - ECDHE-RSA-AES128-GCM-SHA256 - ECDHE-ECDSA-AES256-GCM-SHA384 - ECDHE-RSA-AES256-GCM-SHA384 - ECDHE-ECDSA-CHACHA20-POLY1305 - ECDHE-RSA-CHACHA20-POLY1305 - DHE-RSA-AES128-GCM-SHA256 - DHE-RSA-AES256-GCM-SHA384 minTLSVersion: TLSv1.2"
+                      },
+                      "modern": {
+                        "description": "modern is a TLS security profile based on: \n https://wiki.mozilla.org/Security/Server_Side_TLS#Modern_compatibility \n and looks like this (yaml): \n ciphers: - TLS_AES_128_GCM_SHA256 - TLS_AES_256_GCM_SHA384 - TLS_CHACHA20_POLY1305_SHA256 minTLSVersion: TLSv1.3 \n NOTE: Currently unsupported."
+                      },
+                      "old": {
+                        "description": "old is a TLS security profile based on: \n https://wiki.mozilla.org/Security/Server_Side_TLS#Old_backward_compatibility \n and looks like this (yaml): \n ciphers: - TLS_AES_128_GCM_SHA256 - TLS_AES_256_GCM_SHA384 - TLS_CHACHA20_POLY1305_SHA256 - ECDHE-ECDSA-AES128-GCM-SHA256 - ECDHE-RSA-AES128-GCM-SHA256 - ECDHE-ECDSA-AES256-GCM-SHA384 - ECDHE-RSA-AES256-GCM-SHA384 - ECDHE-ECDSA-CHACHA20-POLY1305 - ECDHE-RSA-CHACHA20-POLY1305 - DHE-RSA-AES128-GCM-SHA256 - DHE-RSA-AES256-GCM-SHA384 - DHE-RSA-CHACHA20-POLY1305 - ECDHE-ECDSA-AES128-SHA256 - ECDHE-RSA-AES128-SHA256 - ECDHE-ECDSA-AES128-SHA - ECDHE-RSA-AES128-SHA - ECDHE-ECDSA-AES256-SHA384 - ECDHE-RSA-AES256-SHA384 - ECDHE-ECDSA-AES256-SHA - ECDHE-RSA-AES256-SHA - DHE-RSA-AES128-SHA256 - DHE-RSA-AES256-SHA256 - AES128-GCM-SHA256 - AES256-GCM-SHA384 - AES128-SHA256 - AES256-SHA256 - AES128-SHA - AES256-SHA - DES-CBC3-SHA minTLSVersion: TLSv1.0"
+                      },
+                      "type": {
+                        "description": "type is one of Old, Intermediate, Modern or Custom. Custom provides the ability to specify individual TLS security profile parameters. Old, Intermediate and Modern are TLS security profiles based on: \n https://wiki.mozilla.org/Security/Server_Side_TLS#Recommended_configurations \n The profiles are intent based, so they may change over time as new ciphers are developed and existing ciphers are found to be insecure.  Depending on precisely which ciphers are available to a process, the list may be reduced. \n Note that the Modern profile is currently not supported because it is not yet well adopted by common software libraries.",
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "enum": [
+                          "Old",
+                          "Intermediate",
+                          "Modern",
+                          "Custom"
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
               "type": {
                 "description": "Type of output plugin.",
                 "type": "string",
@@ -437,11 +576,14 @@
                   "elasticsearch",
                   "kafka",
                   "cloudwatch",
-                  "loki"
+                  "loki",
+                  "googleCloudLogging",
+                  "splunk",
+                  "http"
                 ]
               },
               "url": {
-                "description": "URL to send log records to. \n An absolute URL, with a scheme. Valid schemes depend on `type`. Special schemes `tcp`, `tls`, `udp` and `udps` are used for types that have no scheme of their own. For example, to send syslog records using secure UDP: \n     { type: syslog, url: udps://syslog.example.com:1234 } \n Basic TLS is enabled if the URL scheme requires it (for example 'https' or 'tls'). The 'username@password' part of `url` is ignored. Any additional authentication material is in the `secret`. See the `secret` field for more details.",
+                "description": "URL to send log records to. \n An absolute URL, with a scheme. Valid schemes depend on `type`. Special schemes `tcp`, `tls`, `udp` and `udps` are used for types that have no scheme of their own. For example, to send syslog records using secure UDP: \n { type: syslog, url: udps://syslog.example.com:1234 } \n Basic TLS is enabled if the URL scheme requires it (for example 'https' or 'tls'). The 'username@password' part of `url` is ignored. Any additional authentication material is in the `secret`. See the `secret` field for more details.",
                 "type": [
                   "string",
                   "null"
@@ -458,6 +600,7 @@
             "null"
           ],
           "items": {
+            "description": "PipelinesSpec link a set of inputs to a set of outputs.",
             "type": [
               "object",
               "null"
@@ -485,7 +628,7 @@
                 }
               },
               "labels": {
-                "description": "Labels lists labels applied to this pipeline",
+                "description": "Labels applied to log records passing through this pipeline. These labels appear in the `openshift.labels` map in the log record.",
                 "type": [
                   "object",
                   "null"
@@ -530,7 +673,7 @@
       }
     },
     "status": {
-      "description": "ClusterLogForwarderStatus defines the observed state of ClusterLogForwarder",
+      "description": "Status of the ClusterLogForwarder",
       "type": [
         "object",
         "null"

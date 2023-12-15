@@ -49,6 +49,12 @@
       "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.AlertmanagerConfigList"
     },
     {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.AlertmanagerConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.AlertmanagerConfigList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/com.coreos.operators.v1.OLMConfig"
     },
     {
@@ -107,6 +113,18 @@
     },
     {
       "$ref": "_definitions.json#/definitions/com.coreos.operators.v2.OperatorConditionList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.crunchydata.postgres-operator.v1beta1.PGAdmin"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.crunchydata.postgres-operator.v1beta1.PGAdminList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.crunchydata.postgres-operator.v1beta1.PGUpgrade"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.crunchydata.postgres-operator.v1beta1.PGUpgradeList"
     },
     {
       "$ref": "_definitions.json#/definitions/com.crunchydata.postgres-operator.v1beta1.PostgresCluster"
@@ -419,6 +437,9 @@
     },
     {
       "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.ImageLookupPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.ImageManifest"
     },
     {
       "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.ImageSignature"
@@ -748,6 +769,12 @@
       "$ref": "_definitions.json#/definitions/com.github.operator-framework.operator-lifecycle-manager.pkg.package-server.apis.operators.v1.PackageManifestStatus"
     },
     {
+      "$ref": "_definitions.json#/definitions/com.stakater.forecastle.v1alpha1.ForecastleApp"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.stakater.forecastle.v1alpha1.ForecastleAppList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/dev.summerwind.actions.v1alpha1.HorizontalRunnerAutoscaler"
     },
     {
@@ -883,12 +910,6 @@
       "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ArgoCD"
     },
     {
-      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ArgoCDExport"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ArgoCDExportList"
-    },
-    {
       "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ArgoCDList"
     },
     {
@@ -938,12 +959,6 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.PasswordList"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.external-secrets.operator.v1alpha1.OperatorConfig"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.external-secrets.operator.v1alpha1.OperatorConfigList"
     },
     {
       "$ref": "_definitions.json#/definitions/io.external-secrets.v1alpha1.ClusterSecretStore"
@@ -1000,6 +1015,12 @@
       "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.helm.v2beta1.HelmReleaseList"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.kustomize.v1.Kustomization"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.kustomize.v1.KustomizationList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.kustomize.v1beta1.Kustomization"
     },
     {
@@ -1010,6 +1031,12 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.kustomize.v1beta2.KustomizationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1.Receiver"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1.ReceiverList"
     },
     {
       "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta1.Alert"
@@ -1028,6 +1055,30 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta1.ReceiverList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta2.Alert"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta2.AlertList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta2.Provider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta2.ProviderList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta2.Receiver"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta2.ReceiverList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1.GitRepository"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1.GitRepositoryList"
     },
     {
       "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta1.Bucket"
@@ -1082,12 +1133,6 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta2.OCIRepositoryList"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.jaegertracing.v1.Jaeger"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.jaegertracing.v1.JaegerList"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.admissionregistration.v1.MutatingWebhook"
@@ -1363,60 +1408,6 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2.ResourceMetricStatus"
     },
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2beta1.ContainerResourceMetricSource"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2beta1.ContainerResourceMetricStatus"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2beta1.CrossVersionObjectReference"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2beta1.ExternalMetricSource"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2beta1.ExternalMetricStatus"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2beta1.HorizontalPodAutoscaler"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2beta1.HorizontalPodAutoscalerCondition"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2beta1.HorizontalPodAutoscalerList"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2beta1.HorizontalPodAutoscalerSpec"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2beta1.HorizontalPodAutoscalerStatus"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2beta1.MetricSpec"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2beta1.MetricStatus"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2beta1.ObjectMetricSource"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2beta1.ObjectMetricStatus"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2beta1.PodsMetricSource"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2beta1.PodsMetricStatus"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2beta1.ResourceMetricSource"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2beta1.ResourceMetricStatus"
-    },
-    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2beta2.ContainerResourceMetricSource"
     },
     {
@@ -1519,22 +1510,19 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.batch.v1.JobTemplateSpec"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.batch.v1.PodFailurePolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.batch.v1.PodFailurePolicyOnExitCodesRequirement"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.batch.v1.PodFailurePolicyOnPodConditionsPattern"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.batch.v1.PodFailurePolicyRule"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.batch.v1.UncountedTerminatedPods"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.batch.v1beta1.CronJob"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.batch.v1beta1.CronJobList"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.batch.v1beta1.CronJobSpec"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.batch.v1beta1.CronJobStatus"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.batch.v1beta1.JobTemplateSpec"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.certificates.v1.CertificateSigningRequest"
@@ -1645,9 +1633,6 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ContainerPort"
     },
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ContainerPort_v2"
-    },
-    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ContainerState"
     },
     {
@@ -1661,9 +1646,6 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ContainerStatus"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Container_v2"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.DaemonEndpoint"
@@ -1706,9 +1688,6 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EphemeralContainer"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EphemeralContainer_v2"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EphemeralVolumeSource"
@@ -1759,10 +1738,10 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.HTTPGetAction"
     },
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.HTTPGetAction_v2"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.HTTPHeader"
     },
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.HTTPHeader"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.HTTPHeader_v2"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.HostAlias"
@@ -1858,9 +1837,6 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeSelectorRequirement"
     },
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeSelectorRequirement_v2"
-    },
-    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeSelectorTerm"
     },
     {
@@ -1954,9 +1930,6 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodSpec"
     },
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodSpec_v2"
-    },
-    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodStatus"
     },
     {
@@ -2041,13 +2014,7 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ScopedResourceSelectorRequirement"
     },
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ScopedResourceSelectorRequirement_v2"
-    },
-    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SeccompProfile"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SeccompProfile_v2"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Secret"
@@ -2119,9 +2086,6 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Toleration"
     },
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Toleration_v2"
-    },
-    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.TopologySelectorLabelRequirement"
     },
     {
@@ -2129,9 +2093,6 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.TopologySpreadConstraint"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.TopologySpreadConstraint_v2"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.TypedLocalObjectReference"
@@ -2182,27 +2143,6 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.discovery.v1.ForZone"
     },
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.discovery.v1beta1.Endpoint"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.discovery.v1beta1.EndpointConditions"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.discovery.v1beta1.EndpointHints"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.discovery.v1beta1.EndpointPort"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.discovery.v1beta1.EndpointSlice"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.discovery.v1beta1.EndpointSliceList"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.discovery.v1beta1.ForZone"
-    },
-    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.events.v1.Event"
     },
     {
@@ -2210,15 +2150,6 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.events.v1.EventSeries"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.events.v1beta1.Event"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.events.v1beta1.EventList"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.events.v1beta1.EventSeries"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.Scale"
@@ -2428,6 +2359,9 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.networking.v1.NetworkPolicySpec"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.networking.v1.NetworkPolicyStatus"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.networking.v1.ServiceBackendPort"
     },
     {
@@ -2443,18 +2377,6 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.node.v1.Scheduling"
     },
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.node.v1beta1.Overhead"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.node.v1beta1.RuntimeClass"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.node.v1beta1.RuntimeClassList"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.node.v1beta1.Scheduling"
-    },
-    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.policy.v1.Eviction"
     },
     {
@@ -2468,60 +2390,6 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.policy.v1.PodDisruptionBudgetStatus"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.policy.v1beta1.AllowedCSIDriver"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.policy.v1beta1.AllowedFlexVolume"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.policy.v1beta1.AllowedHostPath"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.policy.v1beta1.FSGroupStrategyOptions"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.policy.v1beta1.HostPortRange"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.policy.v1beta1.IDRange"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.policy.v1beta1.PodDisruptionBudget"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.policy.v1beta1.PodDisruptionBudgetList"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.policy.v1beta1.PodDisruptionBudgetSpec"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.policy.v1beta1.PodDisruptionBudgetStatus"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.policy.v1beta1.PodSecurityPolicy"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.policy.v1beta1.PodSecurityPolicyList"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.policy.v1beta1.PodSecurityPolicySpec"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.policy.v1beta1.RunAsGroupStrategyOptions"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.policy.v1beta1.RunAsUserStrategyOptions"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.policy.v1beta1.RuntimeClassStrategyOptions"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.policy.v1beta1.SELinuxStrategyOptions"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.policy.v1beta1.SupplementalGroupsStrategyOptions"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.rbac.v1.AggregationRule"
@@ -2585,6 +2453,12 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.storage.v1.CSINodeSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.storage.v1.CSIStorageCapacity"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.storage.v1.CSIStorageCapacityList"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.storage.v1.StorageClass"
@@ -2695,6 +2569,9 @@
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity_v2"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.APIGroup"
     },
     {
@@ -2746,6 +2623,9 @@
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta_v2"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference"
     },
     {
@@ -2774,6 +2654,9 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension_v2"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
@@ -2845,24 +2728,6 @@
       "$ref": "_definitions.json#/definitions/io.k8s.storage.snapshot.v1.VolumeSnapshotList"
     },
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.storage.snapshot.v1beta1.VolumeSnapshot"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.storage.snapshot.v1beta1.VolumeSnapshotClass"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.storage.snapshot.v1beta1.VolumeSnapshotClassList"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.storage.snapshot.v1beta1.VolumeSnapshotContent"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.storage.snapshot.v1beta1.VolumeSnapshotContentList"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.storage.snapshot.v1beta1.VolumeSnapshotList"
-    },
-    {
       "$ref": "_definitions.json#/definitions/io.metal3.v1alpha1.BMCEventSubscription"
     },
     {
@@ -2879,6 +2744,12 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.metal3.v1alpha1.FirmwareSchemaList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.metal3.v1alpha1.HardwareData"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.metal3.v1alpha1.HardwareDataList"
     },
     {
       "$ref": "_definitions.json#/definitions/io.metal3.v1alpha1.HostFirmwareSettings"
@@ -3073,6 +2944,12 @@
       "$ref": "_definitions.json#/definitions/io.openshift.config.v1.NetworkList"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.openshift.config.v1.Node"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.config.v1.NodeList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.openshift.config.v1.OAuth"
     },
     {
@@ -3125,6 +3002,12 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.openshift.console.v1.ConsoleNotificationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.console.v1.ConsolePlugin"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.console.v1.ConsolePluginList"
     },
     {
       "$ref": "_definitions.json#/definitions/io.openshift.console.v1.ConsoleQuickStart"
@@ -3185,6 +3068,12 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.openshift.logging.v1.KibanaList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.machine.v1.ControlPlaneMachineSet"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.machine.v1.ControlPlaneMachineSetList"
     },
     {
       "$ref": "_definitions.json#/definitions/io.openshift.machine.v1beta1.Machine"
@@ -3331,6 +3220,12 @@
       "$ref": "_definitions.json#/definitions/io.openshift.operator.v1.IngressControllerList"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.openshift.operator.v1.InsightsOperator"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.operator.v1.InsightsOperatorList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.openshift.operator.v1.KubeAPIServer"
     },
     {
@@ -3389,6 +3284,24 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.openshift.operator.v1alpha1.ImageContentSourcePolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.performance.v1.PerformanceProfile"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.performance.v1.PerformanceProfileList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.performance.v1alpha1.PerformanceProfile"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.performance.v1alpha1.PerformanceProfileList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.performance.v2.PerformanceProfile"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.performance.v2.PerformanceProfileList"
     },
     {
       "$ref": "_definitions.json#/definitions/io.openshift.pipelines.v1alpha1.GitopsService"
@@ -3535,6 +3448,18 @@
       "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaUserList"
     },
     {
+      "$ref": "_definitions.json#/definitions/no.domstol.kafka.v1.KafkaTopic"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/no.domstol.kafka.v1.KafkaTopicList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/no.domstol.kafka.v1.KafkaUser"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/no.domstol.kafka.v1.KafkaUserList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/no.domstol.v1.VaultAccess"
     },
     {
@@ -3551,6 +3476,66 @@
     },
     {
       "$ref": "_definitions.json#/definitions/no.domstol.v1.VaultLdapAccessList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.infinispan.v1.Infinispan"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.infinispan.v1.InfinispanList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.infinispan.v2alpha1.Backup"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.infinispan.v2alpha1.BackupList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.infinispan.v2alpha1.Batch"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.infinispan.v2alpha1.BatchList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.infinispan.v2alpha1.Cache"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.infinispan.v2alpha1.CacheList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.infinispan.v2alpha1.Restore"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.infinispan.v2alpha1.RestoreList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.v1alpha1.Grafana"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.v1alpha1.GrafanaDashboard"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.v1alpha1.GrafanaDashboardList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.v1alpha1.GrafanaDataSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.v1alpha1.GrafanaDataSourceList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.v1alpha1.GrafanaFolder"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.v1alpha1.GrafanaFolderList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.v1alpha1.GrafanaList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.v1alpha1.GrafanaNotificationChannel"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.v1alpha1.GrafanaNotificationChannelList"
     },
     {
       "$ref": "_definitions.json#/definitions/org.keycloak.v1alpha1.Keycloak"
@@ -3593,6 +3578,12 @@
     },
     {
       "$ref": "_definitions.json#/definitions/org.ovn.k8s.v1.EgressIPList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.ovn.k8s.v1.EgressQoS"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.ovn.k8s.v1.EgressQoSList"
     }
   ]
 }

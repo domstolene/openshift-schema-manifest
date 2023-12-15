@@ -1,9 +1,6 @@
 {
   "description": "Image is an immutable representation of a container image and metadata at a point in time. Images are named by taking a hash of their contents (metadata and content) and any change in format, content, or metadata results in a new name. The images resource is primarily for use by cluster administrators and integrations like the cluster image registry - end users instead access images via the imagestreamtags or imagestreamimages resources. While image metadata is stored in the API, any integration that implements the container image registry API must provide its own storage for the raw manifest data, image config, and layer contents.\n\nCompatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
   "type": "object",
-  "required": [
-    "dockerImageLayers"
-  ],
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -17,14 +14,14 @@
       ]
     },
     "dockerImageConfig": {
-      "description": "DockerImageConfig is a JSON blob that the runtime uses to set up the container. This is a part of manifest schema v2.",
+      "description": "DockerImageConfig is a JSON blob that the runtime uses to set up the container. This is a part of manifest schema v2. Will not be set when the image represents a manifest list.",
       "type": [
         "string",
         "null"
       ]
     },
     "dockerImageLayers": {
-      "description": "DockerImageLayers represents the layers in the image. May not be set if the image does not define that data.",
+      "description": "DockerImageLayers represents the layers in the image. May not be set if the image does not define that data or if the image represents a manifest list.",
       "type": [
         "array",
         "null"
@@ -46,6 +43,16 @@
         "string",
         "null"
       ]
+    },
+    "dockerImageManifests": {
+      "description": "DockerImageManifests holds information about sub-manifests when the image represents a manifest list. When this field is present, no DockerImageLayers should be specified.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.ImageManifest"
+      }
     },
     "dockerImageMetadata": {
       "description": "DockerImageMetadata contains metadata about this image",

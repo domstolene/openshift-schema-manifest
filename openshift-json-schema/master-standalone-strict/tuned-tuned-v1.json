@@ -158,13 +158,30 @@
                   "object",
                   "null"
                 ],
-                "required": [
-                  "debug"
-                ],
                 "properties": {
                   "debug": {
-                    "description": "turn debugging on/off for the Tuned daemon: true/false (default is false)",
-                    "type": "boolean"
+                    "description": "turn debugging on/off for the TuneD daemon: true/false (default is false)",
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  },
+                  "tunedConfig": {
+                    "description": "Global configuration for the TuneD daemon as defined in tuned-main.conf",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "reapply_sysctl": {
+                        "description": "turn reapply_sysctl functionality on/off for the TuneD daemon: true/false",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      }
+                    },
+                    "additionalProperties": false
                   }
                 },
                 "additionalProperties": false

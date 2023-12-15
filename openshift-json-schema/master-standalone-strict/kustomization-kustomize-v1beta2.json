@@ -38,6 +38,55 @@
         "sourceRef"
       ],
       "properties": {
+        "commonMetadata": {
+          "description": "CommonMetadata specifies the common labels and annotations that are applied to all resources. Any existing label or annotation will be overridden if its key matches a common one.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "annotations": {
+              "description": "Annotations to be added to the object's metadata.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "additionalProperties": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "labels": {
+              "description": "Labels to be added to the object's metadata.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "additionalProperties": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "components": {
+          "description": "Components specifies relative paths to specifications of other Components.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
         "decryption": {
           "description": "Decrypt Kubernetes secrets before applying them on the cluster.",
           "type": [
@@ -252,13 +301,13 @@
               "object",
               "null"
             ],
+            "required": [
+              "patch"
+            ],
             "properties": {
               "patch": {
                 "description": "Patch contains an inline StrategicMerge patch or an inline JSON6902 patch with an array of operation objects.",
-                "type": [
-                  "string",
-                  "null"
-                ]
+                "type": "string"
               },
               "target": {
                 "description": "Target points to the resources that the patch document should be applied to.",
@@ -741,7 +790,7 @@
           "additionalProperties": false
         },
         "lastAppliedRevision": {
-          "description": "The last successfully applied revision. The revision format for Git sources is <branch|tag>/<commit-sha>.",
+          "description": "The last successfully applied revision. Equals the Revision of the applied Artifact from the referenced Source.",
           "type": [
             "string",
             "null"

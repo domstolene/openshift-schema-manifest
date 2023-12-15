@@ -103,7 +103,7 @@
           ]
         },
         "secretRef": {
-          "description": "SecretRef specifies the Secret containing authentication credentials for the HelmRepository. For HTTP/S basic auth the secret must contain 'username' and 'password' fields. For TLS the secret must contain a 'certFile' and 'keyFile', and/or 'caCert' fields.",
+          "description": "SecretRef specifies the Secret containing authentication credentials for the HelmRepository. For HTTP/S basic auth the secret must contain 'username' and 'password' fields. For TLS the secret must contain a 'certFile' and 'keyFile', and/or 'caFile' fields.",
           "type": [
             "object",
             "null"
@@ -166,23 +166,23 @@
             "null"
           ],
           "required": [
+            "lastUpdateTime",
             "path",
+            "revision",
             "url"
           ],
           "properties": {
-            "checksum": {
-              "description": "Checksum is the SHA256 checksum of the Artifact file.",
-              "type": [
-                "string",
-                "null"
-              ]
-            },
-            "lastUpdateTime": {
-              "description": "LastUpdateTime is the timestamp corresponding to the last update of the Artifact.",
+            "digest": {
+              "description": "Digest is the digest of the file in the form of '<algorithm>:<checksum>'.",
               "type": [
                 "string",
                 "null"
               ],
+              "pattern": "^[a-z0-9]+(?:[.+_-][a-z0-9]+)*:[a-zA-Z0-9=_-]+$"
+            },
+            "lastUpdateTime": {
+              "description": "LastUpdateTime is the timestamp corresponding to the last update of the Artifact.",
+              "type": "string",
               "format": "date-time"
             },
             "metadata": {
@@ -204,10 +204,7 @@
             },
             "revision": {
               "description": "Revision is a human-readable identifier traceable in the origin source system. It can be a Git commit SHA, Git tag, a Helm chart version, etc.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": "string"
             },
             "size": {
               "description": "Size is the number of bytes in the file.",

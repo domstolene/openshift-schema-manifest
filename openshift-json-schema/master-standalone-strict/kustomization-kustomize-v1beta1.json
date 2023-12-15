@@ -244,13 +244,13 @@
               "object",
               "null"
             ],
+            "required": [
+              "patch"
+            ],
             "properties": {
               "patch": {
                 "description": "Patch contains an inline StrategicMerge patch or an inline JSON6902 patch with an array of operation objects.",
-                "type": [
-                  "string",
-                  "null"
-                ]
+                "type": "string"
               },
               "target": {
                 "description": "Target points to the resources that the patch document should be applied to.",
