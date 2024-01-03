@@ -313,33 +313,6 @@
                 "null"
               ],
               "properties": {
-                "claims": {
-                  "description": "Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container. \n This is an alpha field and requires enabling the DynamicResourceAllocation feature gate. \n This field is immutable. It can only be set for containers.",
-                  "type": [
-                    "array",
-                    "null"
-                  ],
-                  "items": {
-                    "description": "ResourceClaim references one entry in PodSpec.ResourceClaims.",
-                    "type": [
-                      "object",
-                      "null"
-                    ],
-                    "required": [
-                      "name"
-                    ],
-                    "properties": {
-                      "name": {
-                        "description": "Name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container.",
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "x-kubernetes-list-map-keys": [
-                    "name"
-                  ],
-                  "x-kubernetes-list-type": "map"
-                },
                 "limits": {
                   "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
                   "type": [
@@ -533,14 +506,14 @@
                     "format": "int32"
                   },
                   "nodeAffinityPolicy": {
-                    "description": "NodeAffinityPolicy indicates how we will treat Pod's nodeAffinity/nodeSelector when calculating pod topology spread skew. Options are: - Honor: only nodes matching nodeAffinity/nodeSelector are included in the calculations. - Ignore: nodeAffinity/nodeSelector are ignored. All nodes are included in the calculations. \n If this value is nil, the behavior is equivalent to the Honor policy. This is a beta-level feature default enabled by the NodeInclusionPolicyInPodTopologySpread feature flag.",
+                    "description": "NodeAffinityPolicy indicates how we will treat Pod's nodeAffinity/nodeSelector when calculating pod topology spread skew. Options are: - Honor: only nodes matching nodeAffinity/nodeSelector are included in the calculations. - Ignore: nodeAffinity/nodeSelector are ignored. All nodes are included in the calculations. \n If this value is nil, the behavior is equivalent to the Honor policy. This is a alpha-level feature enabled by the NodeInclusionPolicyInPodTopologySpread feature flag.",
                     "type": [
                       "string",
                       "null"
                     ]
                   },
                   "nodeTaintsPolicy": {
-                    "description": "NodeTaintsPolicy indicates how we will treat node taints when calculating pod topology spread skew. Options are: - Honor: nodes without taints, along with tainted nodes for which the incoming pod has a toleration, are included. - Ignore: node taints are ignored. All nodes are included. \n If this value is nil, the behavior is equivalent to the Ignore policy. This is a beta-level feature default enabled by the NodeInclusionPolicyInPodTopologySpread feature flag.",
+                    "description": "NodeTaintsPolicy indicates how we will treat node taints when calculating pod topology spread skew. Options are: - Honor: nodes without taints, along with tainted nodes for which the incoming pod has a toleration, are included. - Ignore: node taints are ignored. All nodes are included. \n If this value is nil, the behavior is equivalent to the Ignore policy. This is a alpha-level feature enabled by the NodeInclusionPolicyInPodTopologySpread feature flag.",
                     "type": [
                       "string",
                       "null"
@@ -821,33 +794,6 @@
                 "null"
               ],
               "properties": {
-                "claims": {
-                  "description": "Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container. \n This is an alpha field and requires enabling the DynamicResourceAllocation feature gate. \n This field is immutable. It can only be set for containers.",
-                  "type": [
-                    "array",
-                    "null"
-                  ],
-                  "items": {
-                    "description": "ResourceClaim references one entry in PodSpec.ResourceClaims.",
-                    "type": [
-                      "object",
-                      "null"
-                    ],
-                    "required": [
-                      "name"
-                    ],
-                    "properties": {
-                      "name": {
-                        "description": "Name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container.",
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "x-kubernetes-list-map-keys": [
-                    "name"
-                  ],
-                  "x-kubernetes-list-type": "map"
-                },
                 "limits": {
                   "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
                   "type": [
@@ -1034,14 +980,14 @@
                     "format": "int32"
                   },
                   "nodeAffinityPolicy": {
-                    "description": "NodeAffinityPolicy indicates how we will treat Pod's nodeAffinity/nodeSelector when calculating pod topology spread skew. Options are: - Honor: only nodes matching nodeAffinity/nodeSelector are included in the calculations. - Ignore: nodeAffinity/nodeSelector are ignored. All nodes are included in the calculations. \n If this value is nil, the behavior is equivalent to the Honor policy. This is a beta-level feature default enabled by the NodeInclusionPolicyInPodTopologySpread feature flag.",
+                    "description": "NodeAffinityPolicy indicates how we will treat Pod's nodeAffinity/nodeSelector when calculating pod topology spread skew. Options are: - Honor: only nodes matching nodeAffinity/nodeSelector are included in the calculations. - Ignore: nodeAffinity/nodeSelector are ignored. All nodes are included in the calculations. \n If this value is nil, the behavior is equivalent to the Honor policy. This is a alpha-level feature enabled by the NodeInclusionPolicyInPodTopologySpread feature flag.",
                     "type": [
                       "string",
                       "null"
                     ]
                   },
                   "nodeTaintsPolicy": {
-                    "description": "NodeTaintsPolicy indicates how we will treat node taints when calculating pod topology spread skew. Options are: - Honor: nodes without taints, along with tainted nodes for which the incoming pod has a toleration, are included. - Ignore: node taints are ignored. All nodes are included. \n If this value is nil, the behavior is equivalent to the Ignore policy. This is a beta-level feature default enabled by the NodeInclusionPolicyInPodTopologySpread feature flag.",
+                    "description": "NodeTaintsPolicy indicates how we will treat node taints when calculating pod topology spread skew. Options are: - Honor: nodes without taints, along with tainted nodes for which the incoming pod has a toleration, are included. - Ignore: node taints are ignored. All nodes are included. \n If this value is nil, the behavior is equivalent to the Ignore policy. This is a alpha-level feature enabled by the NodeInclusionPolicyInPodTopologySpread feature flag.",
                     "type": [
                       "string",
                       "null"
@@ -1417,33 +1363,6 @@
                 "null"
               ],
               "properties": {
-                "claims": {
-                  "description": "Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container. \n This is an alpha field and requires enabling the DynamicResourceAllocation feature gate. \n This field is immutable. It can only be set for containers.",
-                  "type": [
-                    "array",
-                    "null"
-                  ],
-                  "items": {
-                    "description": "ResourceClaim references one entry in PodSpec.ResourceClaims.",
-                    "type": [
-                      "object",
-                      "null"
-                    ],
-                    "required": [
-                      "name"
-                    ],
-                    "properties": {
-                      "name": {
-                        "description": "Name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container.",
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "x-kubernetes-list-map-keys": [
-                    "name"
-                  ],
-                  "x-kubernetes-list-type": "map"
-                },
                 "limits": {
                   "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
                   "type": [
@@ -1630,14 +1549,14 @@
                     "format": "int32"
                   },
                   "nodeAffinityPolicy": {
-                    "description": "NodeAffinityPolicy indicates how we will treat Pod's nodeAffinity/nodeSelector when calculating pod topology spread skew. Options are: - Honor: only nodes matching nodeAffinity/nodeSelector are included in the calculations. - Ignore: nodeAffinity/nodeSelector are ignored. All nodes are included in the calculations. \n If this value is nil, the behavior is equivalent to the Honor policy. This is a beta-level feature default enabled by the NodeInclusionPolicyInPodTopologySpread feature flag.",
+                    "description": "NodeAffinityPolicy indicates how we will treat Pod's nodeAffinity/nodeSelector when calculating pod topology spread skew. Options are: - Honor: only nodes matching nodeAffinity/nodeSelector are included in the calculations. - Ignore: nodeAffinity/nodeSelector are ignored. All nodes are included in the calculations. \n If this value is nil, the behavior is equivalent to the Honor policy. This is a alpha-level feature enabled by the NodeInclusionPolicyInPodTopologySpread feature flag.",
                     "type": [
                       "string",
                       "null"
                     ]
                   },
                   "nodeTaintsPolicy": {
-                    "description": "NodeTaintsPolicy indicates how we will treat node taints when calculating pod topology spread skew. Options are: - Honor: nodes without taints, along with tainted nodes for which the incoming pod has a toleration, are included. - Ignore: node taints are ignored. All nodes are included. \n If this value is nil, the behavior is equivalent to the Ignore policy. This is a beta-level feature default enabled by the NodeInclusionPolicyInPodTopologySpread feature flag.",
+                    "description": "NodeTaintsPolicy indicates how we will treat node taints when calculating pod topology spread skew. Options are: - Honor: nodes without taints, along with tainted nodes for which the incoming pod has a toleration, are included. - Ignore: node taints are ignored. All nodes are included. \n If this value is nil, the behavior is equivalent to the Ignore policy. This is a alpha-level feature enabled by the NodeInclusionPolicyInPodTopologySpread feature flag.",
                     "type": [
                       "string",
                       "null"
@@ -1692,53 +1611,23 @@
             "null"
           ],
           "properties": {
-            "connectionInfoStatus": {
-              "type": [
-                "object",
-                "null"
-              ],
-              "properties": {
-                "endpoints": {
-                  "type": [
-                    "string",
-                    "null"
-                  ]
-                },
-                "lastRequest": {
-                  "type": [
-                    "string",
-                    "null"
-                  ],
-                  "format": "date-time"
-                },
-                "tenantUUID": {
-                  "type": [
-                    "string",
-                    "null"
-                  ]
-                }
-              }
-            },
-            "imageID": {
+            "imageHash": {
+              "description": "ImageHash contains the last image hash seen.",
               "type": [
                 "string",
                 "null"
               ]
             },
-            "lastProbeTimestamp": {
+            "lastUpdateProbeTimestamp": {
+              "description": "LastUpdateProbeTimestamp defines the last timestamp when the querying for updates have been done",
               "type": [
                 "string",
                 "null"
               ],
               "format": "date-time"
             },
-            "source": {
-              "type": [
-                "string",
-                "null"
-              ]
-            },
             "version": {
+              "description": "Version contains the version to be deployed.",
               "type": [
                 "string",
                 "null"
@@ -1746,32 +1635,27 @@
             }
           }
         },
-        "codeModules": {
+        "communicationHostForClient": {
+          "description": "CommunicationHostForClient caches a communication host specific to the api url.",
           "type": [
             "object",
             "null"
           ],
           "properties": {
-            "imageID": {
+            "host": {
               "type": [
                 "string",
                 "null"
               ]
             },
-            "lastProbeTimestamp": {
+            "port": {
               "type": [
-                "string",
+                "integer",
                 "null"
               ],
-              "format": "date-time"
+              "format": "int32"
             },
-            "source": {
-              "type": [
-                "string",
-                "null"
-              ]
-            },
-            "version": {
+            "protocol": {
               "type": [
                 "string",
                 "null"
@@ -1843,18 +1727,87 @@
             }
           }
         },
-        "dynatraceApi": {
+        "connectionInfo": {
+          "description": "ConnectionInfo caches information about the tenant and its communication hosts",
           "type": [
             "object",
             "null"
           ],
           "properties": {
-            "lastTokenScopeRequest": {
+            "communicationHosts": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "host": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "port": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "format": "int32"
+                  },
+                  "protocol": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              }
+            },
+            "formattedCommunicationEndpoints": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "tenantUUID": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "eec": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "imageHash": {
+              "description": "ImageHash contains the last image hash seen.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "lastUpdateProbeTimestamp": {
+              "description": "LastUpdateProbeTimestamp defines the last timestamp when the querying for updates have been done",
               "type": [
                 "string",
                 "null"
               ],
               "format": "date-time"
+            },
+            "version": {
+              "description": "Version contains the version to be deployed.",
+              "type": [
+                "string",
+                "null"
+              ]
             }
           }
         },
@@ -1865,13 +1818,51 @@
             "null"
           ]
         },
-        "lastTokenProbeTimestamp": {
-          "description": "Deprecated: use DynatraceApiStatus.LastTokenScopeRequest instead LastTokenProbeTimestamp tracks when the last request for the API token validity was sent",
+        "lastAPITokenProbeTimestamp": {
+          "description": "LastAPITokenProbeTimestamp tracks when the last request for the API token validity was sent",
           "type": [
             "string",
             "null"
           ],
           "format": "date-time"
+        },
+        "lastClusterVersionProbeTimestamp": {
+          "description": "LastClusterVersionProbeTimestamp indicates when the cluster's version was last checked",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "lastDataIngestTokenProbeTimestamp": {
+          "description": "Deprecated, use LastAPITokenProbeTimestamp instead LastDataIngestTokenProbeTimestamp tracks when the last request for the DataIngest token validity was sent",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "lastPaaSTokenProbeTimestamp": {
+          "description": "Deprecated, use LastAPITokenProbeTimestamp instead LastPaaSTokenProbeTimestamp tracks when the last request for the PaaS token validity was sent",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "latestAgentVersionUnixDefault": {
+          "description": "LatestAgentVersionUnixDefault caches the current agent version for unix and the default installer which is configured for the environment",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "latestAgentVersionUnixPaas": {
+          "description": "LatestAgentVersionUnixDefault caches the current agent version for unix and the PaaS installer which is configured for the environment",
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "oneAgent": {
           "type": [
@@ -1879,67 +1870,8 @@
             "null"
           ],
           "properties": {
-            "connectionInfoStatus": {
-              "type": [
-                "object",
-                "null"
-              ],
-              "properties": {
-                "communicationHosts": {
-                  "type": [
-                    "array",
-                    "null"
-                  ],
-                  "items": {
-                    "type": [
-                      "object",
-                      "null"
-                    ],
-                    "properties": {
-                      "host": {
-                        "type": [
-                          "string",
-                          "null"
-                        ]
-                      },
-                      "port": {
-                        "type": [
-                          "integer",
-                          "null"
-                        ],
-                        "format": "int32"
-                      },
-                      "protocol": {
-                        "type": [
-                          "string",
-                          "null"
-                        ]
-                      }
-                    }
-                  }
-                },
-                "endpoints": {
-                  "type": [
-                    "string",
-                    "null"
-                  ]
-                },
-                "lastRequest": {
-                  "type": [
-                    "string",
-                    "null"
-                  ],
-                  "format": "date-time"
-                },
-                "tenantUUID": {
-                  "type": [
-                    "string",
-                    "null"
-                  ]
-                }
-              }
-            },
-            "imageID": {
+            "imageHash": {
+              "description": "ImageHash contains the last image hash seen.",
               "type": [
                 "string",
                 "null"
@@ -1971,27 +1903,24 @@
                 }
               }
             },
-            "lastInstanceStatusUpdate": {
+            "lastHostsRequestTimestamp": {
+              "description": "LastHostsRequestTimestamp indicates the last timestamp the Operator queried for hosts",
               "type": [
                 "string",
                 "null"
               ],
               "format": "date-time"
             },
-            "lastProbeTimestamp": {
+            "lastUpdateProbeTimestamp": {
+              "description": "LastUpdateProbeTimestamp defines the last timestamp when the querying for updates have been done",
               "type": [
                 "string",
                 "null"
               ],
               "format": "date-time"
-            },
-            "source": {
-              "type": [
-                "string",
-                "null"
-              ]
             },
             "version": {
+              "description": "Version contains the version to be deployed.",
               "type": [
                 "string",
                 "null"
@@ -2006,38 +1935,42 @@
             "null"
           ]
         },
-        "synthetic": {
+        "statsd": {
           "type": [
             "object",
             "null"
           ],
           "properties": {
-            "imageID": {
+            "imageHash": {
+              "description": "ImageHash contains the last image hash seen.",
               "type": [
                 "string",
                 "null"
               ]
             },
-            "lastProbeTimestamp": {
+            "lastUpdateProbeTimestamp": {
+              "description": "LastUpdateProbeTimestamp defines the last timestamp when the querying for updates have been done",
               "type": [
                 "string",
                 "null"
               ],
               "format": "date-time"
             },
-            "source": {
-              "type": [
-                "string",
-                "null"
-              ]
-            },
             "version": {
+              "description": "Version contains the version to be deployed.",
               "type": [
                 "string",
                 "null"
               ]
             }
           }
+        },
+        "tokens": {
+          "description": "Credentials used to connect back to Dynatrace.",
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "updatedTimestamp": {
           "description": "UpdatedTimestamp indicates when the instance was last updated",

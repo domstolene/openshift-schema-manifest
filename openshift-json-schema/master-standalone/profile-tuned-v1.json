@@ -90,7 +90,7 @@
       ],
       "properties": {
         "bootcmdline": {
-          "description": "kernel parameters calculated by tuned for the active Tuned profile; this field is OBSOLETE and will be removed, see OCPBUGS-19351",
+          "description": "kernel parameters calculated by tuned for the active Tuned profile",
           "type": [
             "string",
             "null"

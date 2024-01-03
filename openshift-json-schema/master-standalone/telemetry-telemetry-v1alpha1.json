@@ -1,0 +1,419 @@
+{
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "telemetry.istio.io/v1alpha1"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "Telemetry"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "description": "Telemetry configuration for workloads. See more details at: https://istio.io/docs/reference/config/telemetry.html",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "accessLogging": {
+          "description": "Optional.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "disabled": {
+                "description": "Controls logging."
+              },
+              "filter": {
+                "description": "Optional.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "expression": {
+                    "description": "CEL expression for selecting when requests/connections should be logged.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              },
+              "match": {
+                "description": "Allows tailoring of logging behavior to specific conditions.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "mode": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "enum": [
+                      "CLIENT_AND_SERVER",
+                      "CLIENT",
+                      "SERVER"
+                    ]
+                  }
+                }
+              },
+              "providers": {
+                "description": "Optional.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "name": {
+                      "description": "Required.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "metrics": {
+          "description": "Optional.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "overrides": {
+                "description": "Optional.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "disabled": {
+                      "description": "Optional."
+                    },
+                    "match": {
+                      "description": "Match allows provides the scope of the override.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "customMetric": {
+                          "description": "Allows free-form specification of a metric.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "metric": {
+                          "description": "One of the well-known Istio Standard Metrics.",
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "enum": [
+                            "ALL_METRICS",
+                            "REQUEST_COUNT",
+                            "REQUEST_DURATION",
+                            "REQUEST_SIZE",
+                            "RESPONSE_SIZE",
+                            "TCP_OPENED_CONNECTIONS",
+                            "TCP_CLOSED_CONNECTIONS",
+                            "TCP_SENT_BYTES",
+                            "TCP_RECEIVED_BYTES",
+                            "GRPC_REQUEST_MESSAGES",
+                            "GRPC_RESPONSE_MESSAGES"
+                          ]
+                        },
+                        "mode": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "enum": [
+                            "CLIENT_AND_SERVER",
+                            "CLIENT",
+                            "SERVER"
+                          ]
+                        }
+                      }
+                    },
+                    "tagOverrides": {
+                      "description": "Optional.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "additionalProperties": {
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {
+                          "operation": {
+                            "description": "Operation controls whether or not to update/add a tag, or to remove it.",
+                            "type": [
+                              "string",
+                              "null"
+                            ],
+                            "enum": [
+                              "UPSERT",
+                              "REMOVE"
+                            ]
+                          },
+                          "value": {
+                            "description": "Value is only considered if the operation is `UPSERT`.",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "providers": {
+                "description": "Optional.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "name": {
+                      "description": "Required.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "selector": {
+          "description": "Optional.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "matchLabels": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "additionalProperties": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "tracing": {
+          "description": "Optional.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "customTags": {
+                "description": "Optional.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "additionalProperties": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "environment": {
+                      "description": "Environment adds the value of an environment variable to each span.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "defaultValue": {
+                          "description": "Optional.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "name": {
+                          "description": "Name of the environment variable from which to extract the tag value.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    },
+                    "header": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "defaultValue": {
+                          "description": "Optional.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "name": {
+                          "description": "Name of the header from which to extract the tag value.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    },
+                    "literal": {
+                      "description": "Literal adds the same, hard-coded value to each span.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "value": {
+                          "description": "The tag value to use.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "disableSpanReporting": {
+                "description": "Controls span reporting."
+              },
+              "match": {
+                "description": "Allows tailoring of behavior to specific conditions.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "mode": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "enum": [
+                      "CLIENT_AND_SERVER",
+                      "CLIENT",
+                      "SERVER"
+                    ]
+                  }
+                }
+              },
+              "providers": {
+                "description": "Optional.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "name": {
+                      "description": "Required.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "randomSamplingPercentage": {},
+              "useRequestIdForTraceSampling": {}
+            }
+          }
+        }
+      }
+    },
+    "status": {
+      "x-kubernetes-preserve-unknown-fields": true
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "telemetry.istio.io",
+      "kind": "Telemetry",
+      "version": "v1alpha1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

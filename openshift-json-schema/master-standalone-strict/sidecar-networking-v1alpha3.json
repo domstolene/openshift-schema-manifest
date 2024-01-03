@@ -1,0 +1,420 @@
+{
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "networking.istio.io/v1alpha3"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "Sidecar"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "description": "Configuration affecting network reachability of a sidecar. See more details at: https://istio.io/docs/reference/config/networking/sidecar.html",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "egress": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "bind": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "captureMode": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "enum": [
+                  "DEFAULT",
+                  "IPTABLES",
+                  "NONE"
+                ]
+              },
+              "hosts": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "port": {
+                "description": "The port associated with the listener.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "name": {
+                    "description": "Label assigned to the port.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "number": {
+                    "description": "A valid non-negative integer port number.",
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "protocol": {
+                    "description": "The protocol exposed on the port.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "targetPort": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "ingress": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "bind": {
+                "description": "The IP(IPv4 or IPv6) to which the listener should be bound.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "captureMode": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "enum": [
+                  "DEFAULT",
+                  "IPTABLES",
+                  "NONE"
+                ]
+              },
+              "defaultEndpoint": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "port": {
+                "description": "The port associated with the listener.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "name": {
+                    "description": "Label assigned to the port.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "number": {
+                    "description": "A valid non-negative integer port number.",
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "protocol": {
+                    "description": "The protocol exposed on the port.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "targetPort": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              },
+              "tls": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "caCertificates": {
+                    "description": "REQUIRED if mode is `MUTUAL`.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "cipherSuites": {
+                    "description": "Optional: If specified, only support the specified cipher list.",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "credentialName": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "httpsRedirect": {
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  },
+                  "maxProtocolVersion": {
+                    "description": "Optional: Maximum TLS protocol version.",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "enum": [
+                      "TLS_AUTO",
+                      "TLSV1_0",
+                      "TLSV1_1",
+                      "TLSV1_2",
+                      "TLSV1_3"
+                    ]
+                  },
+                  "minProtocolVersion": {
+                    "description": "Optional: Minimum TLS protocol version.",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "enum": [
+                      "TLS_AUTO",
+                      "TLSV1_0",
+                      "TLSV1_1",
+                      "TLSV1_2",
+                      "TLSV1_3"
+                    ]
+                  },
+                  "mode": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "enum": [
+                      "PASSTHROUGH",
+                      "SIMPLE",
+                      "MUTUAL",
+                      "AUTO_PASSTHROUGH",
+                      "ISTIO_MUTUAL"
+                    ]
+                  },
+                  "privateKey": {
+                    "description": "REQUIRED if mode is `SIMPLE` or `MUTUAL`.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "serverCertificate": {
+                    "description": "REQUIRED if mode is `SIMPLE` or `MUTUAL`.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "subjectAltNames": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "verifyCertificateHash": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "verifyCertificateSpki": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "outboundTrafficPolicy": {
+          "description": "Configuration for the outbound traffic policy.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "egressProxy": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "host": {
+                  "description": "The name of a service from the service registry.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "port": {
+                  "description": "Specifies the port on the host that is being addressed.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "number": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "subset": {
+                  "description": "The name of a subset within the service.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            },
+            "mode": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "enum": [
+                "REGISTRY_ONLY",
+                "ALLOW_ANY"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "workloadSelector": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "labels": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "additionalProperties": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "status": {
+      "x-kubernetes-preserve-unknown-fields": true
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "networking.istio.io",
+      "kind": "Sidecar",
+      "version": "v1alpha3"
+    }
+  ],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

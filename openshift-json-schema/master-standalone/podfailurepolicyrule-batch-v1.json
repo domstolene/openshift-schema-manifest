@@ -2,7 +2,8 @@
   "description": "PodFailurePolicyRule describes how a pod failure is handled when the requirements are met. One of OnExitCodes and onPodConditions, but not both, can be used in each rule.",
   "type": "object",
   "required": [
-    "action"
+    "action",
+    "onPodConditions"
   ],
   "properties": {
     "action": {
