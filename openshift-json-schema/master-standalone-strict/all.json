@@ -769,12 +769,6 @@
       "$ref": "_definitions.json#/definitions/com.github.operator-framework.operator-lifecycle-manager.pkg.package-server.apis.operators.v1.PackageManifestStatus"
     },
     {
-      "$ref": "_definitions.json#/definitions/com.stakater.forecastle.v1alpha1.ForecastleApp"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/com.stakater.forecastle.v1alpha1.ForecastleAppList"
-    },
-    {
       "$ref": "_definitions.json#/definitions/dev.summerwind.actions.v1alpha1.HorizontalRunnerAutoscaler"
     },
     {
@@ -961,6 +955,12 @@
       "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.PasswordList"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.operator.v1alpha1.OperatorConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.operator.v1alpha1.OperatorConfigList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.external-secrets.v1alpha1.ClusterSecretStore"
     },
     {
@@ -1133,6 +1133,138 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta2.OCIRepositoryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.extensions.v1alpha1.WasmPlugin"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.extensions.v1alpha1.WasmPluginList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.DestinationRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.DestinationRuleList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.EnvoyFilter"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.EnvoyFilterList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.Gateway"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.GatewayList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.ServiceEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.ServiceEntryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.Sidecar"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.SidecarList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.VirtualService"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.VirtualServiceList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.WorkloadEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.WorkloadEntryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.WorkloadGroup"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.WorkloadGroupList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.DestinationRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.DestinationRuleList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.Gateway"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.GatewayList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.ProxyConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.ProxyConfigList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.ServiceEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.ServiceEntryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.Sidecar"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.SidecarList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.VirtualService"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.VirtualServiceList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.WorkloadEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.WorkloadEntryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.WorkloadGroup"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.WorkloadGroupList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.security.v1beta1.AuthorizationPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.security.v1beta1.AuthorizationPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.security.v1beta1.PeerAuthentication"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.security.v1beta1.PeerAuthenticationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.security.v1beta1.RequestAuthentication"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.security.v1beta1.RequestAuthenticationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.telemetry.v1alpha1.Telemetry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.telemetry.v1alpha1.TelemetryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.jaegertracing.v1.Jaeger"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.jaegertracing.v1.JaegerList"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.admissionregistration.v1.MutatingWebhook"
@@ -2728,6 +2860,63 @@
       "$ref": "_definitions.json#/definitions/io.k8s.storage.snapshot.v1.VolumeSnapshotList"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.kiali.v1alpha1.KialiList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.maistra.authentication.v1.ServiceMeshPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.maistra.authentication.v1.ServiceMeshPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.maistra.federation.v1.ExportedServiceSet"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.maistra.federation.v1.ExportedServiceSetList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.maistra.federation.v1.ImportedServiceSet"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.maistra.federation.v1.ImportedServiceSetList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.maistra.federation.v1.ServiceMeshPeer"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.maistra.federation.v1.ServiceMeshPeerList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.maistra.rbac.v1.ServiceMeshRbacConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.maistra.rbac.v1.ServiceMeshRbacConfigList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.maistra.v1.ServiceMeshControlPlane"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.maistra.v1.ServiceMeshControlPlaneList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.maistra.v1.ServiceMeshMember"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.maistra.v1.ServiceMeshMemberList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.maistra.v1.ServiceMeshMemberRoll"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.maistra.v1.ServiceMeshMemberRollList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.maistra.v2.ServiceMeshControlPlane"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.maistra.v2.ServiceMeshControlPlaneList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.metal3.v1alpha1.BMCEventSubscription"
     },
     {
@@ -3322,6 +3511,30 @@
       "$ref": "_definitions.json#/definitions/io.openshift.security.v1.SecurityContextConstraintsList"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.openshift.storage.local.v1.LocalVolume"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.storage.local.v1.LocalVolumeList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.storage.local.v1alpha1.LocalVolumeDiscovery"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.storage.local.v1alpha1.LocalVolumeDiscoveryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.storage.local.v1alpha1.LocalVolumeDiscoveryResult"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.storage.local.v1alpha1.LocalVolumeDiscoveryResultList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.storage.local.v1alpha1.LocalVolumeSet"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.openshift.storage.local.v1alpha1.LocalVolumeSetList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.openshift.tuned.v1.Profile"
     },
     {
@@ -3506,36 +3719,6 @@
     },
     {
       "$ref": "_definitions.json#/definitions/org.infinispan.v2alpha1.RestoreList"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/org.integreatly.v1alpha1.Grafana"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/org.integreatly.v1alpha1.GrafanaDashboard"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/org.integreatly.v1alpha1.GrafanaDashboardList"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/org.integreatly.v1alpha1.GrafanaDataSource"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/org.integreatly.v1alpha1.GrafanaDataSourceList"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/org.integreatly.v1alpha1.GrafanaFolder"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/org.integreatly.v1alpha1.GrafanaFolderList"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/org.integreatly.v1alpha1.GrafanaList"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/org.integreatly.v1alpha1.GrafanaNotificationChannel"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/org.integreatly.v1alpha1.GrafanaNotificationChannelList"
     },
     {
       "$ref": "_definitions.json#/definitions/org.keycloak.v1alpha1.Keycloak"

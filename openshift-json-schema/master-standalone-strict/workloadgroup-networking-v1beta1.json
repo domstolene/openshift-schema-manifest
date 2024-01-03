@@ -1,0 +1,311 @@
+{
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "networking.istio.io/v1beta1"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "WorkloadGroup"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "metadata": {
+          "description": "Metadata that will be used for all corresponding `WorkloadEntries`.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "annotations": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "additionalProperties": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "labels": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "additionalProperties": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "probe": {
+          "description": "`ReadinessProbe` describes the configuration the user must provide for healthchecking on their workload.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "exec": {
+              "description": "Health is determined by how the command that is executed exited.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "command": {
+                  "description": "Command to run.",
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              },
+              "additionalProperties": false
+            },
+            "failureThreshold": {
+              "description": "Minimum consecutive failures for the probe to be considered failed after having succeeded.",
+              "type": [
+                "integer",
+                "null"
+              ],
+              "format": "int32"
+            },
+            "httpGet": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "host": {
+                  "description": "Host name to connect to, defaults to the pod IP.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "httpHeaders": {
+                  "description": "Headers the proxy will pass on to make the request.",
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "name": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "value": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "path": {
+                  "description": "Path to access on the HTTP server.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "port": {
+                  "description": "Port on which the endpoint lives.",
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "scheme": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            },
+            "initialDelaySeconds": {
+              "description": "Number of seconds after the container has started before readiness probes are initiated.",
+              "type": [
+                "integer",
+                "null"
+              ],
+              "format": "int32"
+            },
+            "periodSeconds": {
+              "description": "How often (in seconds) to perform the probe.",
+              "type": [
+                "integer",
+                "null"
+              ],
+              "format": "int32"
+            },
+            "successThreshold": {
+              "description": "Minimum consecutive successes for the probe to be considered successful after having failed.",
+              "type": [
+                "integer",
+                "null"
+              ],
+              "format": "int32"
+            },
+            "tcpSocket": {
+              "description": "Health is determined by if the proxy is able to connect.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "host": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "port": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            },
+            "timeoutSeconds": {
+              "description": "Number of seconds after which the probe times out.",
+              "type": [
+                "integer",
+                "null"
+              ],
+              "format": "int32"
+            }
+          },
+          "additionalProperties": false
+        },
+        "template": {
+          "description": "Template to be used for the generation of `WorkloadEntry` resources that belong to this `WorkloadGroup`.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "address": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "labels": {
+              "description": "One or more labels associated with the endpoint.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "additionalProperties": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "locality": {
+              "description": "The locality associated with the endpoint.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "network": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "ports": {
+              "description": "Set of ports associated with the endpoint.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "additionalProperties": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              }
+            },
+            "serviceAccount": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "weight": {
+              "description": "The load balancing weight associated with the endpoint.",
+              "type": [
+                "integer",
+                "null"
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "status": {
+      "x-kubernetes-preserve-unknown-fields": true
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "networking.istio.io",
+      "kind": "WorkloadGroup",
+      "version": "v1beta1"
+    }
+  ],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

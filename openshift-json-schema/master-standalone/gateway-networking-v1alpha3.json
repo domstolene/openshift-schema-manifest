@@ -1,0 +1,275 @@
+{
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "networking.istio.io/v1alpha3"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "Gateway"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "description": "Configuration affecting edge load balancer. See more details at: https://istio.io/docs/reference/config/networking/gateway.html",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "selector": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "servers": {
+          "description": "A list of server specifications.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "bind": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "defaultEndpoint": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "hosts": {
+                "description": "One or more hosts exposed by this gateway.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "name": {
+                "description": "An optional name of the server, when set must be unique across all servers.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "port": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "name": {
+                    "description": "Label assigned to the port.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "number": {
+                    "description": "A valid non-negative integer port number.",
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "protocol": {
+                    "description": "The protocol exposed on the port.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "targetPort": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  }
+                }
+              },
+              "tls": {
+                "description": "Set of TLS related options that govern the server's behavior.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "caCertificates": {
+                    "description": "REQUIRED if mode is `MUTUAL`.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "cipherSuites": {
+                    "description": "Optional: If specified, only support the specified cipher list.",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "credentialName": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "httpsRedirect": {
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  },
+                  "maxProtocolVersion": {
+                    "description": "Optional: Maximum TLS protocol version.",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "enum": [
+                      "TLS_AUTO",
+                      "TLSV1_0",
+                      "TLSV1_1",
+                      "TLSV1_2",
+                      "TLSV1_3"
+                    ]
+                  },
+                  "minProtocolVersion": {
+                    "description": "Optional: Minimum TLS protocol version.",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "enum": [
+                      "TLS_AUTO",
+                      "TLSV1_0",
+                      "TLSV1_1",
+                      "TLSV1_2",
+                      "TLSV1_3"
+                    ]
+                  },
+                  "mode": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "enum": [
+                      "PASSTHROUGH",
+                      "SIMPLE",
+                      "MUTUAL",
+                      "AUTO_PASSTHROUGH",
+                      "ISTIO_MUTUAL"
+                    ]
+                  },
+                  "privateKey": {
+                    "description": "REQUIRED if mode is `SIMPLE` or `MUTUAL`.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "serverCertificate": {
+                    "description": "REQUIRED if mode is `SIMPLE` or `MUTUAL`.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "subjectAltNames": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "verifyCertificateHash": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "verifyCertificateSpki": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "status": {
+      "x-kubernetes-preserve-unknown-fields": true
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "networking.istio.io",
+      "kind": "Gateway",
+      "version": "v1alpha3"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}
