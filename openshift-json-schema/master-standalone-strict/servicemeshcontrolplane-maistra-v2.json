@@ -9888,14 +9888,100 @@
                     },
                     "additionalProperties": false
                   },
+                  "envoyOtelAls": {
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "required": [
+                      "port",
+                      "service"
+                    ],
+                    "properties": {
+                      "logName": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "port": {
+                        "type": "integer",
+                        "format": "int64"
+                      },
+                      "service": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
                   "name": {
                     "type": "string"
+                  },
+                  "opentelemetry": {
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "required": [
+                      "port",
+                      "service"
+                    ],
+                    "properties": {
+                      "maxTagLength": {
+                        "type": [
+                          "integer",
+                          "null"
+                        ],
+                        "format": "int64"
+                      },
+                      "port": {
+                        "type": "integer",
+                        "format": "int64"
+                      },
+                      "service": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false
                   },
                   "prometheus": {
                     "type": [
                       "object",
                       "null"
                     ]
+                  },
+                  "zipkin": {
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "required": [
+                      "port",
+                      "service"
+                    ],
+                    "properties": {
+                      "enable64bitTraceId": {
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "maxTagLength": {
+                        "type": [
+                          "integer",
+                          "null"
+                        ],
+                        "format": "int64"
+                      },
+                      "port": {
+                        "type": "integer",
+                        "format": "int64"
+                      },
+                      "service": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false
                   }
                 },
                 "additionalProperties": false
@@ -22509,14 +22595,100 @@
                         },
                         "additionalProperties": false
                       },
+                      "envoyOtelAls": {
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "required": [
+                          "port",
+                          "service"
+                        ],
+                        "properties": {
+                          "logName": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "port": {
+                            "type": "integer",
+                            "format": "int64"
+                          },
+                          "service": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
+                      },
                       "name": {
                         "type": "string"
+                      },
+                      "opentelemetry": {
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "required": [
+                          "port",
+                          "service"
+                        ],
+                        "properties": {
+                          "maxTagLength": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "format": "int64"
+                          },
+                          "port": {
+                            "type": "integer",
+                            "format": "int64"
+                          },
+                          "service": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
                       },
                       "prometheus": {
                         "type": [
                           "object",
                           "null"
                         ]
+                      },
+                      "zipkin": {
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "required": [
+                          "port",
+                          "service"
+                        ],
+                        "properties": {
+                          "enable64bitTraceId": {
+                            "type": [
+                              "boolean",
+                              "null"
+                            ]
+                          },
+                          "maxTagLength": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "format": "int64"
+                          },
+                          "port": {
+                            "type": "integer",
+                            "format": "int64"
+                          },
+                          "service": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "additionalProperties": false
