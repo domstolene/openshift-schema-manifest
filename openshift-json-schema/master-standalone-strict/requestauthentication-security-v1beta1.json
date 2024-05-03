@@ -132,6 +132,36 @@
                   "null"
                 ]
               },
+              "outputClaimToHeaders": {
+                "description": "This field specifies a list of operations to copy the claim to HTTP headers on a successfully verified token.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "claim": {
+                      "description": "The name of the claim to be copied from.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "header": {
+                      "description": "The name of the header to be created.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
               "outputPayloadToHeader": {
                 "type": [
                   "string",

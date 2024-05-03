@@ -1237,6 +1237,18 @@
       "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.WorkloadGroupList"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.istio.security.v1.AuthorizationPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.security.v1.AuthorizationPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.security.v1.RequestAuthentication"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.security.v1.RequestAuthenticationList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.istio.security.v1beta1.AuthorizationPolicy"
     },
     {
@@ -2863,6 +2875,9 @@
       "$ref": "_definitions.json#/definitions/io.kiali.v1alpha1.KialiList"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.kiali.v1alpha1.OSSMConsoleList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.maistra.authentication.v1.ServiceMeshPolicy"
     },
     {
@@ -3575,6 +3590,18 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.redhat.redhatcop.v1alpha1.GroupSyncList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.stackrox.platform.v1alpha1.Central"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.stackrox.platform.v1alpha1.CentralList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.stackrox.platform.v1alpha1.SecuredCluster"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.stackrox.platform.v1alpha1.SecuredClusterList"
     },
     {
       "$ref": "_definitions.json#/definitions/io.strimzi.core.v1beta2.StrimziPodSet"

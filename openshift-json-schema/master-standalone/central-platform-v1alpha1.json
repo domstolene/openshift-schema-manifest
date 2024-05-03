@@ -1,0 +1,2147 @@
+{
+  "description": "Central is the configuration template for the central services. This includes the API server, persistent storage, and the web UI, as well as the image scanner.",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "platform.stackrox.io/v1alpha1"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "Central"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "description": "CentralSpec defines the desired state of Central",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "central": {
+          "description": "Settings for the Central component, which is responsible for all user interaction.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "adminPasswordGenerationDisabled": {
+              "description": "Disable admin password generation. Do not use this for first-time installations, as you will have no way to perform initial setup and configuration of alternative authentication methods.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "adminPasswordSecret": {
+              "description": "Specify a secret that contains the administrator password in the \"password\" data item. If omitted, the operator will auto-generate a password and store it in the \"password\" item in the \"central-htpasswd\" secret.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "required": [
+                "name"
+              ],
+              "properties": {
+                "name": {
+                  "description": "The name of the referenced secret.",
+                  "type": "string"
+                }
+              }
+            },
+            "db": {
+              "description": "Settings for Central DB, which is responsible for data persistence.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "configOverride": {
+                  "description": "Config map containing postgresql.conf and pg_hba.conf that will be used if modifications need to be applied.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "name"
+                  ],
+                  "properties": {
+                    "name": {
+                      "description": "The name of the referenced config map.",
+                      "type": "string"
+                    }
+                  }
+                },
+                "connectionString": {
+                  "description": "Specify a connection string that corresponds to a database managed elsewhere. If set, the operator will not manage the Central DB. When using this option, you must explicitly set a password secret; automatically generating a password will not be supported.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "isEnabled": {
+                  "description": "Deprecated field. It is no longer necessary to specify it. This field will be removed in a future release. Central is configured to use PostgreSQL by default.",
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "enum": [
+                    "Default",
+                    "Enabled"
+                  ]
+                },
+                "nodeSelector": {
+                  "description": "If you want this component to only run on specific nodes, you can configure a node selector here.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "additionalProperties": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "passwordSecret": {
+                  "description": "Specify a secret that contains the password in the \"password\" data item. This can only be used when specifying a connection string manually. When omitted, the operator will auto-generate a DB password and store it in the \"password\" item in the \"central-db-password\" secret.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "name"
+                  ],
+                  "properties": {
+                    "name": {
+                      "description": "The name of the referenced secret.",
+                      "type": "string"
+                    }
+                  }
+                },
+                "persistence": {
+                  "description": "Configures how Central DB should store its persistent data. You can choose between using a persistent volume claim (recommended default), and a host path.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "hostPath": {
+                      "description": "Stores persistent data on a directory on the host. This is not recommended, and should only be used together with a node selector (only available in YAML view).",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "path": {
+                          "description": "The path on the host running Central.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    },
+                    "persistentVolumeClaim": {
+                      "description": "Uses a Kubernetes persistent volume claim (PVC) to manage the storage location of persistent data. Recommended for most users.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "claimName": {
+                          "description": "The name of the PVC to manage persistent data. If no PVC with the given name exists, it will be created. Defaults to \"central-db\" if not set.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "size": {
+                          "description": "The size of the persistent volume when created through the claim. If a claim was automatically created, this can be used after the initial deployment to resize (grow) the volume (only supported by some storage class controllers).",
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$"
+                        },
+                        "storageClassName": {
+                          "description": "The name of the storage class to use for the PVC. If your cluster is not configured with a default storage class, you must select a value here.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                },
+                "resources": {
+                  "description": "Allows overriding the default resource settings for this component. Please consult the documentation for an overview of default resource requirements and a sizing guide.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "claims": {
+                      "description": "Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container. \n This is an alpha field and requires enabling the DynamicResourceAllocation feature gate. \n This field is immutable. It can only be set for containers.",
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "description": "ResourceClaim references one entry in PodSpec.ResourceClaims.",
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "required": [
+                          "name"
+                        ],
+                        "properties": {
+                          "name": {
+                            "description": "Name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container.",
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "x-kubernetes-list-map-keys": [
+                        "name"
+                      ],
+                      "x-kubernetes-list-type": "map"
+                    },
+                    "limits": {
+                      "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "additionalProperties": {
+                        "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                        "x-kubernetes-int-or-string": true
+                      }
+                    },
+                    "requests": {
+                      "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. Requests cannot exceed Limits. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "additionalProperties": {
+                        "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                        "x-kubernetes-int-or-string": true
+                      }
+                    }
+                  }
+                },
+                "tolerations": {
+                  "description": "If you want this component to only run on specific nodes, you can configure tolerations of tainted nodes.",
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "description": "The pod this Toleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "effect": {
+                        "description": "Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "key": {
+                        "description": "Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "operator": {
+                        "description": "Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a pod can tolerate all taints of a particular category.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "tolerationSeconds": {
+                        "description": "TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.",
+                        "type": [
+                          "integer",
+                          "null"
+                        ],
+                        "format": "int64"
+                      },
+                      "value": {
+                        "description": "Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "declarativeConfiguration": {
+              "description": "Configures resources within Central in a declarative manner.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "configMaps": {
+                  "description": "List of config maps containing declarative configuration.",
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "description": "LocalConfigMapReference is a reference to a config map within the same namespace.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "required": [
+                      "name"
+                    ],
+                    "properties": {
+                      "name": {
+                        "description": "The name of the referenced config map.",
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "secrets": {
+                  "description": "List of secrets containing declarative configuration.",
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "description": "LocalSecretReference is a reference to a secret within the same namespace.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "required": [
+                      "name"
+                    ],
+                    "properties": {
+                      "name": {
+                        "description": "The name of the referenced secret.",
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "defaultTLSSecret": {
+              "description": "By default, Central will only serve an internal TLS certificate, which means that you will need to handle TLS termination at the ingress or load balancer level. If you want to terminate TLS in Central and serve a custom server certificate, you can specify a secret containing the certificate and private key here.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "required": [
+                "name"
+              ],
+              "properties": {
+                "name": {
+                  "description": "The name of the referenced secret.",
+                  "type": "string"
+                }
+              }
+            },
+            "exposure": {
+              "description": "Here you can configure if you want to expose central through a node port, a load balancer, or an OpenShift route.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "loadBalancer": {
+                  "description": "Expose Central through a load balancer service.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "enabled": {
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    },
+                    "ip": {
+                      "description": "If you have a static IP address reserved for your load balancer, you can enter it here.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "port": {
+                      "description": "Defaults to 443 if not set.",
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "format": "int32",
+                      "maximum": 65535,
+                      "minimum": 1
+                    }
+                  }
+                },
+                "nodePort": {
+                  "description": "Expose Central through a node port.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "enabled": {
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    },
+                    "port": {
+                      "description": "Use this to specify an explicit node port. Most users should leave this empty.",
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "format": "int32",
+                      "maximum": 65535,
+                      "minimum": 1
+                    }
+                  }
+                },
+                "route": {
+                  "description": "Expose Central through an OpenShift route.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "enabled": {
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    },
+                    "host": {
+                      "description": "Specify a custom hostname for the central route. If unspecified, an appropriate default value will be automatically chosen by OpenShift route operator.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "monitoring": {
+              "description": "Configures monitoring endpoint for Central. The monitoring endpoint allows other services to collect metrics from Central, provided in Prometheus compatible format.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "exposeEndpoint": {
+                  "description": "Expose the monitoring endpoint. A new service, \"monitoring\", with port 9090, will be created as well as a network policy allowing inbound connections to the port.",
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "enum": [
+                    "Enabled",
+                    "Disabled"
+                  ]
+                }
+              }
+            },
+            "nodeSelector": {
+              "description": "If you want this component to only run on specific nodes, you can configure a node selector here.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "additionalProperties": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "notifierSecretsEncryption": {
+              "description": "Configures the encryption of notifier secrets stored in the Central DB.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "enabled": {
+                  "description": "Enables the encryption of notifier secrets stored in the Central DB.",
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "persistence": {
+              "description": "Configures how Central should store its persistent data. You can choose between using a persistent volume claim (recommended default), and a host path.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "hostPath": {
+                  "description": "Stores persistent data on a directory on the host. This is not recommended, and should only be used together with a node selector (only available in YAML view).",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "path": {
+                      "description": "The path on the host running Central.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "persistentVolumeClaim": {
+                  "description": "Uses a Kubernetes persistent volume claim (PVC) to manage the storage location of persistent data. Recommended for most users.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "claimName": {
+                      "description": "The name of the PVC to manage persistent data. If no PVC with the given name exists, it will be created. Defaults to \"stackrox-db\" if not set.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "size": {
+                      "description": "The size of the persistent volume when created through the claim. If a claim was automatically created, this can be used after the initial deployment to resize (grow) the volume (only supported by some storage class controllers).",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$"
+                    },
+                    "storageClassName": {
+                      "description": "The name of the storage class to use for the PVC. If your cluster is not configured with a default storage class, you must select a value here.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "resources": {
+              "description": "Allows overriding the default resource settings for this component. Please consult the documentation for an overview of default resource requirements and a sizing guide.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "claims": {
+                  "description": "Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container. \n This is an alpha field and requires enabling the DynamicResourceAllocation feature gate. \n This field is immutable. It can only be set for containers.",
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "description": "ResourceClaim references one entry in PodSpec.ResourceClaims.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "required": [
+                      "name"
+                    ],
+                    "properties": {
+                      "name": {
+                        "description": "Name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container.",
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "x-kubernetes-list-map-keys": [
+                    "name"
+                  ],
+                  "x-kubernetes-list-type": "map"
+                },
+                "limits": {
+                  "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "additionalProperties": {
+                    "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                    "x-kubernetes-int-or-string": true
+                  }
+                },
+                "requests": {
+                  "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. Requests cannot exceed Limits. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "additionalProperties": {
+                    "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                    "x-kubernetes-int-or-string": true
+                  }
+                }
+              }
+            },
+            "telemetry": {
+              "description": "Configures telemetry settings for Central. If enabled, Central transmits telemetry and diagnostic data to a remote storage backend.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "enabled": {
+                  "description": "Specifies if Telemetry is enabled.",
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "storage": {
+                  "description": "Defines the telemetry storage backend for Central.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "endpoint": {
+                      "description": "Storage API endpoint.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "key": {
+                      "description": "Storage API key. If not set, telemetry is disabled.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "tolerations": {
+              "description": "If you want this component to only run on specific nodes, you can configure tolerations of tainted nodes.",
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "description": "The pod this Toleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "effect": {
+                    "description": "Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "key": {
+                    "description": "Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "operator": {
+                    "description": "Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a pod can tolerate all taints of a particular category.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "tolerationSeconds": {
+                    "description": "TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.",
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "format": "int64"
+                  },
+                  "value": {
+                    "description": "Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "customize": {
+          "description": "Customizations to apply on all Central Services components.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "annotations": {
+              "description": "Custom annotations to set on all managed objects.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "additionalProperties": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "envVars": {
+              "description": "Custom environment variables to set on managed pods' containers.",
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "description": "EnvVar represents an environment variable present in a Container.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "description": "Name of the environment variable. Must be a C_IDENTIFIER.",
+                    "type": "string"
+                  },
+                  "value": {
+                    "description": "Variable references $(VAR_NAME) are expanded using the previously defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. \"$$(VAR_NAME)\" will produce the string literal \"$(VAR_NAME)\". Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to \"\".",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "valueFrom": {
+                    "description": "Source for the environment variable's value. Cannot be used if value is not empty.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "configMapKeyRef": {
+                        "description": "Selects a key of a ConfigMap.",
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "required": [
+                          "key"
+                        ],
+                        "properties": {
+                          "key": {
+                            "description": "The key to select.",
+                            "type": "string"
+                          },
+                          "name": {
+                            "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "optional": {
+                            "description": "Specify whether the ConfigMap or its key must be defined",
+                            "type": [
+                              "boolean",
+                              "null"
+                            ]
+                          }
+                        },
+                        "x-kubernetes-map-type": "atomic"
+                      },
+                      "fieldRef": {
+                        "description": "Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`, spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.",
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "required": [
+                          "fieldPath"
+                        ],
+                        "properties": {
+                          "apiVersion": {
+                            "description": "Version of the schema the FieldPath is written in terms of, defaults to \"v1\".",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "fieldPath": {
+                            "description": "Path of the field to select in the specified API version.",
+                            "type": "string"
+                          }
+                        },
+                        "x-kubernetes-map-type": "atomic"
+                      },
+                      "resourceFieldRef": {
+                        "description": "Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.",
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "required": [
+                          "resource"
+                        ],
+                        "properties": {
+                          "containerName": {
+                            "description": "Container name: required for volumes, optional for env vars",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "divisor": {
+                            "description": "Specifies the output format of the exposed resources, defaults to \"1\"",
+                            "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                            "x-kubernetes-int-or-string": true
+                          },
+                          "resource": {
+                            "description": "Required: resource to select",
+                            "type": "string"
+                          }
+                        },
+                        "x-kubernetes-map-type": "atomic"
+                      },
+                      "secretKeyRef": {
+                        "description": "Selects a key of a secret in the pod's namespace",
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "required": [
+                          "key"
+                        ],
+                        "properties": {
+                          "key": {
+                            "description": "The key of the secret to select from.  Must be a valid secret key.",
+                            "type": "string"
+                          },
+                          "name": {
+                            "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "optional": {
+                            "description": "Specify whether the Secret or its key must be defined",
+                            "type": [
+                              "boolean",
+                              "null"
+                            ]
+                          }
+                        },
+                        "x-kubernetes-map-type": "atomic"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "labels": {
+              "description": "Custom labels to set on all managed objects.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "additionalProperties": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "egress": {
+          "description": "Settings related to outgoing network traffic.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "connectivityPolicy": {
+              "description": "Configures whether Red Hat Advanced Cluster Security should run in online or offline (disconnected) mode. In offline mode, automatic updates of vulnerability definitions and kernel modules are disabled.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "enum": [
+                "Online",
+                "Offline"
+              ]
+            }
+          }
+        },
+        "imagePullSecrets": {
+          "description": "Additional image pull secrets to be taken into account for pulling images.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "LocalSecretReference is a reference to a secret within the same namespace.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "description": "The name of the referenced secret.",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "misc": {
+          "description": "Deprecated field. This field will be removed in a future release. Miscellaneous settings.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "createSCCs": {
+              "description": "Deprecated field. This field will be removed in a future release. Set this to true to have the operator create SecurityContextConstraints (SCCs) for the operands. This isn't usually needed, and may interfere with other workloads.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            }
+          }
+        },
+        "monitoring": {
+          "description": "Monitoring configuration.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "openshift": {
+              "description": "OpenShiftMonitoring defines settings related to OpenShift Monitoring",
+              "type": [
+                "object",
+                "null"
+              ],
+              "required": [
+                "enabled"
+              ],
+              "properties": {
+                "enabled": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        },
+        "overlays": {
+          "description": "Overlays",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "K8sObjectOverlay is an overlay that applies a set of patches to a resource. It targets a resource by its API version, kind, and name, and applies a list of patches to this resource. \n # Examples \n ## Adding an annotation to a resource \n apiVersion: v1 kind: ServiceAccount name: central patches: - path: metadata.annotations.eks\\.amazonaws\\.com/role-arn value: \"\\\"arn:aws:iam:1234:role\\\"\" \n ## Adding an environment variable to a deployment \n apiVersion: apps/v1 kind: Deployment name: central patches: - path: spec.template.spec.containers[name:central].env[-1] value: | name: MY_ENV_VAR value: value \n ## Adding an ingress to a network policy \n apiVersion: networking.k8s.io/v1 kind: NetworkPolicy name: allow-ext-to-central patches: - path: spec.ingress[-1] value: | ports: - port: 999 protocol: TCP \n ## Changing the value of a configMap \n apiVersion: v1 kind: ConfigMap name: central-endpoints patches: - path: data value: | endpoints.yaml: | disableDefault: false \n ## Adding a container to a deployment \n apiVersion: apps/v1 kind: Deployment name: central patches: - path: spec.template.spec.containers[-1] value: | name: nginx image: nginx ports: - containerPort: 8000 name: http protocol: TCP",
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "apiVersion": {
+                "description": "Resource API version.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "kind": {
+                "description": "Resource kind.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "name": {
+                "description": "Name of resource.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "patches": {
+                "description": "List of patches to apply to resource.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "description": "K8sObjectOverlayPatch defines a patch to apply to a resource.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "path": {
+                      "description": "Path of the form a.[key1:value1].b.[:value2] Where [key1:value1] is a selector for a key-value pair to identify a list element and [:value] is a value selector to identify a list element in a leaf list. All path intermediate nodes must exist.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "value": {
+                      "description": "Value to add, delete or replace. For add, the path should be a new leaf. For delete, value should be unset. For replace, path should reference an existing node. All values are strings but are converted into appropriate type based on schema.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "scanner": {
+          "description": "Settings for the Scanner component, which is responsible for vulnerability scanning of container images.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "analyzer": {
+              "description": "Settings pertaining to the analyzer deployment, such as for autoscaling.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "nodeSelector": {
+                  "description": "If you want this component to only run on specific nodes, you can configure a node selector here.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "additionalProperties": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "resources": {
+                  "description": "Allows overriding the default resource settings for this component. Please consult the documentation for an overview of default resource requirements and a sizing guide.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "claims": {
+                      "description": "Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container. \n This is an alpha field and requires enabling the DynamicResourceAllocation feature gate. \n This field is immutable. It can only be set for containers.",
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "description": "ResourceClaim references one entry in PodSpec.ResourceClaims.",
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "required": [
+                          "name"
+                        ],
+                        "properties": {
+                          "name": {
+                            "description": "Name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container.",
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "x-kubernetes-list-map-keys": [
+                        "name"
+                      ],
+                      "x-kubernetes-list-type": "map"
+                    },
+                    "limits": {
+                      "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "additionalProperties": {
+                        "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                        "x-kubernetes-int-or-string": true
+                      }
+                    },
+                    "requests": {
+                      "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. Requests cannot exceed Limits. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "additionalProperties": {
+                        "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                        "x-kubernetes-int-or-string": true
+                      }
+                    }
+                  }
+                },
+                "scaling": {
+                  "description": "Controls the number of analyzer replicas and autoscaling.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "autoScaling": {
+                      "description": "When enabled, the number of component replicas is managed dynamically based on the load, within the limits specified below.",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "enum": [
+                        "Enabled",
+                        "Disabled"
+                      ]
+                    },
+                    "maxReplicas": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "format": "int32",
+                      "minimum": 1
+                    },
+                    "minReplicas": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "format": "int32",
+                      "minimum": 1
+                    },
+                    "replicas": {
+                      "description": "When autoscaling is disabled, the number of replicas will always be configured to match this value.",
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "format": "int32",
+                      "minimum": 1
+                    }
+                  }
+                },
+                "tolerations": {
+                  "description": "If you want this component to only run on specific nodes, you can configure tolerations of tainted nodes.",
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "description": "The pod this Toleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "effect": {
+                        "description": "Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "key": {
+                        "description": "Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "operator": {
+                        "description": "Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a pod can tolerate all taints of a particular category.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "tolerationSeconds": {
+                        "description": "TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.",
+                        "type": [
+                          "integer",
+                          "null"
+                        ],
+                        "format": "int64"
+                      },
+                      "value": {
+                        "description": "Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "db": {
+              "description": "Settings pertaining to the database used by the Red Hat Advanced Cluster Security Scanner.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "nodeSelector": {
+                  "description": "If you want this component to only run on specific nodes, you can configure a node selector here.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "additionalProperties": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "resources": {
+                  "description": "Allows overriding the default resource settings for this component. Please consult the documentation for an overview of default resource requirements and a sizing guide.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "claims": {
+                      "description": "Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container. \n This is an alpha field and requires enabling the DynamicResourceAllocation feature gate. \n This field is immutable. It can only be set for containers.",
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "description": "ResourceClaim references one entry in PodSpec.ResourceClaims.",
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "required": [
+                          "name"
+                        ],
+                        "properties": {
+                          "name": {
+                            "description": "Name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container.",
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "x-kubernetes-list-map-keys": [
+                        "name"
+                      ],
+                      "x-kubernetes-list-type": "map"
+                    },
+                    "limits": {
+                      "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "additionalProperties": {
+                        "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                        "x-kubernetes-int-or-string": true
+                      }
+                    },
+                    "requests": {
+                      "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. Requests cannot exceed Limits. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "additionalProperties": {
+                        "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                        "x-kubernetes-int-or-string": true
+                      }
+                    }
+                  }
+                },
+                "tolerations": {
+                  "description": "If you want this component to only run on specific nodes, you can configure tolerations of tainted nodes.",
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "description": "The pod this Toleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "effect": {
+                        "description": "Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "key": {
+                        "description": "Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "operator": {
+                        "description": "Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a pod can tolerate all taints of a particular category.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "tolerationSeconds": {
+                        "description": "TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.",
+                        "type": [
+                          "integer",
+                          "null"
+                        ],
+                        "format": "int64"
+                      },
+                      "value": {
+                        "description": "Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "monitoring": {
+              "description": "Configures monitoring endpoint for Scanner. The monitoring endpoint allows other services to collect metrics from Scanner, provided in Prometheus compatible format.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "exposeEndpoint": {
+                  "description": "Expose the monitoring endpoint. A new service, \"monitoring\", with port 9090, will be created as well as a network policy allowing inbound connections to the port.",
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "enum": [
+                    "Enabled",
+                    "Disabled"
+                  ]
+                }
+              }
+            },
+            "scannerComponent": {
+              "description": "If you do not want to deploy the Red Hat Advanced Cluster Security Scanner, you can disable it here (not recommended). By default, the scanner is enabled. If you do so, all the settings in this section will have no effect.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "enum": [
+                "Enabled",
+                "Disabled"
+              ]
+            }
+          }
+        },
+        "scannerV4": {
+          "description": "Settings for the Scanner V4 component, which can run in addition to the previously existing Scanner components",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "db": {
+              "description": "Settings pertaining to the DB deployment.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "nodeSelector": {
+                  "description": "If you want this component to only run on specific nodes, you can configure a node selector here.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "additionalProperties": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "persistence": {
+                  "description": "Configures how Scanner V4 should store its persistent data. You can use a persistent volume claim (the recommended default), a host path, or an emptyDir volume if Scanner V4 is running on a secured cluster without default StorageClass.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "hostPath": {
+                      "description": "Stores persistent data on a directory on the host. This is not recommended, and should only be used together with a node selector (only available in YAML view).",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "path": {
+                          "description": "The path on the host running Central.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    },
+                    "persistentVolumeClaim": {
+                      "description": "Uses a Kubernetes persistent volume claim (PVC) to manage the storage location of persistent data. Recommended for most users.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "claimName": {
+                          "description": "The name of the PVC to manage persistent data. If no PVC with the given name exists, it will be created. Defaults to \"scanner-v4-db\" if not set.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "size": {
+                          "description": "The size of the persistent volume when created through the claim. If a claim was automatically created, this can be used after the initial deployment to resize (grow) the volume (only supported by some storage class controllers).",
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$"
+                        },
+                        "storageClassName": {
+                          "description": "The name of the storage class to use for the PVC. If your cluster is not configured with a default storage class, you must select a value here.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                },
+                "resources": {
+                  "description": "Allows overriding the default resource settings for this component. Please consult the documentation for an overview of default resource requirements and a sizing guide.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "claims": {
+                      "description": "Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container. \n This is an alpha field and requires enabling the DynamicResourceAllocation feature gate. \n This field is immutable. It can only be set for containers.",
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "description": "ResourceClaim references one entry in PodSpec.ResourceClaims.",
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "required": [
+                          "name"
+                        ],
+                        "properties": {
+                          "name": {
+                            "description": "Name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container.",
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "x-kubernetes-list-map-keys": [
+                        "name"
+                      ],
+                      "x-kubernetes-list-type": "map"
+                    },
+                    "limits": {
+                      "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "additionalProperties": {
+                        "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                        "x-kubernetes-int-or-string": true
+                      }
+                    },
+                    "requests": {
+                      "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. Requests cannot exceed Limits. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "additionalProperties": {
+                        "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                        "x-kubernetes-int-or-string": true
+                      }
+                    }
+                  }
+                },
+                "tolerations": {
+                  "description": "If you want this component to only run on specific nodes, you can configure tolerations of tainted nodes.",
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "description": "The pod this Toleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "effect": {
+                        "description": "Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "key": {
+                        "description": "Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "operator": {
+                        "description": "Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a pod can tolerate all taints of a particular category.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "tolerationSeconds": {
+                        "description": "TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.",
+                        "type": [
+                          "integer",
+                          "null"
+                        ],
+                        "format": "int64"
+                      },
+                      "value": {
+                        "description": "Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "indexer": {
+              "description": "Settings pertaining to the indexer deployment.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "nodeSelector": {
+                  "description": "If you want this component to only run on specific nodes, you can configure a node selector here.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "additionalProperties": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "resources": {
+                  "description": "Allows overriding the default resource settings for this component. Please consult the documentation for an overview of default resource requirements and a sizing guide.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "claims": {
+                      "description": "Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container. \n This is an alpha field and requires enabling the DynamicResourceAllocation feature gate. \n This field is immutable. It can only be set for containers.",
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "description": "ResourceClaim references one entry in PodSpec.ResourceClaims.",
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "required": [
+                          "name"
+                        ],
+                        "properties": {
+                          "name": {
+                            "description": "Name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container.",
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "x-kubernetes-list-map-keys": [
+                        "name"
+                      ],
+                      "x-kubernetes-list-type": "map"
+                    },
+                    "limits": {
+                      "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "additionalProperties": {
+                        "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                        "x-kubernetes-int-or-string": true
+                      }
+                    },
+                    "requests": {
+                      "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. Requests cannot exceed Limits. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "additionalProperties": {
+                        "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                        "x-kubernetes-int-or-string": true
+                      }
+                    }
+                  }
+                },
+                "scaling": {
+                  "description": "Controls the number of replicas and autoscaling for this component.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "autoScaling": {
+                      "description": "When enabled, the number of component replicas is managed dynamically based on the load, within the limits specified below.",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "enum": [
+                        "Enabled",
+                        "Disabled"
+                      ]
+                    },
+                    "maxReplicas": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "format": "int32",
+                      "minimum": 1
+                    },
+                    "minReplicas": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "format": "int32",
+                      "minimum": 1
+                    },
+                    "replicas": {
+                      "description": "When autoscaling is disabled, the number of replicas will always be configured to match this value.",
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "format": "int32",
+                      "minimum": 1
+                    }
+                  }
+                },
+                "tolerations": {
+                  "description": "If you want this component to only run on specific nodes, you can configure tolerations of tainted nodes.",
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "description": "The pod this Toleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "effect": {
+                        "description": "Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "key": {
+                        "description": "Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "operator": {
+                        "description": "Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a pod can tolerate all taints of a particular category.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "tolerationSeconds": {
+                        "description": "TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.",
+                        "type": [
+                          "integer",
+                          "null"
+                        ],
+                        "format": "int64"
+                      },
+                      "value": {
+                        "description": "Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "matcher": {
+              "description": "Settings pertaining to the matcher deployment.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "nodeSelector": {
+                  "description": "If you want this component to only run on specific nodes, you can configure a node selector here.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "additionalProperties": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "resources": {
+                  "description": "Allows overriding the default resource settings for this component. Please consult the documentation for an overview of default resource requirements and a sizing guide.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "claims": {
+                      "description": "Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container. \n This is an alpha field and requires enabling the DynamicResourceAllocation feature gate. \n This field is immutable. It can only be set for containers.",
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "description": "ResourceClaim references one entry in PodSpec.ResourceClaims.",
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "required": [
+                          "name"
+                        ],
+                        "properties": {
+                          "name": {
+                            "description": "Name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container.",
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "x-kubernetes-list-map-keys": [
+                        "name"
+                      ],
+                      "x-kubernetes-list-type": "map"
+                    },
+                    "limits": {
+                      "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "additionalProperties": {
+                        "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                        "x-kubernetes-int-or-string": true
+                      }
+                    },
+                    "requests": {
+                      "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. Requests cannot exceed Limits. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "additionalProperties": {
+                        "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                        "x-kubernetes-int-or-string": true
+                      }
+                    }
+                  }
+                },
+                "scaling": {
+                  "description": "Controls the number of replicas and autoscaling for this component.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "autoScaling": {
+                      "description": "When enabled, the number of component replicas is managed dynamically based on the load, within the limits specified below.",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "enum": [
+                        "Enabled",
+                        "Disabled"
+                      ]
+                    },
+                    "maxReplicas": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "format": "int32",
+                      "minimum": 1
+                    },
+                    "minReplicas": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "format": "int32",
+                      "minimum": 1
+                    },
+                    "replicas": {
+                      "description": "When autoscaling is disabled, the number of replicas will always be configured to match this value.",
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "format": "int32",
+                      "minimum": 1
+                    }
+                  }
+                },
+                "tolerations": {
+                  "description": "If you want this component to only run on specific nodes, you can configure tolerations of tainted nodes.",
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "description": "The pod this Toleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "effect": {
+                        "description": "Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "key": {
+                        "description": "Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "operator": {
+                        "description": "Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a pod can tolerate all taints of a particular category.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "tolerationSeconds": {
+                        "description": "TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.",
+                        "type": [
+                          "integer",
+                          "null"
+                        ],
+                        "format": "int64"
+                      },
+                      "value": {
+                        "description": "Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "monitoring": {
+              "description": "Configures monitoring endpoint for Scanner V4. The monitoring endpoint allows other services to collect metrics from Scanner V4, provided in Prometheus compatible format.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "exposeEndpoint": {
+                  "description": "Expose the monitoring endpoint. A new service, \"monitoring\", with port 9090, will be created as well as a network policy allowing inbound connections to the port.",
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "enum": [
+                    "Enabled",
+                    "Disabled"
+                  ]
+                }
+              }
+            },
+            "scannerComponent": {
+              "description": "If you want to deploy Scanner V4 components set this to \"Enabled\"",
+              "type": [
+                "string",
+                "null"
+              ],
+              "enum": [
+                "Default",
+                "Enabled",
+                "Disabled"
+              ]
+            }
+          }
+        },
+        "tls": {
+          "description": "Allows you to specify additional trusted Root CAs.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "additionalCAs": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "description": "AdditionalCA defines a certificate for an additional Certificate Authority.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "content",
+                  "name"
+                ],
+                "properties": {
+                  "content": {
+                    "description": "PEM format",
+                    "type": "string"
+                  },
+                  "name": {
+                    "description": "Must be a valid file basename",
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "status": {
+      "description": "CentralStatus defines the observed state of Central.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "conditions"
+      ],
+      "properties": {
+        "central": {
+          "description": "CentralComponentStatus describes status specific to the central component.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "adminPassword": {
+              "description": "AdminPassword stores information related to the auto-generated admin password.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "adminPasswordSecretReference": {
+                  "description": "AdminPasswordSecretReference contains reference for the admin password",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "info": {
+                  "description": "Info stores information on how to obtain the admin password.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "description": "StackRoxCondition defines a condition for a StackRox custom resource.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "status",
+              "type"
+            ],
+            "properties": {
+              "lastTransitionTime": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time"
+              },
+              "message": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "reason": {
+                "description": "ConditionReason is a type of values of condition reason.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "status": {
+                "description": "ConditionStatus is a type of values of condition status.",
+                "type": "string"
+              },
+              "type": {
+                "description": "ConditionType is a type of values of condition type.",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "deployedRelease": {
+          "description": "StackRoxRelease describes the Helm \"release\" that was most recently applied.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "version": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "productVersion": {
+          "description": "The deployed version of the product.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "platform.stackrox.io",
+      "kind": "Central",
+      "version": "v1alpha1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

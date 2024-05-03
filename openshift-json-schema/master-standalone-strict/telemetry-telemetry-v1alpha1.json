@@ -247,6 +247,13 @@
                   },
                   "additionalProperties": false
                 }
+              },
+              "reportingInterval": {
+                "description": "Optional.",
+                "type": [
+                  "string",
+                  "null"
+                ]
               }
             },
             "additionalProperties": false
