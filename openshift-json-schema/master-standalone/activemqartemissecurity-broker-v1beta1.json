@@ -1,5 +1,5 @@
 {
-  "description": "ActiveMQArtemisSecurity is the Schema for the activemqartemissecurities API",
+  "description": "Security configuration for the broker",
   "type": "object",
   "properties": {
     "apiVersion": {
@@ -47,12 +47,14 @@
           }
         },
         "loginModules": {
+          "description": "Specifies the login modules",
           "type": [
             "object",
             "null"
           ],
           "properties": {
             "guestLoginModules": {
+              "description": "Specifies the guest login modules",
               "type": [
                 "array",
                 "null"
@@ -88,6 +90,7 @@
               }
             },
             "keycloakLoginModules": {
+              "description": "Specifies the Keycloak login modules",
               "type": [
                 "array",
                 "null"
@@ -99,6 +102,7 @@
                 ],
                 "properties": {
                   "configuration": {
+                    "description": "Specifies the Keycloak module configuration",
                     "type": [
                       "object",
                       "null"
@@ -206,6 +210,7 @@
                         "format": "int64"
                       },
                       "credentials": {
+                        "description": "Specify the credentials",
                         "type": [
                           "array",
                           "null"
@@ -217,14 +222,14 @@
                           ],
                           "properties": {
                             "key": {
-                              "description": "The credentials key",
+                              "description": "The regular expression to match the Redirect URI",
                               "type": [
                                 "string",
                                 "null"
                               ]
                             },
                             "value": {
-                              "description": "The credentials value",
+                              "description": "The replacement value",
                               "type": [
                                 "string",
                                 "null"
@@ -320,7 +325,7 @@
                         ]
                       },
                       "redirectRewriteRules": {
-                        "description": "The regular expression to which the Redirect URI is to be matched value is the replacement String",
+                        "description": "Specify the redirect rewrite rules",
                         "type": [
                           "array",
                           "null"
@@ -332,14 +337,14 @@
                           ],
                           "properties": {
                             "key": {
-                              "description": "The credentials key",
+                              "description": "The regular expression to match the Redirect URI",
                               "type": [
                                 "string",
                                 "null"
                               ]
                             },
                             "value": {
-                              "description": "The credentials value",
+                              "description": "The replacement value",
                               "type": [
                                 "string",
                                 "null"
@@ -461,6 +466,7 @@
               }
             },
             "propertiesLoginModules": {
+              "description": "Specifies the properties login modules",
               "type": [
                 "array",
                 "null"
@@ -479,6 +485,7 @@
                     ]
                   },
                   "users": {
+                    "description": "Specifies the users",
                     "type": [
                       "array",
                       "null"
@@ -525,18 +532,21 @@
           }
         },
         "securityDomains": {
+          "description": "Specifies the security domains",
           "type": [
             "object",
             "null"
           ],
           "properties": {
             "brokerDomain": {
+              "description": "Specify the broker domain",
               "type": [
                 "object",
                 "null"
               ],
               "properties": {
                 "loginModules": {
+                  "description": "Specify the login modules",
                   "type": [
                     "array",
                     "null"
@@ -548,28 +558,28 @@
                     ],
                     "properties": {
                       "debug": {
-                        "description": "Debug option of login modules for broker/console domain",
+                        "description": "Debug option of the login module",
                         "type": [
                           "boolean",
                           "null"
                         ]
                       },
                       "flag": {
-                        "description": "Flag of login modules for broker/console domain",
+                        "description": "Flag of the login module",
                         "type": [
                           "string",
                           "null"
                         ]
                       },
                       "name": {
-                        "description": "Name for login modules for broker/console domain",
+                        "description": "Name of the login module",
                         "type": [
                           "string",
                           "null"
                         ]
                       },
                       "reload": {
-                        "description": "Reload option of login modules for broker/console domain",
+                        "description": "Reload option of the login module",
                         "type": [
                           "boolean",
                           "null"
@@ -588,12 +598,14 @@
               }
             },
             "consoleDomain": {
+              "description": "Specify the console domain",
               "type": [
                 "object",
                 "null"
               ],
               "properties": {
                 "loginModules": {
+                  "description": "Specify the login modules",
                   "type": [
                     "array",
                     "null"
@@ -605,28 +617,28 @@
                     ],
                     "properties": {
                       "debug": {
-                        "description": "Debug option of login modules for broker/console domain",
+                        "description": "Debug option of the login module",
                         "type": [
                           "boolean",
                           "null"
                         ]
                       },
                       "flag": {
-                        "description": "Flag of login modules for broker/console domain",
+                        "description": "Flag of the login module",
                         "type": [
                           "string",
                           "null"
                         ]
                       },
                       "name": {
-                        "description": "Name for login modules for broker/console domain",
+                        "description": "Name of the login module",
                         "type": [
                           "string",
                           "null"
                         ]
                       },
                       "reload": {
-                        "description": "Reload option of login modules for broker/console domain",
+                        "description": "Reload option of the login module",
                         "type": [
                           "boolean",
                           "null"
@@ -647,12 +659,14 @@
           }
         },
         "securitySettings": {
+          "description": "Specifies the security settings",
           "type": [
             "object",
             "null"
           ],
           "properties": {
             "broker": {
+              "description": "Specify the broker security settings",
               "type": [
                 "array",
                 "null"
@@ -671,6 +685,7 @@
                     ]
                   },
                   "permissions": {
+                    "description": "Specify the permissions",
                     "type": [
                       "array",
                       "null"
@@ -708,18 +723,21 @@
               }
             },
             "management": {
+              "description": "Specify the management security settings",
               "type": [
                 "object",
                 "null"
               ],
               "properties": {
                 "authorisation": {
+                  "description": "Specify the authorisation configurations",
                   "type": [
                     "object",
                     "null"
                   ],
                   "properties": {
                     "allowedList": {
+                      "description": "Specify the allowed entries",
                       "type": [
                         "array",
                         "null"
@@ -748,6 +766,7 @@
                       }
                     },
                     "defaultAccess": {
+                      "description": "Specify the default accesses",
                       "type": [
                         "array",
                         "null"
@@ -759,14 +778,14 @@
                         ],
                         "properties": {
                           "method": {
-                            "description": "The method of defaultAccess/roleAccess List",
+                            "description": "Specifies the access entry method",
                             "type": [
                               "string",
                               "null"
                             ]
                           },
                           "roles": {
-                            "description": "The roles of defaultAccess/roleAccess List",
+                            "description": "Specifies the access entry roles",
                             "type": [
                               "array",
                               "null"
@@ -782,6 +801,7 @@
                       }
                     },
                     "roleAccess": {
+                      "description": "Specify the role accesses",
                       "type": [
                         "array",
                         "null"
@@ -793,6 +813,7 @@
                         ],
                         "properties": {
                           "accessList": {
+                            "description": "Specify the default accesses",
                             "type": [
                               "array",
                               "null"
@@ -804,14 +825,14 @@
                               ],
                               "properties": {
                                 "method": {
-                                  "description": "The method of defaultAccess/roleAccess List",
+                                  "description": "Specifies the access entry method",
                                   "type": [
                                     "string",
                                     "null"
                                   ]
                                 },
                                 "roles": {
-                                  "description": "The roles of defaultAccess/roleAccess List",
+                                  "description": "Specifies the access entry roles",
                                   "type": [
                                     "array",
                                     "null"
@@ -827,14 +848,14 @@
                             }
                           },
                           "domain": {
-                            "description": "The domain of roleAccess List",
+                            "description": "The domain of the role access",
                             "type": [
                               "string",
                               "null"
                             ]
                           },
                           "key": {
-                            "description": "The key of roleAccess List",
+                            "description": "The key of the role access",
                             "type": [
                               "string",
                               "null"
@@ -846,6 +867,7 @@
                   }
                 },
                 "connector": {
+                  "description": "Specify connector configurations",
                   "type": [
                     "object",
                     "null"
@@ -888,6 +910,13 @@
                     },
                     "keyStoreProvider": {
                       "description": "The keystore provider for management connector",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "keyStoreType": {
+                      "description": "The keystore type for management connector",
                       "type": [
                         "string",
                         "null"
@@ -946,6 +975,13 @@
                     },
                     "trustStoreProvider": {
                       "description": "The truststore provider for management connector",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "trustStoreType": {
+                      "description": "The truststore type for management connector",
                       "type": [
                         "string",
                         "null"
