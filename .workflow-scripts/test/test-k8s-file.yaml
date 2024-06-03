@@ -1,0 +1,131 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  annotations:
+    openshift.io/description: 'MANAGED-BY: GITOPS - https://github.com/domstolene/k8s-applications/tree/main/applications/maintenance'
+    openshift.io/display-name: 'Maintenance: Vedlikeholdsjobber'
+    openshift.io/requester: argocd from domstolene/k8s-applications
+    team: Plattform
+  labels:
+    app.kubernetes.io/managed-by: GitOps
+    plattform/ghcr-pull-secret: ""
+  name: maintenance
+---
+apiVersion: v1
+data:
+  cleanup-feature.sh: 'fdjakfdasl'
+kind: ConfigMap
+metadata:
+  name: cleanup-feature-script-7cfd9gg662
+  namespace: maintenance
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cleanup-feature-resources-cronjob
+  namespace: maintenance
+spec:
+  concurrencyPolicy: Replace
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - command:
+                - /bin/bash
+                - /usr/local/bin/cleanup-feature.sh
+              image: ghcr.io/domstolene/k8s-tools
+              name: cleanup-feature-resources
+              resources:
+                limits:
+                  memory: 100M
+                requests:
+                  cpu: 5m
+                  memory: 10M
+              volumeMounts:
+                - mountPath: /usr/local/bin
+                  name: cleanup-feature-script
+          imagePullSecrets:
+            - name: ghcr-pull-secret
+          restartPolicy: Never
+          serviceAccountName: maintenance-cleanup-resources
+          volumes:
+            - configMap:
+                defaultMode: 493
+                name: cleanup-feature-script-7cfd9gg662
+              name: cleanup-feature-script
+  schedule: '0 0 * * * '
+  successfulJobsHistoryLimit: 1
+---
+apiVersion: k8s.ovn.org/v1
+kind: EgressFirewall
+metadata:
+  name: default
+  namespace: maintenance
+spec:
+  egress:
+    - to:
+        cidrSelector: 10.242.158.26/32
+      type: Allow
+    - to:
+        cidrSelector: 10.242.158.25/32
+      type: Allow
+    - to:
+        cidrSelector: 10.242.158.24/32
+      type: Allow
+    - to:
+        cidrSelector: 0.0.0.0/0
+      type: Deny
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  labels:
+    kubernetes-foundation.k8s.io/description: allow-from-all-namespaces-with-label
+    kubernetes-foundation.k8s.io/network-policy-type: multitenancy
+  name: allow-from-all-namespaces
+  namespace: maintenance
+spec:
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes-foundation.k8s.io/access-to-all-namespaces: enabled
+  podSelector: {}
+  policyTypes:
+    - Ingress
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  labels:
+    kubernetes-foundation.k8s.io/description: allow-from-openshift-ingress
+    kubernetes-foundation.k8s.io/network-policy-type: multitenancy
+  name: allow-from-openshift-ingress
+  namespace: maintenance
+spec:
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              network.openshift.io/policy-group: ingress
+  podSelector: {}
+  policyTypes:
+    - Ingress
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  labels:
+    kubernetes-foundation.k8s.io/description: default-deny-inbound
+    kubernetes-foundation.k8s.io/network-policy-type: multitenancy
+  name: default-deny
+  namespace: maintenance
+spec:
+  ingress:
+    - from:
+        - podSelector: {}
+  podSelector: {}
+  policyTypes:
+    - Ingress

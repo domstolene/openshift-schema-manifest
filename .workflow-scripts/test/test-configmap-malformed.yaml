@@ -1,0 +1,7 @@
+apiVersion: v1
+datas:
+  cleanup-feature.sh: 'fdjakfdasl'
+kind: ConfigMap
+metadata:
+  name: cleanup-feature-script-7cfd9gg662
+  namespace: maintenance
