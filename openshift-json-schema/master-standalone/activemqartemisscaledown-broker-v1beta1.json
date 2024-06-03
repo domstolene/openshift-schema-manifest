@@ -1,5 +1,5 @@
 {
-  "description": "ActiveMQArtemisScaledown is the Schema for the activemqartemisscaledowns API",
+  "description": "Provides message migration on clustered broker scaledown",
   "type": "object",
   "properties": {
     "apiVersion": {
@@ -41,7 +41,7 @@
           "type": "boolean"
         },
         "resources": {
-          "description": "ResourceRequirements describes the compute resource requirements.",
+          "description": "Specifies the minimum/maximum amount of compute resources required/allowed",
           "type": [
             "object",
             "null"

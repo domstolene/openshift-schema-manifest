@@ -1,5 +1,5 @@
 {
-  "description": "ActiveMQArtemisAddress is the Schema for the activemqartemisaddresses API",
+  "description": "Adding and removing addresses using custom resource definitions",
   "type": "object",
   "properties": {
     "apiVersion": {
@@ -34,7 +34,7 @@
       ],
       "properties": {
         "addressName": {
-          "description": "Address Name",
+          "description": "The Address Name",
           "type": [
             "string",
             "null"
@@ -54,13 +54,14 @@
           }
         },
         "password": {
-          "description": "The user's password",
+          "description": "The password for the user",
           "type": [
             "string",
             "null"
           ]
         },
         "queueConfiguration": {
+          "description": "Specify the queue configuration",
           "type": [
             "object",
             "null"
@@ -259,7 +260,7 @@
           }
         },
         "queueName": {
-          "description": "Queue Name",
+          "description": "The Queue Name",
           "type": [
             "string",
             "null"
