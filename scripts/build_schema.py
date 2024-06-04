@@ -36,10 +36,6 @@ if openapi2jsonschema_location is None:
     print("Error: openapi2jsonschema is not available")
     sys.exit(1)
 
-ctx = ssl.create_default_context()
-ctx.check_hostname = False
-ctx.verify_mode = ssl.CERT_NONE
-
 parser = argparse.ArgumentParser()
 
 parser.add_argument("-u", "--url", action="store", dest="url",
@@ -71,7 +67,7 @@ def loadYAML(location):
         req = urllib.request.Request(url=openapi_endpoint, headers=headers)
 
         try:
-            res = urllib.request.urlopen(req, context=ctx)
+            res = urllib.request.urlopen(req)
             return yaml.load(res.read(), Loader=yaml.SafeLoader)
         except HTTPError as e:
             print('The server couldn\'t fulfill the request.')
