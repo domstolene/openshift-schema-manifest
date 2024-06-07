@@ -16,6 +16,15 @@ setup() {
 
   echo '###'$'\n'"${lines[*]}"$'\n''###'
   [ "${status}" -eq 1 ]
+  [[ "${lines[0]}" == *"additionalProperties 'datas' not allowed" ]]
+}
+
+@test "fail on test-egressfirewall-malformed" {
+  run operation test-egressfirewall-malformed.yaml
+
+  echo '###'$'\n'"${lines[*]}"$'\n''###'
+  [ "${status}" -eq 1 ]
+  [[ "${lines[0]}" == *"additionalProperties 'cirdSelector' not allowed" ]]
 }
 
 function operation() {
