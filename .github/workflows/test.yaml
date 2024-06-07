@@ -1,0 +1,26 @@
+name: Test workflow scripts
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - "main"
+jobs:
+  test-workflow-scripts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup BATS
+        uses: mig4/setup-bats@v1
+        with:
+          bats-version: 1.2.1
+
+      - name: Install kubeconform
+        run: |
+          KUBECONFORM=0.6.2
+          curl -sL https://github.com/yannh/kubeconform/releases/download/v${KUBECONFORM}/kubeconform-linux-amd64.tar.gz | \
+          tar xz kubeconform && mv kubeconform /usr/local/bin/kubeconform
+
+      - name: Run tests
+        run: bats -r .workflow-scripts/.
