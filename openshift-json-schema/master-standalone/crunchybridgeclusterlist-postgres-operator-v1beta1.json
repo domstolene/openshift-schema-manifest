@@ -1,5 +1,5 @@
 {
-  "description": "PostgresClusterList is a list of PostgresCluster",
+  "description": "CrunchyBridgeClusterList is a list of CrunchyBridgeCluster",
   "type": "object",
   "required": [
     "items"
@@ -16,13 +16,13 @@
       ]
     },
     "items": {
-      "description": "List of postgresclusters. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
+      "description": "List of crunchybridgeclusters. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
       "type": [
         "array",
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/com.crunchydata.postgres-operator.v1beta1.PostgresCluster"
+        "$ref": "_definitions.json#/definitions/com.crunchydata.postgres-operator.v1beta1.CrunchyBridgeCluster"
       }
     },
     "kind": {
@@ -32,7 +32,7 @@
         "null"
       ],
       "enum": [
-        "PostgresClusterList"
+        "CrunchyBridgeClusterList"
       ]
     },
     "metadata": {
@@ -43,7 +43,7 @@
   "x-kubernetes-group-version-kind": [
     {
       "group": "postgres-operator.crunchydata.com",
-      "kind": "PostgresClusterList",
+      "kind": "CrunchyBridgeClusterList",
       "version": "v1beta1"
     }
   ],
