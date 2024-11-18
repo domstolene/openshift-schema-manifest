@@ -1,5 +1,6 @@
 {
   "description": "GrafanaFolderList is a list of GrafanaFolder",
+  "type": "object",
   "required": [
     "items"
   ],
@@ -47,6 +48,5 @@
     }
   ],
   "additionalProperties": false,
-  "$schema": "http://json-schema.org/schema#",
-  "type": "object"
+  "$schema": "http://json-schema.org/schema#"
 }

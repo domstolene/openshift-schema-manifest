@@ -12,7 +12,7 @@
         "null"
       ],
       "enum": [
-        "integreatly.org/v1alpha1"
+        "grafana.integreatly.org/v1beta1"
       ]
     },
     "items": {
@@ -22,7 +22,7 @@
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/org.integreatly.v1alpha1.GrafanaDashboard"
+        "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaDashboard"
       }
     },
     "kind": {
@@ -42,9 +42,9 @@
   },
   "x-kubernetes-group-version-kind": [
     {
-      "group": "integreatly.org",
+      "group": "grafana.integreatly.org",
       "kind": "GrafanaDashboardList",
-      "version": "v1alpha1"
+      "version": "v1beta1"
     }
   ],
   "additionalProperties": false,
