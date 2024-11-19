@@ -1,0 +1,503 @@
+{
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "grafana.integreatly.org/v1beta1"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "GrafanaDashboard"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "instanceSelector"
+      ],
+      "properties": {
+        "allowCrossNamespaceImport": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "configMapRef": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "key"
+          ],
+          "properties": {
+            "key": {
+              "type": "string"
+            },
+            "name": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "optional": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            }
+          },
+          "x-kubernetes-map-type": "atomic",
+          "additionalProperties": false
+        },
+        "contentCacheDuration": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "datasources": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "datasourceName",
+              "inputName"
+            ],
+            "properties": {
+              "datasourceName": {
+                "type": "string"
+              },
+              "inputName": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "envFrom": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "configMapKeyRef": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "key"
+                ],
+                "properties": {
+                  "key": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "optional": {
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  }
+                },
+                "x-kubernetes-map-type": "atomic",
+                "additionalProperties": false
+              },
+              "secretKeyRef": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "key"
+                ],
+                "properties": {
+                  "key": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "optional": {
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  }
+                },
+                "x-kubernetes-map-type": "atomic",
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "envs": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "value": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "valueFrom": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "configMapKeyRef": {
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "required": [
+                      "key"
+                    ],
+                    "properties": {
+                      "key": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "optional": {
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      }
+                    },
+                    "x-kubernetes-map-type": "atomic",
+                    "additionalProperties": false
+                  },
+                  "secretKeyRef": {
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "required": [
+                      "key"
+                    ],
+                    "properties": {
+                      "key": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "optional": {
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      }
+                    },
+                    "x-kubernetes-map-type": "atomic",
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "folder": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "grafanaCom": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "revision": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "gzipJson": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "byte"
+        },
+        "instanceSelector": {
+          "type": "object",
+          "properties": {
+            "matchExpressions": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "key",
+                  "operator"
+                ],
+                "properties": {
+                  "key": {
+                    "type": "string"
+                  },
+                  "operator": {
+                    "type": "string"
+                  },
+                  "values": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "matchLabels": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "additionalProperties": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "x-kubernetes-map-type": "atomic",
+          "additionalProperties": false
+        },
+        "json": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "jsonnet": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "jsonnetLib": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "fileName",
+            "gzipJsonnetProject"
+          ],
+          "properties": {
+            "fileName": {
+              "type": "string"
+            },
+            "gzipJsonnetProject": {
+              "type": "string",
+              "format": "byte"
+            },
+            "jPath": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "plugins": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "name",
+              "version"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "version": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "resyncPeriod": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "status": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "NoMatchingInstances": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "contentCache": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "byte"
+        },
+        "contentTimestamp": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "contentUrl": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "hash": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "lastResync": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "uid": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "grafana.integreatly.org",
+      "kind": "GrafanaDashboard",
+      "version": "v1beta1"
+    }
+  ],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,5 +1,5 @@
 {
-  "description": "GrafanaDashboardList is a list of GrafanaDashboard",
+  "description": "GrafanaDatasourceList is a list of GrafanaDatasource",
   "type": "object",
   "required": [
     "items"
@@ -12,17 +12,17 @@
         "null"
       ],
       "enum": [
-        "integreatly.org/v1alpha1"
+        "grafana.integreatly.org/v1beta1"
       ]
     },
     "items": {
-      "description": "List of grafanadashboards. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
+      "description": "List of grafanadatasources. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
       "type": [
         "array",
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/org.integreatly.v1alpha1.GrafanaDashboard"
+        "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaDatasource"
       }
     },
     "kind": {
@@ -32,7 +32,7 @@
         "null"
       ],
       "enum": [
-        "GrafanaDashboardList"
+        "GrafanaDatasourceList"
       ]
     },
     "metadata": {
@@ -42,9 +42,9 @@
   },
   "x-kubernetes-group-version-kind": [
     {
-      "group": "integreatly.org",
-      "kind": "GrafanaDashboardList",
-      "version": "v1alpha1"
+      "group": "grafana.integreatly.org",
+      "kind": "GrafanaDatasourceList",
+      "version": "v1beta1"
     }
   ],
   "additionalProperties": false,
