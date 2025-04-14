@@ -1,2 +1,2 @@
 pyyaml
-openapi2jsonschema
+openapi2jsonschema2

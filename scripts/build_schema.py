@@ -17,7 +17,7 @@ OPENSHIFT_API_SPEC_FILE = "openshift-api-spec.json"
 
 script_dir = os.path.dirname(os.path.realpath(__file__))
 
-openapi2jsonschema_location = which("openapi2jsonschema")
+openapi2jsonschema_location = which("openapi2jsonschema2")
 
 
 def str2bool(v):
@@ -33,7 +33,7 @@ def str2bool(v):
 
 # Check if prerequisite executables are available
 if openapi2jsonschema_location is None:
-    print("Error: openapi2jsonschema is not available")
+    print("Error: openapi2jsonschema2 is not available")
     sys.exit(1)
 
 parser = argparse.ArgumentParser()
