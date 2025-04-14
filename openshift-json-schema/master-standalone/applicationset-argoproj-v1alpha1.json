@@ -102,12 +102,10 @@
                                   "string",
                                   "null"
                                 ]
-                              },
-                              "x-kubernetes-list-type": "atomic"
+                              }
                             }
                           }
-                        },
-                        "x-kubernetes-list-type": "atomic"
+                        }
                       },
                       "matchLabels": {
                         "type": [
@@ -465,18 +463,6 @@
                                   "null"
                                 ],
                                 "properties": {
-                                  "apiVersions": {
-                                    "type": [
-                                      "array",
-                                      "null"
-                                    ],
-                                    "items": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    }
-                                  },
                                   "fileParameters": {
                                     "type": [
                                       "array",
@@ -506,18 +492,6 @@
                                   "ignoreMissingValueFiles": {
                                     "type": [
                                       "boolean",
-                                      "null"
-                                    ]
-                                  },
-                                  "kubeVersion": {
-                                    "type": [
-                                      "string",
-                                      "null"
-                                    ]
-                                  },
-                                  "namespace": {
-                                    "type": [
-                                      "string",
                                       "null"
                                     ]
                                   },
@@ -606,18 +580,6 @@
                                   "null"
                                 ],
                                 "properties": {
-                                  "apiVersions": {
-                                    "type": [
-                                      "array",
-                                      "null"
-                                    ],
-                                    "items": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    }
-                                  },
                                   "commonAnnotations": {
                                     "type": [
                                       "object",
@@ -683,12 +645,6 @@
                                         "null"
                                       ]
                                     }
-                                  },
-                                  "kubeVersion": {
-                                    "type": [
-                                      "string",
-                                      "null"
-                                    ]
                                   },
                                   "labelWithoutSelector": {
                                     "type": [
@@ -1077,18 +1033,6 @@
                                     "null"
                                   ],
                                   "properties": {
-                                    "apiVersions": {
-                                      "type": [
-                                        "array",
-                                        "null"
-                                      ],
-                                      "items": {
-                                        "type": [
-                                          "string",
-                                          "null"
-                                        ]
-                                      }
-                                    },
                                     "fileParameters": {
                                       "type": [
                                         "array",
@@ -1118,18 +1062,6 @@
                                     "ignoreMissingValueFiles": {
                                       "type": [
                                         "boolean",
-                                        "null"
-                                      ]
-                                    },
-                                    "kubeVersion": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    },
-                                    "namespace": {
-                                      "type": [
-                                        "string",
                                         "null"
                                       ]
                                     },
@@ -1218,18 +1150,6 @@
                                     "null"
                                   ],
                                   "properties": {
-                                    "apiVersions": {
-                                      "type": [
-                                        "array",
-                                        "null"
-                                      ],
-                                      "items": {
-                                        "type": [
-                                          "string",
-                                          "null"
-                                        ]
-                                      }
-                                    },
                                     "commonAnnotations": {
                                       "type": [
                                         "object",
@@ -1295,12 +1215,6 @@
                                           "null"
                                         ]
                                       }
-                                    },
-                                    "kubeVersion": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
                                     },
                                     "labelWithoutSelector": {
                                       "type": [
@@ -1739,12 +1653,10 @@
                                   "string",
                                   "null"
                                 ]
-                              },
-                              "x-kubernetes-list-type": "atomic"
+                              }
                             }
                           }
-                        },
-                        "x-kubernetes-list-type": "atomic"
+                        }
                       },
                       "matchLabels": {
                         "type": [
@@ -2089,18 +2001,6 @@
                                   "null"
                                 ],
                                 "properties": {
-                                  "apiVersions": {
-                                    "type": [
-                                      "array",
-                                      "null"
-                                    ],
-                                    "items": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    }
-                                  },
                                   "fileParameters": {
                                     "type": [
                                       "array",
@@ -2130,18 +2030,6 @@
                                   "ignoreMissingValueFiles": {
                                     "type": [
                                       "boolean",
-                                      "null"
-                                    ]
-                                  },
-                                  "kubeVersion": {
-                                    "type": [
-                                      "string",
-                                      "null"
-                                    ]
-                                  },
-                                  "namespace": {
-                                    "type": [
-                                      "string",
                                       "null"
                                     ]
                                   },
@@ -2230,18 +2118,6 @@
                                   "null"
                                 ],
                                 "properties": {
-                                  "apiVersions": {
-                                    "type": [
-                                      "array",
-                                      "null"
-                                    ],
-                                    "items": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    }
-                                  },
                                   "commonAnnotations": {
                                     "type": [
                                       "object",
@@ -2307,12 +2183,6 @@
                                         "null"
                                       ]
                                     }
-                                  },
-                                  "kubeVersion": {
-                                    "type": [
-                                      "string",
-                                      "null"
-                                    ]
                                   },
                                   "labelWithoutSelector": {
                                     "type": [
@@ -2701,18 +2571,6 @@
                                     "null"
                                   ],
                                   "properties": {
-                                    "apiVersions": {
-                                      "type": [
-                                        "array",
-                                        "null"
-                                      ],
-                                      "items": {
-                                        "type": [
-                                          "string",
-                                          "null"
-                                        ]
-                                      }
-                                    },
                                     "fileParameters": {
                                       "type": [
                                         "array",
@@ -2742,18 +2600,6 @@
                                     "ignoreMissingValueFiles": {
                                       "type": [
                                         "boolean",
-                                        "null"
-                                      ]
-                                    },
-                                    "kubeVersion": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    },
-                                    "namespace": {
-                                      "type": [
-                                        "string",
                                         "null"
                                       ]
                                     },
@@ -2842,18 +2688,6 @@
                                     "null"
                                   ],
                                   "properties": {
-                                    "apiVersions": {
-                                      "type": [
-                                        "array",
-                                        "null"
-                                      ],
-                                      "items": {
-                                        "type": [
-                                          "string",
-                                          "null"
-                                        ]
-                                      }
-                                    },
                                     "commonAnnotations": {
                                       "type": [
                                         "object",
@@ -2919,12 +2753,6 @@
                                           "null"
                                         ]
                                       }
-                                    },
-                                    "kubeVersion": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
                                     },
                                     "labelWithoutSelector": {
                                       "type": [
@@ -3723,18 +3551,6 @@
                                   "null"
                                 ],
                                 "properties": {
-                                  "apiVersions": {
-                                    "type": [
-                                      "array",
-                                      "null"
-                                    ],
-                                    "items": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    }
-                                  },
                                   "fileParameters": {
                                     "type": [
                                       "array",
@@ -3764,18 +3580,6 @@
                                   "ignoreMissingValueFiles": {
                                     "type": [
                                       "boolean",
-                                      "null"
-                                    ]
-                                  },
-                                  "kubeVersion": {
-                                    "type": [
-                                      "string",
-                                      "null"
-                                    ]
-                                  },
-                                  "namespace": {
-                                    "type": [
-                                      "string",
                                       "null"
                                     ]
                                   },
@@ -3864,18 +3668,6 @@
                                   "null"
                                 ],
                                 "properties": {
-                                  "apiVersions": {
-                                    "type": [
-                                      "array",
-                                      "null"
-                                    ],
-                                    "items": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    }
-                                  },
                                   "commonAnnotations": {
                                     "type": [
                                       "object",
@@ -3941,12 +3733,6 @@
                                         "null"
                                       ]
                                     }
-                                  },
-                                  "kubeVersion": {
-                                    "type": [
-                                      "string",
-                                      "null"
-                                    ]
                                   },
                                   "labelWithoutSelector": {
                                     "type": [
@@ -4335,18 +4121,6 @@
                                     "null"
                                   ],
                                   "properties": {
-                                    "apiVersions": {
-                                      "type": [
-                                        "array",
-                                        "null"
-                                      ],
-                                      "items": {
-                                        "type": [
-                                          "string",
-                                          "null"
-                                        ]
-                                      }
-                                    },
                                     "fileParameters": {
                                       "type": [
                                         "array",
@@ -4376,18 +4150,6 @@
                                     "ignoreMissingValueFiles": {
                                       "type": [
                                         "boolean",
-                                        "null"
-                                      ]
-                                    },
-                                    "kubeVersion": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    },
-                                    "namespace": {
-                                      "type": [
-                                        "string",
                                         "null"
                                       ]
                                     },
@@ -4476,18 +4238,6 @@
                                     "null"
                                   ],
                                   "properties": {
-                                    "apiVersions": {
-                                      "type": [
-                                        "array",
-                                        "null"
-                                      ],
-                                      "items": {
-                                        "type": [
-                                          "string",
-                                          "null"
-                                        ]
-                                      }
-                                    },
                                     "commonAnnotations": {
                                       "type": [
                                         "object",
@@ -4553,12 +4303,6 @@
                                           "null"
                                         ]
                                       }
-                                    },
-                                    "kubeVersion": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
                                     },
                                     "labelWithoutSelector": {
                                       "type": [
@@ -5303,18 +5047,6 @@
                                   "null"
                                 ],
                                 "properties": {
-                                  "apiVersions": {
-                                    "type": [
-                                      "array",
-                                      "null"
-                                    ],
-                                    "items": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    }
-                                  },
                                   "fileParameters": {
                                     "type": [
                                       "array",
@@ -5344,18 +5076,6 @@
                                   "ignoreMissingValueFiles": {
                                     "type": [
                                       "boolean",
-                                      "null"
-                                    ]
-                                  },
-                                  "kubeVersion": {
-                                    "type": [
-                                      "string",
-                                      "null"
-                                    ]
-                                  },
-                                  "namespace": {
-                                    "type": [
-                                      "string",
                                       "null"
                                     ]
                                   },
@@ -5444,18 +5164,6 @@
                                   "null"
                                 ],
                                 "properties": {
-                                  "apiVersions": {
-                                    "type": [
-                                      "array",
-                                      "null"
-                                    ],
-                                    "items": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    }
-                                  },
                                   "commonAnnotations": {
                                     "type": [
                                       "object",
@@ -5521,12 +5229,6 @@
                                         "null"
                                       ]
                                     }
-                                  },
-                                  "kubeVersion": {
-                                    "type": [
-                                      "string",
-                                      "null"
-                                    ]
                                   },
                                   "labelWithoutSelector": {
                                     "type": [
@@ -5915,18 +5617,6 @@
                                     "null"
                                   ],
                                   "properties": {
-                                    "apiVersions": {
-                                      "type": [
-                                        "array",
-                                        "null"
-                                      ],
-                                      "items": {
-                                        "type": [
-                                          "string",
-                                          "null"
-                                        ]
-                                      }
-                                    },
                                     "fileParameters": {
                                       "type": [
                                         "array",
@@ -5956,18 +5646,6 @@
                                     "ignoreMissingValueFiles": {
                                       "type": [
                                         "boolean",
-                                        "null"
-                                      ]
-                                    },
-                                    "kubeVersion": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    },
-                                    "namespace": {
-                                      "type": [
-                                        "string",
                                         "null"
                                       ]
                                     },
@@ -6056,18 +5734,6 @@
                                     "null"
                                   ],
                                   "properties": {
-                                    "apiVersions": {
-                                      "type": [
-                                        "array",
-                                        "null"
-                                      ],
-                                      "items": {
-                                        "type": [
-                                          "string",
-                                          "null"
-                                        ]
-                                      }
-                                    },
                                     "commonAnnotations": {
                                       "type": [
                                         "object",
@@ -6133,12 +5799,6 @@
                                           "null"
                                         ]
                                       }
-                                    },
-                                    "kubeVersion": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
                                     },
                                     "labelWithoutSelector": {
                                       "type": [
@@ -6588,12 +6248,10 @@
                                             "string",
                                             "null"
                                           ]
-                                        },
-                                        "x-kubernetes-list-type": "atomic"
+                                        }
                                       }
                                     }
-                                  },
-                                  "x-kubernetes-list-type": "atomic"
+                                  }
                                 },
                                 "matchLabels": {
                                   "type": [
@@ -6951,18 +6609,6 @@
                                             "null"
                                           ],
                                           "properties": {
-                                            "apiVersions": {
-                                              "type": [
-                                                "array",
-                                                "null"
-                                              ],
-                                              "items": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              }
-                                            },
                                             "fileParameters": {
                                               "type": [
                                                 "array",
@@ -6992,18 +6638,6 @@
                                             "ignoreMissingValueFiles": {
                                               "type": [
                                                 "boolean",
-                                                "null"
-                                              ]
-                                            },
-                                            "kubeVersion": {
-                                              "type": [
-                                                "string",
-                                                "null"
-                                              ]
-                                            },
-                                            "namespace": {
-                                              "type": [
-                                                "string",
                                                 "null"
                                               ]
                                             },
@@ -7092,18 +6726,6 @@
                                             "null"
                                           ],
                                           "properties": {
-                                            "apiVersions": {
-                                              "type": [
-                                                "array",
-                                                "null"
-                                              ],
-                                              "items": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              }
-                                            },
                                             "commonAnnotations": {
                                               "type": [
                                                 "object",
@@ -7169,12 +6791,6 @@
                                                   "null"
                                                 ]
                                               }
-                                            },
-                                            "kubeVersion": {
-                                              "type": [
-                                                "string",
-                                                "null"
-                                              ]
                                             },
                                             "labelWithoutSelector": {
                                               "type": [
@@ -7563,18 +7179,6 @@
                                               "null"
                                             ],
                                             "properties": {
-                                              "apiVersions": {
-                                                "type": [
-                                                  "array",
-                                                  "null"
-                                                ],
-                                                "items": {
-                                                  "type": [
-                                                    "string",
-                                                    "null"
-                                                  ]
-                                                }
-                                              },
                                               "fileParameters": {
                                                 "type": [
                                                   "array",
@@ -7604,18 +7208,6 @@
                                               "ignoreMissingValueFiles": {
                                                 "type": [
                                                   "boolean",
-                                                  "null"
-                                                ]
-                                              },
-                                              "kubeVersion": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              },
-                                              "namespace": {
-                                                "type": [
-                                                  "string",
                                                   "null"
                                                 ]
                                               },
@@ -7704,18 +7296,6 @@
                                               "null"
                                             ],
                                             "properties": {
-                                              "apiVersions": {
-                                                "type": [
-                                                  "array",
-                                                  "null"
-                                                ],
-                                                "items": {
-                                                  "type": [
-                                                    "string",
-                                                    "null"
-                                                  ]
-                                                }
-                                              },
                                               "commonAnnotations": {
                                                 "type": [
                                                   "object",
@@ -7781,12 +7361,6 @@
                                                     "null"
                                                   ]
                                                 }
-                                              },
-                                              "kubeVersion": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
                                               },
                                               "labelWithoutSelector": {
                                                 "type": [
@@ -8225,12 +7799,10 @@
                                             "string",
                                             "null"
                                           ]
-                                        },
-                                        "x-kubernetes-list-type": "atomic"
+                                        }
                                       }
                                     }
-                                  },
-                                  "x-kubernetes-list-type": "atomic"
+                                  }
                                 },
                                 "matchLabels": {
                                   "type": [
@@ -8575,18 +8147,6 @@
                                             "null"
                                           ],
                                           "properties": {
-                                            "apiVersions": {
-                                              "type": [
-                                                "array",
-                                                "null"
-                                              ],
-                                              "items": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              }
-                                            },
                                             "fileParameters": {
                                               "type": [
                                                 "array",
@@ -8616,18 +8176,6 @@
                                             "ignoreMissingValueFiles": {
                                               "type": [
                                                 "boolean",
-                                                "null"
-                                              ]
-                                            },
-                                            "kubeVersion": {
-                                              "type": [
-                                                "string",
-                                                "null"
-                                              ]
-                                            },
-                                            "namespace": {
-                                              "type": [
-                                                "string",
                                                 "null"
                                               ]
                                             },
@@ -8716,18 +8264,6 @@
                                             "null"
                                           ],
                                           "properties": {
-                                            "apiVersions": {
-                                              "type": [
-                                                "array",
-                                                "null"
-                                              ],
-                                              "items": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              }
-                                            },
                                             "commonAnnotations": {
                                               "type": [
                                                 "object",
@@ -8793,12 +8329,6 @@
                                                   "null"
                                                 ]
                                               }
-                                            },
-                                            "kubeVersion": {
-                                              "type": [
-                                                "string",
-                                                "null"
-                                              ]
                                             },
                                             "labelWithoutSelector": {
                                               "type": [
@@ -9187,18 +8717,6 @@
                                               "null"
                                             ],
                                             "properties": {
-                                              "apiVersions": {
-                                                "type": [
-                                                  "array",
-                                                  "null"
-                                                ],
-                                                "items": {
-                                                  "type": [
-                                                    "string",
-                                                    "null"
-                                                  ]
-                                                }
-                                              },
                                               "fileParameters": {
                                                 "type": [
                                                   "array",
@@ -9228,18 +8746,6 @@
                                               "ignoreMissingValueFiles": {
                                                 "type": [
                                                   "boolean",
-                                                  "null"
-                                                ]
-                                              },
-                                              "kubeVersion": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              },
-                                              "namespace": {
-                                                "type": [
-                                                  "string",
                                                   "null"
                                                 ]
                                               },
@@ -9328,18 +8834,6 @@
                                               "null"
                                             ],
                                             "properties": {
-                                              "apiVersions": {
-                                                "type": [
-                                                  "array",
-                                                  "null"
-                                                ],
-                                                "items": {
-                                                  "type": [
-                                                    "string",
-                                                    "null"
-                                                  ]
-                                                }
-                                              },
                                               "commonAnnotations": {
                                                 "type": [
                                                   "object",
@@ -9405,12 +8899,6 @@
                                                     "null"
                                                   ]
                                                 }
-                                              },
-                                              "kubeVersion": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
                                               },
                                               "labelWithoutSelector": {
                                                 "type": [
@@ -10209,18 +9697,6 @@
                                             "null"
                                           ],
                                           "properties": {
-                                            "apiVersions": {
-                                              "type": [
-                                                "array",
-                                                "null"
-                                              ],
-                                              "items": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              }
-                                            },
                                             "fileParameters": {
                                               "type": [
                                                 "array",
@@ -10250,18 +9726,6 @@
                                             "ignoreMissingValueFiles": {
                                               "type": [
                                                 "boolean",
-                                                "null"
-                                              ]
-                                            },
-                                            "kubeVersion": {
-                                              "type": [
-                                                "string",
-                                                "null"
-                                              ]
-                                            },
-                                            "namespace": {
-                                              "type": [
-                                                "string",
                                                 "null"
                                               ]
                                             },
@@ -10350,18 +9814,6 @@
                                             "null"
                                           ],
                                           "properties": {
-                                            "apiVersions": {
-                                              "type": [
-                                                "array",
-                                                "null"
-                                              ],
-                                              "items": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              }
-                                            },
                                             "commonAnnotations": {
                                               "type": [
                                                 "object",
@@ -10427,12 +9879,6 @@
                                                   "null"
                                                 ]
                                               }
-                                            },
-                                            "kubeVersion": {
-                                              "type": [
-                                                "string",
-                                                "null"
-                                              ]
                                             },
                                             "labelWithoutSelector": {
                                               "type": [
@@ -10821,18 +10267,6 @@
                                               "null"
                                             ],
                                             "properties": {
-                                              "apiVersions": {
-                                                "type": [
-                                                  "array",
-                                                  "null"
-                                                ],
-                                                "items": {
-                                                  "type": [
-                                                    "string",
-                                                    "null"
-                                                  ]
-                                                }
-                                              },
                                               "fileParameters": {
                                                 "type": [
                                                   "array",
@@ -10862,18 +10296,6 @@
                                               "ignoreMissingValueFiles": {
                                                 "type": [
                                                   "boolean",
-                                                  "null"
-                                                ]
-                                              },
-                                              "kubeVersion": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              },
-                                              "namespace": {
-                                                "type": [
-                                                  "string",
                                                   "null"
                                                 ]
                                               },
@@ -10962,18 +10384,6 @@
                                               "null"
                                             ],
                                             "properties": {
-                                              "apiVersions": {
-                                                "type": [
-                                                  "array",
-                                                  "null"
-                                                ],
-                                                "items": {
-                                                  "type": [
-                                                    "string",
-                                                    "null"
-                                                  ]
-                                                }
-                                              },
                                               "commonAnnotations": {
                                                 "type": [
                                                   "object",
@@ -11039,12 +10449,6 @@
                                                     "null"
                                                   ]
                                                 }
-                                              },
-                                              "kubeVersion": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
                                               },
                                               "labelWithoutSelector": {
                                                 "type": [
@@ -11789,18 +11193,6 @@
                                             "null"
                                           ],
                                           "properties": {
-                                            "apiVersions": {
-                                              "type": [
-                                                "array",
-                                                "null"
-                                              ],
-                                              "items": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              }
-                                            },
                                             "fileParameters": {
                                               "type": [
                                                 "array",
@@ -11830,18 +11222,6 @@
                                             "ignoreMissingValueFiles": {
                                               "type": [
                                                 "boolean",
-                                                "null"
-                                              ]
-                                            },
-                                            "kubeVersion": {
-                                              "type": [
-                                                "string",
-                                                "null"
-                                              ]
-                                            },
-                                            "namespace": {
-                                              "type": [
-                                                "string",
                                                 "null"
                                               ]
                                             },
@@ -11930,18 +11310,6 @@
                                             "null"
                                           ],
                                           "properties": {
-                                            "apiVersions": {
-                                              "type": [
-                                                "array",
-                                                "null"
-                                              ],
-                                              "items": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              }
-                                            },
                                             "commonAnnotations": {
                                               "type": [
                                                 "object",
@@ -12007,12 +11375,6 @@
                                                   "null"
                                                 ]
                                               }
-                                            },
-                                            "kubeVersion": {
-                                              "type": [
-                                                "string",
-                                                "null"
-                                              ]
                                             },
                                             "labelWithoutSelector": {
                                               "type": [
@@ -12401,18 +11763,6 @@
                                               "null"
                                             ],
                                             "properties": {
-                                              "apiVersions": {
-                                                "type": [
-                                                  "array",
-                                                  "null"
-                                                ],
-                                                "items": {
-                                                  "type": [
-                                                    "string",
-                                                    "null"
-                                                  ]
-                                                }
-                                              },
                                               "fileParameters": {
                                                 "type": [
                                                   "array",
@@ -12442,18 +11792,6 @@
                                               "ignoreMissingValueFiles": {
                                                 "type": [
                                                   "boolean",
-                                                  "null"
-                                                ]
-                                              },
-                                              "kubeVersion": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              },
-                                              "namespace": {
-                                                "type": [
-                                                  "string",
                                                   "null"
                                                 ]
                                               },
@@ -12542,18 +11880,6 @@
                                               "null"
                                             ],
                                             "properties": {
-                                              "apiVersions": {
-                                                "type": [
-                                                  "array",
-                                                  "null"
-                                                ],
-                                                "items": {
-                                                  "type": [
-                                                    "string",
-                                                    "null"
-                                                  ]
-                                                }
-                                              },
                                               "commonAnnotations": {
                                                 "type": [
                                                   "object",
@@ -12619,12 +11945,6 @@
                                                     "null"
                                                   ]
                                                 }
-                                              },
-                                              "kubeVersion": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
                                               },
                                               "labelWithoutSelector": {
                                                 "type": [
@@ -13386,18 +12706,6 @@
                                             "null"
                                           ],
                                           "properties": {
-                                            "apiVersions": {
-                                              "type": [
-                                                "array",
-                                                "null"
-                                              ],
-                                              "items": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              }
-                                            },
                                             "fileParameters": {
                                               "type": [
                                                 "array",
@@ -13427,18 +12735,6 @@
                                             "ignoreMissingValueFiles": {
                                               "type": [
                                                 "boolean",
-                                                "null"
-                                              ]
-                                            },
-                                            "kubeVersion": {
-                                              "type": [
-                                                "string",
-                                                "null"
-                                              ]
-                                            },
-                                            "namespace": {
-                                              "type": [
-                                                "string",
                                                 "null"
                                               ]
                                             },
@@ -13527,18 +12823,6 @@
                                             "null"
                                           ],
                                           "properties": {
-                                            "apiVersions": {
-                                              "type": [
-                                                "array",
-                                                "null"
-                                              ],
-                                              "items": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              }
-                                            },
                                             "commonAnnotations": {
                                               "type": [
                                                 "object",
@@ -13604,12 +12888,6 @@
                                                   "null"
                                                 ]
                                               }
-                                            },
-                                            "kubeVersion": {
-                                              "type": [
-                                                "string",
-                                                "null"
-                                              ]
                                             },
                                             "labelWithoutSelector": {
                                               "type": [
@@ -13998,18 +13276,6 @@
                                               "null"
                                             ],
                                             "properties": {
-                                              "apiVersions": {
-                                                "type": [
-                                                  "array",
-                                                  "null"
-                                                ],
-                                                "items": {
-                                                  "type": [
-                                                    "string",
-                                                    "null"
-                                                  ]
-                                                }
-                                              },
                                               "fileParameters": {
                                                 "type": [
                                                   "array",
@@ -14039,18 +13305,6 @@
                                               "ignoreMissingValueFiles": {
                                                 "type": [
                                                   "boolean",
-                                                  "null"
-                                                ]
-                                              },
-                                              "kubeVersion": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              },
-                                              "namespace": {
-                                                "type": [
-                                                  "string",
                                                   "null"
                                                 ]
                                               },
@@ -14139,18 +13393,6 @@
                                               "null"
                                             ],
                                             "properties": {
-                                              "apiVersions": {
-                                                "type": [
-                                                  "array",
-                                                  "null"
-                                                ],
-                                                "items": {
-                                                  "type": [
-                                                    "string",
-                                                    "null"
-                                                  ]
-                                                }
-                                              },
                                               "commonAnnotations": {
                                                 "type": [
                                                   "object",
@@ -14216,12 +13458,6 @@
                                                     "null"
                                                   ]
                                                 }
-                                              },
-                                              "kubeVersion": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
                                               },
                                               "labelWithoutSelector": {
                                                 "type": [
@@ -14805,56 +14041,6 @@
                                     }
                                   }
                                 },
-                                "bearerToken": {
-                                  "type": [
-                                    "object",
-                                    "null"
-                                  ],
-                                  "required": [
-                                    "tokenRef"
-                                  ],
-                                  "properties": {
-                                    "tokenRef": {
-                                      "type": "object",
-                                      "required": [
-                                        "key",
-                                        "secretName"
-                                      ],
-                                      "properties": {
-                                        "key": {
-                                          "type": "string"
-                                        },
-                                        "secretName": {
-                                          "type": "string"
-                                        }
-                                      }
-                                    }
-                                  }
-                                },
-                                "caRef": {
-                                  "type": [
-                                    "object",
-                                    "null"
-                                  ],
-                                  "required": [
-                                    "configMapName",
-                                    "key"
-                                  ],
-                                  "properties": {
-                                    "configMapName": {
-                                      "type": "string"
-                                    },
-                                    "key": {
-                                      "type": "string"
-                                    }
-                                  }
-                                },
-                                "insecure": {
-                                  "type": [
-                                    "boolean",
-                                    "null"
-                                  ]
-                                },
                                 "project": {
                                   "type": "string"
                                 },
@@ -15009,24 +14195,6 @@
                                     "string",
                                     "null"
                                   ]
-                                },
-                                "caRef": {
-                                  "type": [
-                                    "object",
-                                    "null"
-                                  ],
-                                  "required": [
-                                    "configMapName",
-                                    "key"
-                                  ],
-                                  "properties": {
-                                    "configMapName": {
-                                      "type": "string"
-                                    },
-                                    "key": {
-                                      "type": "string"
-                                    }
-                                  }
                                 },
                                 "insecure": {
                                   "type": [
@@ -15410,18 +14578,6 @@
                                             "null"
                                           ],
                                           "properties": {
-                                            "apiVersions": {
-                                              "type": [
-                                                "array",
-                                                "null"
-                                              ],
-                                              "items": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              }
-                                            },
                                             "fileParameters": {
                                               "type": [
                                                 "array",
@@ -15451,18 +14607,6 @@
                                             "ignoreMissingValueFiles": {
                                               "type": [
                                                 "boolean",
-                                                "null"
-                                              ]
-                                            },
-                                            "kubeVersion": {
-                                              "type": [
-                                                "string",
-                                                "null"
-                                              ]
-                                            },
-                                            "namespace": {
-                                              "type": [
-                                                "string",
                                                 "null"
                                               ]
                                             },
@@ -15551,18 +14695,6 @@
                                             "null"
                                           ],
                                           "properties": {
-                                            "apiVersions": {
-                                              "type": [
-                                                "array",
-                                                "null"
-                                              ],
-                                              "items": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              }
-                                            },
                                             "commonAnnotations": {
                                               "type": [
                                                 "object",
@@ -15628,12 +14760,6 @@
                                                   "null"
                                                 ]
                                               }
-                                            },
-                                            "kubeVersion": {
-                                              "type": [
-                                                "string",
-                                                "null"
-                                              ]
                                             },
                                             "labelWithoutSelector": {
                                               "type": [
@@ -16022,18 +15148,6 @@
                                               "null"
                                             ],
                                             "properties": {
-                                              "apiVersions": {
-                                                "type": [
-                                                  "array",
-                                                  "null"
-                                                ],
-                                                "items": {
-                                                  "type": [
-                                                    "string",
-                                                    "null"
-                                                  ]
-                                                }
-                                              },
                                               "fileParameters": {
                                                 "type": [
                                                   "array",
@@ -16063,18 +15177,6 @@
                                               "ignoreMissingValueFiles": {
                                                 "type": [
                                                   "boolean",
-                                                  "null"
-                                                ]
-                                              },
-                                              "kubeVersion": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              },
-                                              "namespace": {
-                                                "type": [
-                                                  "string",
                                                   "null"
                                                 ]
                                               },
@@ -16163,18 +15265,6 @@
                                               "null"
                                             ],
                                             "properties": {
-                                              "apiVersions": {
-                                                "type": [
-                                                  "array",
-                                                  "null"
-                                                ],
-                                                "items": {
-                                                  "type": [
-                                                    "string",
-                                                    "null"
-                                                  ]
-                                                }
-                                              },
                                               "commonAnnotations": {
                                                 "type": [
                                                   "object",
@@ -16240,12 +15330,6 @@
                                                     "null"
                                                   ]
                                                 }
-                                              },
-                                              "kubeVersion": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
                                               },
                                               "labelWithoutSelector": {
                                                 "type": [
@@ -16822,56 +15906,6 @@
                                     }
                                   }
                                 },
-                                "bearerToken": {
-                                  "type": [
-                                    "object",
-                                    "null"
-                                  ],
-                                  "required": [
-                                    "tokenRef"
-                                  ],
-                                  "properties": {
-                                    "tokenRef": {
-                                      "type": "object",
-                                      "required": [
-                                        "key",
-                                        "secretName"
-                                      ],
-                                      "properties": {
-                                        "key": {
-                                          "type": "string"
-                                        },
-                                        "secretName": {
-                                          "type": "string"
-                                        }
-                                      }
-                                    }
-                                  }
-                                },
-                                "caRef": {
-                                  "type": [
-                                    "object",
-                                    "null"
-                                  ],
-                                  "required": [
-                                    "configMapName",
-                                    "key"
-                                  ],
-                                  "properties": {
-                                    "configMapName": {
-                                      "type": "string"
-                                    },
-                                    "key": {
-                                      "type": "string"
-                                    }
-                                  }
-                                },
-                                "insecure": {
-                                  "type": [
-                                    "boolean",
-                                    "null"
-                                  ]
-                                },
                                 "project": {
                                   "type": "string"
                                 }
@@ -17057,24 +16091,6 @@
                                     "string",
                                     "null"
                                   ]
-                                },
-                                "caRef": {
-                                  "type": [
-                                    "object",
-                                    "null"
-                                  ],
-                                  "required": [
-                                    "configMapName",
-                                    "key"
-                                  ],
-                                  "properties": {
-                                    "configMapName": {
-                                      "type": "string"
-                                    },
-                                    "key": {
-                                      "type": "string"
-                                    }
-                                  }
                                 },
                                 "group": {
                                   "type": "string"
@@ -17458,18 +16474,6 @@
                                             "null"
                                           ],
                                           "properties": {
-                                            "apiVersions": {
-                                              "type": [
-                                                "array",
-                                                "null"
-                                              ],
-                                              "items": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              }
-                                            },
                                             "fileParameters": {
                                               "type": [
                                                 "array",
@@ -17499,18 +16503,6 @@
                                             "ignoreMissingValueFiles": {
                                               "type": [
                                                 "boolean",
-                                                "null"
-                                              ]
-                                            },
-                                            "kubeVersion": {
-                                              "type": [
-                                                "string",
-                                                "null"
-                                              ]
-                                            },
-                                            "namespace": {
-                                              "type": [
-                                                "string",
                                                 "null"
                                               ]
                                             },
@@ -17599,18 +16591,6 @@
                                             "null"
                                           ],
                                           "properties": {
-                                            "apiVersions": {
-                                              "type": [
-                                                "array",
-                                                "null"
-                                              ],
-                                              "items": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              }
-                                            },
                                             "commonAnnotations": {
                                               "type": [
                                                 "object",
@@ -17676,12 +16656,6 @@
                                                   "null"
                                                 ]
                                               }
-                                            },
-                                            "kubeVersion": {
-                                              "type": [
-                                                "string",
-                                                "null"
-                                              ]
                                             },
                                             "labelWithoutSelector": {
                                               "type": [
@@ -18070,18 +17044,6 @@
                                               "null"
                                             ],
                                             "properties": {
-                                              "apiVersions": {
-                                                "type": [
-                                                  "array",
-                                                  "null"
-                                                ],
-                                                "items": {
-                                                  "type": [
-                                                    "string",
-                                                    "null"
-                                                  ]
-                                                }
-                                              },
                                               "fileParameters": {
                                                 "type": [
                                                   "array",
@@ -18111,18 +17073,6 @@
                                               "ignoreMissingValueFiles": {
                                                 "type": [
                                                   "boolean",
-                                                  "null"
-                                                ]
-                                              },
-                                              "kubeVersion": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              },
-                                              "namespace": {
-                                                "type": [
-                                                  "string",
                                                   "null"
                                                 ]
                                               },
@@ -18211,18 +17161,6 @@
                                               "null"
                                             ],
                                             "properties": {
-                                              "apiVersions": {
-                                                "type": [
-                                                  "array",
-                                                  "null"
-                                                ],
-                                                "items": {
-                                                  "type": [
-                                                    "string",
-                                                    "null"
-                                                  ]
-                                                }
-                                              },
                                               "commonAnnotations": {
                                                 "type": [
                                                   "object",
@@ -18288,12 +17226,6 @@
                                                     "null"
                                                   ]
                                                 }
-                                              },
-                                              "kubeVersion": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
                                               },
                                               "labelWithoutSelector": {
                                                 "type": [
@@ -18726,12 +17658,10 @@
                                         "string",
                                         "null"
                                       ]
-                                    },
-                                    "x-kubernetes-list-type": "atomic"
+                                    }
                                   }
                                 }
-                              },
-                              "x-kubernetes-list-type": "atomic"
+                              }
                             },
                             "matchLabels": {
                               "type": [
@@ -19079,18 +18009,6 @@
                                   "null"
                                 ],
                                 "properties": {
-                                  "apiVersions": {
-                                    "type": [
-                                      "array",
-                                      "null"
-                                    ],
-                                    "items": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    }
-                                  },
                                   "fileParameters": {
                                     "type": [
                                       "array",
@@ -19120,18 +18038,6 @@
                                   "ignoreMissingValueFiles": {
                                     "type": [
                                       "boolean",
-                                      "null"
-                                    ]
-                                  },
-                                  "kubeVersion": {
-                                    "type": [
-                                      "string",
-                                      "null"
-                                    ]
-                                  },
-                                  "namespace": {
-                                    "type": [
-                                      "string",
                                       "null"
                                     ]
                                   },
@@ -19220,18 +18126,6 @@
                                   "null"
                                 ],
                                 "properties": {
-                                  "apiVersions": {
-                                    "type": [
-                                      "array",
-                                      "null"
-                                    ],
-                                    "items": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    }
-                                  },
                                   "commonAnnotations": {
                                     "type": [
                                       "object",
@@ -19297,12 +18191,6 @@
                                         "null"
                                       ]
                                     }
-                                  },
-                                  "kubeVersion": {
-                                    "type": [
-                                      "string",
-                                      "null"
-                                    ]
                                   },
                                   "labelWithoutSelector": {
                                     "type": [
@@ -19691,18 +18579,6 @@
                                     "null"
                                   ],
                                   "properties": {
-                                    "apiVersions": {
-                                      "type": [
-                                        "array",
-                                        "null"
-                                      ],
-                                      "items": {
-                                        "type": [
-                                          "string",
-                                          "null"
-                                        ]
-                                      }
-                                    },
                                     "fileParameters": {
                                       "type": [
                                         "array",
@@ -19732,18 +18608,6 @@
                                     "ignoreMissingValueFiles": {
                                       "type": [
                                         "boolean",
-                                        "null"
-                                      ]
-                                    },
-                                    "kubeVersion": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    },
-                                    "namespace": {
-                                      "type": [
-                                        "string",
                                         "null"
                                       ]
                                     },
@@ -19832,18 +18696,6 @@
                                     "null"
                                   ],
                                   "properties": {
-                                    "apiVersions": {
-                                      "type": [
-                                        "array",
-                                        "null"
-                                      ],
-                                      "items": {
-                                        "type": [
-                                          "string",
-                                          "null"
-                                        ]
-                                      }
-                                    },
                                     "commonAnnotations": {
                                       "type": [
                                         "object",
@@ -19909,12 +18761,6 @@
                                           "null"
                                         ]
                                       }
-                                    },
-                                    "kubeVersion": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
                                     },
                                     "labelWithoutSelector": {
                                       "type": [
@@ -20365,12 +19211,10 @@
                                             "string",
                                             "null"
                                           ]
-                                        },
-                                        "x-kubernetes-list-type": "atomic"
+                                        }
                                       }
                                     }
-                                  },
-                                  "x-kubernetes-list-type": "atomic"
+                                  }
                                 },
                                 "matchLabels": {
                                   "type": [
@@ -20728,18 +19572,6 @@
                                             "null"
                                           ],
                                           "properties": {
-                                            "apiVersions": {
-                                              "type": [
-                                                "array",
-                                                "null"
-                                              ],
-                                              "items": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              }
-                                            },
                                             "fileParameters": {
                                               "type": [
                                                 "array",
@@ -20769,18 +19601,6 @@
                                             "ignoreMissingValueFiles": {
                                               "type": [
                                                 "boolean",
-                                                "null"
-                                              ]
-                                            },
-                                            "kubeVersion": {
-                                              "type": [
-                                                "string",
-                                                "null"
-                                              ]
-                                            },
-                                            "namespace": {
-                                              "type": [
-                                                "string",
                                                 "null"
                                               ]
                                             },
@@ -20869,18 +19689,6 @@
                                             "null"
                                           ],
                                           "properties": {
-                                            "apiVersions": {
-                                              "type": [
-                                                "array",
-                                                "null"
-                                              ],
-                                              "items": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              }
-                                            },
                                             "commonAnnotations": {
                                               "type": [
                                                 "object",
@@ -20946,12 +19754,6 @@
                                                   "null"
                                                 ]
                                               }
-                                            },
-                                            "kubeVersion": {
-                                              "type": [
-                                                "string",
-                                                "null"
-                                              ]
                                             },
                                             "labelWithoutSelector": {
                                               "type": [
@@ -21340,18 +20142,6 @@
                                               "null"
                                             ],
                                             "properties": {
-                                              "apiVersions": {
-                                                "type": [
-                                                  "array",
-                                                  "null"
-                                                ],
-                                                "items": {
-                                                  "type": [
-                                                    "string",
-                                                    "null"
-                                                  ]
-                                                }
-                                              },
                                               "fileParameters": {
                                                 "type": [
                                                   "array",
@@ -21381,18 +20171,6 @@
                                               "ignoreMissingValueFiles": {
                                                 "type": [
                                                   "boolean",
-                                                  "null"
-                                                ]
-                                              },
-                                              "kubeVersion": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              },
-                                              "namespace": {
-                                                "type": [
-                                                  "string",
                                                   "null"
                                                 ]
                                               },
@@ -21481,18 +20259,6 @@
                                               "null"
                                             ],
                                             "properties": {
-                                              "apiVersions": {
-                                                "type": [
-                                                  "array",
-                                                  "null"
-                                                ],
-                                                "items": {
-                                                  "type": [
-                                                    "string",
-                                                    "null"
-                                                  ]
-                                                }
-                                              },
                                               "commonAnnotations": {
                                                 "type": [
                                                   "object",
@@ -21558,12 +20324,6 @@
                                                     "null"
                                                   ]
                                                 }
-                                              },
-                                              "kubeVersion": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
                                               },
                                               "labelWithoutSelector": {
                                                 "type": [
@@ -22002,12 +20762,10 @@
                                             "string",
                                             "null"
                                           ]
-                                        },
-                                        "x-kubernetes-list-type": "atomic"
+                                        }
                                       }
                                     }
-                                  },
-                                  "x-kubernetes-list-type": "atomic"
+                                  }
                                 },
                                 "matchLabels": {
                                   "type": [
@@ -22352,18 +21110,6 @@
                                             "null"
                                           ],
                                           "properties": {
-                                            "apiVersions": {
-                                              "type": [
-                                                "array",
-                                                "null"
-                                              ],
-                                              "items": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              }
-                                            },
                                             "fileParameters": {
                                               "type": [
                                                 "array",
@@ -22393,18 +21139,6 @@
                                             "ignoreMissingValueFiles": {
                                               "type": [
                                                 "boolean",
-                                                "null"
-                                              ]
-                                            },
-                                            "kubeVersion": {
-                                              "type": [
-                                                "string",
-                                                "null"
-                                              ]
-                                            },
-                                            "namespace": {
-                                              "type": [
-                                                "string",
                                                 "null"
                                               ]
                                             },
@@ -22493,18 +21227,6 @@
                                             "null"
                                           ],
                                           "properties": {
-                                            "apiVersions": {
-                                              "type": [
-                                                "array",
-                                                "null"
-                                              ],
-                                              "items": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              }
-                                            },
                                             "commonAnnotations": {
                                               "type": [
                                                 "object",
@@ -22570,12 +21292,6 @@
                                                   "null"
                                                 ]
                                               }
-                                            },
-                                            "kubeVersion": {
-                                              "type": [
-                                                "string",
-                                                "null"
-                                              ]
                                             },
                                             "labelWithoutSelector": {
                                               "type": [
@@ -22964,18 +21680,6 @@
                                               "null"
                                             ],
                                             "properties": {
-                                              "apiVersions": {
-                                                "type": [
-                                                  "array",
-                                                  "null"
-                                                ],
-                                                "items": {
-                                                  "type": [
-                                                    "string",
-                                                    "null"
-                                                  ]
-                                                }
-                                              },
                                               "fileParameters": {
                                                 "type": [
                                                   "array",
@@ -23005,18 +21709,6 @@
                                               "ignoreMissingValueFiles": {
                                                 "type": [
                                                   "boolean",
-                                                  "null"
-                                                ]
-                                              },
-                                              "kubeVersion": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              },
-                                              "namespace": {
-                                                "type": [
-                                                  "string",
                                                   "null"
                                                 ]
                                               },
@@ -23105,18 +21797,6 @@
                                               "null"
                                             ],
                                             "properties": {
-                                              "apiVersions": {
-                                                "type": [
-                                                  "array",
-                                                  "null"
-                                                ],
-                                                "items": {
-                                                  "type": [
-                                                    "string",
-                                                    "null"
-                                                  ]
-                                                }
-                                              },
                                               "commonAnnotations": {
                                                 "type": [
                                                   "object",
@@ -23182,12 +21862,6 @@
                                                     "null"
                                                   ]
                                                 }
-                                              },
-                                              "kubeVersion": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
                                               },
                                               "labelWithoutSelector": {
                                                 "type": [
@@ -23986,18 +22660,6 @@
                                             "null"
                                           ],
                                           "properties": {
-                                            "apiVersions": {
-                                              "type": [
-                                                "array",
-                                                "null"
-                                              ],
-                                              "items": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              }
-                                            },
                                             "fileParameters": {
                                               "type": [
                                                 "array",
@@ -24027,18 +22689,6 @@
                                             "ignoreMissingValueFiles": {
                                               "type": [
                                                 "boolean",
-                                                "null"
-                                              ]
-                                            },
-                                            "kubeVersion": {
-                                              "type": [
-                                                "string",
-                                                "null"
-                                              ]
-                                            },
-                                            "namespace": {
-                                              "type": [
-                                                "string",
                                                 "null"
                                               ]
                                             },
@@ -24127,18 +22777,6 @@
                                             "null"
                                           ],
                                           "properties": {
-                                            "apiVersions": {
-                                              "type": [
-                                                "array",
-                                                "null"
-                                              ],
-                                              "items": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              }
-                                            },
                                             "commonAnnotations": {
                                               "type": [
                                                 "object",
@@ -24204,12 +22842,6 @@
                                                   "null"
                                                 ]
                                               }
-                                            },
-                                            "kubeVersion": {
-                                              "type": [
-                                                "string",
-                                                "null"
-                                              ]
                                             },
                                             "labelWithoutSelector": {
                                               "type": [
@@ -24598,18 +23230,6 @@
                                               "null"
                                             ],
                                             "properties": {
-                                              "apiVersions": {
-                                                "type": [
-                                                  "array",
-                                                  "null"
-                                                ],
-                                                "items": {
-                                                  "type": [
-                                                    "string",
-                                                    "null"
-                                                  ]
-                                                }
-                                              },
                                               "fileParameters": {
                                                 "type": [
                                                   "array",
@@ -24639,18 +23259,6 @@
                                               "ignoreMissingValueFiles": {
                                                 "type": [
                                                   "boolean",
-                                                  "null"
-                                                ]
-                                              },
-                                              "kubeVersion": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              },
-                                              "namespace": {
-                                                "type": [
-                                                  "string",
                                                   "null"
                                                 ]
                                               },
@@ -24739,18 +23347,6 @@
                                               "null"
                                             ],
                                             "properties": {
-                                              "apiVersions": {
-                                                "type": [
-                                                  "array",
-                                                  "null"
-                                                ],
-                                                "items": {
-                                                  "type": [
-                                                    "string",
-                                                    "null"
-                                                  ]
-                                                }
-                                              },
                                               "commonAnnotations": {
                                                 "type": [
                                                   "object",
@@ -24816,12 +23412,6 @@
                                                     "null"
                                                   ]
                                                 }
-                                              },
-                                              "kubeVersion": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
                                               },
                                               "labelWithoutSelector": {
                                                 "type": [
@@ -25566,18 +24156,6 @@
                                             "null"
                                           ],
                                           "properties": {
-                                            "apiVersions": {
-                                              "type": [
-                                                "array",
-                                                "null"
-                                              ],
-                                              "items": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              }
-                                            },
                                             "fileParameters": {
                                               "type": [
                                                 "array",
@@ -25607,18 +24185,6 @@
                                             "ignoreMissingValueFiles": {
                                               "type": [
                                                 "boolean",
-                                                "null"
-                                              ]
-                                            },
-                                            "kubeVersion": {
-                                              "type": [
-                                                "string",
-                                                "null"
-                                              ]
-                                            },
-                                            "namespace": {
-                                              "type": [
-                                                "string",
                                                 "null"
                                               ]
                                             },
@@ -25707,18 +24273,6 @@
                                             "null"
                                           ],
                                           "properties": {
-                                            "apiVersions": {
-                                              "type": [
-                                                "array",
-                                                "null"
-                                              ],
-                                              "items": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              }
-                                            },
                                             "commonAnnotations": {
                                               "type": [
                                                 "object",
@@ -25784,12 +24338,6 @@
                                                   "null"
                                                 ]
                                               }
-                                            },
-                                            "kubeVersion": {
-                                              "type": [
-                                                "string",
-                                                "null"
-                                              ]
                                             },
                                             "labelWithoutSelector": {
                                               "type": [
@@ -26178,18 +24726,6 @@
                                               "null"
                                             ],
                                             "properties": {
-                                              "apiVersions": {
-                                                "type": [
-                                                  "array",
-                                                  "null"
-                                                ],
-                                                "items": {
-                                                  "type": [
-                                                    "string",
-                                                    "null"
-                                                  ]
-                                                }
-                                              },
                                               "fileParameters": {
                                                 "type": [
                                                   "array",
@@ -26219,18 +24755,6 @@
                                               "ignoreMissingValueFiles": {
                                                 "type": [
                                                   "boolean",
-                                                  "null"
-                                                ]
-                                              },
-                                              "kubeVersion": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              },
-                                              "namespace": {
-                                                "type": [
-                                                  "string",
                                                   "null"
                                                 ]
                                               },
@@ -26319,18 +24843,6 @@
                                               "null"
                                             ],
                                             "properties": {
-                                              "apiVersions": {
-                                                "type": [
-                                                  "array",
-                                                  "null"
-                                                ],
-                                                "items": {
-                                                  "type": [
-                                                    "string",
-                                                    "null"
-                                                  ]
-                                                }
-                                              },
                                               "commonAnnotations": {
                                                 "type": [
                                                   "object",
@@ -26396,12 +24908,6 @@
                                                     "null"
                                                   ]
                                                 }
-                                              },
-                                              "kubeVersion": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
                                               },
                                               "labelWithoutSelector": {
                                                 "type": [
@@ -27163,18 +25669,6 @@
                                             "null"
                                           ],
                                           "properties": {
-                                            "apiVersions": {
-                                              "type": [
-                                                "array",
-                                                "null"
-                                              ],
-                                              "items": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              }
-                                            },
                                             "fileParameters": {
                                               "type": [
                                                 "array",
@@ -27204,18 +25698,6 @@
                                             "ignoreMissingValueFiles": {
                                               "type": [
                                                 "boolean",
-                                                "null"
-                                              ]
-                                            },
-                                            "kubeVersion": {
-                                              "type": [
-                                                "string",
-                                                "null"
-                                              ]
-                                            },
-                                            "namespace": {
-                                              "type": [
-                                                "string",
                                                 "null"
                                               ]
                                             },
@@ -27304,18 +25786,6 @@
                                             "null"
                                           ],
                                           "properties": {
-                                            "apiVersions": {
-                                              "type": [
-                                                "array",
-                                                "null"
-                                              ],
-                                              "items": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              }
-                                            },
                                             "commonAnnotations": {
                                               "type": [
                                                 "object",
@@ -27381,12 +25851,6 @@
                                                   "null"
                                                 ]
                                               }
-                                            },
-                                            "kubeVersion": {
-                                              "type": [
-                                                "string",
-                                                "null"
-                                              ]
                                             },
                                             "labelWithoutSelector": {
                                               "type": [
@@ -27775,18 +26239,6 @@
                                               "null"
                                             ],
                                             "properties": {
-                                              "apiVersions": {
-                                                "type": [
-                                                  "array",
-                                                  "null"
-                                                ],
-                                                "items": {
-                                                  "type": [
-                                                    "string",
-                                                    "null"
-                                                  ]
-                                                }
-                                              },
                                               "fileParameters": {
                                                 "type": [
                                                   "array",
@@ -27816,18 +26268,6 @@
                                               "ignoreMissingValueFiles": {
                                                 "type": [
                                                   "boolean",
-                                                  "null"
-                                                ]
-                                              },
-                                              "kubeVersion": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              },
-                                              "namespace": {
-                                                "type": [
-                                                  "string",
                                                   "null"
                                                 ]
                                               },
@@ -27916,18 +26356,6 @@
                                               "null"
                                             ],
                                             "properties": {
-                                              "apiVersions": {
-                                                "type": [
-                                                  "array",
-                                                  "null"
-                                                ],
-                                                "items": {
-                                                  "type": [
-                                                    "string",
-                                                    "null"
-                                                  ]
-                                                }
-                                              },
                                               "commonAnnotations": {
                                                 "type": [
                                                   "object",
@@ -27993,12 +26421,6 @@
                                                     "null"
                                                   ]
                                                 }
-                                              },
-                                              "kubeVersion": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
                                               },
                                               "labelWithoutSelector": {
                                                 "type": [
@@ -28582,56 +27004,6 @@
                                     }
                                   }
                                 },
-                                "bearerToken": {
-                                  "type": [
-                                    "object",
-                                    "null"
-                                  ],
-                                  "required": [
-                                    "tokenRef"
-                                  ],
-                                  "properties": {
-                                    "tokenRef": {
-                                      "type": "object",
-                                      "required": [
-                                        "key",
-                                        "secretName"
-                                      ],
-                                      "properties": {
-                                        "key": {
-                                          "type": "string"
-                                        },
-                                        "secretName": {
-                                          "type": "string"
-                                        }
-                                      }
-                                    }
-                                  }
-                                },
-                                "caRef": {
-                                  "type": [
-                                    "object",
-                                    "null"
-                                  ],
-                                  "required": [
-                                    "configMapName",
-                                    "key"
-                                  ],
-                                  "properties": {
-                                    "configMapName": {
-                                      "type": "string"
-                                    },
-                                    "key": {
-                                      "type": "string"
-                                    }
-                                  }
-                                },
-                                "insecure": {
-                                  "type": [
-                                    "boolean",
-                                    "null"
-                                  ]
-                                },
                                 "project": {
                                   "type": "string"
                                 },
@@ -28786,24 +27158,6 @@
                                     "string",
                                     "null"
                                   ]
-                                },
-                                "caRef": {
-                                  "type": [
-                                    "object",
-                                    "null"
-                                  ],
-                                  "required": [
-                                    "configMapName",
-                                    "key"
-                                  ],
-                                  "properties": {
-                                    "configMapName": {
-                                      "type": "string"
-                                    },
-                                    "key": {
-                                      "type": "string"
-                                    }
-                                  }
                                 },
                                 "insecure": {
                                   "type": [
@@ -29187,18 +27541,6 @@
                                             "null"
                                           ],
                                           "properties": {
-                                            "apiVersions": {
-                                              "type": [
-                                                "array",
-                                                "null"
-                                              ],
-                                              "items": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              }
-                                            },
                                             "fileParameters": {
                                               "type": [
                                                 "array",
@@ -29228,18 +27570,6 @@
                                             "ignoreMissingValueFiles": {
                                               "type": [
                                                 "boolean",
-                                                "null"
-                                              ]
-                                            },
-                                            "kubeVersion": {
-                                              "type": [
-                                                "string",
-                                                "null"
-                                              ]
-                                            },
-                                            "namespace": {
-                                              "type": [
-                                                "string",
                                                 "null"
                                               ]
                                             },
@@ -29328,18 +27658,6 @@
                                             "null"
                                           ],
                                           "properties": {
-                                            "apiVersions": {
-                                              "type": [
-                                                "array",
-                                                "null"
-                                              ],
-                                              "items": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              }
-                                            },
                                             "commonAnnotations": {
                                               "type": [
                                                 "object",
@@ -29405,12 +27723,6 @@
                                                   "null"
                                                 ]
                                               }
-                                            },
-                                            "kubeVersion": {
-                                              "type": [
-                                                "string",
-                                                "null"
-                                              ]
                                             },
                                             "labelWithoutSelector": {
                                               "type": [
@@ -29799,18 +28111,6 @@
                                               "null"
                                             ],
                                             "properties": {
-                                              "apiVersions": {
-                                                "type": [
-                                                  "array",
-                                                  "null"
-                                                ],
-                                                "items": {
-                                                  "type": [
-                                                    "string",
-                                                    "null"
-                                                  ]
-                                                }
-                                              },
                                               "fileParameters": {
                                                 "type": [
                                                   "array",
@@ -29840,18 +28140,6 @@
                                               "ignoreMissingValueFiles": {
                                                 "type": [
                                                   "boolean",
-                                                  "null"
-                                                ]
-                                              },
-                                              "kubeVersion": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              },
-                                              "namespace": {
-                                                "type": [
-                                                  "string",
                                                   "null"
                                                 ]
                                               },
@@ -29940,18 +28228,6 @@
                                               "null"
                                             ],
                                             "properties": {
-                                              "apiVersions": {
-                                                "type": [
-                                                  "array",
-                                                  "null"
-                                                ],
-                                                "items": {
-                                                  "type": [
-                                                    "string",
-                                                    "null"
-                                                  ]
-                                                }
-                                              },
                                               "commonAnnotations": {
                                                 "type": [
                                                   "object",
@@ -30017,12 +28293,6 @@
                                                     "null"
                                                   ]
                                                 }
-                                              },
-                                              "kubeVersion": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
                                               },
                                               "labelWithoutSelector": {
                                                 "type": [
@@ -30599,56 +28869,6 @@
                                     }
                                   }
                                 },
-                                "bearerToken": {
-                                  "type": [
-                                    "object",
-                                    "null"
-                                  ],
-                                  "required": [
-                                    "tokenRef"
-                                  ],
-                                  "properties": {
-                                    "tokenRef": {
-                                      "type": "object",
-                                      "required": [
-                                        "key",
-                                        "secretName"
-                                      ],
-                                      "properties": {
-                                        "key": {
-                                          "type": "string"
-                                        },
-                                        "secretName": {
-                                          "type": "string"
-                                        }
-                                      }
-                                    }
-                                  }
-                                },
-                                "caRef": {
-                                  "type": [
-                                    "object",
-                                    "null"
-                                  ],
-                                  "required": [
-                                    "configMapName",
-                                    "key"
-                                  ],
-                                  "properties": {
-                                    "configMapName": {
-                                      "type": "string"
-                                    },
-                                    "key": {
-                                      "type": "string"
-                                    }
-                                  }
-                                },
-                                "insecure": {
-                                  "type": [
-                                    "boolean",
-                                    "null"
-                                  ]
-                                },
                                 "project": {
                                   "type": "string"
                                 }
@@ -30834,24 +29054,6 @@
                                     "string",
                                     "null"
                                   ]
-                                },
-                                "caRef": {
-                                  "type": [
-                                    "object",
-                                    "null"
-                                  ],
-                                  "required": [
-                                    "configMapName",
-                                    "key"
-                                  ],
-                                  "properties": {
-                                    "configMapName": {
-                                      "type": "string"
-                                    },
-                                    "key": {
-                                      "type": "string"
-                                    }
-                                  }
                                 },
                                 "group": {
                                   "type": "string"
@@ -31235,18 +29437,6 @@
                                             "null"
                                           ],
                                           "properties": {
-                                            "apiVersions": {
-                                              "type": [
-                                                "array",
-                                                "null"
-                                              ],
-                                              "items": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              }
-                                            },
                                             "fileParameters": {
                                               "type": [
                                                 "array",
@@ -31276,18 +29466,6 @@
                                             "ignoreMissingValueFiles": {
                                               "type": [
                                                 "boolean",
-                                                "null"
-                                              ]
-                                            },
-                                            "kubeVersion": {
-                                              "type": [
-                                                "string",
-                                                "null"
-                                              ]
-                                            },
-                                            "namespace": {
-                                              "type": [
-                                                "string",
                                                 "null"
                                               ]
                                             },
@@ -31376,18 +29554,6 @@
                                             "null"
                                           ],
                                           "properties": {
-                                            "apiVersions": {
-                                              "type": [
-                                                "array",
-                                                "null"
-                                              ],
-                                              "items": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              }
-                                            },
                                             "commonAnnotations": {
                                               "type": [
                                                 "object",
@@ -31453,12 +29619,6 @@
                                                   "null"
                                                 ]
                                               }
-                                            },
-                                            "kubeVersion": {
-                                              "type": [
-                                                "string",
-                                                "null"
-                                              ]
                                             },
                                             "labelWithoutSelector": {
                                               "type": [
@@ -31847,18 +30007,6 @@
                                               "null"
                                             ],
                                             "properties": {
-                                              "apiVersions": {
-                                                "type": [
-                                                  "array",
-                                                  "null"
-                                                ],
-                                                "items": {
-                                                  "type": [
-                                                    "string",
-                                                    "null"
-                                                  ]
-                                                }
-                                              },
                                               "fileParameters": {
                                                 "type": [
                                                   "array",
@@ -31888,18 +30036,6 @@
                                               "ignoreMissingValueFiles": {
                                                 "type": [
                                                   "boolean",
-                                                  "null"
-                                                ]
-                                              },
-                                              "kubeVersion": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
-                                              },
-                                              "namespace": {
-                                                "type": [
-                                                  "string",
                                                   "null"
                                                 ]
                                               },
@@ -31988,18 +30124,6 @@
                                               "null"
                                             ],
                                             "properties": {
-                                              "apiVersions": {
-                                                "type": [
-                                                  "array",
-                                                  "null"
-                                                ],
-                                                "items": {
-                                                  "type": [
-                                                    "string",
-                                                    "null"
-                                                  ]
-                                                }
-                                              },
                                               "commonAnnotations": {
                                                 "type": [
                                                   "object",
@@ -32065,12 +30189,6 @@
                                                     "null"
                                                   ]
                                                 }
-                                              },
-                                              "kubeVersion": {
-                                                "type": [
-                                                  "string",
-                                                  "null"
-                                                ]
                                               },
                                               "labelWithoutSelector": {
                                                 "type": [
@@ -32503,12 +30621,10 @@
                                         "string",
                                         "null"
                                       ]
-                                    },
-                                    "x-kubernetes-list-type": "atomic"
+                                    }
                                   }
                                 }
-                              },
-                              "x-kubernetes-list-type": "atomic"
+                              }
                             },
                             "matchLabels": {
                               "type": [
@@ -32865,18 +30981,6 @@
                                   "null"
                                 ],
                                 "properties": {
-                                  "apiVersions": {
-                                    "type": [
-                                      "array",
-                                      "null"
-                                    ],
-                                    "items": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    }
-                                  },
                                   "fileParameters": {
                                     "type": [
                                       "array",
@@ -32906,18 +31010,6 @@
                                   "ignoreMissingValueFiles": {
                                     "type": [
                                       "boolean",
-                                      "null"
-                                    ]
-                                  },
-                                  "kubeVersion": {
-                                    "type": [
-                                      "string",
-                                      "null"
-                                    ]
-                                  },
-                                  "namespace": {
-                                    "type": [
-                                      "string",
                                       "null"
                                     ]
                                   },
@@ -33006,18 +31098,6 @@
                                   "null"
                                 ],
                                 "properties": {
-                                  "apiVersions": {
-                                    "type": [
-                                      "array",
-                                      "null"
-                                    ],
-                                    "items": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    }
-                                  },
                                   "commonAnnotations": {
                                     "type": [
                                       "object",
@@ -33083,12 +31163,6 @@
                                         "null"
                                       ]
                                     }
-                                  },
-                                  "kubeVersion": {
-                                    "type": [
-                                      "string",
-                                      "null"
-                                    ]
                                   },
                                   "labelWithoutSelector": {
                                     "type": [
@@ -33477,18 +31551,6 @@
                                     "null"
                                   ],
                                   "properties": {
-                                    "apiVersions": {
-                                      "type": [
-                                        "array",
-                                        "null"
-                                      ],
-                                      "items": {
-                                        "type": [
-                                          "string",
-                                          "null"
-                                        ]
-                                      }
-                                    },
                                     "fileParameters": {
                                       "type": [
                                         "array",
@@ -33518,18 +31580,6 @@
                                     "ignoreMissingValueFiles": {
                                       "type": [
                                         "boolean",
-                                        "null"
-                                      ]
-                                    },
-                                    "kubeVersion": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    },
-                                    "namespace": {
-                                      "type": [
-                                        "string",
                                         "null"
                                       ]
                                     },
@@ -33618,18 +31668,6 @@
                                     "null"
                                   ],
                                   "properties": {
-                                    "apiVersions": {
-                                      "type": [
-                                        "array",
-                                        "null"
-                                      ],
-                                      "items": {
-                                        "type": [
-                                          "string",
-                                          "null"
-                                        ]
-                                      }
-                                    },
                                     "commonAnnotations": {
                                       "type": [
                                         "object",
@@ -33695,12 +31733,6 @@
                                           "null"
                                         ]
                                       }
-                                    },
-                                    "kubeVersion": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
                                     },
                                     "labelWithoutSelector": {
                                       "type": [
@@ -34456,18 +32488,6 @@
                                   "null"
                                 ],
                                 "properties": {
-                                  "apiVersions": {
-                                    "type": [
-                                      "array",
-                                      "null"
-                                    ],
-                                    "items": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    }
-                                  },
                                   "fileParameters": {
                                     "type": [
                                       "array",
@@ -34497,18 +32517,6 @@
                                   "ignoreMissingValueFiles": {
                                     "type": [
                                       "boolean",
-                                      "null"
-                                    ]
-                                  },
-                                  "kubeVersion": {
-                                    "type": [
-                                      "string",
-                                      "null"
-                                    ]
-                                  },
-                                  "namespace": {
-                                    "type": [
-                                      "string",
                                       "null"
                                     ]
                                   },
@@ -34597,18 +32605,6 @@
                                   "null"
                                 ],
                                 "properties": {
-                                  "apiVersions": {
-                                    "type": [
-                                      "array",
-                                      "null"
-                                    ],
-                                    "items": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    }
-                                  },
                                   "commonAnnotations": {
                                     "type": [
                                       "object",
@@ -34674,12 +32670,6 @@
                                         "null"
                                       ]
                                     }
-                                  },
-                                  "kubeVersion": {
-                                    "type": [
-                                      "string",
-                                      "null"
-                                    ]
                                   },
                                   "labelWithoutSelector": {
                                     "type": [
@@ -35068,18 +33058,6 @@
                                     "null"
                                   ],
                                   "properties": {
-                                    "apiVersions": {
-                                      "type": [
-                                        "array",
-                                        "null"
-                                      ],
-                                      "items": {
-                                        "type": [
-                                          "string",
-                                          "null"
-                                        ]
-                                      }
-                                    },
                                     "fileParameters": {
                                       "type": [
                                         "array",
@@ -35109,18 +33087,6 @@
                                     "ignoreMissingValueFiles": {
                                       "type": [
                                         "boolean",
-                                        "null"
-                                      ]
-                                    },
-                                    "kubeVersion": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    },
-                                    "namespace": {
-                                      "type": [
-                                        "string",
                                         "null"
                                       ]
                                     },
@@ -35209,18 +33175,6 @@
                                     "null"
                                   ],
                                   "properties": {
-                                    "apiVersions": {
-                                      "type": [
-                                        "array",
-                                        "null"
-                                      ],
-                                      "items": {
-                                        "type": [
-                                          "string",
-                                          "null"
-                                        ]
-                                      }
-                                    },
                                     "commonAnnotations": {
                                       "type": [
                                         "object",
@@ -35286,12 +33240,6 @@
                                           "null"
                                         ]
                                       }
-                                    },
-                                    "kubeVersion": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
                                     },
                                     "labelWithoutSelector": {
                                       "type": [
@@ -35875,56 +33823,6 @@
                           }
                         }
                       },
-                      "bearerToken": {
-                        "type": [
-                          "object",
-                          "null"
-                        ],
-                        "required": [
-                          "tokenRef"
-                        ],
-                        "properties": {
-                          "tokenRef": {
-                            "type": "object",
-                            "required": [
-                              "key",
-                              "secretName"
-                            ],
-                            "properties": {
-                              "key": {
-                                "type": "string"
-                              },
-                              "secretName": {
-                                "type": "string"
-                              }
-                            }
-                          }
-                        }
-                      },
-                      "caRef": {
-                        "type": [
-                          "object",
-                          "null"
-                        ],
-                        "required": [
-                          "configMapName",
-                          "key"
-                        ],
-                        "properties": {
-                          "configMapName": {
-                            "type": "string"
-                          },
-                          "key": {
-                            "type": "string"
-                          }
-                        }
-                      },
-                      "insecure": {
-                        "type": [
-                          "boolean",
-                          "null"
-                        ]
-                      },
                       "project": {
                         "type": "string"
                       },
@@ -36079,24 +33977,6 @@
                           "string",
                           "null"
                         ]
-                      },
-                      "caRef": {
-                        "type": [
-                          "object",
-                          "null"
-                        ],
-                        "required": [
-                          "configMapName",
-                          "key"
-                        ],
-                        "properties": {
-                          "configMapName": {
-                            "type": "string"
-                          },
-                          "key": {
-                            "type": "string"
-                          }
-                        }
                       },
                       "insecure": {
                         "type": [
@@ -36480,18 +34360,6 @@
                                   "null"
                                 ],
                                 "properties": {
-                                  "apiVersions": {
-                                    "type": [
-                                      "array",
-                                      "null"
-                                    ],
-                                    "items": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    }
-                                  },
                                   "fileParameters": {
                                     "type": [
                                       "array",
@@ -36521,18 +34389,6 @@
                                   "ignoreMissingValueFiles": {
                                     "type": [
                                       "boolean",
-                                      "null"
-                                    ]
-                                  },
-                                  "kubeVersion": {
-                                    "type": [
-                                      "string",
-                                      "null"
-                                    ]
-                                  },
-                                  "namespace": {
-                                    "type": [
-                                      "string",
                                       "null"
                                     ]
                                   },
@@ -36621,18 +34477,6 @@
                                   "null"
                                 ],
                                 "properties": {
-                                  "apiVersions": {
-                                    "type": [
-                                      "array",
-                                      "null"
-                                    ],
-                                    "items": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    }
-                                  },
                                   "commonAnnotations": {
                                     "type": [
                                       "object",
@@ -36698,12 +34542,6 @@
                                         "null"
                                       ]
                                     }
-                                  },
-                                  "kubeVersion": {
-                                    "type": [
-                                      "string",
-                                      "null"
-                                    ]
                                   },
                                   "labelWithoutSelector": {
                                     "type": [
@@ -37092,18 +34930,6 @@
                                     "null"
                                   ],
                                   "properties": {
-                                    "apiVersions": {
-                                      "type": [
-                                        "array",
-                                        "null"
-                                      ],
-                                      "items": {
-                                        "type": [
-                                          "string",
-                                          "null"
-                                        ]
-                                      }
-                                    },
                                     "fileParameters": {
                                       "type": [
                                         "array",
@@ -37133,18 +34959,6 @@
                                     "ignoreMissingValueFiles": {
                                       "type": [
                                         "boolean",
-                                        "null"
-                                      ]
-                                    },
-                                    "kubeVersion": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    },
-                                    "namespace": {
-                                      "type": [
-                                        "string",
                                         "null"
                                       ]
                                     },
@@ -37233,18 +35047,6 @@
                                     "null"
                                   ],
                                   "properties": {
-                                    "apiVersions": {
-                                      "type": [
-                                        "array",
-                                        "null"
-                                      ],
-                                      "items": {
-                                        "type": [
-                                          "string",
-                                          "null"
-                                        ]
-                                      }
-                                    },
                                     "commonAnnotations": {
                                       "type": [
                                         "object",
@@ -37310,12 +35112,6 @@
                                           "null"
                                         ]
                                       }
-                                    },
-                                    "kubeVersion": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
                                     },
                                     "labelWithoutSelector": {
                                       "type": [
@@ -37892,56 +35688,6 @@
                           }
                         }
                       },
-                      "bearerToken": {
-                        "type": [
-                          "object",
-                          "null"
-                        ],
-                        "required": [
-                          "tokenRef"
-                        ],
-                        "properties": {
-                          "tokenRef": {
-                            "type": "object",
-                            "required": [
-                              "key",
-                              "secretName"
-                            ],
-                            "properties": {
-                              "key": {
-                                "type": "string"
-                              },
-                              "secretName": {
-                                "type": "string"
-                              }
-                            }
-                          }
-                        }
-                      },
-                      "caRef": {
-                        "type": [
-                          "object",
-                          "null"
-                        ],
-                        "required": [
-                          "configMapName",
-                          "key"
-                        ],
-                        "properties": {
-                          "configMapName": {
-                            "type": "string"
-                          },
-                          "key": {
-                            "type": "string"
-                          }
-                        }
-                      },
-                      "insecure": {
-                        "type": [
-                          "boolean",
-                          "null"
-                        ]
-                      },
                       "project": {
                         "type": "string"
                       }
@@ -38127,24 +35873,6 @@
                           "string",
                           "null"
                         ]
-                      },
-                      "caRef": {
-                        "type": [
-                          "object",
-                          "null"
-                        ],
-                        "required": [
-                          "configMapName",
-                          "key"
-                        ],
-                        "properties": {
-                          "configMapName": {
-                            "type": "string"
-                          },
-                          "key": {
-                            "type": "string"
-                          }
-                        }
                       },
                       "group": {
                         "type": "string"
@@ -38528,18 +36256,6 @@
                                   "null"
                                 ],
                                 "properties": {
-                                  "apiVersions": {
-                                    "type": [
-                                      "array",
-                                      "null"
-                                    ],
-                                    "items": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    }
-                                  },
                                   "fileParameters": {
                                     "type": [
                                       "array",
@@ -38569,18 +36285,6 @@
                                   "ignoreMissingValueFiles": {
                                     "type": [
                                       "boolean",
-                                      "null"
-                                    ]
-                                  },
-                                  "kubeVersion": {
-                                    "type": [
-                                      "string",
-                                      "null"
-                                    ]
-                                  },
-                                  "namespace": {
-                                    "type": [
-                                      "string",
                                       "null"
                                     ]
                                   },
@@ -38669,18 +36373,6 @@
                                   "null"
                                 ],
                                 "properties": {
-                                  "apiVersions": {
-                                    "type": [
-                                      "array",
-                                      "null"
-                                    ],
-                                    "items": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    }
-                                  },
                                   "commonAnnotations": {
                                     "type": [
                                       "object",
@@ -38746,12 +36438,6 @@
                                         "null"
                                       ]
                                     }
-                                  },
-                                  "kubeVersion": {
-                                    "type": [
-                                      "string",
-                                      "null"
-                                    ]
                                   },
                                   "labelWithoutSelector": {
                                     "type": [
@@ -39140,18 +36826,6 @@
                                     "null"
                                   ],
                                   "properties": {
-                                    "apiVersions": {
-                                      "type": [
-                                        "array",
-                                        "null"
-                                      ],
-                                      "items": {
-                                        "type": [
-                                          "string",
-                                          "null"
-                                        ]
-                                      }
-                                    },
                                     "fileParameters": {
                                       "type": [
                                         "array",
@@ -39181,18 +36855,6 @@
                                     "ignoreMissingValueFiles": {
                                       "type": [
                                         "boolean",
-                                        "null"
-                                      ]
-                                    },
-                                    "kubeVersion": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    },
-                                    "namespace": {
-                                      "type": [
-                                        "string",
                                         "null"
                                       ]
                                     },
@@ -39281,18 +36943,6 @@
                                     "null"
                                   ],
                                   "properties": {
-                                    "apiVersions": {
-                                      "type": [
-                                        "array",
-                                        "null"
-                                      ],
-                                      "items": {
-                                        "type": [
-                                          "string",
-                                          "null"
-                                        ]
-                                      }
-                                    },
                                     "commonAnnotations": {
                                       "type": [
                                         "object",
@@ -39358,12 +37008,6 @@
                                           "null"
                                         ]
                                       }
-                                    },
-                                    "kubeVersion": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
                                     },
                                     "labelWithoutSelector": {
                                       "type": [
@@ -39796,12 +37440,10 @@
                               "string",
                               "null"
                             ]
-                          },
-                          "x-kubernetes-list-type": "atomic"
+                          }
                         }
                       }
-                    },
-                    "x-kubernetes-list-type": "atomic"
+                    }
                   },
                   "matchLabels": {
                     "type": [
@@ -40343,18 +37985,6 @@
                         "null"
                       ],
                       "properties": {
-                        "apiVersions": {
-                          "type": [
-                            "array",
-                            "null"
-                          ],
-                          "items": {
-                            "type": [
-                              "string",
-                              "null"
-                            ]
-                          }
-                        },
                         "fileParameters": {
                           "type": [
                             "array",
@@ -40384,18 +38014,6 @@
                         "ignoreMissingValueFiles": {
                           "type": [
                             "boolean",
-                            "null"
-                          ]
-                        },
-                        "kubeVersion": {
-                          "type": [
-                            "string",
-                            "null"
-                          ]
-                        },
-                        "namespace": {
-                          "type": [
-                            "string",
                             "null"
                           ]
                         },
@@ -40484,18 +38102,6 @@
                         "null"
                       ],
                       "properties": {
-                        "apiVersions": {
-                          "type": [
-                            "array",
-                            "null"
-                          ],
-                          "items": {
-                            "type": [
-                              "string",
-                              "null"
-                            ]
-                          }
-                        },
                         "commonAnnotations": {
                           "type": [
                             "object",
@@ -40561,12 +38167,6 @@
                               "null"
                             ]
                           }
-                        },
-                        "kubeVersion": {
-                          "type": [
-                            "string",
-                            "null"
-                          ]
                         },
                         "labelWithoutSelector": {
                           "type": [
@@ -40955,18 +38555,6 @@
                           "null"
                         ],
                         "properties": {
-                          "apiVersions": {
-                            "type": [
-                              "array",
-                              "null"
-                            ],
-                            "items": {
-                              "type": [
-                                "string",
-                                "null"
-                              ]
-                            }
-                          },
                           "fileParameters": {
                             "type": [
                               "array",
@@ -40996,18 +38584,6 @@
                           "ignoreMissingValueFiles": {
                             "type": [
                               "boolean",
-                              "null"
-                            ]
-                          },
-                          "kubeVersion": {
-                            "type": [
-                              "string",
-                              "null"
-                            ]
-                          },
-                          "namespace": {
-                            "type": [
-                              "string",
                               "null"
                             ]
                           },
@@ -41096,18 +38672,6 @@
                           "null"
                         ],
                         "properties": {
-                          "apiVersions": {
-                            "type": [
-                              "array",
-                              "null"
-                            ],
-                            "items": {
-                              "type": [
-                                "string",
-                                "null"
-                              ]
-                            }
-                          },
                           "commonAnnotations": {
                             "type": [
                               "object",
@@ -41173,12 +38737,6 @@
                                 "null"
                               ]
                             }
-                          },
-                          "kubeVersion": {
-                            "type": [
-                              "string",
-                              "null"
-                            ]
                           },
                           "labelWithoutSelector": {
                             "type": [

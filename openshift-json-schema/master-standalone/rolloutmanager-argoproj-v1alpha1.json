@@ -293,22 +293,6 @@
             ]
           }
         },
-        "ha": {
-          "description": "HA options for High Availability support for Rollouts.",
-          "type": [
-            "object",
-            "null"
-          ],
-          "required": [
-            "enabled"
-          ],
-          "properties": {
-            "enabled": {
-              "description": "Enabled will toggle HA support globally for RolloutManager.",
-              "type": "boolean"
-            }
-          }
-        },
         "image": {
           "description": "Image defines Argo Rollouts controller image (optional)",
           "type": [
@@ -387,85 +371,6 @@
                   },
                   "value": {
                     "description": "Value is the taint value the toleration matches to.\nIf the operator is Exists, the value should be empty, otherwise just a regular string.",
-                    "type": [
-                      "string",
-                      "null"
-                    ]
-                  }
-                }
-              }
-            }
-          }
-        },
-        "plugins": {
-          "description": "Plugins specify the traffic and metric plugins in Argo Rollout",
-          "type": [
-            "object",
-            "null"
-          ],
-          "properties": {
-            "metric": {
-              "description": "Metric holds a list of metric plugins used to gather and report metrics during rollouts.",
-              "type": [
-                "array",
-                "null"
-              ],
-              "items": {
-                "description": "Plugin is used to integrate traffic management and metric plugins into the Argo Rollouts controller. For more information on these plugins, see the upstream Argo Rollouts documentation.",
-                "type": [
-                  "object",
-                  "null"
-                ],
-                "required": [
-                  "location",
-                  "name"
-                ],
-                "properties": {
-                  "location": {
-                    "description": "Location supports http(s):// urls and file://, though file:// requires the plugin be available on the filesystem",
-                    "type": "string"
-                  },
-                  "name": {
-                    "description": "Name of the plugin, it must match the name required by the plugin so it can find its configuration",
-                    "type": "string"
-                  },
-                  "sha256": {
-                    "description": "SHA256 is an optional sha256 checksum of the plugin executable",
-                    "type": [
-                      "string",
-                      "null"
-                    ]
-                  }
-                }
-              }
-            },
-            "trafficManagement": {
-              "description": "TrafficManagement holds a list of traffic management plugins used to control traffic routing during rollouts.",
-              "type": [
-                "array",
-                "null"
-              ],
-              "items": {
-                "description": "Plugin is used to integrate traffic management and metric plugins into the Argo Rollouts controller. For more information on these plugins, see the upstream Argo Rollouts documentation.",
-                "type": [
-                  "object",
-                  "null"
-                ],
-                "required": [
-                  "location",
-                  "name"
-                ],
-                "properties": {
-                  "location": {
-                    "description": "Location supports http(s):// urls and file://, though file:// requires the plugin be available on the filesystem",
-                    "type": "string"
-                  },
-                  "name": {
-                    "description": "Name of the plugin, it must match the name required by the plugin so it can find its configuration",
-                    "type": "string"
-                  },
-                  "sha256": {
-                    "description": "SHA256 is an optional sha256 checksum of the plugin executable",
                     "type": [
                       "string",
                       "null"

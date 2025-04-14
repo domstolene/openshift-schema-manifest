@@ -49,6 +49,12 @@
       "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.AlertmanagerConfigList"
     },
     {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.ScrapeConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.ScrapeConfigList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.AlertmanagerConfig"
     },
     {
@@ -4130,6 +4136,18 @@
     },
     {
       "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaNotificationTemplateList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.keycloak.k8s.v2alpha1.Keycloak"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.keycloak.k8s.v2alpha1.KeycloakList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.keycloak.k8s.v2alpha1.KeycloakRealmImport"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.keycloak.k8s.v2alpha1.KeycloakRealmImportList"
     },
     {
       "$ref": "_definitions.json#/definitions/org.keycloak.v1alpha1.Keycloak"
