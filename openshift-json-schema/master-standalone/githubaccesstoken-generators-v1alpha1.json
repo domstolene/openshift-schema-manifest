@@ -1,0 +1,108 @@
+{
+  "description": "GithubAccessToken generates ghs_ accessToken",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "generators.external-secrets.io/v1alpha1"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "GithubAccessToken"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "appID",
+        "auth",
+        "installID"
+      ],
+      "properties": {
+        "appID": {
+          "type": "string"
+        },
+        "auth": {
+          "description": "Auth configures how ESO authenticates with a Github instance.",
+          "type": "object",
+          "required": [
+            "privateKey"
+          ],
+          "properties": {
+            "privateKey": {
+              "type": "object",
+              "required": [
+                "secretRef"
+              ],
+              "properties": {
+                "secretRef": {
+                  "description": "A reference to a specific 'key' within a Secret resource,\nIn some instances, `key` is a required field.",
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "description": "The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be\ndefaulted, in others it may be required.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "name": {
+                      "description": "The name of the Secret resource being referred to.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "namespace": {
+                      "description": "Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults\nto the namespace of the referent.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "installID": {
+          "type": "string"
+        },
+        "url": {
+          "description": "URL configures the Github instance URL. Defaults to https://github.com/.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "generators.external-secrets.io",
+      "kind": "GithubAccessToken",
+      "version": "v1alpha1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

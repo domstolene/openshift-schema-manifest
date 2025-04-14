@@ -100,7 +100,7 @@
           "format": "int32"
         },
         "unsupportedConfigOverrides": {
-          "description": "unsupportedConfigOverrides holds a sparse config that will override any previously set options.  It only needs to be the fields to override it will end up overlaying in the following order: 1. hardcoded defaults 2. observedConfig 3. unsupportedConfigOverrides",
+          "description": "unsupportedConfigOverrides overrides the final configuration that was computed by the operator. Red Hat does not support the use of this field. Misuse of this field could lead to unexpected behavior or conflict with other configuration options. Seek guidance from the Red Hat support before using this field. Use of this property blocks cluster upgrades, it must be removed before upgrading your cluster.",
           "x-kubernetes-preserve-unknown-fields": true
         },
         "useMoreSecureServiceCA": {
@@ -131,6 +131,9 @@
               "object",
               "null"
             ],
+            "required": [
+              "type"
+            ],
             "properties": {
               "lastTransitionTime": {
                 "type": [
@@ -158,13 +161,14 @@
                 ]
               },
               "type": {
-                "type": [
-                  "string",
-                  "null"
-                ]
+                "type": "string"
               }
             }
-          }
+          },
+          "x-kubernetes-list-map-keys": [
+            "type"
+          ],
+          "x-kubernetes-list-type": "map"
         },
         "generations": {
           "description": "generations are used to determine when an item needs to be reconciled or has changed in a way that needs a reaction.",
@@ -223,7 +227,8 @@
                 ]
               }
             }
-          }
+          },
+          "x-kubernetes-list-type": "atomic"
         },
         "latestAvailableRevision": {
           "description": "latestAvailableRevision is the deploymentID of the most recent deployment",
@@ -251,6 +256,9 @@
             "type": [
               "object",
               "null"
+            ],
+            "required": [
+              "nodeName"
             ],
             "properties": {
               "currentRevision": {
@@ -294,7 +302,8 @@
                     "string",
                     "null"
                   ]
-                }
+                },
+                "x-kubernetes-list-type": "atomic"
               },
               "lastFailedTime": {
                 "description": "lastFailedTime is the time the last failed revision failed the last time.",
@@ -313,10 +322,7 @@
               },
               "nodeName": {
                 "description": "nodeName is the name of the node",
-                "type": [
-                  "string",
-                  "null"
-                ]
+                "type": "string"
               },
               "targetRevision": {
                 "description": "targetRevision is the generation of the deployment we're trying to apply",
@@ -327,7 +333,11 @@
                 "format": "int32"
               }
             }
-          }
+          },
+          "x-kubernetes-list-map-keys": [
+            "nodeName"
+          ],
+          "x-kubernetes-list-type": "map"
         },
         "observedGeneration": {
           "description": "observedGeneration is the last generation change you've dealt with",

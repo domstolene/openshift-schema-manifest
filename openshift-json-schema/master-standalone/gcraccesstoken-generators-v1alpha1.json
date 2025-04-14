@@ -1,5 +1,5 @@
 {
-  "description": "GCRAccessToken generates an GCP access token that can be used to authenticate with GCR.",
+  "description": "GCRAccessToken generates an GCP access token\nthat can be used to authenticate with GCR.",
   "type": "object",
   "properties": {
     "apiVersion": {
@@ -54,7 +54,7 @@
                   ],
                   "properties": {
                     "key": {
-                      "description": "The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.",
+                      "description": "The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be\ndefaulted, in others it may be required.",
                       "type": [
                         "string",
                         "null"
@@ -68,7 +68,7 @@
                       ]
                     },
                     "namespace": {
-                      "description": "Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.",
+                      "description": "Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults\nto the namespace of the referent.",
                       "type": [
                         "string",
                         "null"
@@ -109,7 +109,7 @@
                   ],
                   "properties": {
                     "audiences": {
-                      "description": "Audience specifies the `aud` claim for the service account token If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity then this audiences will be appended to the list",
+                      "description": "Audience specifies the `aud` claim for the service account token\nIf the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity\nthen this audiences will be appended to the list",
                       "type": [
                         "array",
                         "null"
@@ -126,7 +126,7 @@
                       "type": "string"
                     },
                     "namespace": {
-                      "description": "Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.",
+                      "description": "Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults\nto the namespace of the referent.",
                       "type": [
                         "string",
                         "null"

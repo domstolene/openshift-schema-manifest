@@ -1,5 +1,5 @@
 {
-  "description": "AppProject provides a logical grouping of applications, providing controls for: * where the apps may deploy to (cluster whitelist) * what may be deployed (repository whitelist, resource whitelist/blacklist) * who can access these applications (roles, OIDC group claims bindings) * and what they can do (RBAC policies) * automation access to these roles (JWT tokens)",
+  "description": "AppProject provides a logical grouping of applications, providing controls for:\n* where the apps may deploy to (cluster whitelist)\n* what may be deployed (repository whitelist, resource whitelist/blacklist)\n* who can access these applications (roles, OIDC group claims bindings)\n* and what they can do (RBAC policies)\n* automation access to these roles (JWT tokens)",
   "type": "object",
   "required": [
     "metadata",
@@ -44,7 +44,7 @@
             "null"
           ],
           "items": {
-            "description": "GroupKind specifies a Group and a Kind, but does not force a version.  This is useful for identifying concepts during lookup stages without having partially valid types",
+            "description": "GroupKind specifies a Group and a Kind, but does not force a version.  This is useful for identifying\nconcepts during lookup stages without having partially valid types",
             "type": [
               "object",
               "null"
@@ -70,7 +70,7 @@
             "null"
           ],
           "items": {
-            "description": "GroupKind specifies a Group and a Kind, but does not force a version.  This is useful for identifying concepts during lookup stages without having partially valid types",
+            "description": "GroupKind specifies a Group and a Kind, but does not force a version.  This is useful for identifying\nconcepts during lookup stages without having partially valid types",
             "type": [
               "object",
               "null"
@@ -96,6 +96,41 @@
             "null"
           ]
         },
+        "destinationServiceAccounts": {
+          "description": "DestinationServiceAccounts holds information about the service accounts to be impersonated for the application sync operation for each destination.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "ApplicationDestinationServiceAccount holds information about the service account to be impersonated for the application sync operation.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "defaultServiceAccount",
+              "server"
+            ],
+            "properties": {
+              "defaultServiceAccount": {
+                "description": "DefaultServiceAccount to be used for impersonation during the sync operation",
+                "type": "string"
+              },
+              "namespace": {
+                "description": "Namespace specifies the target namespace for the application's resources.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "server": {
+                "description": "Server specifies the URL of the target cluster's Kubernetes control plane API.",
+                "type": "string"
+              }
+            }
+          }
+        },
         "destinations": {
           "description": "Destinations contains list of destinations available for deployment",
           "type": [
@@ -110,21 +145,21 @@
             ],
             "properties": {
               "name": {
-                "description": "Name is an alternate way of specifying the target cluster by its symbolic name",
+                "description": "Name is an alternate way of specifying the target cluster by its symbolic name. This must be set if Server is not set.",
                 "type": [
                   "string",
                   "null"
                 ]
               },
               "namespace": {
-                "description": "Namespace specifies the target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace",
+                "description": "Namespace specifies the target namespace for the application's resources.\nThe namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace",
                 "type": [
                   "string",
                   "null"
                 ]
               },
               "server": {
-                "description": "Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API",
+                "description": "Server specifies the URL of the target cluster's Kubernetes control plane API. This must be set if Name is not set.",
                 "type": [
                   "string",
                   "null"
@@ -140,7 +175,7 @@
             "null"
           ],
           "items": {
-            "description": "GroupKind specifies a Group and a Kind, but does not force a version.  This is useful for identifying concepts during lookup stages without having partially valid types",
+            "description": "GroupKind specifies a Group and a Kind, but does not force a version.  This is useful for identifying\nconcepts during lookup stages without having partially valid types",
             "type": [
               "object",
               "null"
@@ -166,7 +201,7 @@
             "null"
           ],
           "items": {
-            "description": "GroupKind specifies a Group and a Kind, but does not force a version.  This is useful for identifying concepts during lookup stages without having partially valid types",
+            "description": "GroupKind specifies a Group and a Kind, but does not force a version.  This is useful for identifying\nconcepts during lookup stages without having partially valid types",
             "type": [
               "object",
               "null"

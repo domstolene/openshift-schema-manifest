@@ -6,7 +6,7 @@
   ],
   "properties": {
     "paths": {
-      "description": "A collection of paths that map requests to backends.",
+      "description": "paths is a collection of paths that map requests to backends.",
       "type": [
         "array",
         "null"

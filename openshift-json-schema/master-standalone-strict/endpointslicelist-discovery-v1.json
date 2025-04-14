@@ -16,7 +16,7 @@
       ]
     },
     "items": {
-      "description": "List of endpoint slices",
+      "description": "items is the list of endpoint slices",
       "type": [
         "array",
         "null"

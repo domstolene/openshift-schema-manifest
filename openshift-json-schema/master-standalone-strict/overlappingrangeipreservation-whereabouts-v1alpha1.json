@@ -36,17 +36,23 @@
         "null"
       ],
       "required": [
-        "containerid"
+        "podref"
       ],
       "properties": {
         "containerid": {
-          "type": "string"
-        },
-        "podref": {
           "type": [
             "string",
             "null"
           ]
+        },
+        "ifname": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "podref": {
+          "type": "string"
         }
       },
       "additionalProperties": false

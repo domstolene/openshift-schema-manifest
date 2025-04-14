@@ -1,5 +1,6 @@
 {
   "description": "ProjectList is a list of Project",
+  "type": "object",
   "required": [
     "items"
   ],
@@ -46,6 +47,5 @@
       "version": "v1"
     }
   ],
-  "$schema": "http://json-schema.org/schema#",
-  "type": "object"
+  "$schema": "http://json-schema.org/schema#"
 }

@@ -16,7 +16,7 @@
       ]
     },
     "items": {
-      "description": "Items is the list of VolumeAttachments",
+      "description": "items is the list of VolumeAttachments",
       "type": [
         "array",
         "null"

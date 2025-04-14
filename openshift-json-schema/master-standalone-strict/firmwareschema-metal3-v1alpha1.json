@@ -1,5 +1,5 @@
 {
-  "description": "FirmwareSchema is the Schema for the firmwareschemas API",
+  "description": "FirmwareSchema is the Schema for the firmwareschemas API.",
   "type": "object",
   "properties": {
     "apiVersion": {
@@ -27,7 +27,7 @@
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     },
     "spec": {
-      "description": "FirmwareSchemaSpec defines the desired state of FirmwareSchema",
+      "description": "FirmwareSchemaSpec defines the desired state of FirmwareSchema.",
       "type": [
         "object",
         "null"
@@ -54,7 +54,7 @@
           "description": "Map of firmware name to schema",
           "type": "object",
           "additionalProperties": {
-            "description": "Additional data describing the firmware setting",
+            "description": "Additional data describing the firmware setting.",
             "type": [
               "object",
               "null"

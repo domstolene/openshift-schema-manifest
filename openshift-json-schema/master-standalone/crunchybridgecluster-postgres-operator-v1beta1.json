@@ -27,7 +27,7 @@
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     },
     "spec": {
-      "description": "CrunchyBridgeClusterSpec defines the desired state of CrunchyBridgeCluster to be managed by Crunchy Data Bridge",
+      "description": "CrunchyBridgeClusterSpec defines the desired state of CrunchyBridgeCluster\nto be managed by Crunchy Data Bridge",
       "type": [
         "object",
         "null"
@@ -39,31 +39,32 @@
         "plan",
         "provider",
         "region",
+        "secret",
         "storage"
       ],
       "properties": {
         "clusterName": {
-          "description": "The name of the cluster --- According to Bridge API/GUI errors, \"Field name should be between 5 and 50 characters in length, containing only unicode characters, unicode numbers, hyphens, spaces, or underscores, and starting with a character\", and ending with a character or number.",
+          "description": "The name of the cluster",
           "type": "string",
           "maxLength": 50,
           "minLength": 5,
           "pattern": "^[A-Za-z][A-Za-z0-9\\-_ ]*[A-Za-z0-9]$"
         },
         "isHa": {
-          "description": "Whether the cluster is high availability, meaning that it has a secondary it can fail over to quickly in case the primary becomes unavailable.",
+          "description": "Whether the cluster is high availability,\nmeaning that it has a secondary it can fail over to quickly\nin case the primary becomes unavailable.",
           "type": "boolean"
         },
         "isProtected": {
-          "description": "Whether the cluster is protected. Protected clusters can't be destroyed until their protected flag is removed",
+          "description": "Whether the cluster is protected. Protected clusters can't be destroyed until\ntheir protected flag is removed",
           "type": [
             "boolean",
             "null"
           ]
         },
         "majorVersion": {
-          "description": "The ID of the cluster's major Postgres version. Currently Bridge offers 13-16",
+          "description": "The ID of the cluster's major Postgres version.\nCurrently Bridge offers 13-17",
           "type": "integer",
-          "maximum": 16,
+          "maximum": 17,
           "minimum": 13
         },
         "metadata": {
@@ -104,8 +105,9 @@
           "type": "string"
         },
         "provider": {
-          "description": "The cloud provider where the cluster is located. Currently Bridge offers aws, azure, and gcp only",
+          "description": "The cloud provider where the cluster is located.\nCurrently Bridge offers aws, azure, and gcp only",
           "type": "string",
+          "maxLength": 10,
           "enum": [
             "aws",
             "azure",
@@ -129,7 +131,7 @@
           ]
         },
         "roles": {
-          "description": "Roles for which to create Secrets that contain their credentials which are retrieved from the Bridge API. An empty list creates no role secrets. Removing a role from this list does NOT drop the role nor revoke their access, but it will delete that role's secret from the kube cluster.",
+          "description": "Roles for which to create Secrets that contain their credentials which\nare retrieved from the Bridge API. An empty list creates no role secrets.\nRemoving a role from this list does NOT drop the role nor revoke their\naccess, but it will delete that role's secret from the kube cluster.",
           "type": [
             "array",
             "null"
@@ -145,7 +147,7 @@
             ],
             "properties": {
               "name": {
-                "description": "Name of the role within Crunchy Bridge. More info: https://docs.crunchybridge.com/concepts/users",
+                "description": "Name of the role within Crunchy Bridge.\nMore info: https://docs.crunchybridge.com/concepts/users",
                 "type": "string"
               },
               "secretName": {
@@ -163,13 +165,10 @@
         },
         "secret": {
           "description": "The name of the secret containing the API key and team id",
-          "type": [
-            "string",
-            "null"
-          ]
+          "type": "string"
         },
         "storage": {
-          "description": "The amount of storage available to the cluster in gigabytes. The amount must be an integer, followed by Gi (gibibytes) or G (gigabytes) to match Kubernetes conventions. If the amount is given in Gi, we round to the nearest G value. The minimum value allowed by Bridge is 10 GB. The maximum value allowed by Bridge is 65535 GB.",
+          "description": "The amount of storage available to the cluster in gigabytes.\nThe amount must be an integer, followed by Gi (gibibytes) or G (gigabytes) to match Kubernetes conventions.\nIf the amount is given in Gi, we round to the nearest G value.\nThe minimum value allowed by Bridge is 10 GB.\nThe maximum value allowed by Bridge is 65535 GB.",
           "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
           "x-kubernetes-int-or-string": true
         }
@@ -189,7 +188,7 @@
             "null"
           ],
           "items": {
-            "description": "Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example, type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: \"Available\", \"Progressing\", and \"Degraded\" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:\"conditions,omitempty\" patchStrategy:\"merge\" patchMergeKey:\"type\" protobuf:\"bytes,1,rep,name=conditions\"` \n // other fields }",
+            "description": "Condition contains details for one aspect of the current state of this API Resource.",
             "type": [
               "object",
               "null"
@@ -203,17 +202,17 @@
             ],
             "properties": {
               "lastTransitionTime": {
-                "description": "lastTransitionTime is the last time the condition transitioned from one status to another. This should be when the underlying condition changed.  If that is not known, then using the time when the API field changed is acceptable.",
+                "description": "lastTransitionTime is the last time the condition transitioned from one status to another.\nThis should be when the underlying condition changed.  If that is not known, then using the time when the API field changed is acceptable.",
                 "type": "string",
                 "format": "date-time"
               },
               "message": {
-                "description": "message is a human readable message indicating details about the transition. This may be an empty string.",
+                "description": "message is a human readable message indicating details about the transition.\nThis may be an empty string.",
                 "type": "string",
                 "maxLength": 32768
               },
               "observedGeneration": {
-                "description": "observedGeneration represents the .metadata.generation that the condition was set based upon. For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date with respect to the current state of the instance.",
+                "description": "observedGeneration represents the .metadata.generation that the condition was set based upon.\nFor instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date\nwith respect to the current state of the instance.",
                 "type": [
                   "integer",
                   "null"
@@ -222,7 +221,7 @@
                 "minimum": 0
               },
               "reason": {
-                "description": "reason contains a programmatic identifier indicating the reason for the condition's last transition. Producers of specific condition types may define expected values and meanings for this field, and whether the values are considered a guaranteed API. The value should be a CamelCase string. This field may not be empty.",
+                "description": "reason contains a programmatic identifier indicating the reason for the condition's last transition.\nProducers of specific condition types may define expected values and meanings for this field,\nand whether the values are considered a guaranteed API.\nThe value should be a CamelCase string.\nThis field may not be empty.",
                 "type": "string",
                 "maxLength": 1024,
                 "minLength": 1,
@@ -238,7 +237,7 @@
                 ]
               },
               "type": {
-                "description": "type of condition in CamelCase or in foo.example.com/CamelCase. --- Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be useful (see .node.status.conditions), the ability to deconflict is important. The regex it matches is (dns1123SubdomainFmt/)?(qualifiedNameFmt)",
+                "description": "type of condition in CamelCase or in foo.example.com/CamelCase.",
                 "type": "string",
                 "maxLength": 316,
                 "pattern": "^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$"
@@ -265,14 +264,14 @@
           ]
         },
         "isHa": {
-          "description": "Whether the cluster is high availability, meaning that it has a secondary it can fail over to quickly in case the primary becomes unavailable.",
+          "description": "Whether the cluster is high availability, meaning that it has a secondary it can fail\nover to quickly in case the primary becomes unavailable.",
           "type": [
             "boolean",
             "null"
           ]
         },
         "isProtected": {
-          "description": "Whether the cluster is protected. Protected clusters can't be destroyed until their protected flag is removed",
+          "description": "Whether the cluster is protected. Protected clusters can't be destroyed until\ntheir protected flag is removed",
           "type": [
             "boolean",
             "null"

@@ -53,6 +53,27 @@
             "string",
             "null"
           ]
+        },
+        "container": {
+          "description": "Specify resource requirements per container",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "cpu": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "memory": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
         }
       }
     },

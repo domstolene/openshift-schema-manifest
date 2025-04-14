@@ -34,7 +34,7 @@
       ],
       "properties": {
         "additionalKernelArgs": {
-          "description": "Addional kernel arguments.",
+          "description": "Additional kernel arguments.",
           "type": [
             "array",
             "null"

@@ -2400,6 +2400,12 @@
                 "null"
               ],
               "properties": {
+                "server-url": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
                 "type": {
                   "type": [
                     "string",
@@ -13551,6 +13557,12 @@
                     "boolean",
                     "null"
                   ]
+                },
+                "timeout": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 }
               },
               "additionalProperties": false
@@ -17278,6 +17290,12 @@
                 "null"
               ],
               "properties": {
+                "server-url": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
                 "type": {
                   "type": [
                     "string",

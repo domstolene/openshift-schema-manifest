@@ -58,7 +58,7 @@
                   "type": "string"
                 },
                 "name": {
-                  "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                  "description": "Name of the referent.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names\nTODO: Add other useful fields. apiVersion, kind, uid?",
                   "type": [
                     "string",
                     "null"
@@ -71,7 +71,8 @@
                     "null"
                   ]
                 }
-              }
+              },
+              "x-kubernetes-map-type": "atomic"
             },
             "secretName": {
               "description": "The secret that contains user credentials.",
@@ -95,7 +96,7 @@
                   "type": "string"
                 },
                 "name": {
-                  "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                  "description": "Name of the referent.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names\nTODO: Add other useful fields. apiVersion, kind, uid?",
                   "type": [
                     "string",
                     "null"
@@ -108,7 +109,8 @@
                     "null"
                   ]
                 }
-              }
+              },
+              "x-kubernetes-map-type": "atomic"
             }
           }
         },

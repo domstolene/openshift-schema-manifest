@@ -3,7 +3,8 @@
   "type": "object",
   "required": [
     "name",
-    "currentCSV"
+    "currentCSV",
+    "entries"
   ],
   "properties": {
     "currentCSV": {
@@ -16,6 +17,20 @@
     "currentCSVDesc": {
       "description": "CurrentCSVSpec holds the spec of the current CSV",
       "$ref": "_definitions.json#/definitions/com.github.operator-framework.operator-lifecycle-manager.pkg.package-server.apis.operators.v1.CSVDescription"
+    },
+    "deprecation": {
+      "description": "Deprecation is an optional field which contains information if the channel is deprecated.",
+      "$ref": "_definitions.json#/definitions/com.github.operator-framework.operator-lifecycle-manager.pkg.package-server.apis.operators.v1.Deprecation"
+    },
+    "entries": {
+      "description": "Entries lists all CSVs in the channel, with their upgrade edges.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "_definitions.json#/definitions/com.github.operator-framework.operator-lifecycle-manager.pkg.package-server.apis.operators.v1.ChannelEntry"
+      }
     },
     "name": {
       "description": "Name is the name of the channel, e.g. `alpha` or `stable`",

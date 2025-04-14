@@ -104,11 +104,13 @@
                         "string",
                         "null"
                       ]
-                    }
+                    },
+                    "x-kubernetes-list-type": "atomic"
                   }
                 },
                 "additionalProperties": false
-              }
+              },
+              "x-kubernetes-list-type": "atomic"
             },
             "matchLabels": {
               "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
@@ -230,17 +232,21 @@
                         "type": "string"
                       },
                       "name": {
-                        "description": "Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names",
+                        "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names",
                         "type": "string"
                       },
                       "uid": {
-                        "description": "UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids",
+                        "description": "UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids",
                         "type": "string"
                       }
                     },
                     "x-kubernetes-map-type": "atomic",
                     "additionalProperties": false
-                  }
+                  },
+                  "x-kubernetes-list-map-keys": [
+                    "uid"
+                  ],
+                  "x-kubernetes-list-type": "map"
                 }
               },
               "additionalProperties": false
@@ -434,17 +440,21 @@
                             "type": "string"
                           },
                           "name": {
-                            "description": "Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names",
+                            "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names",
                             "type": "string"
                           },
                           "uid": {
-                            "description": "UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids",
+                            "description": "UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids",
                             "type": "string"
                           }
                         },
                         "x-kubernetes-map-type": "atomic",
                         "additionalProperties": false
-                      }
+                      },
+                      "x-kubernetes-list-map-keys": [
+                        "uid"
+                      ],
+                      "x-kubernetes-list-type": "map"
                     }
                   },
                   "additionalProperties": false
@@ -512,7 +522,8 @@
                       }
                     },
                     "additionalProperties": false
-                  }
+                  },
+                  "x-kubernetes-list-type": "atomic"
                 }
               },
               "additionalProperties": false
@@ -537,6 +548,70 @@
             "null"
           ],
           "format": "int32"
+        },
+        "conditions": {
+          "description": "Conditions defines the current state of the MachineSet",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "Condition defines an observation of a Machine API resource operational state.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "lastTransitionTime": {
+                "description": "Last time the condition transitioned from one status to another. This should be when the underlying condition changed. If that is not known, then using the time when the API field changed is acceptable.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time"
+              },
+              "message": {
+                "description": "A human readable message indicating details about the transition. This field may be empty.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "reason": {
+                "description": "The reason for the condition's last transition in CamelCase. The specific API may choose whether or not this field is considered a guaranteed API. This field may not be empty.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "severity": {
+                "description": "Severity provides an explicit classification of Reason code, so the users or machines can immediately understand the current situation and act accordingly. The Severity field MUST be set only when Status=False.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "status": {
+                "description": "Status of the condition, one of True, False, Unknown.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "type": {
+                "description": "Type of condition in CamelCase or in foo.example.com/CamelCase. Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be useful (see .node.status.conditions), the ability to deconflict is important.",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          },
+          "x-kubernetes-list-map-keys": [
+            "type"
+          ],
+          "x-kubernetes-list-type": "map"
         },
         "errorMessage": {
           "type": [

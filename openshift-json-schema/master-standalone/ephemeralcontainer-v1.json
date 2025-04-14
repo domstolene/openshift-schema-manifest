@@ -16,7 +16,8 @@
           "string",
           "null"
         ]
-      }
+      },
+      "x-kubernetes-list-type": "atomic"
     },
     "command": {
       "description": "Entrypoint array. Not executed within a shell. The image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. \"$$(VAR_NAME)\" will produce the string literal \"$(VAR_NAME)\". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell",
@@ -29,7 +30,8 @@
           "string",
           "null"
         ]
-      }
+      },
+      "x-kubernetes-list-type": "atomic"
     },
     "env": {
       "description": "List of environment variables to set in the container. Cannot be updated.",
@@ -40,6 +42,10 @@
       "items": {
         "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EnvVar"
       },
+      "x-kubernetes-list-map-keys": [
+        "name"
+      ],
+      "x-kubernetes-list-type": "map",
       "x-kubernetes-patch-merge-key": "name",
       "x-kubernetes-patch-strategy": "merge"
     },
@@ -51,7 +57,8 @@
       ],
       "items": {
         "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EnvFromSource"
-      }
+      },
+      "x-kubernetes-list-type": "atomic"
     },
     "image": {
       "description": "Container image name. More info: https://kubernetes.io/docs/concepts/containers/images",
@@ -108,9 +115,27 @@
       "description": "Probes are not allowed for ephemeral containers.",
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Probe"
     },
+    "resizePolicy": {
+      "description": "Resources resize policy for the container.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ContainerResizePolicy"
+      },
+      "x-kubernetes-list-type": "atomic"
+    },
     "resources": {
       "description": "Resources are not allowed for ephemeral containers. Ephemeral containers use spare resources already allocated to the pod.",
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ResourceRequirements"
+    },
+    "restartPolicy": {
+      "description": "Restart policy for the container to manage the restart behavior of each container within a pod. This may only be set for init containers. You cannot set this field on ephemeral containers.",
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "securityContext": {
       "description": "Optional: SecurityContext defines the security options the ephemeral container should be run with. If set, the fields of SecurityContext override the equivalent fields of PodSecurityContext.",
@@ -175,6 +200,10 @@
       "items": {
         "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.VolumeDevice"
       },
+      "x-kubernetes-list-map-keys": [
+        "devicePath"
+      ],
+      "x-kubernetes-list-type": "map",
       "x-kubernetes-patch-merge-key": "devicePath",
       "x-kubernetes-patch-strategy": "merge"
     },
@@ -187,6 +216,10 @@
       "items": {
         "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.VolumeMount"
       },
+      "x-kubernetes-list-map-keys": [
+        "mountPath"
+      ],
+      "x-kubernetes-list-type": "map",
       "x-kubernetes-patch-merge-key": "mountPath",
       "x-kubernetes-patch-strategy": "merge"
     },

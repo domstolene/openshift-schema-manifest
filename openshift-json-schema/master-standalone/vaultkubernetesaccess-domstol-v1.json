@@ -36,7 +36,7 @@
       ],
       "properties": {
         "accessLevel": {
-          "description": "The access level given to the subject Valid values are READER, CREATOR, or ADMIN Ignored if policyName is set",
+          "description": "The access level given to the subject\nValid values are READER, CREATOR, or ADMIN\nIgnored if policyName is set",
           "type": [
             "string",
             "null"
@@ -51,7 +51,7 @@
           ],
           "properties": {
             "kind": {
-              "description": "The kind of the entity to be given access. Valid values are GROUP, USER or SERVICEACCOUNT",
+              "description": "The kind of the entity to be given access.\nValid values are GROUP, USER or SERVICEACCOUNT",
               "type": "string"
             },
             "name": {

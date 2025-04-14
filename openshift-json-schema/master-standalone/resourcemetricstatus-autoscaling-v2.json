@@ -11,7 +11,7 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2.MetricValueStatus"
     },
     "name": {
-      "description": "Name is the name of the resource in question.",
+      "description": "name is the name of the resource in question.",
       "type": [
         "string",
         "null"

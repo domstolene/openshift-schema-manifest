@@ -56,8 +56,8 @@
     },
     "dockerImageMetadata": {
       "description": "DockerImageMetadata contains metadata about this image",
-      "x-kubernetes-patch-strategy": "replace",
-      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension"
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension",
+      "x-kubernetes-patch-strategy": "replace"
     },
     "dockerImageMetadataVersion": {
       "description": "DockerImageMetadataVersion conveys the version of the object, which if empty defaults to \"1.0\"",
@@ -98,7 +98,8 @@
       ]
     },
     "metadata": {
-      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+      "description": "metadata is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta_v2"
     },
     "signatures": {
       "description": "Signatures holds all signatures of the image.",

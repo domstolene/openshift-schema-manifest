@@ -1,5 +1,6 @@
 {
   "description": "WorkloadGroupList is a list of WorkloadGroup",
+  "type": "object",
   "required": [
     "items"
   ],
@@ -46,6 +47,5 @@
       "version": "v1alpha3"
     }
   ],
-  "$schema": "http://json-schema.org/schema#",
-  "type": "object"
+  "$schema": "http://json-schema.org/schema#"
 }

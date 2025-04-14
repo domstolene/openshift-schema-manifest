@@ -32,20 +32,24 @@
         "object",
         "null"
       ],
-      "required": [
-        "addressName",
-        "queueName",
-        "routingType"
-      ],
       "properties": {
         "addressName": {
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "queueName": {
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "routingType": {
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         }
       }
     },

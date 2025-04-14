@@ -1,5 +1,5 @@
 {
-  "description": "OperatorGroup is the unit of multitenancy for OLM managed operators. It constrains the installation of operators in its namespace to a specified set of target namespaces.",
+  "description": "OperatorGroup is the unit of multitenancy for OLM managed operators.\nIt constrains the installation of operators in its namespace to a specified set of target namespaces.",
   "type": "object",
   "required": [
     "metadata"
@@ -50,7 +50,7 @@
                 "null"
               ],
               "items": {
-                "description": "A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.",
+                "description": "A label selector requirement is a selector that contains values, a key, and an operator that\nrelates the key and values.",
                 "type": [
                   "object",
                   "null"
@@ -65,11 +65,11 @@
                     "type": "string"
                   },
                   "operator": {
-                    "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.",
+                    "description": "operator represents a key's relationship to a set of values.\nValid operators are In, NotIn, Exists and DoesNotExist.",
                     "type": "string"
                   },
                   "values": {
-                    "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.",
+                    "description": "values is an array of string values. If the operator is In or NotIn,\nthe values array must be non-empty. If the operator is Exists or DoesNotExist,\nthe values array must be empty. This array is replaced during a strategic\nmerge patch.",
                     "type": [
                       "array",
                       "null"
@@ -79,14 +79,16 @@
                         "string",
                         "null"
                       ]
-                    }
+                    },
+                    "x-kubernetes-list-type": "atomic"
                   }
                 },
                 "additionalProperties": false
-              }
+              },
+              "x-kubernetes-list-type": "atomic"
             },
             "matchLabels": {
-              "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
+              "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels\nmap is equivalent to an element of matchExpressions, whose key field is \"key\", the\noperator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
               "type": [
                 "object",
                 "null"
@@ -99,10 +101,11 @@
               }
             }
           },
+          "x-kubernetes-map-type": "atomic",
           "additionalProperties": false
         },
         "serviceAccountName": {
-          "description": "ServiceAccountName is the admin specified service account which will be used to deploy operator(s) in this operator group.",
+          "description": "ServiceAccountName is the admin specified service account which will be\nused to deploy operator(s) in this operator group.",
           "type": [
             "string",
             "null"
@@ -116,7 +119,7 @@
           ]
         },
         "targetNamespaces": {
-          "description": "TargetNamespaces is an explicit set of namespaces to target. If it is set, Selector is ignored.",
+          "description": "TargetNamespaces is an explicit set of namespaces to target.\nIf it is set, Selector is ignored.",
           "type": [
             "array",
             "null"
@@ -174,48 +177,49 @@
               ]
             },
             "fieldPath": {
-              "description": "If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: \"spec.containers{name}\" (where \"name\" refers to the name of the container that triggered the event) or if no container name is specified \"spec.containers[2]\" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object. TODO: this design is not final and this field is subject to change in the future.",
+              "description": "If referring to a piece of an object instead of an entire object, this string\nshould contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2].\nFor example, if the object reference is to a container within a pod, this would take on a value like:\n\"spec.containers{name}\" (where \"name\" refers to the name of the container that triggered\nthe event) or if no container name is specified \"spec.containers[2]\" (container with\nindex 2 in this pod). This syntax is chosen only to have some well-defined way of\nreferencing a part of an object.\nTODO: this design is not final and this field is subject to change in the future.",
               "type": [
                 "string",
                 "null"
               ]
             },
             "kind": {
-              "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+              "description": "Kind of the referent.\nMore info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
               "type": [
                 "string",
                 "null"
               ]
             },
             "name": {
-              "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+              "description": "Name of the referent.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
               "type": [
                 "string",
                 "null"
               ]
             },
             "namespace": {
-              "description": "Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/",
+              "description": "Namespace of the referent.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/",
               "type": [
                 "string",
                 "null"
               ]
             },
             "resourceVersion": {
-              "description": "Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency",
+              "description": "Specific resourceVersion to which this reference is made, if any.\nMore info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency",
               "type": [
                 "string",
                 "null"
               ]
             },
             "uid": {
-              "description": "UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids",
+              "description": "UID of the referent.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids",
               "type": [
                 "string",
                 "null"
               ]
             }
           },
+          "x-kubernetes-map-type": "atomic",
           "additionalProperties": false
         }
       },

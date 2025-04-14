@@ -1,5 +1,5 @@
 {
-  "description": "Fake generator is used for testing. It lets you define a static set of credentials that is always returned.",
+  "description": "Fake generator is used for testing. It lets you define\na static set of credentials that is always returned.",
   "type": "object",
   "properties": {
     "apiVersion": {
@@ -33,8 +33,15 @@
         "null"
       ],
       "properties": {
+        "controller": {
+          "description": "Used to select the correct ESO controller (think: ingress.ingressClassName)\nThe ESO controller is instantiated with a specific controller name and filters VDS based on this property",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "data": {
-          "description": "Data defines the static data returned by this generator.",
+          "description": "Data defines the static data returned\nby this generator.",
           "type": [
             "object",
             "null"

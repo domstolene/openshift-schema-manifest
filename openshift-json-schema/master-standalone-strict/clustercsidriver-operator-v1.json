@@ -46,13 +46,203 @@
             "driverType"
           ],
           "properties": {
+            "aws": {
+              "description": "aws is used to configure the AWS CSI driver.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "efsVolumeMetrics": {
+                  "description": "efsVolumeMetrics sets the configuration for collecting metrics from EFS volumes used by the EFS CSI Driver.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "state"
+                  ],
+                  "properties": {
+                    "recursiveWalk": {
+                      "description": "recursiveWalk provides additional configuration for collecting volume metrics in the AWS EFS CSI Driver when the state is set to RecursiveWalk.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "fsRateLimit": {
+                          "description": "fsRateLimit defines the rate limit, in goroutines per file system, for processing volume metrics. When omitted, this means no opinion and the platform is left to choose a reasonable default, which is subject to change over time. The current default is 5. The valid range is from 1 to 100 goroutines.",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
+                          "format": "int32",
+                          "maximum": 100,
+                          "minimum": 1
+                        },
+                        "refreshPeriodMinutes": {
+                          "description": "refreshPeriodMinutes specifies the frequency, in minutes, at which volume metrics are refreshed. When omitted, this means no opinion and the platform is left to choose a reasonable default, which is subject to change over time. The current default is 240. The valid range is from 1 to 43200 minutes (30 days).",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
+                          "format": "int32",
+                          "maximum": 43200,
+                          "minimum": 1
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "state": {
+                      "description": "state defines the state of metric collection in the AWS EFS CSI Driver. This field is required and must be set to one of the following values: Disabled or RecursiveWalk. Disabled means no metrics collection will be performed. This is the default value. RecursiveWalk means the AWS EFS CSI Driver will recursively scan volumes to collect metrics. This process may result in high CPU and memory usage, depending on the volume size.",
+                      "type": "string",
+                      "enum": [
+                        "RecursiveWalk",
+                        "Disabled"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "kmsKeyARN": {
+                  "description": "kmsKeyARN sets the cluster default storage class to encrypt volumes with a user-defined KMS key, rather than the default KMS key used by AWS. The value may be either the ARN or Alias ARN of a KMS key.",
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b|aws-iso-e|aws-iso-f):kms:[a-z0-9-]+:[0-9]{12}:(key|alias)\\/.*$"
+                }
+              },
+              "additionalProperties": false
+            },
+            "azure": {
+              "description": "azure is used to configure the Azure CSI driver.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "diskEncryptionSet": {
+                  "description": "diskEncryptionSet sets the cluster default storage class to encrypt volumes with a customer-managed encryption set, rather than the default platform-managed keys.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "name",
+                    "resourceGroup",
+                    "subscriptionID"
+                  ],
+                  "properties": {
+                    "name": {
+                      "description": "name is the name of the disk encryption set that will be set on the default storage class. The value should consist of only alphanumberic characters, underscores (_), hyphens, and be at most 80 characters in length.",
+                      "type": "string",
+                      "maxLength": 80,
+                      "pattern": "^[a-zA-Z0-9\\_-]+$"
+                    },
+                    "resourceGroup": {
+                      "description": "resourceGroup defines the Azure resource group that contains the disk encryption set. The value should consist of only alphanumberic characters, underscores (_), parentheses, hyphens and periods. The value should not end in a period and be at most 90 characters in length.",
+                      "type": "string",
+                      "maxLength": 90,
+                      "pattern": "^[\\w\\.\\-\\(\\)]*[\\w\\-\\(\\)]$"
+                    },
+                    "subscriptionID": {
+                      "description": "subscriptionID defines the Azure subscription that contains the disk encryption set. The value should meet the following conditions: 1. It should be a 128-bit number. 2. It should be 36 characters (32 hexadecimal characters and 4 hyphens) long. 3. It should be displayed in five groups separated by hyphens (-). 4. The first group should be 8 characters long. 5. The second, third, and fourth groups should be 4 characters long. 6. The fifth group should be 12 characters long. An Example SubscrionID: f2007bbf-f802-4a47-9336-cf7c6b89b378",
+                      "type": "string",
+                      "maxLength": 36,
+                      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            },
             "driverType": {
-              "description": "driverType indicates type of CSI driver for which the driverConfig is being applied to. \n Valid values are: \n * vSphere \n Allows configuration of vsphere CSI driver topology. \n --- Consumers should treat unknown values as a NO-OP.",
+              "description": "driverType indicates type of CSI driver for which the driverConfig is being applied to. Valid values are: AWS, Azure, GCP, IBMCloud, vSphere and omitted. Consumers should treat unknown values as a NO-OP.",
               "type": "string",
               "enum": [
                 "",
+                "AWS",
+                "Azure",
+                "GCP",
+                "IBMCloud",
                 "vSphere"
               ]
+            },
+            "gcp": {
+              "description": "gcp is used to configure the GCP CSI driver.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "kmsKey": {
+                  "description": "kmsKey sets the cluster default storage class to encrypt volumes with customer-supplied encryption keys, rather than the default keys managed by GCP.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "keyRing",
+                    "name",
+                    "projectID"
+                  ],
+                  "properties": {
+                    "keyRing": {
+                      "description": "keyRing is the name of the KMS Key Ring which the KMS Key belongs to. The value should correspond to an existing KMS key ring and should consist of only alphanumeric characters, hyphens (-) and underscores (_), and be at most 63 characters in length.",
+                      "type": "string",
+                      "maxLength": 63,
+                      "minLength": 1,
+                      "pattern": "^[a-zA-Z0-9\\_-]+$"
+                    },
+                    "location": {
+                      "description": "location is the GCP location in which the Key Ring exists. The value must match an existing GCP location, or \"global\". Defaults to global, if not set.",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "pattern": "^[a-zA-Z0-9\\_-]+$"
+                    },
+                    "name": {
+                      "description": "name is the name of the customer-managed encryption key to be used for disk encryption. The value should correspond to an existing KMS key and should consist of only alphanumeric characters, hyphens (-) and underscores (_), and be at most 63 characters in length.",
+                      "type": "string",
+                      "maxLength": 63,
+                      "minLength": 1,
+                      "pattern": "^[a-zA-Z0-9\\_-]+$"
+                    },
+                    "projectID": {
+                      "description": "projectID is the ID of the Project in which the KMS Key Ring exists. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited.",
+                      "type": "string",
+                      "maxLength": 30,
+                      "minLength": 6,
+                      "pattern": "^[a-z][a-z0-9-]+[a-z0-9]$"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            },
+            "ibmcloud": {
+              "description": "ibmcloud is used to configure the IBM Cloud CSI driver.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "required": [
+                "encryptionKeyCRN"
+              ],
+              "properties": {
+                "encryptionKeyCRN": {
+                  "description": "encryptionKeyCRN is the IBM Cloud CRN of the customer-managed root key to use for disk encryption of volumes for the default storage classes.",
+                  "type": "string",
+                  "maxLength": 154,
+                  "minLength": 144,
+                  "pattern": "^crn:v[0-9]+:bluemix:(public|private):(kms|hs-crypto):[a-z-]+:a/[0-9a-f]+:[0-9a-f-]{36}:key:[0-9a-f-]{36}$"
+                }
+              },
+              "additionalProperties": false
             },
             "vSphere": {
               "description": "vsphere is used to configure the vsphere CSI driver.",
@@ -61,6 +251,36 @@
                 "null"
               ],
               "properties": {
+                "globalMaxSnapshotsPerBlockVolume": {
+                  "description": "globalMaxSnapshotsPerBlockVolume is a global configuration parameter that applies to volumes on all kinds of datastores. If omitted, the platform chooses a default, which is subject to change over time, currently that default is 3. Snapshots can not be disabled using this parameter. Increasing number of snapshots above 3 can have negative impact on performance, for more details see: https://kb.vmware.com/s/article/1025279 Volume snapshot documentation: https://docs.vmware.com/en/VMware-vSphere-Container-Storage-Plug-in/3.0/vmware-vsphere-csp-getting-started/GUID-E0B41C69-7EEB-450F-A73D-5FD2FF39E891.html",
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "format": "int32",
+                  "maximum": 32,
+                  "minimum": 1
+                },
+                "granularMaxSnapshotsPerBlockVolumeInVSAN": {
+                  "description": "granularMaxSnapshotsPerBlockVolumeInVSAN is a granular configuration parameter on vSAN datastore only. It overrides GlobalMaxSnapshotsPerBlockVolume if set, while it falls back to the global constraint if unset. Snapshots for VSAN can not be disabled using this parameter.",
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "format": "int32",
+                  "maximum": 32,
+                  "minimum": 1
+                },
+                "granularMaxSnapshotsPerBlockVolumeInVVOL": {
+                  "description": "granularMaxSnapshotsPerBlockVolumeInVVOL is a granular configuration parameter on Virtual Volumes datastore only. It overrides GlobalMaxSnapshotsPerBlockVolume if set, while it falls back to the global constraint if unset. Snapshots for VVOL can not be disabled using this parameter.",
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "format": "int32",
+                  "maximum": 32,
+                  "minimum": 1
+                },
                 "topologyCategories": {
                   "description": "topologyCategories indicates tag categories with which vcenter resources such as hostcluster or datacenter were tagged with. If cluster Infrastructure object has a topology, values specified in Infrastructure object will be used and modifications to topologyCategories will be rejected.",
                   "type": [
@@ -72,12 +292,19 @@
                       "string",
                       "null"
                     ]
-                  }
+                  },
+                  "x-kubernetes-list-type": "atomic"
                 }
               },
               "additionalProperties": false
             }
           },
+          "x-kubernetes-validations": [
+            {
+              "message": "ibmcloud must be set if driverType is 'IBMCloud', but remain unset otherwise",
+              "rule": "has(self.driverType) && self.driverType == 'IBMCloud' ? has(self.ibmcloud) : !has(self.ibmcloud)"
+            }
+          ],
           "additionalProperties": false
         },
         "logLevel": {
@@ -134,7 +361,7 @@
           ]
         },
         "unsupportedConfigOverrides": {
-          "description": "unsupportedConfigOverrides holds a sparse config that will override any previously set options.  It only needs to be the fields to override it will end up overlaying in the following order: 1. hardcoded defaults 2. observedConfig 3. unsupportedConfigOverrides",
+          "description": "unsupportedConfigOverrides overrides the final configuration that was computed by the operator. Red Hat does not support the use of this field. Misuse of this field could lead to unexpected behavior or conflict with other configuration options. Seek guidance from the Red Hat support before using this field. Use of this property blocks cluster upgrades, it must be removed before upgrading your cluster.",
           "x-kubernetes-preserve-unknown-fields": true
         }
       },
@@ -158,6 +385,9 @@
             "type": [
               "object",
               "null"
+            ],
+            "required": [
+              "type"
             ],
             "properties": {
               "lastTransitionTime": {
@@ -186,14 +416,15 @@
                 ]
               },
               "type": {
-                "type": [
-                  "string",
-                  "null"
-                ]
+                "type": "string"
               }
             },
             "additionalProperties": false
-          }
+          },
+          "x-kubernetes-list-map-keys": [
+            "type"
+          ],
+          "x-kubernetes-list-type": "map"
         },
         "generations": {
           "description": "generations are used to determine when an item needs to be reconciled or has changed in a way that needs a reaction.",
@@ -253,7 +484,8 @@
               }
             },
             "additionalProperties": false
-          }
+          },
+          "x-kubernetes-list-type": "atomic"
         },
         "observedGeneration": {
           "description": "observedGeneration is the last generation change you've dealt with",

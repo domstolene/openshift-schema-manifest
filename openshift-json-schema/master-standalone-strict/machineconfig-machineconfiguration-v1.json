@@ -1,5 +1,5 @@
 {
-  "description": "MachineConfig defines the configuration for a machine",
+  "description": "MachineConfig defines the configuration for a machine \n Compatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
   "type": "object",
   "properties": {
     "apiVersion": {
@@ -34,7 +34,7 @@
       ],
       "properties": {
         "baseOSExtensionsContainerImage": {
-          "description": "baseOSExtensionsContainerImage specifies the remote location that will be used to fetch the extensions container matching a new-format OS image",
+          "description": "BaseOSExtensionsContainerImage specifies the remote location that will be used to fetch the extensions container matching a new-format OS image",
           "type": [
             "string",
             "null"
@@ -42,33 +42,42 @@
         },
         "config": {
           "description": "Config is a Ignition Config object.",
-          "required": [
-            "ignition"
-          ],
           "x-kubernetes-preserve-unknown-fields": true
         },
         "extensions": {
-          "description": "List of additional features that can be enabled on host"
+          "description": "extensions contains a list of additional features that can be enabled on host",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "x-kubernetes-list-type": "atomic"
         },
         "fips": {
-          "description": "FIPS controls FIPS mode",
+          "description": "fips controls FIPS mode",
           "type": [
             "boolean",
             "null"
           ]
         },
         "kernelArguments": {
-          "description": "KernelArguments contains a list of kernel arguments to be added"
+          "description": "kernelArguments contains a list of kernel arguments to be added",
+          "x-kubernetes-list-type": "atomic"
         },
         "kernelType": {
-          "description": "Contains which kernel we want to be running like default (traditional), realtime",
+          "description": "kernelType contains which kernel we want to be running like default (traditional), realtime, 64k-pages (aarch64 only).",
           "type": [
             "string",
             "null"
           ]
         },
         "osImageURL": {
-          "description": "OSImageURL specifies the remote location that will be used to fetch the OS",
+          "description": "OSImageURL specifies the remote location that will be used to fetch the OS.",
           "type": [
             "string",
             "null"

@@ -1,12 +1,12 @@
 {
-  "description": "An EphemeralContainer is a temporary container that you may add to an existing Pod for user-initiated activities such as debugging. Ephemeral containers have no resource or scheduling guarantees, and they will not be restarted when they exit or when a Pod is removed or restarted. The kubelet may evict a Pod if an ephemeral container causes the Pod to exceed its resource allocation.\n\nTo add an ephemeral container, use the ephemeralcontainers subresource of an existing Pod. Ephemeral containers may not be removed or restarted.\n\nThis is a beta feature available on clusters that haven't disabled the EphemeralContainers feature gate.",
+  "description": "An EphemeralContainer is a temporary container that you may add to an existing Pod for user-initiated activities such as debugging. Ephemeral containers have no resource or scheduling guarantees, and they will not be restarted when they exit or when a Pod is removed or restarted. The kubelet may evict a Pod if an ephemeral container causes the Pod to exceed its resource allocation.\n\nTo add an ephemeral container, use the ephemeralcontainers subresource of an existing Pod. Ephemeral containers may not be removed or restarted.",
   "type": "object",
   "required": [
     "name"
   ],
   "properties": {
     "args": {
-      "description": "Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. \"$$(VAR_NAME)\" will produce the string literal \"$(VAR_NAME)\". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell",
+      "description": "Arguments to the entrypoint. The image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. \"$$(VAR_NAME)\" will produce the string literal \"$(VAR_NAME)\". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell",
       "type": [
         "array",
         "null"
@@ -19,7 +19,7 @@
       }
     },
     "command": {
-      "description": "Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. \"$$(VAR_NAME)\" will produce the string literal \"$(VAR_NAME)\". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell",
+      "description": "Entrypoint array. Not executed within a shell. The image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. \"$$(VAR_NAME)\" will produce the string literal \"$(VAR_NAME)\". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell",
       "type": [
         "array",
         "null"
@@ -54,7 +54,7 @@
       }
     },
     "image": {
-      "description": "Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images",
+      "description": "Container image name. More info: https://kubernetes.io/docs/concepts/containers/images",
       "type": [
         "string",
         "null"
@@ -94,7 +94,7 @@
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ContainerPort_v2"
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ContainerPort"
       },
       "x-kubernetes-list-map-keys": [
         "containerPort",
@@ -108,13 +108,31 @@
       "description": "Probes are not allowed for ephemeral containers.",
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Probe"
     },
+    "resizePolicy": {
+      "description": "Resources resize policy for the container.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ContainerResizePolicy"
+      },
+      "x-kubernetes-list-type": "atomic"
+    },
     "resources": {
       "description": "Resources are not allowed for ephemeral containers. Ephemeral containers use spare resources already allocated to the pod.",
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ResourceRequirements"
     },
+    "restartPolicy": {
+      "description": "Restart policy for the container to manage the restart behavior of each container within a pod. This may only be set for init containers. You cannot set this field on ephemeral containers.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "securityContext": {
       "description": "Optional: SecurityContext defines the security options the ephemeral container should be run with. If set, the fields of SecurityContext override the equivalent fields of PodSecurityContext.",
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecurityContext"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecurityContext_v2"
     },
     "startupProbe": {
       "description": "Probes are not allowed for ephemeral containers.",
@@ -185,7 +203,7 @@
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.VolumeMount"
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.VolumeMount_v2"
       },
       "x-kubernetes-patch-merge-key": "mountPath",
       "x-kubernetes-patch-strategy": "merge"

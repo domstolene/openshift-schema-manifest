@@ -1,0 +1,234 @@
+{
+  "description": "CnsVolumeOperationRequest is the Schema for the cnsvolumeoperationrequests API",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "cns.vmware.com/v1alpha1"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "CnsVolumeOperationRequest"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "description": "CnsVolumeOperationRequestSpec defines the desired state of CnsVolumeOperationRequest",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "description": "Name represents the name of the instance. There is no strict naming convention for instances; it is dependent on the caller.",
+          "type": "string"
+        }
+      }
+    },
+    "status": {
+      "description": "CnsVolumeOperationRequestStatus defines the observed state of CnsVolumeOperationRequest",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "capacity": {
+          "description": "Populated with the latest capacity on every successful ExtendVolume call for a volume.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int64"
+        },
+        "errorCount": {
+          "description": "ErrorCount is the number of times this operation failed for this volume. Incremented by clients when new OperationDetails are added with error set.",
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "firstOperationDetails": {
+          "description": "FirstOperationDetails stores the details of the first operation performed on the volume. For debugging purposes, clients should ensure that this information is never overwritten. More recent operation details should be stored in the LatestOperationDetails field.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "taskId",
+            "taskInvocationTimestamp"
+          ],
+          "properties": {
+            "error": {
+              "description": "Error represents the error returned if the task fails on CNS. Defaults to empty string.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "opId": {
+              "description": "OpID stores the OpID for a task that was invoked on CNS for a volume.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "taskId": {
+              "description": "TaskID stores the task for an operation that was invoked on CNS for a volume.",
+              "type": "string"
+            },
+            "taskInvocationTimestamp": {
+              "description": "TaskInvocationTimestamp represents the time at which the task was invoked. This timestamp is derived from the cluster and may not correspond to the task invocation timestamp on CNS.",
+              "type": "string",
+              "format": "date-time"
+            },
+            "taskStatus": {
+              "description": "TaskStatus describes the current status of the task invoked on CNS. Valid strings are \"In Progress\", \"Successful\" and \"Failed\".",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "vCenterServer": {
+              "description": "vCenter server on which task is created",
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "latestOperationDetails": {
+          "description": "LatestOperationDetails stores the details of the latest operations performed on the volume. Should have a maximum of 10 entries.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "OperationDetails stores the details of the operation performed on a volume.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "taskId",
+              "taskInvocationTimestamp"
+            ],
+            "properties": {
+              "error": {
+                "description": "Error represents the error returned if the task fails on CNS. Defaults to empty string.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "opId": {
+                "description": "OpID stores the OpID for a task that was invoked on CNS for a volume.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "taskId": {
+                "description": "TaskID stores the task for an operation that was invoked on CNS for a volume.",
+                "type": "string"
+              },
+              "taskInvocationTimestamp": {
+                "description": "TaskInvocationTimestamp represents the time at which the task was invoked. This timestamp is derived from the cluster and may not correspond to the task invocation timestamp on CNS.",
+                "type": "string",
+                "format": "date-time"
+              },
+              "taskStatus": {
+                "description": "TaskStatus describes the current status of the task invoked on CNS. Valid strings are \"In Progress\", \"Successful\" and \"Failed\".",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "vCenterServer": {
+                "description": "vCenter server on which task is created",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "quotaDetails": {
+          "description": "StorageQuotaDetails stores the details required by the CSI driver and syncer to access the quota custom resources.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "namespace": {
+              "description": "Namespace of the PersistentVolumeClaim.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "reserved": {
+              "description": "Reserved keeps a track of the quantity that should be reserved in storage quota during an in-flight create/expand volume operation.",
+              "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+              "x-kubernetes-int-or-string": true
+            },
+            "storageClassName": {
+              "description": "StorageClassName is the name of K8s storage class associated with the given storage policy.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "storagePolicyId": {
+              "description": "StoragePolicyId is the ID associated with the storage policy.",
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "snapshotID": {
+          "description": "SnapshotID is the unique ID of the backend snapshot. Populated during successful CreateSnapshot calls.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "volumeID": {
+          "description": "VolumeID is the unique ID of the backend volume. Populated during successful CreateVolume calls.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "cns.vmware.com",
+      "kind": "CnsVolumeOperationRequest",
+      "version": "v1alpha1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

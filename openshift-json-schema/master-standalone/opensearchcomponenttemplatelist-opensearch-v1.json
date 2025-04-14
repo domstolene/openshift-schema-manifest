@@ -1,0 +1,51 @@
+{
+  "description": "OpensearchComponentTemplateList is a list of OpensearchComponentTemplate",
+  "type": "object",
+  "required": [
+    "items"
+  ],
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "opensearch.opster.io/v1"
+      ]
+    },
+    "items": {
+      "description": "List of opensearchcomponenttemplates. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.opster.opensearch.v1.OpensearchComponentTemplate"
+      }
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "OpensearchComponentTemplateList"
+      ]
+    },
+    "metadata": {
+      "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "opensearch.opster.io",
+      "kind": "OpensearchComponentTemplateList",
+      "version": "v1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

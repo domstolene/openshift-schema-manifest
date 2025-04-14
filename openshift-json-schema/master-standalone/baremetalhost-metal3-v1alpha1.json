@@ -27,7 +27,7 @@
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     },
     "spec": {
-      "description": "BareMetalHostSpec defines the desired state of BareMetalHost",
+      "description": "BareMetalHostSpec defines the desired state of BareMetalHost.",
       "type": [
         "object",
         "null"
@@ -36,6 +36,13 @@
         "online"
       ],
       "properties": {
+        "architecture": {
+          "description": "CPU architecture of the host, e.g. \"x86_64\" or \"aarch64\". If unset, eventually populated by inspection.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "automatedCleaningMode": {
           "description": "When set to disabled, automated cleaning will be avoided during provisioning and deprovisioning.",
           "type": [
@@ -227,7 +234,7 @@
           }
         },
         "hardwareProfile": {
-          "description": "What is the name of the hardware profile for this host? It should only be necessary to set this when inspection cannot automatically determine the profile.",
+          "description": "What is the name of the hardware profile for this host? Hardware profiles are deprecated and should not be used. Use the separate fields Architecture and RootDeviceHints instead. Set to \"empty\" to prepare for the future version of the API without hardware profiles.",
           "type": [
             "string",
             "null"
@@ -251,7 +258,7 @@
               ]
             },
             "checksumType": {
-              "description": "ChecksumType is the checksum algorithm for the image. e.g md5, sha256, sha512",
+              "description": "ChecksumType is the checksum algorithm for the image, e.g md5, sha256 or sha512. The special value \"auto\" can be used to detect the algorithm from the checksum. If missing, MD5 is used. If in doubt, use \"auto\".",
               "type": [
                 "string",
                 "null"
@@ -259,7 +266,8 @@
               "enum": [
                 "md5",
                 "sha256",
-                "sha512"
+                "sha512",
+                "auto"
               ]
             },
             "format": {
@@ -365,7 +373,7 @@
           ],
           "properties": {
             "deviceName": {
-              "description": "A Linux device name like \"/dev/vda\". The hint must match the actual value exactly.",
+              "description": "A Linux device name like \"/dev/vda\", or a by-path link to it like \"/dev/disk/by-path/pci-0000:01:00.0-scsi-0:2:0:0\". The hint must match the actual value exactly.",
               "type": [
                 "string",
                 "null"
@@ -507,7 +515,7 @@
       }
     },
     "status": {
-      "description": "BareMetalHostStatus defines the observed state of BareMetalHost",
+      "description": "BareMetalHostStatus defines the observed state of BareMetalHost.",
       "type": [
         "object",
         "null"
@@ -754,7 +762,7 @@
                       "null"
                     ],
                     "items": {
-                      "description": "VLAN represents the name and ID of a VLAN",
+                      "description": "VLAN represents the name and ID of a VLAN.",
                       "type": [
                         "object",
                         "null"
@@ -800,6 +808,19 @@
                   "null"
                 ],
                 "properties": {
+                  "alternateNames": {
+                    "description": "A list of alternate Linux device names of the disk, e.g. \"/dev/sda\". Note that this list is not exhaustive, and names may not be stable across reboots.",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
                   "hctl": {
                     "description": "The SCSI location of the device",
                     "type": [
@@ -815,7 +836,7 @@
                     ]
                   },
                   "name": {
-                    "description": "The Linux device name of the disk, e.g. \"/dev/sda\". Note that this may not be stable across reboots.",
+                    "description": "A Linux device name of the disk, e.g. \"/dev/disk/by-path/pci-0000:01:00.0-scsi-0:2:0:0\". This will be a name that is stable across reboots if one is available.",
                     "type": [
                       "string",
                       "null"
@@ -1112,7 +1133,7 @@
                   ]
                 },
                 "checksumType": {
-                  "description": "ChecksumType is the checksum algorithm for the image. e.g md5, sha256, sha512",
+                  "description": "ChecksumType is the checksum algorithm for the image, e.g md5, sha256 or sha512. The special value \"auto\" can be used to detect the algorithm from the checksum. If missing, MD5 is used. If in doubt, use \"auto\".",
                   "type": [
                     "string",
                     "null"
@@ -1120,7 +1141,8 @@
                   "enum": [
                     "md5",
                     "sha256",
-                    "sha512"
+                    "sha512",
+                    "auto"
                   ]
                 },
                 "format": {
@@ -1167,7 +1189,7 @@
               ],
               "properties": {
                 "deviceName": {
-                  "description": "A Linux device name like \"/dev/vda\". The hint must match the actual value exactly.",
+                  "description": "A Linux device name like \"/dev/vda\", or a by-path link to it like \"/dev/disk/by-path/pci-0000:01:00.0-scsi-0:2:0:0\". The hint must match the actual value exactly.",
                   "type": [
                     "string",
                     "null"

@@ -42,7 +42,7 @@
         "null"
       ],
       "additionalProperties": {
-        "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity_v2"
+        "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
       }
     },
     "window": {
