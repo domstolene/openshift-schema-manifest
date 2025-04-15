@@ -3,7 +3,7 @@
   "type": "object",
   "properties": {
     "addresses": {
-      "description": "List of addresses reachable to the node. Queried from cloud provider, if available. More info: https://kubernetes.io/docs/concepts/nodes/node/#addresses Note: This field is declared as mergeable, but the merge key is not sufficiently unique, which can cause data corruption when it is merged. Callers should instead use a full-replacement patch. See http://pr.k8s.io/79391 for an example.",
+      "description": "List of addresses reachable to the node. Queried from cloud provider, if available. More info: https://kubernetes.io/docs/concepts/nodes/node/#addresses Note: This field is declared as mergeable, but the merge key is not sufficiently unique, which can cause data corruption when it is merged. Callers should instead use a full-replacement patch. See https://pr.k8s.io/79391 for an example. Consumers should assume that addresses can change during the lifetime of a Node. However, there are some exceptions where this may not be possible, such as Pods that inherit a Node's address in its own status or consumers of the downward API (status.hostIP).",
       "type": [
         "array",
         "null"
@@ -11,6 +11,10 @@
       "items": {
         "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeAddress"
       },
+      "x-kubernetes-list-map-keys": [
+        "type"
+      ],
+      "x-kubernetes-list-type": "map",
       "x-kubernetes-patch-merge-key": "type",
       "x-kubernetes-patch-strategy": "merge"
     },
@@ -43,6 +47,10 @@
       "items": {
         "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeCondition"
       },
+      "x-kubernetes-list-map-keys": [
+        "type"
+      ],
+      "x-kubernetes-list-type": "map",
       "x-kubernetes-patch-merge-key": "type",
       "x-kubernetes-patch-strategy": "merge"
     },
@@ -62,7 +70,8 @@
       ],
       "items": {
         "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ContainerImage"
-      }
+      },
+      "x-kubernetes-list-type": "atomic"
     },
     "nodeInfo": {
       "description": "Set of ids/uuids to uniquely identify the node. More info: https://kubernetes.io/docs/concepts/nodes/node/#info",
@@ -80,6 +89,17 @@
         "Terminated"
       ]
     },
+    "runtimeHandlers": {
+      "description": "The available runtime handlers.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeRuntimeHandler"
+      },
+      "x-kubernetes-list-type": "atomic"
+    },
     "volumesAttached": {
       "description": "List of volumes that are attached to the node.",
       "type": [
@@ -88,7 +108,8 @@
       ],
       "items": {
         "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.AttachedVolume"
-      }
+      },
+      "x-kubernetes-list-type": "atomic"
     },
     "volumesInUse": {
       "description": "List of attachable volumes in use (mounted) by the node.",
@@ -101,7 +122,8 @@
           "string",
           "null"
         ]
-      }
+      },
+      "x-kubernetes-list-type": "atomic"
     }
   },
   "additionalProperties": false,

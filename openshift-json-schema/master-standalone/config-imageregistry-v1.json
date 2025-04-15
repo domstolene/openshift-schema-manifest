@@ -111,10 +111,12 @@
                                       "string",
                                       "null"
                                     ]
-                                  }
+                                  },
+                                  "x-kubernetes-list-type": "atomic"
                                 }
                               }
-                            }
+                            },
+                            "x-kubernetes-list-type": "atomic"
                           },
                           "matchFields": {
                             "description": "A list of node selector requirements by node's fields.",
@@ -152,10 +154,12 @@
                                       "string",
                                       "null"
                                     ]
-                                  }
+                                  },
+                                  "x-kubernetes-list-type": "atomic"
                                 }
                               }
-                            }
+                            },
+                            "x-kubernetes-list-type": "atomic"
                           }
                         },
                         "x-kubernetes-map-type": "atomic"
@@ -166,7 +170,8 @@
                         "format": "int32"
                       }
                     }
-                  }
+                  },
+                  "x-kubernetes-list-type": "atomic"
                 },
                 "requiredDuringSchedulingIgnoredDuringExecution": {
                   "description": "If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to an update), the system may or may not try to eventually evict the pod from its node.",
@@ -224,10 +229,12 @@
                                       "string",
                                       "null"
                                     ]
-                                  }
+                                  },
+                                  "x-kubernetes-list-type": "atomic"
                                 }
                               }
-                            }
+                            },
+                            "x-kubernetes-list-type": "atomic"
                           },
                           "matchFields": {
                             "description": "A list of node selector requirements by node's fields.",
@@ -265,14 +272,17 @@
                                       "string",
                                       "null"
                                     ]
-                                  }
+                                  },
+                                  "x-kubernetes-list-type": "atomic"
                                 }
                               }
-                            }
+                            },
+                            "x-kubernetes-list-type": "atomic"
                           }
                         },
                         "x-kubernetes-map-type": "atomic"
-                      }
+                      },
+                      "x-kubernetes-list-type": "atomic"
                     }
                   },
                   "x-kubernetes-map-type": "atomic"
@@ -311,7 +321,7 @@
                         ],
                         "properties": {
                           "labelSelector": {
-                            "description": "A label query over a set of resources, in this case pods.",
+                            "description": "A label query over a set of resources, in this case pods. If it's null, this PodAffinityTerm matches with no Pods.",
                             "type": [
                               "object",
                               "null"
@@ -353,10 +363,12 @@
                                           "string",
                                           "null"
                                         ]
-                                      }
+                                      },
+                                      "x-kubernetes-list-type": "atomic"
                                     }
                                   }
-                                }
+                                },
+                                "x-kubernetes-list-type": "atomic"
                               },
                               "matchLabels": {
                                 "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
@@ -373,6 +385,34 @@
                               }
                             },
                             "x-kubernetes-map-type": "atomic"
+                          },
+                          "matchLabelKeys": {
+                            "description": "MatchLabelKeys is a set of pod label keys to select which pods will be taken into consideration. The keys are used to lookup values from the incoming pod labels, those key-value labels are merged with `labelSelector` as `key in (value)` to select the group of existing pods which pods will be taken into consideration for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming pod labels will be ignored. The default value is empty. The same key is forbidden to exist in both matchLabelKeys and labelSelector. Also, matchLabelKeys cannot be set when labelSelector isn't set. This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.",
+                            "type": [
+                              "array",
+                              "null"
+                            ],
+                            "items": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "x-kubernetes-list-type": "atomic"
+                          },
+                          "mismatchLabelKeys": {
+                            "description": "MismatchLabelKeys is a set of pod label keys to select which pods will be taken into consideration. The keys are used to lookup values from the incoming pod labels, those key-value labels are merged with `labelSelector` as `key notin (value)` to select the group of existing pods which pods will be taken into consideration for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming pod labels will be ignored. The default value is empty. The same key is forbidden to exist in both mismatchLabelKeys and labelSelector. Also, mismatchLabelKeys cannot be set when labelSelector isn't set. This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.",
+                            "type": [
+                              "array",
+                              "null"
+                            ],
+                            "items": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "x-kubernetes-list-type": "atomic"
                           },
                           "namespaceSelector": {
                             "description": "A label query over the set of namespaces that the term applies to. The term is applied to the union of the namespaces selected by this field and the ones listed in the namespaces field. null selector and null or empty namespaces list means \"this pod's namespace\". An empty selector ({}) matches all namespaces.",
@@ -417,10 +457,12 @@
                                           "string",
                                           "null"
                                         ]
-                                      }
+                                      },
+                                      "x-kubernetes-list-type": "atomic"
                                     }
                                   }
-                                }
+                                },
+                                "x-kubernetes-list-type": "atomic"
                               },
                               "matchLabels": {
                                 "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
@@ -449,7 +491,8 @@
                                 "string",
                                 "null"
                               ]
-                            }
+                            },
+                            "x-kubernetes-list-type": "atomic"
                           },
                           "topologyKey": {
                             "description": "This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed.",
@@ -463,7 +506,8 @@
                         "format": "int32"
                       }
                     }
-                  }
+                  },
+                  "x-kubernetes-list-type": "atomic"
                 },
                 "requiredDuringSchedulingIgnoredDuringExecution": {
                   "description": "If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each podAffinityTerm are intersected, i.e. all terms must be satisfied.",
@@ -482,7 +526,7 @@
                     ],
                     "properties": {
                       "labelSelector": {
-                        "description": "A label query over a set of resources, in this case pods.",
+                        "description": "A label query over a set of resources, in this case pods. If it's null, this PodAffinityTerm matches with no Pods.",
                         "type": [
                           "object",
                           "null"
@@ -524,10 +568,12 @@
                                       "string",
                                       "null"
                                     ]
-                                  }
+                                  },
+                                  "x-kubernetes-list-type": "atomic"
                                 }
                               }
-                            }
+                            },
+                            "x-kubernetes-list-type": "atomic"
                           },
                           "matchLabels": {
                             "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
@@ -544,6 +590,34 @@
                           }
                         },
                         "x-kubernetes-map-type": "atomic"
+                      },
+                      "matchLabelKeys": {
+                        "description": "MatchLabelKeys is a set of pod label keys to select which pods will be taken into consideration. The keys are used to lookup values from the incoming pod labels, those key-value labels are merged with `labelSelector` as `key in (value)` to select the group of existing pods which pods will be taken into consideration for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming pod labels will be ignored. The default value is empty. The same key is forbidden to exist in both matchLabelKeys and labelSelector. Also, matchLabelKeys cannot be set when labelSelector isn't set. This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.",
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "x-kubernetes-list-type": "atomic"
+                      },
+                      "mismatchLabelKeys": {
+                        "description": "MismatchLabelKeys is a set of pod label keys to select which pods will be taken into consideration. The keys are used to lookup values from the incoming pod labels, those key-value labels are merged with `labelSelector` as `key notin (value)` to select the group of existing pods which pods will be taken into consideration for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming pod labels will be ignored. The default value is empty. The same key is forbidden to exist in both mismatchLabelKeys and labelSelector. Also, mismatchLabelKeys cannot be set when labelSelector isn't set. This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.",
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "x-kubernetes-list-type": "atomic"
                       },
                       "namespaceSelector": {
                         "description": "A label query over the set of namespaces that the term applies to. The term is applied to the union of the namespaces selected by this field and the ones listed in the namespaces field. null selector and null or empty namespaces list means \"this pod's namespace\". An empty selector ({}) matches all namespaces.",
@@ -588,10 +662,12 @@
                                       "string",
                                       "null"
                                     ]
-                                  }
+                                  },
+                                  "x-kubernetes-list-type": "atomic"
                                 }
                               }
-                            }
+                            },
+                            "x-kubernetes-list-type": "atomic"
                           },
                           "matchLabels": {
                             "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
@@ -620,14 +696,16 @@
                             "string",
                             "null"
                           ]
-                        }
+                        },
+                        "x-kubernetes-list-type": "atomic"
                       },
                       "topologyKey": {
                         "description": "This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed.",
                         "type": "string"
                       }
                     }
-                  }
+                  },
+                  "x-kubernetes-list-type": "atomic"
                 }
               }
             },
@@ -663,7 +741,7 @@
                         ],
                         "properties": {
                           "labelSelector": {
-                            "description": "A label query over a set of resources, in this case pods.",
+                            "description": "A label query over a set of resources, in this case pods. If it's null, this PodAffinityTerm matches with no Pods.",
                             "type": [
                               "object",
                               "null"
@@ -705,10 +783,12 @@
                                           "string",
                                           "null"
                                         ]
-                                      }
+                                      },
+                                      "x-kubernetes-list-type": "atomic"
                                     }
                                   }
-                                }
+                                },
+                                "x-kubernetes-list-type": "atomic"
                               },
                               "matchLabels": {
                                 "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
@@ -725,6 +805,34 @@
                               }
                             },
                             "x-kubernetes-map-type": "atomic"
+                          },
+                          "matchLabelKeys": {
+                            "description": "MatchLabelKeys is a set of pod label keys to select which pods will be taken into consideration. The keys are used to lookup values from the incoming pod labels, those key-value labels are merged with `labelSelector` as `key in (value)` to select the group of existing pods which pods will be taken into consideration for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming pod labels will be ignored. The default value is empty. The same key is forbidden to exist in both matchLabelKeys and labelSelector. Also, matchLabelKeys cannot be set when labelSelector isn't set. This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.",
+                            "type": [
+                              "array",
+                              "null"
+                            ],
+                            "items": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "x-kubernetes-list-type": "atomic"
+                          },
+                          "mismatchLabelKeys": {
+                            "description": "MismatchLabelKeys is a set of pod label keys to select which pods will be taken into consideration. The keys are used to lookup values from the incoming pod labels, those key-value labels are merged with `labelSelector` as `key notin (value)` to select the group of existing pods which pods will be taken into consideration for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming pod labels will be ignored. The default value is empty. The same key is forbidden to exist in both mismatchLabelKeys and labelSelector. Also, mismatchLabelKeys cannot be set when labelSelector isn't set. This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.",
+                            "type": [
+                              "array",
+                              "null"
+                            ],
+                            "items": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "x-kubernetes-list-type": "atomic"
                           },
                           "namespaceSelector": {
                             "description": "A label query over the set of namespaces that the term applies to. The term is applied to the union of the namespaces selected by this field and the ones listed in the namespaces field. null selector and null or empty namespaces list means \"this pod's namespace\". An empty selector ({}) matches all namespaces.",
@@ -769,10 +877,12 @@
                                           "string",
                                           "null"
                                         ]
-                                      }
+                                      },
+                                      "x-kubernetes-list-type": "atomic"
                                     }
                                   }
-                                }
+                                },
+                                "x-kubernetes-list-type": "atomic"
                               },
                               "matchLabels": {
                                 "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
@@ -801,7 +911,8 @@
                                 "string",
                                 "null"
                               ]
-                            }
+                            },
+                            "x-kubernetes-list-type": "atomic"
                           },
                           "topologyKey": {
                             "description": "This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed.",
@@ -815,7 +926,8 @@
                         "format": "int32"
                       }
                     }
-                  }
+                  },
+                  "x-kubernetes-list-type": "atomic"
                 },
                 "requiredDuringSchedulingIgnoredDuringExecution": {
                   "description": "If the anti-affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the anti-affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each podAffinityTerm are intersected, i.e. all terms must be satisfied.",
@@ -834,7 +946,7 @@
                     ],
                     "properties": {
                       "labelSelector": {
-                        "description": "A label query over a set of resources, in this case pods.",
+                        "description": "A label query over a set of resources, in this case pods. If it's null, this PodAffinityTerm matches with no Pods.",
                         "type": [
                           "object",
                           "null"
@@ -876,10 +988,12 @@
                                       "string",
                                       "null"
                                     ]
-                                  }
+                                  },
+                                  "x-kubernetes-list-type": "atomic"
                                 }
                               }
-                            }
+                            },
+                            "x-kubernetes-list-type": "atomic"
                           },
                           "matchLabels": {
                             "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
@@ -896,6 +1010,34 @@
                           }
                         },
                         "x-kubernetes-map-type": "atomic"
+                      },
+                      "matchLabelKeys": {
+                        "description": "MatchLabelKeys is a set of pod label keys to select which pods will be taken into consideration. The keys are used to lookup values from the incoming pod labels, those key-value labels are merged with `labelSelector` as `key in (value)` to select the group of existing pods which pods will be taken into consideration for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming pod labels will be ignored. The default value is empty. The same key is forbidden to exist in both matchLabelKeys and labelSelector. Also, matchLabelKeys cannot be set when labelSelector isn't set. This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.",
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "x-kubernetes-list-type": "atomic"
+                      },
+                      "mismatchLabelKeys": {
+                        "description": "MismatchLabelKeys is a set of pod label keys to select which pods will be taken into consideration. The keys are used to lookup values from the incoming pod labels, those key-value labels are merged with `labelSelector` as `key notin (value)` to select the group of existing pods which pods will be taken into consideration for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming pod labels will be ignored. The default value is empty. The same key is forbidden to exist in both mismatchLabelKeys and labelSelector. Also, mismatchLabelKeys cannot be set when labelSelector isn't set. This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.",
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "x-kubernetes-list-type": "atomic"
                       },
                       "namespaceSelector": {
                         "description": "A label query over the set of namespaces that the term applies to. The term is applied to the union of the namespaces selected by this field and the ones listed in the namespaces field. null selector and null or empty namespaces list means \"this pod's namespace\". An empty selector ({}) matches all namespaces.",
@@ -940,10 +1082,12 @@
                                       "string",
                                       "null"
                                     ]
-                                  }
+                                  },
+                                  "x-kubernetes-list-type": "atomic"
                                 }
                               }
-                            }
+                            },
+                            "x-kubernetes-list-type": "atomic"
                           },
                           "matchLabels": {
                             "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
@@ -972,14 +1116,16 @@
                             "string",
                             "null"
                           ]
-                        }
+                        },
+                        "x-kubernetes-list-type": "atomic"
                       },
                       "topologyKey": {
                         "description": "This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed.",
                         "type": "string"
                       }
                     }
-                  }
+                  },
+                  "x-kubernetes-list-type": "atomic"
                 }
               }
             }
@@ -1178,7 +1324,8 @@
                 }
               }
             }
-          }
+          },
+          "x-kubernetes-map-type": "atomic"
         },
         "resources": {
           "description": "resources defines the resource requests+limits for the registry pod.",
@@ -1187,6 +1334,33 @@
             "null"
           ],
           "properties": {
+            "claims": {
+              "description": "Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container. \n This is an alpha field and requires enabling the DynamicResourceAllocation feature gate. \n This field is immutable. It can only be set for containers.",
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "description": "ResourceClaim references one entry in PodSpec.ResourceClaims.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "description": "Name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container.",
+                    "type": "string"
+                  }
+                }
+              },
+              "x-kubernetes-list-map-keys": [
+                "name"
+              ],
+              "x-kubernetes-list-type": "map"
+            },
             "limits": {
               "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
               "type": [
@@ -1199,7 +1373,7 @@
               }
             },
             "requests": {
-              "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+              "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. Requests cannot exceed Limits. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
               "type": [
                 "object",
                 "null"
@@ -1209,7 +1383,8 @@
                 "x-kubernetes-int-or-string": true
               }
             }
-          }
+          },
+          "x-kubernetes-map-type": "atomic"
         },
         "rolloutStrategy": {
           "description": "rolloutStrategy defines rollout strategy for the image registry deployment.",
@@ -1254,7 +1429,8 @@
                 ]
               }
             }
-          }
+          },
+          "x-kubernetes-list-type": "atomic"
         },
         "storage": {
           "description": "storage details for configuring registry storage, e.g. S3 bucket coordinates.",
@@ -1293,6 +1469,81 @@
                   "maxLength": 63,
                   "minLength": 3,
                   "pattern": "^[0-9a-z]+(-[0-9a-z]+)*$"
+                },
+                "networkAccess": {
+                  "description": "networkAccess defines the network access properties for the storage account. Defaults to type: External.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "internal": {
+                      "description": "internal defines the vnet and subnet names to configure a private endpoint and connect it to the storage account in order to make it private. when type: Internal and internal is unset, the image registry operator will discover vnet and subnet names, and generate a private endpoint name.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "networkResourceGroupName": {
+                          "description": "networkResourceGroupName is the resource group name where the cluster's vnet and subnet are. When omitted, the registry operator will use the cluster resource group (from in the infrastructure status). If you set a networkResourceGroupName on your install-config.yaml, that value will be used automatically (for clusters configured with publish:Internal). Note that both vnet and subnet must be in the same resource group. It must be between 1 and 90 characters in length and must consist only of alphanumeric characters, hyphens (-), periods (.) and underscores (_), and not end with a period.",
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "maxLength": 90,
+                          "minLength": 1,
+                          "pattern": "^[0-9A-Za-z_.-](?:[0-9A-Za-z_.-]*[0-9A-Za-z_-])?$"
+                        },
+                        "privateEndpointName": {
+                          "description": "privateEndpointName is the name of the private endpoint for the registry. When provided, the registry will use it as the name of the private endpoint it will create for the storage account. When omitted, the registry will generate one. It must be between 2 and 64 characters in length and must consist only of alphanumeric characters, hyphens (-), periods (.) and underscores (_). It must start with an alphanumeric character and end with an alphanumeric character or an underscore.",
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "maxLength": 64,
+                          "minLength": 2,
+                          "pattern": "^[0-9A-Za-z][0-9A-Za-z_.-]*[0-9A-Za-z_]$"
+                        },
+                        "subnetName": {
+                          "description": "subnetName is the name of the subnet the registry operates in. When omitted, the registry operator will discover and set this by using the `kubernetes.io_cluster.<cluster-id>` tag in the vnet resource, then using one of listed subnets. Advanced cluster network configurations that use network security groups to protect subnets should ensure the provided subnetName has access to Azure Storage service. It must be between 1 and 80 characters in length and must consist only of alphanumeric characters, hyphens (-), periods (.) and underscores (_).",
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "maxLength": 80,
+                          "minLength": 1,
+                          "pattern": "^[0-9A-Za-z](?:[0-9A-Za-z_.-]*[0-9A-Za-z_])?$"
+                        },
+                        "vnetName": {
+                          "description": "vnetName is the name of the vnet the registry operates in. When omitted, the registry operator will discover and set this by using the `kubernetes.io_cluster.<cluster-id>` tag in the vnet resource. This tag is set automatically by the installer. Commonly, this will be the same vnet as the cluster. Advanced cluster network configurations should ensure the provided vnetName is the vnet of the nodes where the image registry pods are running from. It must be between 2 and 64 characters in length and must consist only of alphanumeric characters, hyphens (-), periods (.) and underscores (_). It must start with an alphanumeric character and end with an alphanumeric character or an underscore.",
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "maxLength": 64,
+                          "minLength": 2,
+                          "pattern": "^[0-9A-Za-z][0-9A-Za-z_.-]*[0-9A-Za-z_]$"
+                        }
+                      }
+                    },
+                    "type": {
+                      "description": "type is the network access level to be used for the storage account. type: Internal means the storage account will be private, type: External means the storage account will be publicly accessible. Internal storage accounts are only exposed within the cluster's vnet. External storage accounts are publicly exposed on the internet. When type: Internal is used, a vnetName, subNetName and privateEndpointName may optionally be specified. If unspecificed, the image registry operator will discover vnet and subnet names, and generate a privateEndpointName. Defaults to \"External\".",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "enum": [
+                        "Internal",
+                        "External"
+                      ]
+                    }
+                  },
+                  "x-kubernetes-validations": [
+                    {
+                      "message": "internal is forbidden when type is not Internal",
+                      "rule": "has(self.type) && self.type == 'Internal' ?  true : !has(self.internal)"
+                    }
+                  ]
                 }
               }
             },
@@ -1499,6 +1750,16 @@
                     "null"
                   ]
                 },
+                "chunkSizeMiB": {
+                  "description": "chunkSizeMiB defines the size of the multipart upload chunks of the S3 API. The S3 API requires multipart upload chunks to be at least 5MiB. When omitted, this means no opinion and the platform is left to choose a reasonable default, which is subject to change over time. The current default value is 10 MiB. The value is an integer number of MiB. The minimum value is 5 and the maximum value is 5120 (5 GiB).",
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "format": "int32",
+                  "maximum": 5120,
+                  "minimum": 5
+                },
                 "cloudFront": {
                   "description": "cloudFront configures Amazon Cloudfront as the storage middleware in a registry.",
                   "type": [
@@ -1539,7 +1800,7 @@
                           "type": "string"
                         },
                         "name": {
-                          "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                          "description": "Name of the referent. This field is effectively required, but due to backwards compatibility is allowed to be empty. Instances of this type with an empty value here are almost certainly wrong. TODO: Add other useful fields. apiVersion, kind, uid? More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.",
                           "type": [
                             "string",
                             "null"
@@ -1579,7 +1840,7 @@
                   ]
                 },
                 "regionEndpoint": {
-                  "description": "regionEndpoint is the endpoint for S3 compatible storage services. Optional, defaults based on the Region that is provided.",
+                  "description": "regionEndpoint is the endpoint for S3 compatible storage services. It should be a valid URL with scheme, e.g. https://s3.example.com. Optional, defaults based on the Region that is provided.",
                   "type": [
                     "string",
                     "null"
@@ -1729,7 +1990,8 @@
                 ]
               }
             }
-          }
+          },
+          "x-kubernetes-list-type": "atomic"
         },
         "topologySpreadConstraints": {
           "description": "topologySpreadConstraints specify how to spread matching pods among the given topology.",
@@ -1792,10 +2054,12 @@
                               "string",
                               "null"
                             ]
-                          }
+                          },
+                          "x-kubernetes-list-type": "atomic"
                         }
                       }
-                    }
+                    },
+                    "x-kubernetes-list-type": "atomic"
                   },
                   "matchLabels": {
                     "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
@@ -1814,7 +2078,7 @@
                 "x-kubernetes-map-type": "atomic"
               },
               "matchLabelKeys": {
-                "description": "MatchLabelKeys is a set of pod label keys to select the pods over which spreading will be calculated. The keys are used to lookup values from the incoming pod labels, those key-value labels are ANDed with labelSelector to select the group of existing pods over which spreading will be calculated for the incoming pod. Keys that don't exist in the incoming pod labels will be ignored. A null or empty list means only match against labelSelector.",
+                "description": "MatchLabelKeys is a set of pod label keys to select the pods over which spreading will be calculated. The keys are used to lookup values from the incoming pod labels, those key-value labels are ANDed with labelSelector to select the group of existing pods over which spreading will be calculated for the incoming pod. The same key is forbidden to exist in both MatchLabelKeys and LabelSelector. MatchLabelKeys cannot be set when LabelSelector isn't set. Keys that don't exist in the incoming pod labels will be ignored. A null or empty list means only match against labelSelector. \n This is a beta field and requires the MatchLabelKeysInPodTopologySpread feature gate to be enabled (enabled by default).",
                 "type": [
                   "array",
                   "null"
@@ -1833,7 +2097,7 @@
                 "format": "int32"
               },
               "minDomains": {
-                "description": "MinDomains indicates a minimum number of eligible domains. When the number of eligible domains with matching topology keys is less than minDomains, Pod Topology Spread treats \"global minimum\" as 0, and then the calculation of Skew is performed. And when the number of eligible domains with matching topology keys equals or greater than minDomains, this value has no effect on scheduling. As a result, when the number of eligible domains is less than minDomains, scheduler won't schedule more than maxSkew Pods to those domains. If value is nil, the constraint behaves as if MinDomains is equal to 1. Valid values are integers greater than 0. When value is not nil, WhenUnsatisfiable must be DoNotSchedule. \n For example, in a 3-zone cluster, MaxSkew is set to 2, MinDomains is set to 5 and pods with the same labelSelector spread as 2/2/2: | zone1 | zone2 | zone3 | |  P P  |  P P  |  P P  | The number of domains is less than 5(MinDomains), so \"global minimum\" is treated as 0. In this situation, new pod with the same labelSelector cannot be scheduled, because computed skew will be 3(3 - 0) if new Pod is scheduled to any of the three zones, it will violate MaxSkew. \n This is a beta field and requires the MinDomainsInPodTopologySpread feature gate to be enabled (enabled by default).",
+                "description": "MinDomains indicates a minimum number of eligible domains. When the number of eligible domains with matching topology keys is less than minDomains, Pod Topology Spread treats \"global minimum\" as 0, and then the calculation of Skew is performed. And when the number of eligible domains with matching topology keys equals or greater than minDomains, this value has no effect on scheduling. As a result, when the number of eligible domains is less than minDomains, scheduler won't schedule more than maxSkew Pods to those domains. If value is nil, the constraint behaves as if MinDomains is equal to 1. Valid values are integers greater than 0. When value is not nil, WhenUnsatisfiable must be DoNotSchedule. \n For example, in a 3-zone cluster, MaxSkew is set to 2, MinDomains is set to 5 and pods with the same labelSelector spread as 2/2/2: | zone1 | zone2 | zone3 | |  P P  |  P P  |  P P  | The number of domains is less than 5(MinDomains), so \"global minimum\" is treated as 0. In this situation, new pod with the same labelSelector cannot be scheduled, because computed skew will be 3(3 - 0) if new Pod is scheduled to any of the three zones, it will violate MaxSkew.",
                 "type": [
                   "integer",
                   "null"
@@ -1841,14 +2105,14 @@
                 "format": "int32"
               },
               "nodeAffinityPolicy": {
-                "description": "NodeAffinityPolicy indicates how we will treat Pod's nodeAffinity/nodeSelector when calculating pod topology spread skew. Options are: - Honor: only nodes matching nodeAffinity/nodeSelector are included in the calculations. - Ignore: nodeAffinity/nodeSelector are ignored. All nodes are included in the calculations. \n If this value is nil, the behavior is equivalent to the Honor policy. This is a alpha-level feature enabled by the NodeInclusionPolicyInPodTopologySpread feature flag.",
+                "description": "NodeAffinityPolicy indicates how we will treat Pod's nodeAffinity/nodeSelector when calculating pod topology spread skew. Options are: - Honor: only nodes matching nodeAffinity/nodeSelector are included in the calculations. - Ignore: nodeAffinity/nodeSelector are ignored. All nodes are included in the calculations. \n If this value is nil, the behavior is equivalent to the Honor policy. This is a beta-level feature default enabled by the NodeInclusionPolicyInPodTopologySpread feature flag.",
                 "type": [
                   "string",
                   "null"
                 ]
               },
               "nodeTaintsPolicy": {
-                "description": "NodeTaintsPolicy indicates how we will treat node taints when calculating pod topology spread skew. Options are: - Honor: nodes without taints, along with tainted nodes for which the incoming pod has a toleration, are included. - Ignore: node taints are ignored. All nodes are included. \n If this value is nil, the behavior is equivalent to the Ignore policy. This is a alpha-level feature enabled by the NodeInclusionPolicyInPodTopologySpread feature flag.",
+                "description": "NodeTaintsPolicy indicates how we will treat node taints when calculating pod topology spread skew. Options are: - Honor: nodes without taints, along with tainted nodes for which the incoming pod has a toleration, are included. - Ignore: node taints are ignored. All nodes are included. \n If this value is nil, the behavior is equivalent to the Ignore policy. This is a beta-level feature default enabled by the NodeInclusionPolicyInPodTopologySpread feature flag.",
                 "type": [
                   "string",
                   "null"
@@ -1863,10 +2127,11 @@
                 "type": "string"
               }
             }
-          }
+          },
+          "x-kubernetes-list-type": "atomic"
         },
         "unsupportedConfigOverrides": {
-          "description": "unsupportedConfigOverrides holds a sparse config that will override any previously set options.  It only needs to be the fields to override it will end up overlaying in the following order: 1. hardcoded defaults 2. observedConfig 3. unsupportedConfigOverrides",
+          "description": "unsupportedConfigOverrides overrides the final configuration that was computed by the operator. Red Hat does not support the use of this field. Misuse of this field could lead to unexpected behavior or conflict with other configuration options. Seek guidance from the Red Hat support before using this field. Use of this property blocks cluster upgrades, it must be removed before upgrading your cluster.",
           "x-kubernetes-preserve-unknown-fields": true
         }
       }
@@ -1893,6 +2158,9 @@
             "type": [
               "object",
               "null"
+            ],
+            "required": [
+              "type"
             ],
             "properties": {
               "lastTransitionTime": {
@@ -1921,13 +2189,14 @@
                 ]
               },
               "type": {
-                "type": [
-                  "string",
-                  "null"
-                ]
+                "type": "string"
               }
             }
-          }
+          },
+          "x-kubernetes-list-map-keys": [
+            "type"
+          ],
+          "x-kubernetes-list-type": "map"
         },
         "generations": {
           "description": "generations are used to determine when an item needs to be reconciled or has changed in a way that needs a reaction.",
@@ -1986,7 +2255,8 @@
                 ]
               }
             }
-          }
+          },
+          "x-kubernetes-list-type": "atomic"
         },
         "observedGeneration": {
           "description": "observedGeneration is the last generation change you've dealt with",
@@ -2038,6 +2308,81 @@
                   "maxLength": 63,
                   "minLength": 3,
                   "pattern": "^[0-9a-z]+(-[0-9a-z]+)*$"
+                },
+                "networkAccess": {
+                  "description": "networkAccess defines the network access properties for the storage account. Defaults to type: External.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "internal": {
+                      "description": "internal defines the vnet and subnet names to configure a private endpoint and connect it to the storage account in order to make it private. when type: Internal and internal is unset, the image registry operator will discover vnet and subnet names, and generate a private endpoint name.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "networkResourceGroupName": {
+                          "description": "networkResourceGroupName is the resource group name where the cluster's vnet and subnet are. When omitted, the registry operator will use the cluster resource group (from in the infrastructure status). If you set a networkResourceGroupName on your install-config.yaml, that value will be used automatically (for clusters configured with publish:Internal). Note that both vnet and subnet must be in the same resource group. It must be between 1 and 90 characters in length and must consist only of alphanumeric characters, hyphens (-), periods (.) and underscores (_), and not end with a period.",
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "maxLength": 90,
+                          "minLength": 1,
+                          "pattern": "^[0-9A-Za-z_.-](?:[0-9A-Za-z_.-]*[0-9A-Za-z_-])?$"
+                        },
+                        "privateEndpointName": {
+                          "description": "privateEndpointName is the name of the private endpoint for the registry. When provided, the registry will use it as the name of the private endpoint it will create for the storage account. When omitted, the registry will generate one. It must be between 2 and 64 characters in length and must consist only of alphanumeric characters, hyphens (-), periods (.) and underscores (_). It must start with an alphanumeric character and end with an alphanumeric character or an underscore.",
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "maxLength": 64,
+                          "minLength": 2,
+                          "pattern": "^[0-9A-Za-z][0-9A-Za-z_.-]*[0-9A-Za-z_]$"
+                        },
+                        "subnetName": {
+                          "description": "subnetName is the name of the subnet the registry operates in. When omitted, the registry operator will discover and set this by using the `kubernetes.io_cluster.<cluster-id>` tag in the vnet resource, then using one of listed subnets. Advanced cluster network configurations that use network security groups to protect subnets should ensure the provided subnetName has access to Azure Storage service. It must be between 1 and 80 characters in length and must consist only of alphanumeric characters, hyphens (-), periods (.) and underscores (_).",
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "maxLength": 80,
+                          "minLength": 1,
+                          "pattern": "^[0-9A-Za-z](?:[0-9A-Za-z_.-]*[0-9A-Za-z_])?$"
+                        },
+                        "vnetName": {
+                          "description": "vnetName is the name of the vnet the registry operates in. When omitted, the registry operator will discover and set this by using the `kubernetes.io_cluster.<cluster-id>` tag in the vnet resource. This tag is set automatically by the installer. Commonly, this will be the same vnet as the cluster. Advanced cluster network configurations should ensure the provided vnetName is the vnet of the nodes where the image registry pods are running from. It must be between 2 and 64 characters in length and must consist only of alphanumeric characters, hyphens (-), periods (.) and underscores (_). It must start with an alphanumeric character and end with an alphanumeric character or an underscore.",
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "maxLength": 64,
+                          "minLength": 2,
+                          "pattern": "^[0-9A-Za-z][0-9A-Za-z_.-]*[0-9A-Za-z_]$"
+                        }
+                      }
+                    },
+                    "type": {
+                      "description": "type is the network access level to be used for the storage account. type: Internal means the storage account will be private, type: External means the storage account will be publicly accessible. Internal storage accounts are only exposed within the cluster's vnet. External storage accounts are publicly exposed on the internet. When type: Internal is used, a vnetName, subNetName and privateEndpointName may optionally be specified. If unspecificed, the image registry operator will discover vnet and subnet names, and generate a privateEndpointName. Defaults to \"External\".",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "enum": [
+                        "Internal",
+                        "External"
+                      ]
+                    }
+                  },
+                  "x-kubernetes-validations": [
+                    {
+                      "message": "internal is forbidden when type is not Internal",
+                      "rule": "has(self.type) && self.type == 'Internal' ?  true : !has(self.internal)"
+                    }
+                  ]
                 }
               }
             },
@@ -2244,6 +2589,16 @@
                     "null"
                   ]
                 },
+                "chunkSizeMiB": {
+                  "description": "chunkSizeMiB defines the size of the multipart upload chunks of the S3 API. The S3 API requires multipart upload chunks to be at least 5MiB. When omitted, this means no opinion and the platform is left to choose a reasonable default, which is subject to change over time. The current default value is 10 MiB. The value is an integer number of MiB. The minimum value is 5 and the maximum value is 5120 (5 GiB).",
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "format": "int32",
+                  "maximum": 5120,
+                  "minimum": 5
+                },
                 "cloudFront": {
                   "description": "cloudFront configures Amazon Cloudfront as the storage middleware in a registry.",
                   "type": [
@@ -2284,7 +2639,7 @@
                           "type": "string"
                         },
                         "name": {
-                          "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                          "description": "Name of the referent. This field is effectively required, but due to backwards compatibility is allowed to be empty. Instances of this type with an empty value here are almost certainly wrong. TODO: Add other useful fields. apiVersion, kind, uid? More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.",
                           "type": [
                             "string",
                             "null"
@@ -2324,7 +2679,7 @@
                   ]
                 },
                 "regionEndpoint": {
-                  "description": "regionEndpoint is the endpoint for S3 compatible storage services. Optional, defaults based on the Region that is provided.",
+                  "description": "regionEndpoint is the endpoint for S3 compatible storage services. It should be a valid URL with scheme, e.g. https://s3.example.com. Optional, defaults based on the Region that is provided.",
                   "type": [
                     "string",
                     "null"

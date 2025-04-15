@@ -3,8 +3,8 @@
   "type": "object",
   "properties": {
     "loadBalancer": {
-      "description": "LoadBalancer contains the current status of the load-balancer.",
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.LoadBalancerStatus"
+      "description": "loadBalancer contains the current status of the load-balancer.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.networking.v1.IngressLoadBalancerStatus"
     }
   },
   "additionalProperties": false,

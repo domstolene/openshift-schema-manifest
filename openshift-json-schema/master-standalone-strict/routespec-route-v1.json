@@ -22,6 +22,10 @@
         "null"
       ]
     },
+    "httpHeaders": {
+      "description": "httpHeaders defines policy for HTTP headers.",
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.route.v1.RouteHTTPHeaders"
+    },
     "path": {
       "description": "path that the router watches for, to route traffic for to the service. Optional",
       "type": [

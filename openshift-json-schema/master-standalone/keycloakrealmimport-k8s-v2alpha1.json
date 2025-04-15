@@ -23,7 +23,7 @@
     },
     "metadata": {
       "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
-      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta_v2"
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     },
     "spec": {
       "type": [
@@ -38,6 +38,47 @@
         "keycloakCRName": {
           "description": "The name of the Keycloak CR to reference, in the same namespace.",
           "type": "string"
+        },
+        "placeholders": {
+          "description": "Optionally set to replace ENV variable placeholders in the realm import.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "secret": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "key": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "name": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "optional": {
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  }
+                }
+              }
+            }
+          }
         },
         "realm": {
           "description": "The RealmRepresentation to import into Keycloak.",
@@ -323,8 +364,8 @@
                                 "null"
                               ],
                               "enum": [
-                                "POSITIVE",
-                                "NEGATIVE"
+                                "NEGATIVE",
+                                "POSITIVE"
                               ]
                             },
                             "name": {
@@ -566,9 +607,9 @@
                           "null"
                         ],
                         "enum": [
-                          "PERMISSIVE",
+                          "DISABLED",
                           "ENFORCING",
-                          "DISABLED"
+                          "PERMISSIVE"
                         ]
                       },
                       "resources": {
@@ -943,12 +984,6 @@
                       "null"
                     ]
                   },
-                  "oauth2DeviceAuthorizationGrantEnabled": {
-                    "type": [
-                      "boolean",
-                      "null"
-                    ]
-                  },
                   "optionalClientScopes": {
                     "type": [
                       "array",
@@ -1098,6 +1133,12 @@
                   "surrogateAuthRequired": {
                     "type": [
                       "boolean",
+                      "null"
+                    ]
+                  },
+                  "type": {
+                    "type": [
+                      "string",
                       "null"
                     ]
                   },
@@ -1318,6 +1359,16 @@
               "type": [
                 "boolean",
                 "null"
+              ]
+            },
+            "bruteForceStrategy": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "enum": [
+                "LINEAR",
+                "MULTIPLE"
               ]
             },
             "certificate": {
@@ -1854,8 +1905,8 @@
                                 "null"
                               ],
                               "enum": [
-                                "POSITIVE",
-                                "NEGATIVE"
+                                "NEGATIVE",
+                                "POSITIVE"
                               ]
                             },
                             "name": {
@@ -2097,9 +2148,9 @@
                           "null"
                         ],
                         "enum": [
-                          "PERMISSIVE",
+                          "DISABLED",
                           "ENFORCING",
-                          "DISABLED"
+                          "PERMISSIVE"
                         ]
                       },
                       "resources": {
@@ -2406,12 +2457,6 @@
                       "null"
                     ]
                   },
-                  "oauth2DeviceAuthorizationGrantEnabled": {
-                    "type": [
-                      "boolean",
-                      "null"
-                    ]
-                  },
                   "optionalClientScopes": {
                     "type": [
                       "array",
@@ -2564,6 +2609,12 @@
                       "null"
                     ]
                   },
+                  "type": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
                   "useTemplateConfig": {
                     "type": [
                       "boolean",
@@ -2706,6 +2757,564 @@
                                 "string",
                                 "null"
                               ]
+                            },
+                            "subComponents": {
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "additionalProperties": {
+                                "type": [
+                                  "array",
+                                  "null"
+                                ],
+                                "items": {
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "properties": {
+                                    "config": {
+                                      "type": [
+                                        "object",
+                                        "null"
+                                      ],
+                                      "additionalProperties": {
+                                        "type": [
+                                          "array",
+                                          "null"
+                                        ],
+                                        "items": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        }
+                                      }
+                                    },
+                                    "id": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "name": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "providerId": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "subComponents": {
+                                      "type": [
+                                        "object",
+                                        "null"
+                                      ],
+                                      "additionalProperties": {
+                                        "type": [
+                                          "array",
+                                          "null"
+                                        ],
+                                        "items": {
+                                          "type": [
+                                            "object",
+                                            "null"
+                                          ],
+                                          "properties": {
+                                            "config": {
+                                              "type": [
+                                                "object",
+                                                "null"
+                                              ],
+                                              "additionalProperties": {
+                                                "type": [
+                                                  "array",
+                                                  "null"
+                                                ],
+                                                "items": {
+                                                  "type": [
+                                                    "string",
+                                                    "null"
+                                                  ]
+                                                }
+                                              }
+                                            },
+                                            "id": {
+                                              "type": [
+                                                "string",
+                                                "null"
+                                              ]
+                                            },
+                                            "name": {
+                                              "type": [
+                                                "string",
+                                                "null"
+                                              ]
+                                            },
+                                            "providerId": {
+                                              "type": [
+                                                "string",
+                                                "null"
+                                              ]
+                                            },
+                                            "subComponents": {
+                                              "type": [
+                                                "object",
+                                                "null"
+                                              ],
+                                              "additionalProperties": {
+                                                "type": [
+                                                  "array",
+                                                  "null"
+                                                ],
+                                                "items": {
+                                                  "type": [
+                                                    "object",
+                                                    "null"
+                                                  ],
+                                                  "properties": {
+                                                    "config": {
+                                                      "type": [
+                                                        "object",
+                                                        "null"
+                                                      ],
+                                                      "additionalProperties": {
+                                                        "type": [
+                                                          "array",
+                                                          "null"
+                                                        ],
+                                                        "items": {
+                                                          "type": [
+                                                            "string",
+                                                            "null"
+                                                          ]
+                                                        }
+                                                      }
+                                                    },
+                                                    "id": {
+                                                      "type": [
+                                                        "string",
+                                                        "null"
+                                                      ]
+                                                    },
+                                                    "name": {
+                                                      "type": [
+                                                        "string",
+                                                        "null"
+                                                      ]
+                                                    },
+                                                    "providerId": {
+                                                      "type": [
+                                                        "string",
+                                                        "null"
+                                                      ]
+                                                    },
+                                                    "subComponents": {
+                                                      "type": [
+                                                        "object",
+                                                        "null"
+                                                      ],
+                                                      "additionalProperties": {
+                                                        "type": [
+                                                          "array",
+                                                          "null"
+                                                        ],
+                                                        "items": {
+                                                          "type": [
+                                                            "object",
+                                                            "null"
+                                                          ],
+                                                          "properties": {
+                                                            "config": {
+                                                              "type": [
+                                                                "object",
+                                                                "null"
+                                                              ],
+                                                              "additionalProperties": {
+                                                                "type": [
+                                                                  "array",
+                                                                  "null"
+                                                                ],
+                                                                "items": {
+                                                                  "type": [
+                                                                    "string",
+                                                                    "null"
+                                                                  ]
+                                                                }
+                                                              }
+                                                            },
+                                                            "id": {
+                                                              "type": [
+                                                                "string",
+                                                                "null"
+                                                              ]
+                                                            },
+                                                            "name": {
+                                                              "type": [
+                                                                "string",
+                                                                "null"
+                                                              ]
+                                                            },
+                                                            "providerId": {
+                                                              "type": [
+                                                                "string",
+                                                                "null"
+                                                              ]
+                                                            },
+                                                            "subComponents": {
+                                                              "type": [
+                                                                "object",
+                                                                "null"
+                                                              ],
+                                                              "additionalProperties": {
+                                                                "type": [
+                                                                  "array",
+                                                                  "null"
+                                                                ],
+                                                                "items": {
+                                                                  "type": [
+                                                                    "object",
+                                                                    "null"
+                                                                  ],
+                                                                  "properties": {
+                                                                    "config": {
+                                                                      "type": [
+                                                                        "object",
+                                                                        "null"
+                                                                      ],
+                                                                      "additionalProperties": {
+                                                                        "type": [
+                                                                          "array",
+                                                                          "null"
+                                                                        ],
+                                                                        "items": {
+                                                                          "type": [
+                                                                            "string",
+                                                                            "null"
+                                                                          ]
+                                                                        }
+                                                                      }
+                                                                    },
+                                                                    "id": {
+                                                                      "type": [
+                                                                        "string",
+                                                                        "null"
+                                                                      ]
+                                                                    },
+                                                                    "name": {
+                                                                      "type": [
+                                                                        "string",
+                                                                        "null"
+                                                                      ]
+                                                                    },
+                                                                    "providerId": {
+                                                                      "type": [
+                                                                        "string",
+                                                                        "null"
+                                                                      ]
+                                                                    },
+                                                                    "subComponents": {
+                                                                      "type": [
+                                                                        "object",
+                                                                        "null"
+                                                                      ],
+                                                                      "additionalProperties": {
+                                                                        "type": [
+                                                                          "array",
+                                                                          "null"
+                                                                        ],
+                                                                        "items": {
+                                                                          "type": [
+                                                                            "object",
+                                                                            "null"
+                                                                          ],
+                                                                          "properties": {
+                                                                            "config": {
+                                                                              "type": [
+                                                                                "object",
+                                                                                "null"
+                                                                              ],
+                                                                              "additionalProperties": {
+                                                                                "type": [
+                                                                                  "array",
+                                                                                  "null"
+                                                                                ],
+                                                                                "items": {
+                                                                                  "type": [
+                                                                                    "string",
+                                                                                    "null"
+                                                                                  ]
+                                                                                }
+                                                                              }
+                                                                            },
+                                                                            "id": {
+                                                                              "type": [
+                                                                                "string",
+                                                                                "null"
+                                                                              ]
+                                                                            },
+                                                                            "name": {
+                                                                              "type": [
+                                                                                "string",
+                                                                                "null"
+                                                                              ]
+                                                                            },
+                                                                            "providerId": {
+                                                                              "type": [
+                                                                                "string",
+                                                                                "null"
+                                                                              ]
+                                                                            },
+                                                                            "subComponents": {
+                                                                              "type": [
+                                                                                "object",
+                                                                                "null"
+                                                                              ],
+                                                                              "additionalProperties": {
+                                                                                "type": [
+                                                                                  "array",
+                                                                                  "null"
+                                                                                ],
+                                                                                "items": {
+                                                                                  "type": [
+                                                                                    "object",
+                                                                                    "null"
+                                                                                  ],
+                                                                                  "properties": {
+                                                                                    "config": {
+                                                                                      "type": [
+                                                                                        "object",
+                                                                                        "null"
+                                                                                      ],
+                                                                                      "additionalProperties": {
+                                                                                        "type": [
+                                                                                          "array",
+                                                                                          "null"
+                                                                                        ],
+                                                                                        "items": {
+                                                                                          "type": [
+                                                                                            "string",
+                                                                                            "null"
+                                                                                          ]
+                                                                                        }
+                                                                                      }
+                                                                                    },
+                                                                                    "id": {
+                                                                                      "type": [
+                                                                                        "string",
+                                                                                        "null"
+                                                                                      ]
+                                                                                    },
+                                                                                    "name": {
+                                                                                      "type": [
+                                                                                        "string",
+                                                                                        "null"
+                                                                                      ]
+                                                                                    },
+                                                                                    "providerId": {
+                                                                                      "type": [
+                                                                                        "string",
+                                                                                        "null"
+                                                                                      ]
+                                                                                    },
+                                                                                    "subComponents": {
+                                                                                      "type": [
+                                                                                        "object",
+                                                                                        "null"
+                                                                                      ],
+                                                                                      "additionalProperties": {
+                                                                                        "type": [
+                                                                                          "array",
+                                                                                          "null"
+                                                                                        ],
+                                                                                        "items": {
+                                                                                          "type": [
+                                                                                            "object",
+                                                                                            "null"
+                                                                                          ],
+                                                                                          "properties": {
+                                                                                            "config": {
+                                                                                              "type": [
+                                                                                                "object",
+                                                                                                "null"
+                                                                                              ],
+                                                                                              "additionalProperties": {
+                                                                                                "type": [
+                                                                                                  "array",
+                                                                                                  "null"
+                                                                                                ],
+                                                                                                "items": {
+                                                                                                  "type": [
+                                                                                                    "string",
+                                                                                                    "null"
+                                                                                                  ]
+                                                                                                }
+                                                                                              }
+                                                                                            },
+                                                                                            "id": {
+                                                                                              "type": [
+                                                                                                "string",
+                                                                                                "null"
+                                                                                              ]
+                                                                                            },
+                                                                                            "name": {
+                                                                                              "type": [
+                                                                                                "string",
+                                                                                                "null"
+                                                                                              ]
+                                                                                            },
+                                                                                            "providerId": {
+                                                                                              "type": [
+                                                                                                "string",
+                                                                                                "null"
+                                                                                              ]
+                                                                                            },
+                                                                                            "subComponents": {
+                                                                                              "type": [
+                                                                                                "object",
+                                                                                                "null"
+                                                                                              ],
+                                                                                              "additionalProperties": {
+                                                                                                "type": [
+                                                                                                  "array",
+                                                                                                  "null"
+                                                                                                ],
+                                                                                                "items": {
+                                                                                                  "type": [
+                                                                                                    "object",
+                                                                                                    "null"
+                                                                                                  ],
+                                                                                                  "properties": {
+                                                                                                    "config": {
+                                                                                                      "type": [
+                                                                                                        "object",
+                                                                                                        "null"
+                                                                                                      ],
+                                                                                                      "additionalProperties": {
+                                                                                                        "type": [
+                                                                                                          "array",
+                                                                                                          "null"
+                                                                                                        ],
+                                                                                                        "items": {
+                                                                                                          "type": [
+                                                                                                            "string",
+                                                                                                            "null"
+                                                                                                          ]
+                                                                                                        }
+                                                                                                      }
+                                                                                                    },
+                                                                                                    "id": {
+                                                                                                      "type": [
+                                                                                                        "string",
+                                                                                                        "null"
+                                                                                                      ]
+                                                                                                    },
+                                                                                                    "name": {
+                                                                                                      "type": [
+                                                                                                        "string",
+                                                                                                        "null"
+                                                                                                      ]
+                                                                                                    },
+                                                                                                    "providerId": {
+                                                                                                      "type": [
+                                                                                                        "string",
+                                                                                                        "null"
+                                                                                                      ]
+                                                                                                    },
+                                                                                                    "subType": {
+                                                                                                      "type": [
+                                                                                                        "string",
+                                                                                                        "null"
+                                                                                                      ]
+                                                                                                    }
+                                                                                                  }
+                                                                                                }
+                                                                                              }
+                                                                                            },
+                                                                                            "subType": {
+                                                                                              "type": [
+                                                                                                "string",
+                                                                                                "null"
+                                                                                              ]
+                                                                                            }
+                                                                                          }
+                                                                                        }
+                                                                                      }
+                                                                                    },
+                                                                                    "subType": {
+                                                                                      "type": [
+                                                                                        "string",
+                                                                                        "null"
+                                                                                      ]
+                                                                                    }
+                                                                                  }
+                                                                                }
+                                                                              }
+                                                                            },
+                                                                            "subType": {
+                                                                              "type": [
+                                                                                "string",
+                                                                                "null"
+                                                                              ]
+                                                                            }
+                                                                          }
+                                                                        }
+                                                                      }
+                                                                    },
+                                                                    "subType": {
+                                                                      "type": [
+                                                                        "string",
+                                                                        "null"
+                                                                      ]
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            },
+                                                            "subType": {
+                                                              "type": [
+                                                                "string",
+                                                                "null"
+                                                              ]
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    },
+                                                    "subType": {
+                                                      "type": [
+                                                        "string",
+                                                        "null"
+                                                      ]
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            },
+                                            "subType": {
+                                              "type": [
+                                                "string",
+                                                "null"
+                                              ]
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "subType": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    }
+                                  }
+                                }
+                              }
                             },
                             "subType": {
                               "type": [
@@ -3458,6 +4067,138 @@
                       "null"
                     ]
                   },
+                  "userProfileMetadata": {
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "attributes": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "annotations": {
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "additionalProperties": {
+                                "type": [
+                                  "object",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "displayName": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "group": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "multivalued": {
+                              "type": [
+                                "boolean",
+                                "null"
+                              ]
+                            },
+                            "name": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "readOnly": {
+                              "type": [
+                                "boolean",
+                                "null"
+                              ]
+                            },
+                            "required": {
+                              "type": [
+                                "boolean",
+                                "null"
+                              ]
+                            },
+                            "validators": {
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "additionalProperties": {
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "additionalProperties": {
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "groups": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "annotations": {
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "additionalProperties": {
+                                "type": [
+                                  "object",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "displayDescription": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "displayHeader": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "name": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
                   "username": {
                     "type": [
                       "string",
@@ -3466,6 +4207,12 @@
                   }
                 }
               }
+            },
+            "firstBrokerLoginFlow": {
+              "type": [
+                "string",
+                "null"
+              ]
             },
             "groups": {
               "type": [
@@ -3538,6 +4285,12 @@
                       "null"
                     ]
                   },
+                  "parentId": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
                   "path": {
                     "type": [
                       "string",
@@ -3555,6 +4308,12 @@
                         "null"
                       ]
                     }
+                  },
+                  "subGroupCount": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
                   },
                   "subGroups": {
                     "type": [
@@ -3627,6 +4386,12 @@
                             "null"
                           ]
                         },
+                        "parentId": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
                         "path": {
                           "type": [
                             "string",
@@ -3643,6 +4408,948 @@
                               "string",
                               "null"
                             ]
+                          }
+                        },
+                        "subGroupCount": {
+                          "type": [
+                            "integer",
+                            "null"
+                          ]
+                        },
+                        "subGroups": {
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "properties": {
+                              "access": {
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "additionalProperties": {
+                                  "type": [
+                                    "boolean",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "attributes": {
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "additionalProperties": {
+                                  "type": [
+                                    "array",
+                                    "null"
+                                  ],
+                                  "items": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              },
+                              "clientRoles": {
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "additionalProperties": {
+                                  "type": [
+                                    "array",
+                                    "null"
+                                  ],
+                                  "items": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              },
+                              "id": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "name": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "parentId": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "path": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "realmRoles": {
+                                "type": [
+                                  "array",
+                                  "null"
+                                ],
+                                "items": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "subGroupCount": {
+                                "type": [
+                                  "integer",
+                                  "null"
+                                ]
+                              },
+                              "subGroups": {
+                                "type": [
+                                  "array",
+                                  "null"
+                                ],
+                                "items": {
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "properties": {
+                                    "access": {
+                                      "type": [
+                                        "object",
+                                        "null"
+                                      ],
+                                      "additionalProperties": {
+                                        "type": [
+                                          "boolean",
+                                          "null"
+                                        ]
+                                      }
+                                    },
+                                    "attributes": {
+                                      "type": [
+                                        "object",
+                                        "null"
+                                      ],
+                                      "additionalProperties": {
+                                        "type": [
+                                          "array",
+                                          "null"
+                                        ],
+                                        "items": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        }
+                                      }
+                                    },
+                                    "clientRoles": {
+                                      "type": [
+                                        "object",
+                                        "null"
+                                      ],
+                                      "additionalProperties": {
+                                        "type": [
+                                          "array",
+                                          "null"
+                                        ],
+                                        "items": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        }
+                                      }
+                                    },
+                                    "id": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "name": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "parentId": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "path": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "realmRoles": {
+                                      "type": [
+                                        "array",
+                                        "null"
+                                      ],
+                                      "items": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      }
+                                    },
+                                    "subGroupCount": {
+                                      "type": [
+                                        "integer",
+                                        "null"
+                                      ]
+                                    },
+                                    "subGroups": {
+                                      "type": [
+                                        "array",
+                                        "null"
+                                      ],
+                                      "items": {
+                                        "type": [
+                                          "object",
+                                          "null"
+                                        ],
+                                        "properties": {
+                                          "access": {
+                                            "type": [
+                                              "object",
+                                              "null"
+                                            ],
+                                            "additionalProperties": {
+                                              "type": [
+                                                "boolean",
+                                                "null"
+                                              ]
+                                            }
+                                          },
+                                          "attributes": {
+                                            "type": [
+                                              "object",
+                                              "null"
+                                            ],
+                                            "additionalProperties": {
+                                              "type": [
+                                                "array",
+                                                "null"
+                                              ],
+                                              "items": {
+                                                "type": [
+                                                  "string",
+                                                  "null"
+                                                ]
+                                              }
+                                            }
+                                          },
+                                          "clientRoles": {
+                                            "type": [
+                                              "object",
+                                              "null"
+                                            ],
+                                            "additionalProperties": {
+                                              "type": [
+                                                "array",
+                                                "null"
+                                              ],
+                                              "items": {
+                                                "type": [
+                                                  "string",
+                                                  "null"
+                                                ]
+                                              }
+                                            }
+                                          },
+                                          "id": {
+                                            "type": [
+                                              "string",
+                                              "null"
+                                            ]
+                                          },
+                                          "name": {
+                                            "type": [
+                                              "string",
+                                              "null"
+                                            ]
+                                          },
+                                          "parentId": {
+                                            "type": [
+                                              "string",
+                                              "null"
+                                            ]
+                                          },
+                                          "path": {
+                                            "type": [
+                                              "string",
+                                              "null"
+                                            ]
+                                          },
+                                          "realmRoles": {
+                                            "type": [
+                                              "array",
+                                              "null"
+                                            ],
+                                            "items": {
+                                              "type": [
+                                                "string",
+                                                "null"
+                                              ]
+                                            }
+                                          },
+                                          "subGroupCount": {
+                                            "type": [
+                                              "integer",
+                                              "null"
+                                            ]
+                                          },
+                                          "subGroups": {
+                                            "type": [
+                                              "array",
+                                              "null"
+                                            ],
+                                            "items": {
+                                              "type": [
+                                                "object",
+                                                "null"
+                                              ],
+                                              "properties": {
+                                                "access": {
+                                                  "type": [
+                                                    "object",
+                                                    "null"
+                                                  ],
+                                                  "additionalProperties": {
+                                                    "type": [
+                                                      "boolean",
+                                                      "null"
+                                                    ]
+                                                  }
+                                                },
+                                                "attributes": {
+                                                  "type": [
+                                                    "object",
+                                                    "null"
+                                                  ],
+                                                  "additionalProperties": {
+                                                    "type": [
+                                                      "array",
+                                                      "null"
+                                                    ],
+                                                    "items": {
+                                                      "type": [
+                                                        "string",
+                                                        "null"
+                                                      ]
+                                                    }
+                                                  }
+                                                },
+                                                "clientRoles": {
+                                                  "type": [
+                                                    "object",
+                                                    "null"
+                                                  ],
+                                                  "additionalProperties": {
+                                                    "type": [
+                                                      "array",
+                                                      "null"
+                                                    ],
+                                                    "items": {
+                                                      "type": [
+                                                        "string",
+                                                        "null"
+                                                      ]
+                                                    }
+                                                  }
+                                                },
+                                                "id": {
+                                                  "type": [
+                                                    "string",
+                                                    "null"
+                                                  ]
+                                                },
+                                                "name": {
+                                                  "type": [
+                                                    "string",
+                                                    "null"
+                                                  ]
+                                                },
+                                                "parentId": {
+                                                  "type": [
+                                                    "string",
+                                                    "null"
+                                                  ]
+                                                },
+                                                "path": {
+                                                  "type": [
+                                                    "string",
+                                                    "null"
+                                                  ]
+                                                },
+                                                "realmRoles": {
+                                                  "type": [
+                                                    "array",
+                                                    "null"
+                                                  ],
+                                                  "items": {
+                                                    "type": [
+                                                      "string",
+                                                      "null"
+                                                    ]
+                                                  }
+                                                },
+                                                "subGroupCount": {
+                                                  "type": [
+                                                    "integer",
+                                                    "null"
+                                                  ]
+                                                },
+                                                "subGroups": {
+                                                  "type": [
+                                                    "array",
+                                                    "null"
+                                                  ],
+                                                  "items": {
+                                                    "type": [
+                                                      "object",
+                                                      "null"
+                                                    ],
+                                                    "properties": {
+                                                      "access": {
+                                                        "type": [
+                                                          "object",
+                                                          "null"
+                                                        ],
+                                                        "additionalProperties": {
+                                                          "type": [
+                                                            "boolean",
+                                                            "null"
+                                                          ]
+                                                        }
+                                                      },
+                                                      "attributes": {
+                                                        "type": [
+                                                          "object",
+                                                          "null"
+                                                        ],
+                                                        "additionalProperties": {
+                                                          "type": [
+                                                            "array",
+                                                            "null"
+                                                          ],
+                                                          "items": {
+                                                            "type": [
+                                                              "string",
+                                                              "null"
+                                                            ]
+                                                          }
+                                                        }
+                                                      },
+                                                      "clientRoles": {
+                                                        "type": [
+                                                          "object",
+                                                          "null"
+                                                        ],
+                                                        "additionalProperties": {
+                                                          "type": [
+                                                            "array",
+                                                            "null"
+                                                          ],
+                                                          "items": {
+                                                            "type": [
+                                                              "string",
+                                                              "null"
+                                                            ]
+                                                          }
+                                                        }
+                                                      },
+                                                      "id": {
+                                                        "type": [
+                                                          "string",
+                                                          "null"
+                                                        ]
+                                                      },
+                                                      "name": {
+                                                        "type": [
+                                                          "string",
+                                                          "null"
+                                                        ]
+                                                      },
+                                                      "parentId": {
+                                                        "type": [
+                                                          "string",
+                                                          "null"
+                                                        ]
+                                                      },
+                                                      "path": {
+                                                        "type": [
+                                                          "string",
+                                                          "null"
+                                                        ]
+                                                      },
+                                                      "realmRoles": {
+                                                        "type": [
+                                                          "array",
+                                                          "null"
+                                                        ],
+                                                        "items": {
+                                                          "type": [
+                                                            "string",
+                                                            "null"
+                                                          ]
+                                                        }
+                                                      },
+                                                      "subGroupCount": {
+                                                        "type": [
+                                                          "integer",
+                                                          "null"
+                                                        ]
+                                                      },
+                                                      "subGroups": {
+                                                        "type": [
+                                                          "array",
+                                                          "null"
+                                                        ],
+                                                        "items": {
+                                                          "type": [
+                                                            "object",
+                                                            "null"
+                                                          ],
+                                                          "properties": {
+                                                            "access": {
+                                                              "type": [
+                                                                "object",
+                                                                "null"
+                                                              ],
+                                                              "additionalProperties": {
+                                                                "type": [
+                                                                  "boolean",
+                                                                  "null"
+                                                                ]
+                                                              }
+                                                            },
+                                                            "attributes": {
+                                                              "type": [
+                                                                "object",
+                                                                "null"
+                                                              ],
+                                                              "additionalProperties": {
+                                                                "type": [
+                                                                  "array",
+                                                                  "null"
+                                                                ],
+                                                                "items": {
+                                                                  "type": [
+                                                                    "string",
+                                                                    "null"
+                                                                  ]
+                                                                }
+                                                              }
+                                                            },
+                                                            "clientRoles": {
+                                                              "type": [
+                                                                "object",
+                                                                "null"
+                                                              ],
+                                                              "additionalProperties": {
+                                                                "type": [
+                                                                  "array",
+                                                                  "null"
+                                                                ],
+                                                                "items": {
+                                                                  "type": [
+                                                                    "string",
+                                                                    "null"
+                                                                  ]
+                                                                }
+                                                              }
+                                                            },
+                                                            "id": {
+                                                              "type": [
+                                                                "string",
+                                                                "null"
+                                                              ]
+                                                            },
+                                                            "name": {
+                                                              "type": [
+                                                                "string",
+                                                                "null"
+                                                              ]
+                                                            },
+                                                            "parentId": {
+                                                              "type": [
+                                                                "string",
+                                                                "null"
+                                                              ]
+                                                            },
+                                                            "path": {
+                                                              "type": [
+                                                                "string",
+                                                                "null"
+                                                              ]
+                                                            },
+                                                            "realmRoles": {
+                                                              "type": [
+                                                                "array",
+                                                                "null"
+                                                              ],
+                                                              "items": {
+                                                                "type": [
+                                                                  "string",
+                                                                  "null"
+                                                                ]
+                                                              }
+                                                            },
+                                                            "subGroupCount": {
+                                                              "type": [
+                                                                "integer",
+                                                                "null"
+                                                              ]
+                                                            },
+                                                            "subGroups": {
+                                                              "type": [
+                                                                "array",
+                                                                "null"
+                                                              ],
+                                                              "items": {
+                                                                "type": [
+                                                                  "object",
+                                                                  "null"
+                                                                ],
+                                                                "properties": {
+                                                                  "access": {
+                                                                    "type": [
+                                                                      "object",
+                                                                      "null"
+                                                                    ],
+                                                                    "additionalProperties": {
+                                                                      "type": [
+                                                                        "boolean",
+                                                                        "null"
+                                                                      ]
+                                                                    }
+                                                                  },
+                                                                  "attributes": {
+                                                                    "type": [
+                                                                      "object",
+                                                                      "null"
+                                                                    ],
+                                                                    "additionalProperties": {
+                                                                      "type": [
+                                                                        "array",
+                                                                        "null"
+                                                                      ],
+                                                                      "items": {
+                                                                        "type": [
+                                                                          "string",
+                                                                          "null"
+                                                                        ]
+                                                                      }
+                                                                    }
+                                                                  },
+                                                                  "clientRoles": {
+                                                                    "type": [
+                                                                      "object",
+                                                                      "null"
+                                                                    ],
+                                                                    "additionalProperties": {
+                                                                      "type": [
+                                                                        "array",
+                                                                        "null"
+                                                                      ],
+                                                                      "items": {
+                                                                        "type": [
+                                                                          "string",
+                                                                          "null"
+                                                                        ]
+                                                                      }
+                                                                    }
+                                                                  },
+                                                                  "id": {
+                                                                    "type": [
+                                                                      "string",
+                                                                      "null"
+                                                                    ]
+                                                                  },
+                                                                  "name": {
+                                                                    "type": [
+                                                                      "string",
+                                                                      "null"
+                                                                    ]
+                                                                  },
+                                                                  "parentId": {
+                                                                    "type": [
+                                                                      "string",
+                                                                      "null"
+                                                                    ]
+                                                                  },
+                                                                  "path": {
+                                                                    "type": [
+                                                                      "string",
+                                                                      "null"
+                                                                    ]
+                                                                  },
+                                                                  "realmRoles": {
+                                                                    "type": [
+                                                                      "array",
+                                                                      "null"
+                                                                    ],
+                                                                    "items": {
+                                                                      "type": [
+                                                                        "string",
+                                                                        "null"
+                                                                      ]
+                                                                    }
+                                                                  },
+                                                                  "subGroupCount": {
+                                                                    "type": [
+                                                                      "integer",
+                                                                      "null"
+                                                                    ]
+                                                                  },
+                                                                  "subGroups": {
+                                                                    "type": [
+                                                                      "array",
+                                                                      "null"
+                                                                    ],
+                                                                    "items": {
+                                                                      "type": [
+                                                                        "object",
+                                                                        "null"
+                                                                      ],
+                                                                      "properties": {
+                                                                        "access": {
+                                                                          "type": [
+                                                                            "object",
+                                                                            "null"
+                                                                          ],
+                                                                          "additionalProperties": {
+                                                                            "type": [
+                                                                              "boolean",
+                                                                              "null"
+                                                                            ]
+                                                                          }
+                                                                        },
+                                                                        "attributes": {
+                                                                          "type": [
+                                                                            "object",
+                                                                            "null"
+                                                                          ],
+                                                                          "additionalProperties": {
+                                                                            "type": [
+                                                                              "array",
+                                                                              "null"
+                                                                            ],
+                                                                            "items": {
+                                                                              "type": [
+                                                                                "string",
+                                                                                "null"
+                                                                              ]
+                                                                            }
+                                                                          }
+                                                                        },
+                                                                        "clientRoles": {
+                                                                          "type": [
+                                                                            "object",
+                                                                            "null"
+                                                                          ],
+                                                                          "additionalProperties": {
+                                                                            "type": [
+                                                                              "array",
+                                                                              "null"
+                                                                            ],
+                                                                            "items": {
+                                                                              "type": [
+                                                                                "string",
+                                                                                "null"
+                                                                              ]
+                                                                            }
+                                                                          }
+                                                                        },
+                                                                        "id": {
+                                                                          "type": [
+                                                                            "string",
+                                                                            "null"
+                                                                          ]
+                                                                        },
+                                                                        "name": {
+                                                                          "type": [
+                                                                            "string",
+                                                                            "null"
+                                                                          ]
+                                                                        },
+                                                                        "parentId": {
+                                                                          "type": [
+                                                                            "string",
+                                                                            "null"
+                                                                          ]
+                                                                        },
+                                                                        "path": {
+                                                                          "type": [
+                                                                            "string",
+                                                                            "null"
+                                                                          ]
+                                                                        },
+                                                                        "realmRoles": {
+                                                                          "type": [
+                                                                            "array",
+                                                                            "null"
+                                                                          ],
+                                                                          "items": {
+                                                                            "type": [
+                                                                              "string",
+                                                                              "null"
+                                                                            ]
+                                                                          }
+                                                                        },
+                                                                        "subGroupCount": {
+                                                                          "type": [
+                                                                            "integer",
+                                                                            "null"
+                                                                          ]
+                                                                        },
+                                                                        "subGroups": {
+                                                                          "type": [
+                                                                            "array",
+                                                                            "null"
+                                                                          ],
+                                                                          "items": {
+                                                                            "type": [
+                                                                              "object",
+                                                                              "null"
+                                                                            ],
+                                                                            "properties": {
+                                                                              "access": {
+                                                                                "type": [
+                                                                                  "object",
+                                                                                  "null"
+                                                                                ],
+                                                                                "additionalProperties": {
+                                                                                  "type": [
+                                                                                    "boolean",
+                                                                                    "null"
+                                                                                  ]
+                                                                                }
+                                                                              },
+                                                                              "attributes": {
+                                                                                "type": [
+                                                                                  "object",
+                                                                                  "null"
+                                                                                ],
+                                                                                "additionalProperties": {
+                                                                                  "type": [
+                                                                                    "array",
+                                                                                    "null"
+                                                                                  ],
+                                                                                  "items": {
+                                                                                    "type": [
+                                                                                      "string",
+                                                                                      "null"
+                                                                                    ]
+                                                                                  }
+                                                                                }
+                                                                              },
+                                                                              "clientRoles": {
+                                                                                "type": [
+                                                                                  "object",
+                                                                                  "null"
+                                                                                ],
+                                                                                "additionalProperties": {
+                                                                                  "type": [
+                                                                                    "array",
+                                                                                    "null"
+                                                                                  ],
+                                                                                  "items": {
+                                                                                    "type": [
+                                                                                      "string",
+                                                                                      "null"
+                                                                                    ]
+                                                                                  }
+                                                                                }
+                                                                              },
+                                                                              "id": {
+                                                                                "type": [
+                                                                                  "string",
+                                                                                  "null"
+                                                                                ]
+                                                                              },
+                                                                              "name": {
+                                                                                "type": [
+                                                                                  "string",
+                                                                                  "null"
+                                                                                ]
+                                                                              },
+                                                                              "parentId": {
+                                                                                "type": [
+                                                                                  "string",
+                                                                                  "null"
+                                                                                ]
+                                                                              },
+                                                                              "path": {
+                                                                                "type": [
+                                                                                  "string",
+                                                                                  "null"
+                                                                                ]
+                                                                              },
+                                                                              "realmRoles": {
+                                                                                "type": [
+                                                                                  "array",
+                                                                                  "null"
+                                                                                ],
+                                                                                "items": {
+                                                                                  "type": [
+                                                                                    "string",
+                                                                                    "null"
+                                                                                  ]
+                                                                                }
+                                                                              },
+                                                                              "subGroupCount": {
+                                                                                "type": [
+                                                                                  "integer",
+                                                                                  "null"
+                                                                                ]
+                                                                              }
+                                                                            }
+                                                                          }
+                                                                        }
+                                                                      }
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
                           }
                         }
                       }
@@ -3766,6 +5473,12 @@
                       "null"
                     ]
                   },
+                  "hideOnLogin": {
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  },
                   "internalId": {
                     "type": [
                       "string",
@@ -3775,6 +5488,12 @@
                   "linkOnly": {
                     "type": [
                       "boolean",
+                      "null"
+                    ]
+                  },
+                  "organizationId": {
+                    "type": [
+                      "string",
                       "null"
                     ]
                   },
@@ -3823,6 +5542,24 @@
                 "null"
               ]
             },
+            "localizationTexts": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "additionalProperties": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "additionalProperties": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
             "loginTheme": {
               "type": [
                 "string",
@@ -3842,6 +5579,12 @@
               ]
             },
             "maxFailureWaitSeconds": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "maxTemporaryLockouts": {
               "type": [
                 "integer",
                 "null"
@@ -4029,8 +5772,8 @@
                                 "null"
                               ],
                               "enum": [
-                                "POSITIVE",
-                                "NEGATIVE"
+                                "NEGATIVE",
+                                "POSITIVE"
                               ]
                             },
                             "name": {
@@ -4272,9 +6015,9 @@
                           "null"
                         ],
                         "enum": [
-                          "PERMISSIVE",
+                          "DISABLED",
                           "ENFORCING",
-                          "DISABLED"
+                          "PERMISSIVE"
                         ]
                       },
                       "resources": {
@@ -4649,12 +6392,6 @@
                       "null"
                     ]
                   },
-                  "oauth2DeviceAuthorizationGrantEnabled": {
-                    "type": [
-                      "boolean",
-                      "null"
-                    ]
-                  },
                   "optionalClientScopes": {
                     "type": [
                       "array",
@@ -4807,6 +6544,12 @@
                       "null"
                     ]
                   },
+                  "type": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
                   "useTemplateConfig": {
                     "type": [
                       "boolean",
@@ -4858,9 +6601,839 @@
                 "null"
               ]
             },
+            "organizations": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "alias": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "attributes": {
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "additionalProperties": {
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  },
+                  "description": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "domains": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "name": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "verified": {
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "enabled": {
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  },
+                  "id": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "identityProviders": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "addReadTokenRoleOnCreate": {
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
+                        "alias": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "authenticateByDefault": {
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
+                        "config": {
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "additionalProperties": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "displayName": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "enabled": {
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
+                        "firstBrokerLoginFlowAlias": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "hideOnLogin": {
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
+                        "internalId": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "linkOnly": {
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
+                        "organizationId": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "postBrokerLoginFlowAlias": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "providerId": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "storeToken": {
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
+                        "trustEmail": {
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
+                        "updateProfileFirstLoginMode": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "members": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "access": {
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "additionalProperties": {
+                            "type": [
+                              "boolean",
+                              "null"
+                            ]
+                          }
+                        },
+                        "applicationRoles": {
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "additionalProperties": {
+                            "type": [
+                              "array",
+                              "null"
+                            ],
+                            "items": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            }
+                          }
+                        },
+                        "attributes": {
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "additionalProperties": {
+                            "type": [
+                              "array",
+                              "null"
+                            ],
+                            "items": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            }
+                          }
+                        },
+                        "clientConsents": {
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "properties": {
+                              "clientId": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "createdDate": {
+                                "type": [
+                                  "integer",
+                                  "null"
+                                ]
+                              },
+                              "grantedClientScopes": {
+                                "type": [
+                                  "array",
+                                  "null"
+                                ],
+                                "items": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "grantedRealmRoles": {
+                                "type": [
+                                  "array",
+                                  "null"
+                                ],
+                                "items": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "lastUpdatedDate": {
+                                "type": [
+                                  "integer",
+                                  "null"
+                                ]
+                              }
+                            }
+                          }
+                        },
+                        "clientRoles": {
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "additionalProperties": {
+                            "type": [
+                              "array",
+                              "null"
+                            ],
+                            "items": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            }
+                          }
+                        },
+                        "createdTimestamp": {
+                          "type": [
+                            "integer",
+                            "null"
+                          ]
+                        },
+                        "credentials": {
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "properties": {
+                              "algorithm": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "config": {
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "additionalProperties": {
+                                  "type": [
+                                    "array",
+                                    "null"
+                                  ],
+                                  "items": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              },
+                              "counter": {
+                                "type": [
+                                  "integer",
+                                  "null"
+                                ]
+                              },
+                              "createdDate": {
+                                "type": [
+                                  "integer",
+                                  "null"
+                                ]
+                              },
+                              "credentialData": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "device": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "digits": {
+                                "type": [
+                                  "integer",
+                                  "null"
+                                ]
+                              },
+                              "hashIterations": {
+                                "type": [
+                                  "integer",
+                                  "null"
+                                ]
+                              },
+                              "hashedSaltedValue": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "id": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "period": {
+                                "type": [
+                                  "integer",
+                                  "null"
+                                ]
+                              },
+                              "priority": {
+                                "type": [
+                                  "integer",
+                                  "null"
+                                ]
+                              },
+                              "salt": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "secretData": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "temporary": {
+                                "type": [
+                                  "boolean",
+                                  "null"
+                                ]
+                              },
+                              "type": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "userLabel": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "value": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            }
+                          }
+                        },
+                        "disableableCredentialTypes": {
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "email": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "emailVerified": {
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
+                        "enabled": {
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
+                        "federatedIdentities": {
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "properties": {
+                              "identityProvider": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "userId": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "userName": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            }
+                          }
+                        },
+                        "federationLink": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "firstName": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "groups": {
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "id": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "lastName": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "membershipType": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "enum": [
+                            "MANAGED",
+                            "UNMANAGED"
+                          ]
+                        },
+                        "notBefore": {
+                          "type": [
+                            "integer",
+                            "null"
+                          ]
+                        },
+                        "origin": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "realmRoles": {
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "requiredActions": {
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "self": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "serviceAccountClientId": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "socialLinks": {
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "properties": {
+                              "socialProvider": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "socialUserId": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "socialUsername": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            }
+                          }
+                        },
+                        "totp": {
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
+                        "userProfileMetadata": {
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "attributes": {
+                              "type": [
+                                "array",
+                                "null"
+                              ],
+                              "items": {
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "properties": {
+                                  "annotations": {
+                                    "type": [
+                                      "object",
+                                      "null"
+                                    ],
+                                    "additionalProperties": {
+                                      "type": [
+                                        "object",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "displayName": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "group": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "multivalued": {
+                                    "type": [
+                                      "boolean",
+                                      "null"
+                                    ]
+                                  },
+                                  "name": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "readOnly": {
+                                    "type": [
+                                      "boolean",
+                                      "null"
+                                    ]
+                                  },
+                                  "required": {
+                                    "type": [
+                                      "boolean",
+                                      "null"
+                                    ]
+                                  },
+                                  "validators": {
+                                    "type": [
+                                      "object",
+                                      "null"
+                                    ],
+                                    "additionalProperties": {
+                                      "type": [
+                                        "object",
+                                        "null"
+                                      ],
+                                      "additionalProperties": {
+                                        "type": [
+                                          "object",
+                                          "null"
+                                        ]
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            "groups": {
+                              "type": [
+                                "array",
+                                "null"
+                              ],
+                              "items": {
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "properties": {
+                                  "annotations": {
+                                    "type": [
+                                      "object",
+                                      "null"
+                                    ],
+                                    "additionalProperties": {
+                                      "type": [
+                                        "object",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "displayDescription": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "displayHeader": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "name": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "username": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "name": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "redirectUrl": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              }
+            },
+            "organizationsEnabled": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
             "otpPolicyAlgorithm": {
               "type": [
                 "string",
+                "null"
+              ]
+            },
+            "otpPolicyCodeReusable": {
+              "type": [
+                "boolean",
                 "null"
               ]
             },
@@ -5007,12 +7580,6 @@
             "realm": {
               "type": [
                 "string",
-                "null"
-              ]
-            },
-            "realmCacheEnabled": {
-              "type": [
-                "boolean",
                 "null"
               ]
             },
@@ -5676,12 +8243,6 @@
                 "null"
               ]
             },
-            "userCacheEnabled": {
-              "type": [
-                "boolean",
-                "null"
-              ]
-            },
             "userFederationMappers": {
               "type": [
                 "array",
@@ -6263,6 +8824,138 @@
                       "null"
                     ]
                   },
+                  "userProfileMetadata": {
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "attributes": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "annotations": {
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "additionalProperties": {
+                                "type": [
+                                  "object",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "displayName": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "group": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "multivalued": {
+                              "type": [
+                                "boolean",
+                                "null"
+                              ]
+                            },
+                            "name": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "readOnly": {
+                              "type": [
+                                "boolean",
+                                "null"
+                              ]
+                            },
+                            "required": {
+                              "type": [
+                                "boolean",
+                                "null"
+                              ]
+                            },
+                            "validators": {
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "additionalProperties": {
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "additionalProperties": {
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "groups": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "annotations": {
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "additionalProperties": {
+                                "type": [
+                                  "object",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "displayDescription": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "displayHeader": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "name": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
                   "username": {
                     "type": [
                       "string",
@@ -6320,6 +9013,18 @@
                 "null"
               ]
             },
+            "webAuthnPolicyExtraOrigins": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
             "webAuthnPolicyPasswordlessAcceptableAaguids": {
               "type": [
                 "array",
@@ -6355,6 +9060,18 @@
                 "integer",
                 "null"
               ]
+            },
+            "webAuthnPolicyPasswordlessExtraOrigins": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
             },
             "webAuthnPolicyPasswordlessRequireResidentKey": {
               "type": [
@@ -6429,6 +9146,53 @@
               ]
             }
           }
+        },
+        "resources": {
+          "description": "Compute Resources required by Keycloak container. If not specified, the value is inherited from the Keycloak CR.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "claims": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "name": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              }
+            },
+            "limits": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "additionalProperties": {
+                "x-kubernetes-int-or-string": true
+              }
+            },
+            "requests": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "additionalProperties": {
+                "x-kubernetes-int-or-string": true
+              }
+            }
+          }
         }
       }
     },
@@ -6449,15 +9213,27 @@
               "null"
             ],
             "properties": {
+              "lastTransitionTime": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
               "message": {
                 "type": [
                   "string",
                   "null"
                 ]
               },
+              "observedGeneration": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
               "status": {
                 "type": [
-                  "boolean",
+                  "string",
                   "null"
                 ]
               },

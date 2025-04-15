@@ -55,6 +55,10 @@
         "null"
       ]
     },
+    "deprecation": {
+      "description": "Deprecation is an optional field which contains information if the package is deprecated.",
+      "$ref": "_definitions.json#/definitions/com.github.operator-framework.operator-lifecycle-manager.pkg.package-server.apis.operators.v1.Deprecation"
+    },
     "packageName": {
       "description": "PackageName is the name of the overall package, ala `etcd`.",
       "type": [

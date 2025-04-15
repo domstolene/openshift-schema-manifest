@@ -1,0 +1,756 @@
+{
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "opensearch.opster.io/v1"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "OpenSearchISMPolicy"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "description": "ISMPolicySpec is the specification for the ISM policy for OS.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "defaultState",
+        "description",
+        "states"
+      ],
+      "properties": {
+        "defaultState": {
+          "description": "The default starting state for each index that uses this policy.",
+          "type": "string"
+        },
+        "description": {
+          "description": "A human-readable description of the policy.",
+          "type": "string"
+        },
+        "errorNotification": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "channel": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "destination": {
+              "description": "The destination URL.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "amazon": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "chime": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "customWebhook": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "slack": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "messageTemplate": {
+              "description": "The text of the message",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "source": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "ismTemplate": {
+          "description": "Specify an ISM template pattern that matches the index to apply the policy.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "indexPatterns"
+          ],
+          "properties": {
+            "indexPatterns": {
+              "description": "Index patterns on which this policy has to be applied",
+              "type": "array",
+              "items": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "priority": {
+              "description": "Priority of the template, defaults to 0",
+              "type": [
+                "integer",
+                "null"
+              ]
+            }
+          }
+        },
+        "opensearchCluster": {
+          "description": "LocalObjectReference contains enough information to let you locate the\nreferenced object inside the same namespace.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "name": {
+              "description": "Name of the referent.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names\nTODO: Add other useful fields. apiVersion, kind, uid?",
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "x-kubernetes-map-type": "atomic"
+        },
+        "policyId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "states": {
+          "description": "The states that you define in the policy.",
+          "type": "array",
+          "items": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "actions",
+              "name"
+            ],
+            "properties": {
+              "actions": {
+                "description": "The actions to execute after entering a state.",
+                "type": "array",
+                "items": {
+                  "description": "Actions are the steps that the policy sequentially executes on entering a specific state.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "alias": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "required": [
+                        "actions"
+                      ],
+                      "properties": {
+                        "actions": {
+                          "description": "Allocate the index to a node with a specified attribute.",
+                          "type": "array",
+                          "items": {
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "properties": {
+                              "add": {
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "properties": {
+                                  "aliases": {
+                                    "description": "The name of the alias.",
+                                    "type": [
+                                      "array",
+                                      "null"
+                                    ],
+                                    "items": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "index": {
+                                    "description": "The name of the index that the alias points to.",
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "isWriteIndex": {
+                                    "description": "Specify the index that accepts any write operations to the alias.",
+                                    "type": [
+                                      "boolean",
+                                      "null"
+                                    ]
+                                  },
+                                  "routing": {
+                                    "description": "Limit search to an associated shard value",
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              },
+                              "remove": {
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "properties": {
+                                  "aliases": {
+                                    "description": "The name of the alias.",
+                                    "type": [
+                                      "array",
+                                      "null"
+                                    ],
+                                    "items": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "index": {
+                                    "description": "The name of the index that the alias points to.",
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "isWriteIndex": {
+                                    "description": "Specify the index that accepts any write operations to the alias.",
+                                    "type": [
+                                      "boolean",
+                                      "null"
+                                    ]
+                                  },
+                                  "routing": {
+                                    "description": "Limit search to an associated shard value",
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "allocation": {
+                      "description": "Allocate the index to a node with a specific attribute set",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "required": [
+                        "exclude",
+                        "include",
+                        "require",
+                        "waitFor"
+                      ],
+                      "properties": {
+                        "exclude": {
+                          "description": "Allocate the index to a node with a specified attribute.",
+                          "type": "string"
+                        },
+                        "include": {
+                          "description": "Allocate the index to a node with any of the specified attributes.",
+                          "type": "string"
+                        },
+                        "require": {
+                          "description": "Don\u2019t allocate the index to a node with any of the specified attributes.",
+                          "type": "string"
+                        },
+                        "waitFor": {
+                          "description": "Wait for the policy to execute before allocating the index to a node with a specified attribute.",
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "close": {
+                      "description": "Closes the managed index.",
+                      "type": [
+                        "object",
+                        "null"
+                      ]
+                    },
+                    "delete": {
+                      "description": "Deletes a managed index.",
+                      "type": [
+                        "object",
+                        "null"
+                      ]
+                    },
+                    "forceMerge": {
+                      "description": "Reduces the number of Lucene segments by merging the segments of individual shards.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "required": [
+                        "maxNumSegments"
+                      ],
+                      "properties": {
+                        "maxNumSegments": {
+                          "description": "The number of segments to reduce the shard to.",
+                          "type": "integer",
+                          "format": "int64"
+                        }
+                      }
+                    },
+                    "indexPriority": {
+                      "description": "Set the priority for the index in a specific state.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "required": [
+                        "priority"
+                      ],
+                      "properties": {
+                        "priority": {
+                          "description": "The priority for the index as soon as it enters a state.",
+                          "type": "integer",
+                          "format": "int64"
+                        }
+                      }
+                    },
+                    "notification": {
+                      "description": "Name          string        `json:\"name,omitempty\"`",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "required": [
+                        "destination",
+                        "messageTemplate"
+                      ],
+                      "properties": {
+                        "destination": {
+                          "type": "string"
+                        },
+                        "messageTemplate": {
+                          "type": "object",
+                          "properties": {
+                            "source": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "open": {
+                      "description": "Opens a managed index.",
+                      "type": [
+                        "object",
+                        "null"
+                      ]
+                    },
+                    "readOnly": {
+                      "description": "Sets a managed index to be read only.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "readWrite": {
+                      "description": "Sets a managed index to be writeable.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "replicaCount": {
+                      "description": "Sets the number of replicas to assign to an index.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "required": [
+                        "numberOfReplicas"
+                      ],
+                      "properties": {
+                        "numberOfReplicas": {
+                          "type": "integer",
+                          "format": "int64"
+                        }
+                      }
+                    },
+                    "retry": {
+                      "description": "The retry configuration for the action.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "required": [
+                        "count"
+                      ],
+                      "properties": {
+                        "backoff": {
+                          "description": "The backoff policy type to use when retrying.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "count": {
+                          "description": "The number of retry counts.",
+                          "type": "integer",
+                          "format": "int64"
+                        },
+                        "delay": {
+                          "description": "The time to wait between retries.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    },
+                    "rollover": {
+                      "description": "Rolls an alias over to a new index when the managed index meets one of the rollover conditions.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "minDocCount": {
+                          "description": "The minimum number of documents required to roll over the index.",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
+                          "format": "int64"
+                        },
+                        "minIndexAge": {
+                          "description": "The minimum age required to roll over the index.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "minPrimaryShardSize": {
+                          "description": "The minimum storage size of a single primary shard required to roll over the index.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "minSize": {
+                          "description": "The minimum size of the total primary shard storage (not counting replicas) required to roll over the index.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    },
+                    "rollup": {
+                      "description": "Periodically reduce data granularity by rolling up old data into summarized indexes.",
+                      "type": [
+                        "object",
+                        "null"
+                      ]
+                    },
+                    "shrink": {
+                      "description": "Allows you to reduce the number of primary shards in your indexes",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "forceUnsafe": {
+                          "description": "If true, executes the shrink action even if there are no replicas.",
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
+                        "maxShardSize": {
+                          "description": "The maximum size in bytes of a shard for the target index.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "numNewShards": {
+                          "description": "The maximum number of primary shards in the shrunken index.",
+                          "type": [
+                            "integer",
+                            "null"
+                          ]
+                        },
+                        "percentageOfSourceShards": {
+                          "description": "Percentage of the number of original primary shards to shrink.",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
+                          "format": "int64"
+                        },
+                        "targetIndexNameTemplate": {
+                          "description": "The name of the shrunken index.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    },
+                    "snapshot": {
+                      "description": "Back up your cluster\u2019s indexes and state",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "required": [
+                        "repository",
+                        "snapshot"
+                      ],
+                      "properties": {
+                        "repository": {
+                          "description": "The repository name that you register through the native snapshot API operations.",
+                          "type": "string"
+                        },
+                        "snapshot": {
+                          "description": "The name of the snapshot.",
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "timeout": {
+                      "description": "The timeout period for the action.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "name": {
+                "description": "The name of the state.",
+                "type": "string"
+              },
+              "transitions": {
+                "description": "The next states and the conditions required to transition to those states. If no transitions exist, the policy assumes that it\u2019s complete and can now stop managing the index",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "conditions",
+                    "stateName"
+                  ],
+                  "properties": {
+                    "conditions": {
+                      "description": "conditions for the transition.",
+                      "type": "object",
+                      "properties": {
+                        "cron": {
+                          "description": "The cron job that triggers the transition if no other transition happens first.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "required": [
+                            "expression",
+                            "timezone"
+                          ],
+                          "properties": {
+                            "expression": {
+                              "description": "The cron expression that triggers the transition.",
+                              "type": "string"
+                            },
+                            "timezone": {
+                              "description": "The timezone that triggers the transition.",
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "minDocCount": {
+                          "description": "The minimum document count of the index required to transition.",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
+                          "format": "int64"
+                        },
+                        "minIndexAge": {
+                          "description": "The minimum age of the index required to transition.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "minRolloverAge": {
+                          "description": "The minimum age required after a rollover has occurred to transition to the next state.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "minSize": {
+                          "description": "The minimum size of the total primary shard storage (not counting replicas) required to transition.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    },
+                    "stateName": {
+                      "description": "The name of the state to transition to if the conditions are met.",
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "status": {
+      "description": "OpensearchISMPolicyStatus defines the observed state of OpensearchISMPolicy",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "existingISMPolicy": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "managedCluster": {
+          "description": "UID is a type that holds unique ID values, including UUIDs.  Because we\ndon't ONLY use UUIDs, this is an alias to string.  Being a type captures\nintent and helps make sure that UIDs and names do not get conflated.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "policyId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "state": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "opensearch.opster.io",
+      "kind": "OpenSearchISMPolicy",
+      "version": "v1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

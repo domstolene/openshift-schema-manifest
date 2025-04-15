@@ -212,16 +212,20 @@
                     "type": "string"
                   },
                   "name": {
-                    "description": "Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names",
+                    "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names",
                     "type": "string"
                   },
                   "uid": {
-                    "description": "UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids",
+                    "description": "UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids",
                     "type": "string"
                   }
                 },
                 "x-kubernetes-map-type": "atomic"
-              }
+              },
+              "x-kubernetes-list-map-keys": [
+                "uid"
+              ],
+              "x-kubernetes-list-type": "map"
             }
           }
         },
@@ -286,7 +290,8 @@
                 ]
               }
             }
-          }
+          },
+          "x-kubernetes-list-type": "atomic"
         }
       }
     },
@@ -323,7 +328,8 @@
                 "type": "string"
               }
             }
-          }
+          },
+          "x-kubernetes-list-type": "atomic"
         },
         "conditions": {
           "description": "Conditions defines the current state of the Machine",
@@ -336,6 +342,9 @@
             "type": [
               "object",
               "null"
+            ],
+            "required": [
+              "type"
             ],
             "properties": {
               "lastTransitionTime": {
@@ -376,13 +385,14 @@
               },
               "type": {
                 "description": "Type of condition in CamelCase or in foo.example.com/CamelCase. Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be useful (see .node.status.conditions), the ability to deconflict is important.",
-                "type": [
-                  "string",
-                  "null"
-                ]
+                "type": "string"
               }
             }
-          }
+          },
+          "x-kubernetes-list-map-keys": [
+            "type"
+          ],
+          "x-kubernetes-list-type": "map"
         },
         "errorMessage": {
           "description": "ErrorMessage will be set in the event that there is a terminal problem reconciling the Machine and will contain a more verbose string suitable for logging and human consumption. \n This field should not be set for transitive errors that a controller faces that are expected to be fixed automatically over time (like service outages), but instead indicate that something is fundamentally wrong with the Machine's spec or the configuration of the controller, and that manual intervention is required. Examples of terminal errors would be invalid combinations of settings in the spec, values that are unsupported by the controller, or the responsible controller itself being critically misconfigured. \n Any transient errors that occur during the reconciliation of Machines can be added as events to the Machine object and/or logged in the controller's output.",

@@ -196,6 +196,17 @@
                       "Sequential"
                     ]
                   },
+                  "protocolStrategy": {
+                    "description": "protocolStrategy specifies the protocol to use for upstream DNS requests. Valid values for protocolStrategy are \"TCP\" and omitted. When omitted, this means no opinion and the platform is left to choose a reasonable default, which is subject to change over time. The current default is to use the protocol of the original client request. \"TCP\" specifies that the platform should use TCP for all upstream DNS requests, even if the client request uses UDP. \"TCP\" is useful for UDP-specific issues such as those created by non-compliant upstream resolvers, but may consume more bandwidth or increase DNS response time. Note that protocolStrategy only affects the protocol of DNS requests that CoreDNS makes to upstream resolvers. It does not affect the protocol of DNS requests between clients and CoreDNS.",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "enum": [
+                      "TCP",
+                      ""
+                    ]
+                  },
                   "transportConfig": {
                     "description": "transportConfig is used to configure the transport type, server name, and optional custom CA or CA bundle to use when forwarding DNS requests to an upstream resolver. \n The default value is \"\" (empty) which results in a standard cleartext connection being used when forwarding DNS requests to an upstream resolver.",
                     "type": [
@@ -309,6 +320,17 @@
                 "Sequential"
               ]
             },
+            "protocolStrategy": {
+              "description": "protocolStrategy specifies the protocol to use for upstream DNS requests. Valid values for protocolStrategy are \"TCP\" and omitted. When omitted, this means no opinion and the platform is left to choose a reasonable default, which is subject to change over time. The current default is to use the protocol of the original client request. \"TCP\" specifies that the platform should use TCP for all upstream DNS requests, even if the client request uses UDP. \"TCP\" is useful for UDP-specific issues such as those created by non-compliant upstream resolvers, but may consume more bandwidth or increase DNS response time. Note that protocolStrategy only affects the protocol of DNS requests that CoreDNS makes to upstream resolvers. It does not affect the protocol of DNS requests between clients and CoreDNS.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "enum": [
+                "TCP",
+                ""
+              ]
+            },
             "transportConfig": {
               "description": "transportConfig is used to configure the transport type, server name, and optional custom CA or CA bundle to use when forwarding DNS requests to an upstream resolver. \n The default value is \"\" (empty) which results in a standard cleartext connection being used when forwarding DNS requests to an upstream resolver.",
               "type": [
@@ -372,7 +394,7 @@
               ],
               "maxItems": 15,
               "items": {
-                "description": "Upstream can either be of type SystemResolvConf, or of type Network. \n * For an Upstream of type SystemResolvConf, no further fields are necessary: The upstream will be configured to use /etc/resolv.conf. * For an Upstream of type Network, a NetworkResolver field needs to be defined with an IP address or IP:port if the upstream listens on a port other than 53.",
+                "description": "Upstream can either be of type SystemResolvConf, or of type Network. \n - For an Upstream of type SystemResolvConf, no further fields are necessary: The upstream will be configured to use /etc/resolv.conf. - For an Upstream of type Network, a NetworkResolver field needs to be defined with an IP address or IP:port if the upstream listens on a port other than 53.",
                 "type": [
                   "object",
                   "null"
@@ -445,6 +467,9 @@
               "object",
               "null"
             ],
+            "required": [
+              "type"
+            ],
             "properties": {
               "lastTransitionTime": {
                 "type": [
@@ -472,10 +497,7 @@
                 ]
               },
               "type": {
-                "type": [
-                  "string",
-                  "null"
-                ]
+                "type": "string"
               }
             }
           }

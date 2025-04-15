@@ -454,6 +454,26 @@
                 "null"
               ],
               "properties": {
+                "claims": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "name": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  }
+                },
                 "limits": {
                   "x-kubernetes-preserve-unknown-fields": true
                 },
@@ -980,7 +1000,7 @@
           ],
           "properties": {
             "topologyKey": {
-              "description": "A key that matches labels assigned to the Kubernetes cluster nodes. The value of the label is used to set a broker's `broker.rack` config, and the `client.rack` config for Kafka Connect or MirrorMaker 2.0.",
+              "description": "A key that matches labels assigned to the Kubernetes cluster nodes. The value of the label is used to set a broker's `broker.rack` config, and the `client.rack` config for Kafka Connect or MirrorMaker 2.",
               "type": "string"
             }
           }
@@ -1035,7 +1055,7 @@
           }
         },
         "replicas": {
-          "description": "The number of pods in the Kafka Connect group.",
+          "description": "The number of pods in the Kafka Connect group. Defaults to `3`.",
           "type": [
             "integer",
             "null"
@@ -1048,6 +1068,26 @@
             "null"
           ],
           "properties": {
+            "claims": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "name": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              }
+            },
             "limits": {
               "x-kubernetes-preserve-unknown-fields": true
             },
@@ -1071,7 +1111,7 @@
               ],
               "properties": {
                 "ipFamilies": {
-                  "description": "Specifies the IP Families used by the service. Available options are `IPv4` and `IPv6. If unspecified, Kubernetes will choose the default value based on the `ipFamilyPolicy` setting. Available on Kubernetes 1.20 and newer.",
+                  "description": "Specifies the IP Families used by the service. Available options are `IPv4` and `IPv6`. If unspecified, Kubernetes will choose the default value based on the `ipFamilyPolicy` setting.",
                   "type": [
                     "array",
                     "null"
@@ -1088,7 +1128,7 @@
                   }
                 },
                 "ipFamilyPolicy": {
-                  "description": "Specifies the IP Family Policy used by the service. Available options are `SingleStack`, `PreferDualStack` and `RequireDualStack`. `SingleStack` is for a single IP family. `PreferDualStack` is for two IP families on dual-stack configured clusters or a single IP family on single-stack clusters. `RequireDualStack` fails unless there are two IP families on dual-stack configured clusters. If unspecified, Kubernetes will choose the default value based on the service type. Available on Kubernetes 1.20 and newer.",
+                  "description": "Specifies the IP Family Policy used by the service. Available options are `SingleStack`, `PreferDualStack` and `RequireDualStack`. `SingleStack` is for a single IP family. `PreferDualStack` is for two IP families on dual-stack configured clusters or a single IP family on single-stack clusters. `RequireDualStack` fails unless there are two IP families on dual-stack configured clusters. If unspecified, Kubernetes will choose the default value based on the service type.",
                   "type": [
                     "string",
                     "null"
@@ -1107,11 +1147,11 @@
                   ],
                   "properties": {
                     "annotations": {
-                      "description": "Annotations added to the resource template. Can be applied to different resources such as `StatefulSets`, `Deployments`, `Pods`, and `Services`.",
+                      "description": "Annotations added to the Kubernetes resource.",
                       "x-kubernetes-preserve-unknown-fields": true
                     },
                     "labels": {
-                      "description": "Labels added to the resource template. Can be applied to different resources such as `StatefulSets`, `Deployments`, `Pods`, and `Services`.",
+                      "description": "Labels added to the Kubernetes resource.",
                       "x-kubernetes-preserve-unknown-fields": true
                     }
                   }
@@ -1133,11 +1173,11 @@
                   ],
                   "properties": {
                     "annotations": {
-                      "description": "Annotations added to the resource template. Can be applied to different resources such as `StatefulSets`, `Deployments`, `Pods`, and `Services`.",
+                      "description": "Annotations added to the Kubernetes resource.",
                       "x-kubernetes-preserve-unknown-fields": true
                     },
                     "labels": {
-                      "description": "Labels added to the resource template. Can be applied to different resources such as `StatefulSets`, `Deployments`, `Pods`, and `Services`.",
+                      "description": "Labels added to the Kubernetes resource.",
                       "x-kubernetes-preserve-unknown-fields": true
                     }
                   }
@@ -2215,11 +2255,11 @@
                   ],
                   "properties": {
                     "annotations": {
-                      "description": "Annotations added to the resource template. Can be applied to different resources such as `StatefulSets`, `Deployments`, `Pods`, and `Services`.",
+                      "description": "Annotations added to the Kubernetes resource.",
                       "x-kubernetes-preserve-unknown-fields": true
                     },
                     "labels": {
-                      "description": "Labels added to the resource template. Can be applied to different resources such as `StatefulSets`, `Deployments`, `Pods`, and `Services`.",
+                      "description": "Labels added to the Kubernetes resource.",
                       "x-kubernetes-preserve-unknown-fields": true
                     }
                   }
@@ -2589,11 +2629,11 @@
                   ],
                   "properties": {
                     "annotations": {
-                      "description": "Annotations added to the resource template. Can be applied to different resources such as `StatefulSets`, `Deployments`, `Pods`, and `Services`.",
+                      "description": "Annotations added to the Kubernetes resource.",
                       "x-kubernetes-preserve-unknown-fields": true
                     },
                     "labels": {
-                      "description": "Labels added to the resource template. Can be applied to different resources such as `StatefulSets`, `Deployments`, `Pods`, and `Services`.",
+                      "description": "Labels added to the Kubernetes resource.",
                       "x-kubernetes-preserve-unknown-fields": true
                     }
                   }
@@ -2615,11 +2655,11 @@
                   ],
                   "properties": {
                     "annotations": {
-                      "description": "Annotations added to the resource template. Can be applied to different resources such as `StatefulSets`, `Deployments`, `Pods`, and `Services`.",
+                      "description": "Annotations added to the Kubernetes resource.",
                       "x-kubernetes-preserve-unknown-fields": true
                     },
                     "labels": {
-                      "description": "Labels added to the resource template. Can be applied to different resources such as `StatefulSets`, `Deployments`, `Pods`, and `Services`.",
+                      "description": "Labels added to the Kubernetes resource.",
                       "x-kubernetes-preserve-unknown-fields": true
                     }
                   }
@@ -2857,11 +2897,11 @@
                   ],
                   "properties": {
                     "annotations": {
-                      "description": "Annotations added to the resource template. Can be applied to different resources such as `StatefulSets`, `Deployments`, `Pods`, and `Services`.",
+                      "description": "Annotations added to the Kubernetes resource.",
                       "x-kubernetes-preserve-unknown-fields": true
                     },
                     "labels": {
-                      "description": "Labels added to the resource template. Can be applied to different resources such as `StatefulSets`, `Deployments`, `Pods`, and `Services`.",
+                      "description": "Labels added to the Kubernetes resource.",
                       "x-kubernetes-preserve-unknown-fields": true
                     }
                   }
@@ -2876,7 +2916,7 @@
               ],
               "properties": {
                 "ipFamilies": {
-                  "description": "Specifies the IP Families used by the service. Available options are `IPv4` and `IPv6. If unspecified, Kubernetes will choose the default value based on the `ipFamilyPolicy` setting. Available on Kubernetes 1.20 and newer.",
+                  "description": "Specifies the IP Families used by the service. Available options are `IPv4` and `IPv6`. If unspecified, Kubernetes will choose the default value based on the `ipFamilyPolicy` setting.",
                   "type": [
                     "array",
                     "null"
@@ -2893,7 +2933,7 @@
                   }
                 },
                 "ipFamilyPolicy": {
-                  "description": "Specifies the IP Family Policy used by the service. Available options are `SingleStack`, `PreferDualStack` and `RequireDualStack`. `SingleStack` is for a single IP family. `PreferDualStack` is for two IP families on dual-stack configured clusters or a single IP family on single-stack clusters. `RequireDualStack` fails unless there are two IP families on dual-stack configured clusters. If unspecified, Kubernetes will choose the default value based on the service type. Available on Kubernetes 1.20 and newer.",
+                  "description": "Specifies the IP Family Policy used by the service. Available options are `SingleStack`, `PreferDualStack` and `RequireDualStack`. `SingleStack` is for a single IP family. `PreferDualStack` is for two IP families on dual-stack configured clusters or a single IP family on single-stack clusters. `RequireDualStack` fails unless there are two IP families on dual-stack configured clusters. If unspecified, Kubernetes will choose the default value based on the service type.",
                   "type": [
                     "string",
                     "null"
@@ -2912,11 +2952,11 @@
                   ],
                   "properties": {
                     "annotations": {
-                      "description": "Annotations added to the resource template. Can be applied to different resources such as `StatefulSets`, `Deployments`, `Pods`, and `Services`.",
+                      "description": "Annotations added to the Kubernetes resource.",
                       "x-kubernetes-preserve-unknown-fields": true
                     },
                     "labels": {
-                      "description": "Labels added to the resource template. Can be applied to different resources such as `StatefulSets`, `Deployments`, `Pods`, and `Services`.",
+                      "description": "Labels added to the Kubernetes resource.",
                       "x-kubernetes-preserve-unknown-fields": true
                     }
                   }
@@ -3143,11 +3183,11 @@
                   ],
                   "properties": {
                     "annotations": {
-                      "description": "Annotations added to the resource template. Can be applied to different resources such as `StatefulSets`, `Deployments`, `Pods`, and `Services`.",
+                      "description": "Annotations added to the Kubernetes resource.",
                       "x-kubernetes-preserve-unknown-fields": true
                     },
                     "labels": {
-                      "description": "Labels added to the resource template. Can be applied to different resources such as `StatefulSets`, `Deployments`, `Pods`, and `Services`.",
+                      "description": "Labels added to the Kubernetes resource.",
                       "x-kubernetes-preserve-unknown-fields": true
                     }
                   }
@@ -4013,11 +4053,11 @@
                   ],
                   "properties": {
                     "annotations": {
-                      "description": "Annotations added to the resource template. Can be applied to different resources such as `StatefulSets`, `Deployments`, `Pods`, and `Services`.",
+                      "description": "Annotations added to the Kubernetes resource.",
                       "x-kubernetes-preserve-unknown-fields": true
                     },
                     "labels": {
-                      "description": "Labels added to the resource template. Can be applied to different resources such as `StatefulSets`, `Deployments`, `Pods`, and `Services`.",
+                      "description": "Labels added to the Kubernetes resource.",
                       "x-kubernetes-preserve-unknown-fields": true
                     }
                   }
@@ -4395,11 +4435,11 @@
                   ],
                   "properties": {
                     "annotations": {
-                      "description": "Annotations added to the resource template. Can be applied to different resources such as `StatefulSets`, `Deployments`, `Pods`, and `Services`.",
+                      "description": "Annotations added to the Kubernetes resource.",
                       "x-kubernetes-preserve-unknown-fields": true
                     },
                     "labels": {
-                      "description": "Labels added to the resource template. Can be applied to different resources such as `StatefulSets`, `Deployments`, `Pods`, and `Services`.",
+                      "description": "Labels added to the Kubernetes resource.",
                       "x-kubernetes-preserve-unknown-fields": true
                     }
                   }
@@ -4421,11 +4461,11 @@
                   ],
                   "properties": {
                     "annotations": {
-                      "description": "Annotations added to the resource template. Can be applied to different resources such as `StatefulSets`, `Deployments`, `Pods`, and `Services`.",
+                      "description": "Annotations added to the Kubernetes resource.",
                       "x-kubernetes-preserve-unknown-fields": true
                     },
                     "labels": {
-                      "description": "Labels added to the resource template. Can be applied to different resources such as `StatefulSets`, `Deployments`, `Pods`, and `Services`.",
+                      "description": "Labels added to the Kubernetes resource.",
                       "x-kubernetes-preserve-unknown-fields": true
                     }
                   }
@@ -4447,11 +4487,11 @@
                   ],
                   "properties": {
                     "annotations": {
-                      "description": "Annotations added to the resource template. Can be applied to different resources such as `StatefulSets`, `Deployments`, `Pods`, and `Services`.",
+                      "description": "Annotations added to the Kubernetes resource.",
                       "x-kubernetes-preserve-unknown-fields": true
                     },
                     "labels": {
-                      "description": "Labels added to the resource template. Can be applied to different resources such as `StatefulSets`, `Deployments`, `Pods`, and `Services`.",
+                      "description": "Labels added to the Kubernetes resource.",
                       "x-kubernetes-preserve-unknown-fields": true
                     }
                   }

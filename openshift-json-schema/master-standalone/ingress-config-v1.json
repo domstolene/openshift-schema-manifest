@@ -166,7 +166,8 @@
                     "EquinixMetal",
                     "PowerVS",
                     "AlibabaCloud",
-                    "Nutanix"
+                    "Nutanix",
+                    "External"
                   ]
                 }
               }
@@ -283,10 +284,12 @@
                               "string",
                               "null"
                             ]
-                          }
+                          },
+                          "x-kubernetes-list-type": "atomic"
                         }
                       }
-                    }
+                    },
+                    "x-kubernetes-list-type": "atomic"
                   },
                   "matchLabels": {
                     "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
@@ -441,7 +444,7 @@
                 ],
                 "minItems": 1,
                 "items": {
-                  "description": "Hostname is an alias for hostname string validation. \n The left operand of the | is the original kubebuilder hostname validation format, which is incorrect because it allows upper case letters, disallows hyphen or number in the TLD, and allows labels to start/end in non-alphanumeric characters.  See https://bugzilla.redhat.com/show_bug.cgi?id=2039256. ^([a-zA-Z0-9\\p{S}\\p{L}]((-?[a-zA-Z0-9\\p{S}\\p{L}]{0,62})?)|([a-zA-Z0-9\\p{S}\\p{L}](([a-zA-Z0-9-\\p{S}\\p{L}]{0,61}[a-zA-Z0-9\\p{S}\\p{L}])?)(\\.)){1,}([a-zA-Z\\p{L}]){2,63})$ \n The right operand of the | is a new pattern that mimics the current API route admission validation on hostname, except that it allows hostnames longer than the maximum length: ^(([a-z0-9][-a-z0-9]{0,61}[a-z0-9]|[a-z0-9]{1,63})[\\.]){0,}([a-z0-9][-a-z0-9]{0,61}[a-z0-9]|[a-z0-9]{1,63})$ \n Both operand patterns are made available so that modifications on ingress spec can still happen after an invalid hostname was saved via validation by the incorrect left operand of the | operator.",
+                  "description": "Hostname is a host name as defined by RFC-1123.",
                   "type": [
                     "string",
                     "null"

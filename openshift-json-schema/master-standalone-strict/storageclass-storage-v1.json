@@ -6,14 +6,14 @@
   ],
   "properties": {
     "allowVolumeExpansion": {
-      "description": "AllowVolumeExpansion shows whether the storage class allow volume expand",
+      "description": "allowVolumeExpansion shows whether the storage class allow volume expand.",
       "type": [
         "boolean",
         "null"
       ]
     },
     "allowedTopologies": {
-      "description": "Restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature.",
+      "description": "allowedTopologies restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature.",
       "type": [
         "array",
         "null"
@@ -48,7 +48,7 @@
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     },
     "mountOptions": {
-      "description": "Dynamically provisioned PersistentVolumes of this storage class are created with these mountOptions, e.g. [\"ro\", \"soft\"]. Not validated - mount of the PVs will simply fail if one is invalid.",
+      "description": "mountOptions controls the mountOptions for dynamically provisioned PersistentVolumes of this storage class. e.g. [\"ro\", \"soft\"]. Not validated - mount of the PVs will simply fail if one is invalid.",
       "type": [
         "array",
         "null"
@@ -58,10 +58,11 @@
           "string",
           "null"
         ]
-      }
+      },
+      "x-kubernetes-list-type": "atomic"
     },
     "parameters": {
-      "description": "Parameters holds the parameters for the provisioner that should create volumes of this storage class.",
+      "description": "parameters holds the parameters for the provisioner that should create volumes of this storage class.",
       "type": [
         "object",
         "null"
@@ -74,24 +75,33 @@
       }
     },
     "provisioner": {
-      "description": "Provisioner indicates the type of the provisioner.",
+      "description": "provisioner indicates the type of the provisioner.",
       "type": [
         "string",
         "null"
       ]
     },
     "reclaimPolicy": {
-      "description": "Dynamically provisioned PersistentVolumes of this storage class are created with this reclaimPolicy. Defaults to Delete.",
+      "description": "reclaimPolicy controls the reclaimPolicy for dynamically provisioned PersistentVolumes of this storage class. Defaults to Delete.\n\nPossible enum values:\n - `\"Delete\"` means the volume will be deleted from Kubernetes on release from its claim. The volume plugin must support Deletion.\n - `\"Recycle\"` means the volume will be recycled back into the pool of unbound persistent volumes on release from its claim. The volume plugin must support Recycling.\n - `\"Retain\"` means the volume will be left in its current phase (Released) for manual reclamation by the administrator. The default policy is Retain.",
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "Delete",
+        "Recycle",
+        "Retain"
       ]
     },
     "volumeBindingMode": {
-      "description": "VolumeBindingMode indicates how PersistentVolumeClaims should be provisioned and bound.  When unset, VolumeBindingImmediate is used. This field is only honored by servers that enable the VolumeScheduling feature.",
+      "description": "volumeBindingMode indicates how PersistentVolumeClaims should be provisioned and bound.  When unset, VolumeBindingImmediate is used. This field is only honored by servers that enable the VolumeScheduling feature.\n\nPossible enum values:\n - `\"Immediate\"` indicates that PersistentVolumeClaims should be immediately provisioned and bound. This is the default mode.\n - `\"WaitForFirstConsumer\"` indicates that PersistentVolumeClaims should not be provisioned and bound until the first Pod is created that references the PeristentVolumeClaim. The volume provisioning and binding will occur during Pod scheduing.",
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "Immediate",
+        "WaitForFirstConsumer"
       ]
     }
   },

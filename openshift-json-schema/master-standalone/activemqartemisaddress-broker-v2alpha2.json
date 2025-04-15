@@ -32,24 +32,30 @@
         "object",
         "null"
       ],
-      "required": [
-        "addressName",
-        "queueName",
-        "removeFromBrokerOnDelete",
-        "routingType"
-      ],
       "properties": {
         "addressName": {
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "queueName": {
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "removeFromBrokerOnDelete": {
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "routingType": {
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         }
       }
     },

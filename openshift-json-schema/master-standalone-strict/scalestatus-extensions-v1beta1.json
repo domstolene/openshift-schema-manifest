@@ -14,7 +14,7 @@
       "format": "int32"
     },
     "selector": {
-      "description": "label query over pods that should match the replicas count. More info: http://kubernetes.io/docs/user-guide/labels#label-selectors",
+      "description": "selector is a label query over pods that should match the replicas count. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/",
       "type": [
         "object",
         "null"

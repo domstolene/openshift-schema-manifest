@@ -33,6 +33,13 @@
         "null"
       ],
       "properties": {
+        "excludeInvalidGroupNames": {
+          "description": "ExcludeInvalidGroupNames excludes Groups with names that are not RFC 1035 compliant.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
         "providers": {
           "description": "List of Providers that can be mounted by containers belonging to the pod.",
           "type": [
@@ -602,6 +609,91 @@
                       "string",
                       "null"
                     ]
+                  }
+                },
+                "additionalProperties": false
+              },
+              "ibmsecurityverify": {
+                "description": "IbmSecurityVerify represents the IBM Security Verify provider",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "credentialsSecret",
+                  "tenantUrl"
+                ],
+                "properties": {
+                  "credentialsSecret": {
+                    "description": "CredentialsSecret is a reference to a secret containing authentication details for the IBM Security Verify server",
+                    "type": "object",
+                    "required": [
+                      "name",
+                      "namespace"
+                    ],
+                    "properties": {
+                      "key": {
+                        "description": "Key represents the specific key to reference from the resource",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "kind": {
+                        "description": "Kind is a string value representing the resource type",
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "enum": [
+                          "ConfigMap",
+                          "Secret"
+                        ]
+                      },
+                      "name": {
+                        "description": "Name represents the name of the resource",
+                        "type": "string"
+                      },
+                      "namespace": {
+                        "description": "Namespace represents the namespace containing the resource",
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "groups": {
+                    "description": "Groups is the list of ISV groups to synchronize",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "id": {
+                          "description": "The ID of the group as defined in IBM Security Verify. This value can be found by using the API.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "name": {
+                          "description": "The display name of the group as defined in IBM Security Verify",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "tenantUrl": {
+                    "description": "TenantURL is the location of the IBM Security Verify tenant",
+                    "type": "string"
                   }
                 },
                 "additionalProperties": false
@@ -1516,7 +1608,7 @@
             "null"
           ],
           "items": {
-            "description": "Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example, type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: \"Available\", \"Progressing\", and \"Degraded\" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:\"conditions,omitempty\" patchStrategy:\"merge\" patchMergeKey:\"type\" protobuf:\"bytes,1,rep,name=conditions\"` \n // other fields }",
+            "description": "Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example, \n type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: \"Available\", \"Progressing\", and \"Degraded\" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:\"conditions,omitempty\" patchStrategy:\"merge\" patchMergeKey:\"type\" protobuf:\"bytes,1,rep,name=conditions\"` \n // other fields }",
             "type": [
               "object",
               "null"

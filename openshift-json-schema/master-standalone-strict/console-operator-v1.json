@@ -73,7 +73,73 @@
                 "string",
                 "null"
               ],
-              "pattern": "^$|^(ocp|origin|okd|dedicated|online|azure)$"
+              "enum": [
+                "openshift",
+                "okd",
+                "online",
+                "ocp",
+                "dedicated",
+                "azure",
+                "OpenShift",
+                "OKD",
+                "Online",
+                "OCP",
+                "Dedicated",
+                "Azure",
+                "ROSA"
+              ]
+            },
+            "capabilities": {
+              "description": "capabilities defines an array of capabilities that can be interacted with in the console UI. Each capability defines a visual state that can be interacted with the console to render in the UI. Available capabilities are LightspeedButton. Each of the available capabilities may appear only once in the list.",
+              "type": [
+                "array",
+                "null"
+              ],
+              "maxItems": 1,
+              "minItems": 1,
+              "items": {
+                "description": "Capabilities contains set of UI capabilities and their state in the console UI.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "name",
+                  "visibility"
+                ],
+                "properties": {
+                  "name": {
+                    "description": "name is the unique name of a capability. Available capabilities are LightspeedButton.",
+                    "type": "string",
+                    "enum": [
+                      "LightspeedButton"
+                    ]
+                  },
+                  "visibility": {
+                    "description": "visibility defines the visibility state of the capability.",
+                    "type": "object",
+                    "required": [
+                      "state"
+                    ],
+                    "properties": {
+                      "state": {
+                        "description": "state defines if the capability is enabled or disabled in the console UI. Enabling the capability in the console UI is represented by the \"Enabled\" value. Disabling the capability in the console UI is represented by the \"Disabled\" value.",
+                        "type": "string",
+                        "enum": [
+                          "Enabled",
+                          "Disabled"
+                        ]
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false
+              },
+              "x-kubernetes-list-map-keys": [
+                "name"
+              ],
+              "x-kubernetes-list-type": "map"
             },
             "customLogoFile": {
               "description": "customLogoFile replaces the default OpenShift logo in the masthead and about dialog. It is a reference to a ConfigMap in the openshift-config namespace. This can be created with a command like 'oc create configmap custom-logo --from-file=/path/to/file -n openshift-config'. Image size must be less than 1 MB due to constraints on the ConfigMap size. The ConfigMap key should include a file extension so that the console serves the file with the correct MIME type. Recommended logo specifications: Dimensions: Max height of 68px and max width of 200px SVG format preferred",
@@ -283,6 +349,7 @@
                 "null"
               ],
               "items": {
+                "description": "Perspective defines a perspective that cluster admins want to show/hide in the perspective switcher dropdown",
                 "type": [
                   "object",
                   "null"
@@ -295,6 +362,44 @@
                   "id": {
                     "description": "id defines the id of the perspective. Example: \"dev\", \"admin\". The available perspective ids can be found in the code snippet section next to the yaml editor. Incorrect or unknown ids will be ignored.",
                     "type": "string"
+                  },
+                  "pinnedResources": {
+                    "description": "pinnedResources defines the list of default pinned resources that users will see on the perspective navigation if they have not customized these pinned resources themselves. The list of available Kubernetes resources could be read via `kubectl api-resources`. The console will also provide a configuration UI and a YAML snippet that will list the available resources that can be pinned to the navigation. Incorrect or unknown resources will be ignored.",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "maxItems": 100,
+                    "items": {
+                      "description": "PinnedResourceReference includes the group, version and type of resource",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "required": [
+                        "group",
+                        "resource",
+                        "version"
+                      ],
+                      "properties": {
+                        "group": {
+                          "description": "group is the API Group of the Resource. Enter empty string for the core group. This value should consist of only lowercase alphanumeric characters, hyphens and periods. Example: \"\", \"apps\", \"build.openshift.io\", etc.",
+                          "type": "string",
+                          "pattern": "^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$"
+                        },
+                        "resource": {
+                          "description": "resource is the type that is being referenced. It is normally the plural form of the resource kind in lowercase. This value should consist of only lowercase alphanumeric characters and hyphens. Example: \"deployments\", \"deploymentconfigs\", \"pods\", etc.",
+                          "type": "string",
+                          "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$"
+                        },
+                        "version": {
+                          "description": "version is the API Version of the Resource. This value should consist of only lowercase alphanumeric characters. Example: \"v1\", \"v1beta1\", etc.",
+                          "type": "string",
+                          "pattern": "^[a-z0-9]+$"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
                   },
                   "visibility": {
                     "description": "visibility defines the state of perspective along with access review checks if needed for that perspective.",
@@ -459,6 +564,12 @@
                     "additionalProperties": false
                   }
                 },
+                "x-kubernetes-validations": [
+                  {
+                    "message": "pinnedResources is allowed only for dev and forbidden for other perspectives",
+                    "rule": "has(self.id) && self.id != 'dev'? !has(self.pinnedResources) : true"
+                  }
+                ],
                 "additionalProperties": false
               },
               "x-kubernetes-list-map-keys": [
@@ -511,6 +622,52 @@
                 }
               },
               "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "ingress": {
+          "description": "ingress allows to configure the alternative ingress for the console. This field is intended for clusters without ingress capability, where access to routes is not possible.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "clientDownloadsURL": {
+              "description": "clientDownloadsURL is a URL to be used as the address to download client binaries. If not specified, the downloads route hostname will be used. This field is required for clusters without ingress capability, where access to routes is not possible. The console operator will monitor the URL and may go degraded if it's unreachable for an extended period. Must use the HTTPS scheme.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 1024,
+              "x-kubernetes-validations": [
+                {
+                  "message": "client downloads url must be a valid absolute URL",
+                  "rule": "size(self) == 0 || isURL(self)"
+                },
+                {
+                  "message": "client downloads url scheme must be https",
+                  "rule": "size(self) == 0 || url(self).getScheme() == 'https'"
+                }
+              ]
+            },
+            "consoleURL": {
+              "description": "consoleURL is a URL to be used as the base console address. If not specified, the console route hostname will be used. This field is required for clusters without ingress capability, where access to routes is not possible. Make sure that appropriate ingress is set up at this URL. The console operator will monitor the URL and may go degraded if it's unreachable for an extended period. Must use the HTTPS scheme.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 1024,
+              "x-kubernetes-validations": [
+                {
+                  "message": "console url must be a valid absolute URL",
+                  "rule": "size(self) == 0 || isURL(self)"
+                },
+                {
+                  "message": "console url scheme must be https",
+                  "rule": "size(self) == 0 || url(self).getScheme() == 'https'"
+                }
+              ]
             }
           },
           "additionalProperties": false
@@ -630,7 +787,7 @@
           "additionalProperties": false
         },
         "unsupportedConfigOverrides": {
-          "description": "unsupportedConfigOverrides holds a sparse config that will override any previously set options.  It only needs to be the fields to override it will end up overlaying in the following order: 1. hardcoded defaults 2. observedConfig 3. unsupportedConfigOverrides",
+          "description": "unsupportedConfigOverrides overrides the final configuration that was computed by the operator. Red Hat does not support the use of this field. Misuse of this field could lead to unexpected behavior or conflict with other configuration options. Seek guidance from the Red Hat support before using this field. Use of this property blocks cluster upgrades, it must be removed before upgrading your cluster.",
           "x-kubernetes-preserve-unknown-fields": true
         }
       },
@@ -654,6 +811,9 @@
             "type": [
               "object",
               "null"
+            ],
+            "required": [
+              "type"
             ],
             "properties": {
               "lastTransitionTime": {
@@ -682,14 +842,15 @@
                 ]
               },
               "type": {
-                "type": [
-                  "string",
-                  "null"
-                ]
+                "type": "string"
               }
             },
             "additionalProperties": false
-          }
+          },
+          "x-kubernetes-list-map-keys": [
+            "type"
+          ],
+          "x-kubernetes-list-type": "map"
         },
         "generations": {
           "description": "generations are used to determine when an item needs to be reconciled or has changed in a way that needs a reaction.",
@@ -749,7 +910,8 @@
               }
             },
             "additionalProperties": false
-          }
+          },
+          "x-kubernetes-list-type": "atomic"
         },
         "observedGeneration": {
           "description": "observedGeneration is the last generation change you've dealt with",

@@ -1,5 +1,5 @@
 {
-  "description": "HardwareData is the Schema for the hardwaredata API",
+  "description": "HardwareData is the Schema for the hardwaredata API.",
   "type": "object",
   "properties": {
     "apiVersion": {
@@ -27,7 +27,7 @@
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     },
     "spec": {
-      "description": "HardwareDataSpec defines the desired state of HardwareData",
+      "description": "HardwareDataSpec defines the desired state of HardwareData.",
       "type": [
         "object",
         "null"
@@ -204,7 +204,7 @@
                       "null"
                     ],
                     "items": {
-                      "description": "VLAN represents the name and ID of a VLAN",
+                      "description": "VLAN represents the name and ID of a VLAN.",
                       "type": [
                         "object",
                         "null"
@@ -250,6 +250,19 @@
                   "null"
                 ],
                 "properties": {
+                  "alternateNames": {
+                    "description": "A list of alternate Linux device names of the disk, e.g. \"/dev/sda\". Note that this list is not exhaustive, and names may not be stable across reboots.",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
                   "hctl": {
                     "description": "The SCSI location of the device",
                     "type": [
@@ -265,7 +278,7 @@
                     ]
                   },
                   "name": {
-                    "description": "The Linux device name of the disk, e.g. \"/dev/sda\". Note that this may not be stable across reboots.",
+                    "description": "A Linux device name of the disk, e.g. \"/dev/disk/by-path/pci-0000:01:00.0-scsi-0:2:0:0\". This will be a name that is stable across reboots if one is available.",
                     "type": [
                       "string",
                       "null"

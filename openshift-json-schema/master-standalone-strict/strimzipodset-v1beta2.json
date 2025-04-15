@@ -154,7 +154,7 @@
           }
         },
         "currentPods": {
-          "description": "Number of pods managed by the StrimziPodSet controller that have the current revision.",
+          "description": "Number of pods managed by this `StrimziPodSet` resource that have the current revision.",
           "type": [
             "integer",
             "null"
@@ -168,14 +168,14 @@
           ]
         },
         "pods": {
-          "description": "Number of pods managed by the StrimziPodSet controller.",
+          "description": "Number of pods managed by this `StrimziPodSet` resource.",
           "type": [
             "integer",
             "null"
           ]
         },
         "readyPods": {
-          "description": "Number of pods managed by the StrimziPodSet controller that are ready.",
+          "description": "Number of pods managed by this `StrimziPodSet` resource that are ready.",
           "type": [
             "integer",
             "null"

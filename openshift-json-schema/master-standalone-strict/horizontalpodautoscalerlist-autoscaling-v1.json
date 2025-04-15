@@ -16,7 +16,7 @@
       ]
     },
     "items": {
-      "description": "list of horizontal pod autoscaler objects.",
+      "description": "items is the list of horizontal pod autoscaler objects.",
       "type": [
         "array",
         "null"

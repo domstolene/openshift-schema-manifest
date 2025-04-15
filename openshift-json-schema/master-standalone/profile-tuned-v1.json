@@ -76,6 +76,35 @@
               "type": "string"
             }
           }
+        },
+        "profile": {
+          "description": "Tuned profiles.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "A Tuned profile.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "data",
+              "name"
+            ],
+            "properties": {
+              "data": {
+                "description": "Specification of the Tuned profile to be consumed by the Tuned daemon.",
+                "type": "string"
+              },
+              "name": {
+                "description": "Name of the Tuned profile to be used in the recommend section.",
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
         }
       }
     },
@@ -89,13 +118,6 @@
         "tunedProfile"
       ],
       "properties": {
-        "bootcmdline": {
-          "description": "kernel parameters calculated by tuned for the active Tuned profile",
-          "type": [
-            "string",
-            "null"
-          ]
-        },
         "conditions": {
           "description": "conditions represents the state of the per-node Profile application",
           "type": [

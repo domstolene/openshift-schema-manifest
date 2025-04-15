@@ -13,7 +13,8 @@
       ],
       "items": {
         "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.LimitRangeItem"
-      }
+      },
+      "x-kubernetes-list-type": "atomic"
     }
   },
   "additionalProperties": false,

@@ -974,6 +974,26 @@
             "null"
           ],
           "properties": {
+            "claims": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "name": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              }
+            },
             "limits": {
               "x-kubernetes-preserve-unknown-fields": true
             },
@@ -1015,11 +1035,11 @@
                   ],
                   "properties": {
                     "annotations": {
-                      "description": "Annotations added to the resource template. Can be applied to different resources such as `StatefulSets`, `Deployments`, `Pods`, and `Services`.",
+                      "description": "Annotations added to the Kubernetes resource.",
                       "x-kubernetes-preserve-unknown-fields": true
                     },
                     "labels": {
-                      "description": "Labels added to the resource template. Can be applied to different resources such as `StatefulSets`, `Deployments`, `Pods`, and `Services`.",
+                      "description": "Labels added to the Kubernetes resource.",
                       "x-kubernetes-preserve-unknown-fields": true
                     }
                   }
@@ -2090,11 +2110,11 @@
                   ],
                   "properties": {
                     "annotations": {
-                      "description": "Annotations added to the resource template. Can be applied to different resources such as `StatefulSets`, `Deployments`, `Pods`, and `Services`.",
+                      "description": "Annotations added to the Kubernetes resource.",
                       "x-kubernetes-preserve-unknown-fields": true
                     },
                     "labels": {
-                      "description": "Labels added to the resource template. Can be applied to different resources such as `StatefulSets`, `Deployments`, `Pods`, and `Services`.",
+                      "description": "Labels added to the Kubernetes resource.",
                       "x-kubernetes-preserve-unknown-fields": true
                     }
                   }
@@ -2472,11 +2492,11 @@
                   ],
                   "properties": {
                     "annotations": {
-                      "description": "Annotations added to the resource template. Can be applied to different resources such as `StatefulSets`, `Deployments`, `Pods`, and `Services`.",
+                      "description": "Annotations added to the Kubernetes resource.",
                       "x-kubernetes-preserve-unknown-fields": true
                     },
                     "labels": {
-                      "description": "Labels added to the resource template. Can be applied to different resources such as `StatefulSets`, `Deployments`, `Pods`, and `Services`.",
+                      "description": "Labels added to the Kubernetes resource.",
                       "x-kubernetes-preserve-unknown-fields": true
                     }
                   }
@@ -2498,11 +2518,11 @@
                   ],
                   "properties": {
                     "annotations": {
-                      "description": "Annotations added to the resource template. Can be applied to different resources such as `StatefulSets`, `Deployments`, `Pods`, and `Services`.",
+                      "description": "Annotations added to the Kubernetes resource.",
                       "x-kubernetes-preserve-unknown-fields": true
                     },
                     "labels": {
-                      "description": "Labels added to the resource template. Can be applied to different resources such as `StatefulSets`, `Deployments`, `Pods`, and `Services`.",
+                      "description": "Labels added to the Kubernetes resource.",
                       "x-kubernetes-preserve-unknown-fields": true
                     }
                   }

@@ -99,11 +99,13 @@
                             "string",
                             "null"
                           ]
-                        }
+                        },
+                        "x-kubernetes-list-type": "atomic"
                       }
                     },
                     "additionalProperties": false
-                  }
+                  },
+                  "x-kubernetes-list-type": "atomic"
                 }
               },
               "x-kubernetes-map-type": "atomic",
@@ -121,7 +123,8 @@
                   "string",
                   "null"
                 ]
-              }
+              },
+              "x-kubernetes-list-type": "atomic"
             }
           },
           "additionalProperties": false

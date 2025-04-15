@@ -50,11 +50,11 @@
           }
         },
         "opensearchCluster": {
-          "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.",
+          "description": "LocalObjectReference contains enough information to let you locate the\nreferenced object inside the same namespace.",
           "type": "object",
           "properties": {
             "name": {
-              "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+              "description": "Name of the referent.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names\nTODO: Add other useful fields. apiVersion, kind, uid?",
               "type": [
                 "string",
                 "null"
@@ -96,7 +96,7 @@
       ],
       "properties": {
         "managedCluster": {
-          "description": "UID is a type that holds unique ID values, including UUIDs.  Because we don't ONLY use UUIDs, this is an alias to string.  Being a type captures intent and helps make sure that UIDs and names do not get conflated.",
+          "description": "UID is a type that holds unique ID values, including UUIDs.  Because we\ndon't ONLY use UUIDs, this is an alias to string.  Being a type captures\nintent and helps make sure that UIDs and names do not get conflated.",
           "type": [
             "string",
             "null"

@@ -62,10 +62,6 @@
             "object",
             "null"
           ],
-          "required": [
-            "maxConsumers",
-            "purgeOnNoConsumers"
-          ],
           "properties": {
             "autoCreateAddress": {
               "type": [
@@ -188,7 +184,10 @@
               ]
             },
             "maxConsumers": {
-              "type": "integer",
+              "type": [
+                "integer",
+                "null"
+              ],
               "format": "int32"
             },
             "nonDestructive": {
@@ -198,7 +197,10 @@
               ]
             },
             "purgeOnNoConsumers": {
-              "type": "boolean"
+              "type": [
+                "boolean",
+                "null"
+              ]
             },
             "ringSize": {
               "type": [

@@ -211,14 +211,14 @@
               }
             },
             "revision": {
-              "description": "Revision is the revision (Git) or chart version (Helm) which to sync the application to If omitted, will use the revision specified in app spec.",
+              "description": "Revision is the revision (Git) or chart version (Helm) which to sync the application to\nIf omitted, will use the revision specified in app spec.",
               "type": [
                 "string",
                 "null"
               ]
             },
             "revisions": {
-              "description": "Revisions is the list of revision (Git) or chart version (Helm) which to sync each source in sources field for the application to If omitted, will use the revision specified in app spec.",
+              "description": "Revisions is the list of revision (Git) or chart version (Helm) which to sync each source in sources field for the application to\nIf omitted, will use the revision specified in app spec.",
               "type": [
                 "array",
                 "null"
@@ -231,7 +231,7 @@
               }
             },
             "source": {
-              "description": "Source overrides the source definition set in the application. This is typically set in a Rollback operation and is nil during a Sync operation",
+              "description": "Source overrides the source definition set in the application.\nThis is typically set in a Rollback operation and is nil during a Sync operation",
               "type": [
                 "object",
                 "null"
@@ -485,11 +485,15 @@
                       }
                     },
                     "values": {
-                      "description": "Values specifies Helm values to be passed to helm template, typically defined as a block",
+                      "description": "Values specifies Helm values to be passed to helm template, typically defined as a block. ValuesObject takes precedence over Values, so use one or the other.",
                       "type": [
                         "string",
                         "null"
                       ]
+                    },
+                    "valuesObject": {
+                      "description": "ValuesObject specifies Helm values to be passed to helm template, defined as a map. This takes precedence over Values.",
+                      "x-kubernetes-preserve-unknown-fields": true
                     },
                     "version": {
                       "description": "Version is the Helm version to use for templating (\"3\")",
@@ -521,6 +525,13 @@
                         ]
                       }
                     },
+                    "commonAnnotationsEnvsubst": {
+                      "description": "CommonAnnotationsEnvsubst specifies whether to apply env variables substitution for annotation values",
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    },
                     "commonLabels": {
                       "description": "CommonLabels is a list of additional labels to add to rendered manifests",
                       "type": [
@@ -528,6 +539,19 @@
                         "null"
                       ],
                       "additionalProperties": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "components": {
+                      "description": "Components specifies a list of kustomize components to add to the kustomization before building",
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
                         "type": [
                           "string",
                           "null"
@@ -562,6 +586,13 @@
                         ]
                       }
                     },
+                    "labelWithoutSelector": {
+                      "description": "LabelWithoutSelector specifies whether to apply common labels to resource selectors or not",
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    },
                     "namePrefix": {
                       "description": "NamePrefix is a prefix appended to resources for Kustomize apps",
                       "type": [
@@ -575,6 +606,132 @@
                         "string",
                         "null"
                       ]
+                    },
+                    "namespace": {
+                      "description": "Namespace sets the namespace that Kustomize adds to all resources",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "patches": {
+                      "description": "Patches is a list of Kustomize patches",
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {
+                          "options": {
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "additionalProperties": {
+                              "type": [
+                                "boolean",
+                                "null"
+                              ]
+                            }
+                          },
+                          "patch": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "path": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "target": {
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "properties": {
+                              "annotationSelector": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "group": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "kind": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "labelSelector": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "name": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "namespace": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "version": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "additionalProperties": false
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "replicas": {
+                      "description": "Replicas is a list of Kustomize Replicas override specifications",
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "required": [
+                          "count",
+                          "name"
+                        ],
+                        "properties": {
+                          "count": {
+                            "description": "Number of replicas",
+                            "x-kubernetes-int-or-string": true
+                          },
+                          "name": {
+                            "description": "Name of Deployment or StatefulSet",
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
+                      }
                     },
                     "version": {
                       "description": "Version controls which version of Kustomize to use for rendering manifests",
@@ -705,7 +862,7 @@
                   "type": "string"
                 },
                 "targetRevision": {
-                  "description": "TargetRevision defines the revision of the source to sync the application to. In case of Git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag for the Chart's version.",
+                  "description": "TargetRevision defines the revision of the source to sync the application to.\nIn case of Git, this can be commit, tag, or branch. If omitted, will equal to HEAD.\nIn case of Helm, this is a semver tag for the Chart's version.",
                   "type": [
                     "string",
                     "null"
@@ -715,7 +872,7 @@
               "additionalProperties": false
             },
             "sources": {
-              "description": "Sources overrides the source definition set in the application. This is typically set in a Rollback operation and is nil during a Sync operation",
+              "description": "Sources overrides the source definition set in the application.\nThis is typically set in a Rollback operation and is nil during a Sync operation",
               "type": [
                 "array",
                 "null"
@@ -975,11 +1132,15 @@
                         }
                       },
                       "values": {
-                        "description": "Values specifies Helm values to be passed to helm template, typically defined as a block",
+                        "description": "Values specifies Helm values to be passed to helm template, typically defined as a block. ValuesObject takes precedence over Values, so use one or the other.",
                         "type": [
                           "string",
                           "null"
                         ]
+                      },
+                      "valuesObject": {
+                        "description": "ValuesObject specifies Helm values to be passed to helm template, defined as a map. This takes precedence over Values.",
+                        "x-kubernetes-preserve-unknown-fields": true
                       },
                       "version": {
                         "description": "Version is the Helm version to use for templating (\"3\")",
@@ -1011,6 +1172,13 @@
                           ]
                         }
                       },
+                      "commonAnnotationsEnvsubst": {
+                        "description": "CommonAnnotationsEnvsubst specifies whether to apply env variables substitution for annotation values",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
                       "commonLabels": {
                         "description": "CommonLabels is a list of additional labels to add to rendered manifests",
                         "type": [
@@ -1018,6 +1186,19 @@
                           "null"
                         ],
                         "additionalProperties": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "components": {
+                        "description": "Components specifies a list of kustomize components to add to the kustomization before building",
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
                           "type": [
                             "string",
                             "null"
@@ -1052,6 +1233,13 @@
                           ]
                         }
                       },
+                      "labelWithoutSelector": {
+                        "description": "LabelWithoutSelector specifies whether to apply common labels to resource selectors or not",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
                       "namePrefix": {
                         "description": "NamePrefix is a prefix appended to resources for Kustomize apps",
                         "type": [
@@ -1065,6 +1253,132 @@
                           "string",
                           "null"
                         ]
+                      },
+                      "namespace": {
+                        "description": "Namespace sets the namespace that Kustomize adds to all resources",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "patches": {
+                        "description": "Patches is a list of Kustomize patches",
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "options": {
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "additionalProperties": {
+                                "type": [
+                                  "boolean",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "patch": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "path": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "target": {
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "properties": {
+                                "annotationSelector": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "group": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "kind": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "labelSelector": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "name": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "namespace": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "version": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "replicas": {
+                        "description": "Replicas is a list of Kustomize Replicas override specifications",
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "required": [
+                            "count",
+                            "name"
+                          ],
+                          "properties": {
+                            "count": {
+                              "description": "Number of replicas",
+                              "x-kubernetes-int-or-string": true
+                            },
+                            "name": {
+                              "description": "Name of Deployment or StatefulSet",
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
+                        }
                       },
                       "version": {
                         "description": "Version controls which version of Kustomize to use for rendering manifests",
@@ -1195,7 +1509,7 @@
                     "type": "string"
                   },
                   "targetRevision": {
-                    "description": "TargetRevision defines the revision of the source to sync the application to. In case of Git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag for the Chart's version.",
+                    "description": "TargetRevision defines the revision of the source to sync the application to.\nIn case of Git, this can be commit, tag, or branch. If omitted, will equal to HEAD.\nIn case of Helm, this is a semver tag for the Chart's version.",
                     "type": [
                       "string",
                       "null"
@@ -1233,7 +1547,7 @@
                   ],
                   "properties": {
                     "force": {
-                      "description": "Force indicates whether or not to supply the --force flag to `kubectl apply`. The --force flag deletes and re-create the resource, when PATCH encounters conflict and has retried for 5 times.",
+                      "description": "Force indicates whether or not to supply the --force flag to `kubectl apply`.\nThe --force flag deletes and re-create the resource, when PATCH encounters conflict and has\nretried for 5 times.",
                       "type": [
                         "boolean",
                         "null"
@@ -1250,7 +1564,7 @@
                   ],
                   "properties": {
                     "force": {
-                      "description": "Force indicates whether or not to supply the --force flag to `kubectl apply`. The --force flag deletes and re-create the resource, when PATCH encounters conflict and has retried for 5 times.",
+                      "description": "Force indicates whether or not to supply the --force flag to `kubectl apply`.\nThe --force flag deletes and re-create the resource, when PATCH encounters conflict and has\nretried for 5 times.",
                       "type": [
                         "boolean",
                         "null"
@@ -1284,21 +1598,21 @@
           "type": "object",
           "properties": {
             "name": {
-              "description": "Name is an alternate way of specifying the target cluster by its symbolic name",
+              "description": "Name is an alternate way of specifying the target cluster by its symbolic name. This must be set if Server is not set.",
               "type": [
                 "string",
                 "null"
               ]
             },
             "namespace": {
-              "description": "Namespace specifies the target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace",
+              "description": "Namespace specifies the target namespace for the application's resources.\nThe namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace",
               "type": [
                 "string",
                 "null"
               ]
             },
             "server": {
-              "description": "Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API",
+              "description": "Server specifies the URL of the target cluster's Kubernetes control plane API. This must be set if Name is not set.",
               "type": [
                 "string",
                 "null"
@@ -1357,7 +1671,7 @@
                 "type": "string"
               },
               "managedFieldsManagers": {
-                "description": "ManagedFieldsManagers is a list of trusted managers. Fields mutated by those managers will take precedence over the desired state defined in the SCM and won't be displayed in diffs",
+                "description": "ManagedFieldsManagers is a list of trusted managers. Fields mutated by those managers will take precedence over the\ndesired state defined in the SCM and won't be displayed in diffs",
                 "type": [
                   "array",
                   "null"
@@ -1412,11 +1726,11 @@
           }
         },
         "project": {
-          "description": "Project is a reference to the project this application belongs to. The empty string means that application belongs to the 'default' project.",
+          "description": "Project is a reference to the project this application belongs to.\nThe empty string means that application belongs to the 'default' project.",
           "type": "string"
         },
         "revisionHistoryLimit": {
-          "description": "RevisionHistoryLimit limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.",
+          "description": "RevisionHistoryLimit limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions.\nThis should only be changed in exceptional circumstances.\nSetting to zero will store no history. This will reduce storage used.\nIncreasing will increase the space used to store the history, so we do not recommend increasing it.\nDefault is 10.",
           "type": [
             "integer",
             "null"
@@ -1678,11 +1992,15 @@
                   }
                 },
                 "values": {
-                  "description": "Values specifies Helm values to be passed to helm template, typically defined as a block",
+                  "description": "Values specifies Helm values to be passed to helm template, typically defined as a block. ValuesObject takes precedence over Values, so use one or the other.",
                   "type": [
                     "string",
                     "null"
                   ]
+                },
+                "valuesObject": {
+                  "description": "ValuesObject specifies Helm values to be passed to helm template, defined as a map. This takes precedence over Values.",
+                  "x-kubernetes-preserve-unknown-fields": true
                 },
                 "version": {
                   "description": "Version is the Helm version to use for templating (\"3\")",
@@ -1714,6 +2032,13 @@
                     ]
                   }
                 },
+                "commonAnnotationsEnvsubst": {
+                  "description": "CommonAnnotationsEnvsubst specifies whether to apply env variables substitution for annotation values",
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
                 "commonLabels": {
                   "description": "CommonLabels is a list of additional labels to add to rendered manifests",
                   "type": [
@@ -1721,6 +2046,19 @@
                     "null"
                   ],
                   "additionalProperties": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "components": {
+                  "description": "Components specifies a list of kustomize components to add to the kustomization before building",
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
                     "type": [
                       "string",
                       "null"
@@ -1755,6 +2093,13 @@
                     ]
                   }
                 },
+                "labelWithoutSelector": {
+                  "description": "LabelWithoutSelector specifies whether to apply common labels to resource selectors or not",
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
                 "namePrefix": {
                   "description": "NamePrefix is a prefix appended to resources for Kustomize apps",
                   "type": [
@@ -1768,6 +2113,132 @@
                     "string",
                     "null"
                   ]
+                },
+                "namespace": {
+                  "description": "Namespace sets the namespace that Kustomize adds to all resources",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "patches": {
+                  "description": "Patches is a list of Kustomize patches",
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "options": {
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "additionalProperties": {
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        }
+                      },
+                      "patch": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "path": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "target": {
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {
+                          "annotationSelector": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "group": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "kind": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "labelSelector": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "name": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "namespace": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "version": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "replicas": {
+                  "description": "Replicas is a list of Kustomize Replicas override specifications",
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "required": [
+                      "count",
+                      "name"
+                    ],
+                    "properties": {
+                      "count": {
+                        "description": "Number of replicas",
+                        "x-kubernetes-int-or-string": true
+                      },
+                      "name": {
+                        "description": "Name of Deployment or StatefulSet",
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false
+                  }
                 },
                 "version": {
                   "description": "Version controls which version of Kustomize to use for rendering manifests",
@@ -1898,7 +2369,7 @@
               "type": "string"
             },
             "targetRevision": {
-              "description": "TargetRevision defines the revision of the source to sync the application to. In case of Git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag for the Chart's version.",
+              "description": "TargetRevision defines the revision of the source to sync the application to.\nIn case of Git, this can be commit, tag, or branch. If omitted, will equal to HEAD.\nIn case of Helm, this is a semver tag for the Chart's version.",
               "type": [
                 "string",
                 "null"
@@ -2168,11 +2639,15 @@
                     }
                   },
                   "values": {
-                    "description": "Values specifies Helm values to be passed to helm template, typically defined as a block",
+                    "description": "Values specifies Helm values to be passed to helm template, typically defined as a block. ValuesObject takes precedence over Values, so use one or the other.",
                     "type": [
                       "string",
                       "null"
                     ]
+                  },
+                  "valuesObject": {
+                    "description": "ValuesObject specifies Helm values to be passed to helm template, defined as a map. This takes precedence over Values.",
+                    "x-kubernetes-preserve-unknown-fields": true
                   },
                   "version": {
                     "description": "Version is the Helm version to use for templating (\"3\")",
@@ -2204,6 +2679,13 @@
                       ]
                     }
                   },
+                  "commonAnnotationsEnvsubst": {
+                    "description": "CommonAnnotationsEnvsubst specifies whether to apply env variables substitution for annotation values",
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  },
                   "commonLabels": {
                     "description": "CommonLabels is a list of additional labels to add to rendered manifests",
                     "type": [
@@ -2211,6 +2693,19 @@
                       "null"
                     ],
                     "additionalProperties": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "components": {
+                    "description": "Components specifies a list of kustomize components to add to the kustomization before building",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
                       "type": [
                         "string",
                         "null"
@@ -2245,6 +2740,13 @@
                       ]
                     }
                   },
+                  "labelWithoutSelector": {
+                    "description": "LabelWithoutSelector specifies whether to apply common labels to resource selectors or not",
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  },
                   "namePrefix": {
                     "description": "NamePrefix is a prefix appended to resources for Kustomize apps",
                     "type": [
@@ -2258,6 +2760,132 @@
                       "string",
                       "null"
                     ]
+                  },
+                  "namespace": {
+                    "description": "Namespace sets the namespace that Kustomize adds to all resources",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "patches": {
+                    "description": "Patches is a list of Kustomize patches",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "options": {
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "additionalProperties": {
+                            "type": [
+                              "boolean",
+                              "null"
+                            ]
+                          }
+                        },
+                        "patch": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "path": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "target": {
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "annotationSelector": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "group": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "kind": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "labelSelector": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "name": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "namespace": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "version": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "replicas": {
+                    "description": "Replicas is a list of Kustomize Replicas override specifications",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "required": [
+                        "count",
+                        "name"
+                      ],
+                      "properties": {
+                        "count": {
+                          "description": "Number of replicas",
+                          "x-kubernetes-int-or-string": true
+                        },
+                        "name": {
+                          "description": "Name of Deployment or StatefulSet",
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
                   },
                   "version": {
                     "description": "Version controls which version of Kustomize to use for rendering manifests",
@@ -2388,7 +3016,7 @@
                 "type": "string"
               },
               "targetRevision": {
-                "description": "TargetRevision defines the revision of the source to sync the application to. In case of Git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag for the Chart's version.",
+                "description": "TargetRevision defines the revision of the source to sync the application to.\nIn case of Git, this can be commit, tag, or branch. If omitted, will equal to HEAD.\nIn case of Helm, this is a semver tag for the Chart's version.",
                 "type": [
                   "string",
                   "null"
@@ -2427,7 +3055,7 @@
                   ]
                 },
                 "selfHeal": {
-                  "description": "SelfHeal specifes whether to revert resources back to their desired state upon modification in the cluster (default: false)",
+                  "description": "SelfHeal specifies whether to revert resources back to their desired state upon modification in the cluster (default: false)",
                   "type": [
                     "boolean",
                     "null"
@@ -2553,7 +3181,7 @@
             "null"
           ],
           "items": {
-            "description": "ApplicationCondition contains details about an application condition, which is usally an error or warning",
+            "description": "ApplicationCondition contains details about an application condition, which is usually an error or warning",
             "type": [
               "object",
               "null"
@@ -2582,6 +3210,13 @@
             },
             "additionalProperties": false
           }
+        },
+        "controllerNamespace": {
+          "description": "ControllerNamespace indicates the namespace in which the application controller is located",
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "health": {
           "description": "Health contains information about the application's current health status",
@@ -2641,6 +3276,30 @@
                 "description": "ID is an auto incrementing identifier of the RevisionHistory",
                 "type": "integer",
                 "format": "int64"
+              },
+              "initiatedBy": {
+                "description": "InitiatedBy contains information about who initiated the operations",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "automated": {
+                    "description": "Automated is set to true if operation was initiated automatically by the application controller.",
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  },
+                  "username": {
+                    "description": "Username contains the name of a user who started operation",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "additionalProperties": false
               },
               "revision": {
                 "description": "Revision holds the revision the sync was performed against",
@@ -2917,11 +3576,15 @@
                         }
                       },
                       "values": {
-                        "description": "Values specifies Helm values to be passed to helm template, typically defined as a block",
+                        "description": "Values specifies Helm values to be passed to helm template, typically defined as a block. ValuesObject takes precedence over Values, so use one or the other.",
                         "type": [
                           "string",
                           "null"
                         ]
+                      },
+                      "valuesObject": {
+                        "description": "ValuesObject specifies Helm values to be passed to helm template, defined as a map. This takes precedence over Values.",
+                        "x-kubernetes-preserve-unknown-fields": true
                       },
                       "version": {
                         "description": "Version is the Helm version to use for templating (\"3\")",
@@ -2953,6 +3616,13 @@
                           ]
                         }
                       },
+                      "commonAnnotationsEnvsubst": {
+                        "description": "CommonAnnotationsEnvsubst specifies whether to apply env variables substitution for annotation values",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
                       "commonLabels": {
                         "description": "CommonLabels is a list of additional labels to add to rendered manifests",
                         "type": [
@@ -2960,6 +3630,19 @@
                           "null"
                         ],
                         "additionalProperties": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "components": {
+                        "description": "Components specifies a list of kustomize components to add to the kustomization before building",
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
                           "type": [
                             "string",
                             "null"
@@ -2994,6 +3677,13 @@
                           ]
                         }
                       },
+                      "labelWithoutSelector": {
+                        "description": "LabelWithoutSelector specifies whether to apply common labels to resource selectors or not",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
                       "namePrefix": {
                         "description": "NamePrefix is a prefix appended to resources for Kustomize apps",
                         "type": [
@@ -3007,6 +3697,132 @@
                           "string",
                           "null"
                         ]
+                      },
+                      "namespace": {
+                        "description": "Namespace sets the namespace that Kustomize adds to all resources",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "patches": {
+                        "description": "Patches is a list of Kustomize patches",
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "options": {
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "additionalProperties": {
+                                "type": [
+                                  "boolean",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "patch": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "path": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "target": {
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "properties": {
+                                "annotationSelector": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "group": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "kind": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "labelSelector": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "name": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "namespace": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "version": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "replicas": {
+                        "description": "Replicas is a list of Kustomize Replicas override specifications",
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "required": [
+                            "count",
+                            "name"
+                          ],
+                          "properties": {
+                            "count": {
+                              "description": "Number of replicas",
+                              "x-kubernetes-int-or-string": true
+                            },
+                            "name": {
+                              "description": "Name of Deployment or StatefulSet",
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
+                        }
                       },
                       "version": {
                         "description": "Version controls which version of Kustomize to use for rendering manifests",
@@ -3137,7 +3953,7 @@
                     "type": "string"
                   },
                   "targetRevision": {
-                    "description": "TargetRevision defines the revision of the source to sync the application to. In case of Git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag for the Chart's version.",
+                    "description": "TargetRevision defines the revision of the source to sync the application to.\nIn case of Git, this can be commit, tag, or branch. If omitted, will equal to HEAD.\nIn case of Helm, this is a semver tag for the Chart's version.",
                     "type": [
                       "string",
                       "null"
@@ -3407,11 +4223,15 @@
                           }
                         },
                         "values": {
-                          "description": "Values specifies Helm values to be passed to helm template, typically defined as a block",
+                          "description": "Values specifies Helm values to be passed to helm template, typically defined as a block. ValuesObject takes precedence over Values, so use one or the other.",
                           "type": [
                             "string",
                             "null"
                           ]
+                        },
+                        "valuesObject": {
+                          "description": "ValuesObject specifies Helm values to be passed to helm template, defined as a map. This takes precedence over Values.",
+                          "x-kubernetes-preserve-unknown-fields": true
                         },
                         "version": {
                           "description": "Version is the Helm version to use for templating (\"3\")",
@@ -3443,6 +4263,13 @@
                             ]
                           }
                         },
+                        "commonAnnotationsEnvsubst": {
+                          "description": "CommonAnnotationsEnvsubst specifies whether to apply env variables substitution for annotation values",
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
                         "commonLabels": {
                           "description": "CommonLabels is a list of additional labels to add to rendered manifests",
                           "type": [
@@ -3450,6 +4277,19 @@
                             "null"
                           ],
                           "additionalProperties": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "components": {
+                          "description": "Components specifies a list of kustomize components to add to the kustomization before building",
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
                             "type": [
                               "string",
                               "null"
@@ -3484,6 +4324,13 @@
                             ]
                           }
                         },
+                        "labelWithoutSelector": {
+                          "description": "LabelWithoutSelector specifies whether to apply common labels to resource selectors or not",
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
                         "namePrefix": {
                           "description": "NamePrefix is a prefix appended to resources for Kustomize apps",
                           "type": [
@@ -3497,6 +4344,132 @@
                             "string",
                             "null"
                           ]
+                        },
+                        "namespace": {
+                          "description": "Namespace sets the namespace that Kustomize adds to all resources",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "patches": {
+                          "description": "Patches is a list of Kustomize patches",
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "properties": {
+                              "options": {
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "additionalProperties": {
+                                  "type": [
+                                    "boolean",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "patch": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "path": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "target": {
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "properties": {
+                                  "annotationSelector": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "group": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "kind": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "labelSelector": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "name": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "namespace": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "version": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                },
+                                "additionalProperties": false
+                              }
+                            },
+                            "additionalProperties": false
+                          }
+                        },
+                        "replicas": {
+                          "description": "Replicas is a list of Kustomize Replicas override specifications",
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "required": [
+                              "count",
+                              "name"
+                            ],
+                            "properties": {
+                              "count": {
+                                "description": "Number of replicas",
+                                "x-kubernetes-int-or-string": true
+                              },
+                              "name": {
+                                "description": "Name of Deployment or StatefulSet",
+                                "type": "string"
+                              }
+                            },
+                            "additionalProperties": false
+                          }
                         },
                         "version": {
                           "description": "Version controls which version of Kustomize to use for rendering manifests",
@@ -3627,7 +4600,7 @@
                       "type": "string"
                     },
                     "targetRevision": {
-                      "description": "TargetRevision defines the revision of the source to sync the application to. In case of Git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag for the Chart's version.",
+                      "description": "TargetRevision defines the revision of the source to sync the application to.\nIn case of Git, this can be commit, tag, or branch. If omitted, will equal to HEAD.\nIn case of Helm, this is a semver tag for the Chart's version.",
                       "type": [
                         "string",
                         "null"
@@ -3642,7 +4615,7 @@
           }
         },
         "observedAt": {
-          "description": "ObservedAt indicates when the application state was updated without querying latest git state Deprecated: controller no longer updates ObservedAt field",
+          "description": "ObservedAt indicates when the application state was updated without querying latest git state\nDeprecated: controller no longer updates ObservedAt field",
           "type": [
             "string",
             "null"
@@ -3854,14 +4827,14 @@
                       }
                     },
                     "revision": {
-                      "description": "Revision is the revision (Git) or chart version (Helm) which to sync the application to If omitted, will use the revision specified in app spec.",
+                      "description": "Revision is the revision (Git) or chart version (Helm) which to sync the application to\nIf omitted, will use the revision specified in app spec.",
                       "type": [
                         "string",
                         "null"
                       ]
                     },
                     "revisions": {
-                      "description": "Revisions is the list of revision (Git) or chart version (Helm) which to sync each source in sources field for the application to If omitted, will use the revision specified in app spec.",
+                      "description": "Revisions is the list of revision (Git) or chart version (Helm) which to sync each source in sources field for the application to\nIf omitted, will use the revision specified in app spec.",
                       "type": [
                         "array",
                         "null"
@@ -3874,7 +4847,7 @@
                       }
                     },
                     "source": {
-                      "description": "Source overrides the source definition set in the application. This is typically set in a Rollback operation and is nil during a Sync operation",
+                      "description": "Source overrides the source definition set in the application.\nThis is typically set in a Rollback operation and is nil during a Sync operation",
                       "type": [
                         "object",
                         "null"
@@ -4128,11 +5101,15 @@
                               }
                             },
                             "values": {
-                              "description": "Values specifies Helm values to be passed to helm template, typically defined as a block",
+                              "description": "Values specifies Helm values to be passed to helm template, typically defined as a block. ValuesObject takes precedence over Values, so use one or the other.",
                               "type": [
                                 "string",
                                 "null"
                               ]
+                            },
+                            "valuesObject": {
+                              "description": "ValuesObject specifies Helm values to be passed to helm template, defined as a map. This takes precedence over Values.",
+                              "x-kubernetes-preserve-unknown-fields": true
                             },
                             "version": {
                               "description": "Version is the Helm version to use for templating (\"3\")",
@@ -4164,6 +5141,13 @@
                                 ]
                               }
                             },
+                            "commonAnnotationsEnvsubst": {
+                              "description": "CommonAnnotationsEnvsubst specifies whether to apply env variables substitution for annotation values",
+                              "type": [
+                                "boolean",
+                                "null"
+                              ]
+                            },
                             "commonLabels": {
                               "description": "CommonLabels is a list of additional labels to add to rendered manifests",
                               "type": [
@@ -4171,6 +5155,19 @@
                                 "null"
                               ],
                               "additionalProperties": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            },
+                            "components": {
+                              "description": "Components specifies a list of kustomize components to add to the kustomization before building",
+                              "type": [
+                                "array",
+                                "null"
+                              ],
+                              "items": {
                                 "type": [
                                   "string",
                                   "null"
@@ -4205,6 +5202,13 @@
                                 ]
                               }
                             },
+                            "labelWithoutSelector": {
+                              "description": "LabelWithoutSelector specifies whether to apply common labels to resource selectors or not",
+                              "type": [
+                                "boolean",
+                                "null"
+                              ]
+                            },
                             "namePrefix": {
                               "description": "NamePrefix is a prefix appended to resources for Kustomize apps",
                               "type": [
@@ -4218,6 +5222,132 @@
                                 "string",
                                 "null"
                               ]
+                            },
+                            "namespace": {
+                              "description": "Namespace sets the namespace that Kustomize adds to all resources",
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "patches": {
+                              "description": "Patches is a list of Kustomize patches",
+                              "type": [
+                                "array",
+                                "null"
+                              ],
+                              "items": {
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "properties": {
+                                  "options": {
+                                    "type": [
+                                      "object",
+                                      "null"
+                                    ],
+                                    "additionalProperties": {
+                                      "type": [
+                                        "boolean",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "patch": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "path": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "target": {
+                                    "type": [
+                                      "object",
+                                      "null"
+                                    ],
+                                    "properties": {
+                                      "annotationSelector": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "group": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "kind": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "labelSelector": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "name": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "namespace": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "version": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      }
+                                    },
+                                    "additionalProperties": false
+                                  }
+                                },
+                                "additionalProperties": false
+                              }
+                            },
+                            "replicas": {
+                              "description": "Replicas is a list of Kustomize Replicas override specifications",
+                              "type": [
+                                "array",
+                                "null"
+                              ],
+                              "items": {
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "required": [
+                                  "count",
+                                  "name"
+                                ],
+                                "properties": {
+                                  "count": {
+                                    "description": "Number of replicas",
+                                    "x-kubernetes-int-or-string": true
+                                  },
+                                  "name": {
+                                    "description": "Name of Deployment or StatefulSet",
+                                    "type": "string"
+                                  }
+                                },
+                                "additionalProperties": false
+                              }
                             },
                             "version": {
                               "description": "Version controls which version of Kustomize to use for rendering manifests",
@@ -4348,7 +5478,7 @@
                           "type": "string"
                         },
                         "targetRevision": {
-                          "description": "TargetRevision defines the revision of the source to sync the application to. In case of Git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag for the Chart's version.",
+                          "description": "TargetRevision defines the revision of the source to sync the application to.\nIn case of Git, this can be commit, tag, or branch. If omitted, will equal to HEAD.\nIn case of Helm, this is a semver tag for the Chart's version.",
                           "type": [
                             "string",
                             "null"
@@ -4358,7 +5488,7 @@
                       "additionalProperties": false
                     },
                     "sources": {
-                      "description": "Sources overrides the source definition set in the application. This is typically set in a Rollback operation and is nil during a Sync operation",
+                      "description": "Sources overrides the source definition set in the application.\nThis is typically set in a Rollback operation and is nil during a Sync operation",
                       "type": [
                         "array",
                         "null"
@@ -4618,11 +5748,15 @@
                                 }
                               },
                               "values": {
-                                "description": "Values specifies Helm values to be passed to helm template, typically defined as a block",
+                                "description": "Values specifies Helm values to be passed to helm template, typically defined as a block. ValuesObject takes precedence over Values, so use one or the other.",
                                 "type": [
                                   "string",
                                   "null"
                                 ]
+                              },
+                              "valuesObject": {
+                                "description": "ValuesObject specifies Helm values to be passed to helm template, defined as a map. This takes precedence over Values.",
+                                "x-kubernetes-preserve-unknown-fields": true
                               },
                               "version": {
                                 "description": "Version is the Helm version to use for templating (\"3\")",
@@ -4654,6 +5788,13 @@
                                   ]
                                 }
                               },
+                              "commonAnnotationsEnvsubst": {
+                                "description": "CommonAnnotationsEnvsubst specifies whether to apply env variables substitution for annotation values",
+                                "type": [
+                                  "boolean",
+                                  "null"
+                                ]
+                              },
                               "commonLabels": {
                                 "description": "CommonLabels is a list of additional labels to add to rendered manifests",
                                 "type": [
@@ -4661,6 +5802,19 @@
                                   "null"
                                 ],
                                 "additionalProperties": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "components": {
+                                "description": "Components specifies a list of kustomize components to add to the kustomization before building",
+                                "type": [
+                                  "array",
+                                  "null"
+                                ],
+                                "items": {
                                   "type": [
                                     "string",
                                     "null"
@@ -4695,6 +5849,13 @@
                                   ]
                                 }
                               },
+                              "labelWithoutSelector": {
+                                "description": "LabelWithoutSelector specifies whether to apply common labels to resource selectors or not",
+                                "type": [
+                                  "boolean",
+                                  "null"
+                                ]
+                              },
                               "namePrefix": {
                                 "description": "NamePrefix is a prefix appended to resources for Kustomize apps",
                                 "type": [
@@ -4708,6 +5869,132 @@
                                   "string",
                                   "null"
                                 ]
+                              },
+                              "namespace": {
+                                "description": "Namespace sets the namespace that Kustomize adds to all resources",
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "patches": {
+                                "description": "Patches is a list of Kustomize patches",
+                                "type": [
+                                  "array",
+                                  "null"
+                                ],
+                                "items": {
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "properties": {
+                                    "options": {
+                                      "type": [
+                                        "object",
+                                        "null"
+                                      ],
+                                      "additionalProperties": {
+                                        "type": [
+                                          "boolean",
+                                          "null"
+                                        ]
+                                      }
+                                    },
+                                    "patch": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "path": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "target": {
+                                      "type": [
+                                        "object",
+                                        "null"
+                                      ],
+                                      "properties": {
+                                        "annotationSelector": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        },
+                                        "group": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        },
+                                        "kind": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        },
+                                        "labelSelector": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        },
+                                        "name": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        },
+                                        "namespace": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        },
+                                        "version": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    }
+                                  },
+                                  "additionalProperties": false
+                                }
+                              },
+                              "replicas": {
+                                "description": "Replicas is a list of Kustomize Replicas override specifications",
+                                "type": [
+                                  "array",
+                                  "null"
+                                ],
+                                "items": {
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "required": [
+                                    "count",
+                                    "name"
+                                  ],
+                                  "properties": {
+                                    "count": {
+                                      "description": "Number of replicas",
+                                      "x-kubernetes-int-or-string": true
+                                    },
+                                    "name": {
+                                      "description": "Name of Deployment or StatefulSet",
+                                      "type": "string"
+                                    }
+                                  },
+                                  "additionalProperties": false
+                                }
                               },
                               "version": {
                                 "description": "Version controls which version of Kustomize to use for rendering manifests",
@@ -4838,7 +6125,7 @@
                             "type": "string"
                           },
                           "targetRevision": {
-                            "description": "TargetRevision defines the revision of the source to sync the application to. In case of Git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag for the Chart's version.",
+                            "description": "TargetRevision defines the revision of the source to sync the application to.\nIn case of Git, this can be commit, tag, or branch. If omitted, will equal to HEAD.\nIn case of Helm, this is a semver tag for the Chart's version.",
                             "type": [
                               "string",
                               "null"
@@ -4876,7 +6163,7 @@
                           ],
                           "properties": {
                             "force": {
-                              "description": "Force indicates whether or not to supply the --force flag to `kubectl apply`. The --force flag deletes and re-create the resource, when PATCH encounters conflict and has retried for 5 times.",
+                              "description": "Force indicates whether or not to supply the --force flag to `kubectl apply`.\nThe --force flag deletes and re-create the resource, when PATCH encounters conflict and has\nretried for 5 times.",
                               "type": [
                                 "boolean",
                                 "null"
@@ -4893,7 +6180,7 @@
                           ],
                           "properties": {
                             "force": {
-                              "description": "Force indicates whether or not to supply the --force flag to `kubectl apply`. The --force flag deletes and re-create the resource, when PATCH encounters conflict and has retried for 5 times.",
+                              "description": "Force indicates whether or not to supply the --force flag to `kubectl apply`.\nThe --force flag deletes and re-create the resource, when PATCH encounters conflict and has\nretried for 5 times.",
                               "type": [
                                 "boolean",
                                 "null"
@@ -4938,6 +6225,40 @@
                 "revision"
               ],
               "properties": {
+                "managedNamespaceMetadata": {
+                  "description": "ManagedNamespaceMetadata contains the current sync state of managed namespace metadata",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "annotations": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "additionalProperties": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "labels": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "additionalProperties": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  },
+                  "additionalProperties": false
+                },
                 "resources": {
                   "description": "Resources contains a list of sync result items for each individual resource in a sync operation",
                   "type": [
@@ -4963,7 +6284,7 @@
                         "type": "string"
                       },
                       "hookPhase": {
-                        "description": "HookPhase contains the state of any operation associated with this resource OR hook This can also contain values for non-hook resources.",
+                        "description": "HookPhase contains the state of any operation associated with this resource OR hook\nThis can also contain values for non-hook resources.",
                         "type": [
                           "string",
                           "null"
@@ -5289,11 +6610,15 @@
                           }
                         },
                         "values": {
-                          "description": "Values specifies Helm values to be passed to helm template, typically defined as a block",
+                          "description": "Values specifies Helm values to be passed to helm template, typically defined as a block. ValuesObject takes precedence over Values, so use one or the other.",
                           "type": [
                             "string",
                             "null"
                           ]
+                        },
+                        "valuesObject": {
+                          "description": "ValuesObject specifies Helm values to be passed to helm template, defined as a map. This takes precedence over Values.",
+                          "x-kubernetes-preserve-unknown-fields": true
                         },
                         "version": {
                           "description": "Version is the Helm version to use for templating (\"3\")",
@@ -5325,6 +6650,13 @@
                             ]
                           }
                         },
+                        "commonAnnotationsEnvsubst": {
+                          "description": "CommonAnnotationsEnvsubst specifies whether to apply env variables substitution for annotation values",
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
                         "commonLabels": {
                           "description": "CommonLabels is a list of additional labels to add to rendered manifests",
                           "type": [
@@ -5332,6 +6664,19 @@
                             "null"
                           ],
                           "additionalProperties": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "components": {
+                          "description": "Components specifies a list of kustomize components to add to the kustomization before building",
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
                             "type": [
                               "string",
                               "null"
@@ -5366,6 +6711,13 @@
                             ]
                           }
                         },
+                        "labelWithoutSelector": {
+                          "description": "LabelWithoutSelector specifies whether to apply common labels to resource selectors or not",
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
                         "namePrefix": {
                           "description": "NamePrefix is a prefix appended to resources for Kustomize apps",
                           "type": [
@@ -5379,6 +6731,132 @@
                             "string",
                             "null"
                           ]
+                        },
+                        "namespace": {
+                          "description": "Namespace sets the namespace that Kustomize adds to all resources",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "patches": {
+                          "description": "Patches is a list of Kustomize patches",
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "properties": {
+                              "options": {
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "additionalProperties": {
+                                  "type": [
+                                    "boolean",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "patch": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "path": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "target": {
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "properties": {
+                                  "annotationSelector": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "group": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "kind": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "labelSelector": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "name": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "namespace": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "version": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                },
+                                "additionalProperties": false
+                              }
+                            },
+                            "additionalProperties": false
+                          }
+                        },
+                        "replicas": {
+                          "description": "Replicas is a list of Kustomize Replicas override specifications",
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "required": [
+                              "count",
+                              "name"
+                            ],
+                            "properties": {
+                              "count": {
+                                "description": "Number of replicas",
+                                "x-kubernetes-int-or-string": true
+                              },
+                              "name": {
+                                "description": "Name of Deployment or StatefulSet",
+                                "type": "string"
+                              }
+                            },
+                            "additionalProperties": false
+                          }
                         },
                         "version": {
                           "description": "Version controls which version of Kustomize to use for rendering manifests",
@@ -5509,7 +6987,7 @@
                       "type": "string"
                     },
                     "targetRevision": {
-                      "description": "TargetRevision defines the revision of the source to sync the application to. In case of Git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag for the Chart's version.",
+                      "description": "TargetRevision defines the revision of the source to sync the application to.\nIn case of Git, this can be commit, tag, or branch. If omitted, will equal to HEAD.\nIn case of Helm, this is a semver tag for the Chart's version.",
                       "type": [
                         "string",
                         "null"
@@ -5779,11 +7257,15 @@
                             }
                           },
                           "values": {
-                            "description": "Values specifies Helm values to be passed to helm template, typically defined as a block",
+                            "description": "Values specifies Helm values to be passed to helm template, typically defined as a block. ValuesObject takes precedence over Values, so use one or the other.",
                             "type": [
                               "string",
                               "null"
                             ]
+                          },
+                          "valuesObject": {
+                            "description": "ValuesObject specifies Helm values to be passed to helm template, defined as a map. This takes precedence over Values.",
+                            "x-kubernetes-preserve-unknown-fields": true
                           },
                           "version": {
                             "description": "Version is the Helm version to use for templating (\"3\")",
@@ -5815,6 +7297,13 @@
                               ]
                             }
                           },
+                          "commonAnnotationsEnvsubst": {
+                            "description": "CommonAnnotationsEnvsubst specifies whether to apply env variables substitution for annotation values",
+                            "type": [
+                              "boolean",
+                              "null"
+                            ]
+                          },
                           "commonLabels": {
                             "description": "CommonLabels is a list of additional labels to add to rendered manifests",
                             "type": [
@@ -5822,6 +7311,19 @@
                               "null"
                             ],
                             "additionalProperties": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            }
+                          },
+                          "components": {
+                            "description": "Components specifies a list of kustomize components to add to the kustomization before building",
+                            "type": [
+                              "array",
+                              "null"
+                            ],
+                            "items": {
                               "type": [
                                 "string",
                                 "null"
@@ -5856,6 +7358,13 @@
                               ]
                             }
                           },
+                          "labelWithoutSelector": {
+                            "description": "LabelWithoutSelector specifies whether to apply common labels to resource selectors or not",
+                            "type": [
+                              "boolean",
+                              "null"
+                            ]
+                          },
                           "namePrefix": {
                             "description": "NamePrefix is a prefix appended to resources for Kustomize apps",
                             "type": [
@@ -5869,6 +7378,132 @@
                               "string",
                               "null"
                             ]
+                          },
+                          "namespace": {
+                            "description": "Namespace sets the namespace that Kustomize adds to all resources",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "patches": {
+                            "description": "Patches is a list of Kustomize patches",
+                            "type": [
+                              "array",
+                              "null"
+                            ],
+                            "items": {
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "properties": {
+                                "options": {
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "additionalProperties": {
+                                    "type": [
+                                      "boolean",
+                                      "null"
+                                    ]
+                                  }
+                                },
+                                "patch": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "path": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "target": {
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "properties": {
+                                    "annotationSelector": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "group": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "kind": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "labelSelector": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "name": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "namespace": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "version": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          },
+                          "replicas": {
+                            "description": "Replicas is a list of Kustomize Replicas override specifications",
+                            "type": [
+                              "array",
+                              "null"
+                            ],
+                            "items": {
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "required": [
+                                "count",
+                                "name"
+                              ],
+                              "properties": {
+                                "count": {
+                                  "description": "Number of replicas",
+                                  "x-kubernetes-int-or-string": true
+                                },
+                                "name": {
+                                  "description": "Name of Deployment or StatefulSet",
+                                  "type": "string"
+                                }
+                              },
+                              "additionalProperties": false
+                            }
                           },
                           "version": {
                             "description": "Version controls which version of Kustomize to use for rendering manifests",
@@ -5999,7 +7634,7 @@
                         "type": "string"
                       },
                       "targetRevision": {
-                        "description": "TargetRevision defines the revision of the source to sync the application to. In case of Git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag for the Chart's version.",
+                        "description": "TargetRevision defines the revision of the source to sync the application to.\nIn case of Git, this can be commit, tag, or branch. If omitted, will equal to HEAD.\nIn case of Helm, this is a semver tag for the Chart's version.",
                         "type": [
                           "string",
                           "null"
@@ -6037,7 +7672,7 @@
             "null"
           ],
           "items": {
-            "description": "ResourceStatus holds the current sync and health status of a resource TODO: describe members of this type",
+            "description": "ResourceStatus holds the current sync and health status of a resource\nTODO: describe members of this type",
             "type": [
               "object",
               "null"
@@ -6209,21 +7844,21 @@
                   "type": "object",
                   "properties": {
                     "name": {
-                      "description": "Name is an alternate way of specifying the target cluster by its symbolic name",
+                      "description": "Name is an alternate way of specifying the target cluster by its symbolic name. This must be set if Server is not set.",
                       "type": [
                         "string",
                         "null"
                       ]
                     },
                     "namespace": {
-                      "description": "Namespace specifies the target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace",
+                      "description": "Namespace specifies the target namespace for the application's resources.\nThe namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace",
                       "type": [
                         "string",
                         "null"
                       ]
                     },
                     "server": {
-                      "description": "Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API",
+                      "description": "Server specifies the URL of the target cluster's Kubernetes control plane API. This must be set if Name is not set.",
                       "type": [
                         "string",
                         "null"
@@ -6231,6 +7866,84 @@
                     }
                   },
                   "additionalProperties": false
+                },
+                "ignoreDifferences": {
+                  "description": "IgnoreDifferences is a reference to the application's ignored differences used for comparison",
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "description": "ResourceIgnoreDifferences contains resource filter and list of json paths which should be ignored during comparison with live state.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "required": [
+                      "kind"
+                    ],
+                    "properties": {
+                      "group": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "jqPathExpressions": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "jsonPointers": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "kind": {
+                        "type": "string"
+                      },
+                      "managedFieldsManagers": {
+                        "description": "ManagedFieldsManagers is a list of trusted managers. Fields mutated by those managers will take precedence over the\ndesired state defined in the SCM and won't be displayed in diffs",
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "name": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "namespace": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "additionalProperties": false
+                  }
                 },
                 "source": {
                   "description": "Source is a reference to the application's source used for comparison",
@@ -6487,11 +8200,15 @@
                           }
                         },
                         "values": {
-                          "description": "Values specifies Helm values to be passed to helm template, typically defined as a block",
+                          "description": "Values specifies Helm values to be passed to helm template, typically defined as a block. ValuesObject takes precedence over Values, so use one or the other.",
                           "type": [
                             "string",
                             "null"
                           ]
+                        },
+                        "valuesObject": {
+                          "description": "ValuesObject specifies Helm values to be passed to helm template, defined as a map. This takes precedence over Values.",
+                          "x-kubernetes-preserve-unknown-fields": true
                         },
                         "version": {
                           "description": "Version is the Helm version to use for templating (\"3\")",
@@ -6523,6 +8240,13 @@
                             ]
                           }
                         },
+                        "commonAnnotationsEnvsubst": {
+                          "description": "CommonAnnotationsEnvsubst specifies whether to apply env variables substitution for annotation values",
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
                         "commonLabels": {
                           "description": "CommonLabels is a list of additional labels to add to rendered manifests",
                           "type": [
@@ -6530,6 +8254,19 @@
                             "null"
                           ],
                           "additionalProperties": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "components": {
+                          "description": "Components specifies a list of kustomize components to add to the kustomization before building",
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
                             "type": [
                               "string",
                               "null"
@@ -6564,6 +8301,13 @@
                             ]
                           }
                         },
+                        "labelWithoutSelector": {
+                          "description": "LabelWithoutSelector specifies whether to apply common labels to resource selectors or not",
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
                         "namePrefix": {
                           "description": "NamePrefix is a prefix appended to resources for Kustomize apps",
                           "type": [
@@ -6577,6 +8321,132 @@
                             "string",
                             "null"
                           ]
+                        },
+                        "namespace": {
+                          "description": "Namespace sets the namespace that Kustomize adds to all resources",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "patches": {
+                          "description": "Patches is a list of Kustomize patches",
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "properties": {
+                              "options": {
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "additionalProperties": {
+                                  "type": [
+                                    "boolean",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "patch": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "path": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "target": {
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "properties": {
+                                  "annotationSelector": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "group": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "kind": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "labelSelector": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "name": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "namespace": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "version": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                },
+                                "additionalProperties": false
+                              }
+                            },
+                            "additionalProperties": false
+                          }
+                        },
+                        "replicas": {
+                          "description": "Replicas is a list of Kustomize Replicas override specifications",
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "required": [
+                              "count",
+                              "name"
+                            ],
+                            "properties": {
+                              "count": {
+                                "description": "Number of replicas",
+                                "x-kubernetes-int-or-string": true
+                              },
+                              "name": {
+                                "description": "Name of Deployment or StatefulSet",
+                                "type": "string"
+                              }
+                            },
+                            "additionalProperties": false
+                          }
                         },
                         "version": {
                           "description": "Version controls which version of Kustomize to use for rendering manifests",
@@ -6707,7 +8577,7 @@
                       "type": "string"
                     },
                     "targetRevision": {
-                      "description": "TargetRevision defines the revision of the source to sync the application to. In case of Git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag for the Chart's version.",
+                      "description": "TargetRevision defines the revision of the source to sync the application to.\nIn case of Git, this can be commit, tag, or branch. If omitted, will equal to HEAD.\nIn case of Helm, this is a semver tag for the Chart's version.",
                       "type": [
                         "string",
                         "null"
@@ -6977,11 +8847,15 @@
                             }
                           },
                           "values": {
-                            "description": "Values specifies Helm values to be passed to helm template, typically defined as a block",
+                            "description": "Values specifies Helm values to be passed to helm template, typically defined as a block. ValuesObject takes precedence over Values, so use one or the other.",
                             "type": [
                               "string",
                               "null"
                             ]
+                          },
+                          "valuesObject": {
+                            "description": "ValuesObject specifies Helm values to be passed to helm template, defined as a map. This takes precedence over Values.",
+                            "x-kubernetes-preserve-unknown-fields": true
                           },
                           "version": {
                             "description": "Version is the Helm version to use for templating (\"3\")",
@@ -7013,6 +8887,13 @@
                               ]
                             }
                           },
+                          "commonAnnotationsEnvsubst": {
+                            "description": "CommonAnnotationsEnvsubst specifies whether to apply env variables substitution for annotation values",
+                            "type": [
+                              "boolean",
+                              "null"
+                            ]
+                          },
                           "commonLabels": {
                             "description": "CommonLabels is a list of additional labels to add to rendered manifests",
                             "type": [
@@ -7020,6 +8901,19 @@
                               "null"
                             ],
                             "additionalProperties": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            }
+                          },
+                          "components": {
+                            "description": "Components specifies a list of kustomize components to add to the kustomization before building",
+                            "type": [
+                              "array",
+                              "null"
+                            ],
+                            "items": {
                               "type": [
                                 "string",
                                 "null"
@@ -7054,6 +8948,13 @@
                               ]
                             }
                           },
+                          "labelWithoutSelector": {
+                            "description": "LabelWithoutSelector specifies whether to apply common labels to resource selectors or not",
+                            "type": [
+                              "boolean",
+                              "null"
+                            ]
+                          },
                           "namePrefix": {
                             "description": "NamePrefix is a prefix appended to resources for Kustomize apps",
                             "type": [
@@ -7067,6 +8968,132 @@
                               "string",
                               "null"
                             ]
+                          },
+                          "namespace": {
+                            "description": "Namespace sets the namespace that Kustomize adds to all resources",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "patches": {
+                            "description": "Patches is a list of Kustomize patches",
+                            "type": [
+                              "array",
+                              "null"
+                            ],
+                            "items": {
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "properties": {
+                                "options": {
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "additionalProperties": {
+                                    "type": [
+                                      "boolean",
+                                      "null"
+                                    ]
+                                  }
+                                },
+                                "patch": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "path": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "target": {
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "properties": {
+                                    "annotationSelector": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "group": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "kind": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "labelSelector": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "name": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "namespace": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "version": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          },
+                          "replicas": {
+                            "description": "Replicas is a list of Kustomize Replicas override specifications",
+                            "type": [
+                              "array",
+                              "null"
+                            ],
+                            "items": {
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "required": [
+                                "count",
+                                "name"
+                              ],
+                              "properties": {
+                                "count": {
+                                  "description": "Number of replicas",
+                                  "x-kubernetes-int-or-string": true
+                                },
+                                "name": {
+                                  "description": "Name of Deployment or StatefulSet",
+                                  "type": "string"
+                                }
+                              },
+                              "additionalProperties": false
+                            }
                           },
                           "version": {
                             "description": "Version controls which version of Kustomize to use for rendering manifests",
@@ -7197,7 +9224,7 @@
                         "type": "string"
                       },
                       "targetRevision": {
-                        "description": "TargetRevision defines the revision of the source to sync the application to. In case of Git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag for the Chart's version.",
+                        "description": "TargetRevision defines the revision of the source to sync the application to.\nIn case of Git, this can be commit, tag, or branch. If omitted, will equal to HEAD.\nIn case of Helm, this is a semver tag for the Chart's version.",
                         "type": [
                           "string",
                           "null"

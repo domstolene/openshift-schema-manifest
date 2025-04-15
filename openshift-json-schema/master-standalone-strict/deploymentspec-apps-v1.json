@@ -51,11 +51,11 @@
     },
     "strategy": {
       "description": "The deployment strategy to use to replace existing pods with new ones.",
-      "x-kubernetes-patch-strategy": "retainKeys",
-      "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1.DeploymentStrategy"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1.DeploymentStrategy",
+      "x-kubernetes-patch-strategy": "retainKeys"
     },
     "template": {
-      "description": "Template describes the pods that will be created.",
+      "description": "Template describes the pods that will be created. The only allowed template.spec.restartPolicy value is \"Always\".",
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodTemplateSpec"
     }
   },

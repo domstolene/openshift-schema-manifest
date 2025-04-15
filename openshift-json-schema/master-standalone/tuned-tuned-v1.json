@@ -64,7 +64,8 @@
               },
               "name": {
                 "description": "Name of the Tuned profile to be used in the recommend section.",
-                "type": "string"
+                "type": "string",
+                "minLength": 1
               }
             }
           }
@@ -190,7 +191,8 @@
               },
               "profile": {
                 "description": "Name of the Tuned profile to recommend.",
-                "type": "string"
+                "type": "string",
+                "minLength": 1
               }
             }
           }

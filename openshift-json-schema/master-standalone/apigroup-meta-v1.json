@@ -45,7 +45,8 @@
       ],
       "items": {
         "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ServerAddressByClientCIDR"
-      }
+      },
+      "x-kubernetes-list-type": "atomic"
     },
     "versions": {
       "description": "versions are the versions supported in this group.",
@@ -55,7 +56,8 @@
       ],
       "items": {
         "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.GroupVersionForDiscovery"
-      }
+      },
+      "x-kubernetes-list-type": "atomic"
     }
   },
   "x-kubernetes-group-version-kind": [
