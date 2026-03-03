@@ -1,5 +1,5 @@
 {
-  "description": "PrometheusRule defines recording and alerting rules for a Prometheus instance",
+  "description": "The `PrometheusRule` custom resource definition (CRD) defines [alerting](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/) and [recording](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/) rules to be evaluated by `Prometheus` or `ThanosRuler` objects.\n\n`Prometheus` and `ThanosRuler` objects select `PrometheusRule` objects using label and namespace selectors.",
   "type": "object",
   "required": [
     "spec"
@@ -60,6 +60,19 @@
                 ],
                 "pattern": "^(0|(([0-9]+)y)?(([0-9]+)w)?(([0-9]+)d)?(([0-9]+)h)?(([0-9]+)m)?(([0-9]+)s)?(([0-9]+)ms)?)$"
               },
+              "labels": {
+                "description": "Labels to add or overwrite before storing the result for its rules.\nThe labels defined at the rule level take precedence.\n\nIt requires Prometheus >= 3.0.0.\nThe field is ignored for Thanos Ruler.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "additionalProperties": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
               "limit": {
                 "description": "Limit the number of alerts an alerting rule and series a recording\nrule can produce.\nLimit is supported starting with Prometheus >= 2.31 and Thanos Ruler >= 0.24.",
                 "type": [
@@ -79,6 +92,14 @@
                   "null"
                 ],
                 "pattern": "^(?i)(abort|warn)?$"
+              },
+              "query_offset": {
+                "description": "Defines the offset the rule evaluation timestamp of this particular group by the specified duration into the past.\n\nIt requires Prometheus >= v2.53.0.\nIt is not supported for ThanosRuler.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^(0|(([0-9]+)y)?(([0-9]+)w)?(([0-9]+)d)?(([0-9]+)h)?(([0-9]+)m)?(([0-9]+)s)?(([0-9]+)ms)?)$"
               },
               "rules": {
                 "description": "List of alerting and recording rules.",
@@ -177,5 +198,6 @@
       "version": "v1"
     }
   ],
+  "x-kubernetes-selectable-fields": [],
   "$schema": "http://json-schema.org/schema#"
 }

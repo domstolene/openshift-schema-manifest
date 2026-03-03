@@ -894,5 +894,6 @@
       "version": "v2alpha3"
     }
   ],
+  "x-kubernetes-selectable-fields": [],
   "$schema": "http://json-schema.org/schema#"
 }

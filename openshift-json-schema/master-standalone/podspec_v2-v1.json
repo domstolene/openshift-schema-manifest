@@ -221,7 +221,7 @@
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodResourceClaim"
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodResourceClaim_v2"
       },
       "x-kubernetes-list-map-keys": [
         "name"
@@ -353,7 +353,7 @@
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Volume"
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Volume_v2"
       },
       "x-kubernetes-patch-merge-key": "name",
       "x-kubernetes-patch-strategy": "merge,retainKeys"

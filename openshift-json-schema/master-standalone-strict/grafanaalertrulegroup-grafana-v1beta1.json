@@ -66,6 +66,12 @@
           "type": [
             "string",
             "null"
+          ],
+          "x-kubernetes-validations": [
+            {
+              "message": "Value is immutable",
+              "rule": "self == oldSelf"
+            }
           ]
         },
         "folderUID": {
@@ -73,6 +79,12 @@
           "type": [
             "string",
             "null"
+          ],
+          "x-kubernetes-validations": [
+            {
+              "message": "Value is immutable",
+              "rule": "self == oldSelf"
+            }
           ]
         },
         "instanceSelector": {
@@ -168,6 +180,7 @@
         },
         "rules": {
           "type": "array",
+          "minItems": 1,
           "items": {
             "description": "AlertRule defines a specific rule to be evaluated. It is based on the upstream model with some k8s specific type mappings",
             "type": [
@@ -273,14 +286,21 @@
               },
               "for": {
                 "type": "string",
-                "format": "duration",
-                "pattern": "^([0-9]+(\\.[0-9]+)?(ns|us|\u00b5s|ms|s|m|h))+$"
+                "pattern": "^([0-9]+(\\.[0-9]+)?(s|m|h|d|w))+$"
               },
               "isPaused": {
                 "type": [
                   "boolean",
                   "null"
                 ]
+              },
+              "keepFiringFor": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "duration",
+                "pattern": "^([0-9]+(\\.[0-9]+)?(ns|us|\u00b5s|ms|s|m|h))+$"
               },
               "labels": {
                 "type": [
@@ -293,6 +313,14 @@
                     "null"
                   ]
                 }
+              },
+              "missingSeriesEvalsToResolve": {
+                "description": "The number of missing series evaluations that must occur before the rule is considered to be resolved.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64"
               },
               "noDataState": {
                 "type": "string",
@@ -393,16 +421,31 @@
             },
             "additionalProperties": false
           }
+        },
+        "suspend": {
+          "description": "Suspend pauses synchronizing attempts and tells the operator to ignore changes",
+          "type": [
+            "boolean",
+            "null"
+          ]
         }
       },
       "x-kubernetes-validations": [
         {
-          "message": "Only one of FolderUID or FolderRef can be set",
+          "message": "Only one of FolderUID or FolderRef can be set and one must be defined",
           "rule": "(has(self.folderUID) && !(has(self.folderRef))) || (has(self.folderRef) && !(has(self.folderUID)))"
         },
         {
           "message": "spec.editable is immutable",
           "rule": "((!has(oldSelf.editable) && !has(self.editable)) || (has(oldSelf.editable) && has(self.editable)))"
+        },
+        {
+          "message": "spec.folderUID is immutable",
+          "rule": "((!has(oldSelf.folderUID) && !has(self.folderUID)) || (has(oldSelf.folderUID) && has(self.folderUID)))"
+        },
+        {
+          "message": "spec.folderRef is immutable",
+          "rule": "((!has(oldSelf.folderRef) && !has(self.folderRef)) || (has(oldSelf.folderRef) && has(self.folderRef)))"
         },
         {
           "message": "disabling spec.allowCrossNamespaceImport requires a recreate to ensure desired state",
@@ -502,6 +545,7 @@
       "version": "v1beta1"
     }
   ],
+  "x-kubernetes-selectable-fields": [],
   "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }
