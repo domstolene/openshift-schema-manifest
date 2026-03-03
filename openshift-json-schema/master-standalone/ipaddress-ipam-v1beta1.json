@@ -40,15 +40,15 @@
       ],
       "properties": {
         "address": {
-          "description": "Address is the IP address.",
+          "description": "address is the IP address.",
           "type": "string"
         },
         "claimRef": {
-          "description": "ClaimRef is a reference to the claim this IPAddress was created for.",
+          "description": "claimRef is a reference to the claim this IPAddress was created for.",
           "type": "object",
           "properties": {
             "name": {
-              "description": "Name of the referent.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names\nTODO: Add other useful fields. apiVersion, kind, uid?",
+              "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
               "type": [
                 "string",
                 "null"
@@ -58,14 +58,14 @@
           "x-kubernetes-map-type": "atomic"
         },
         "gateway": {
-          "description": "Gateway is the network gateway of the network the address is from.",
+          "description": "gateway is the network gateway of the network the address is from.",
           "type": [
             "string",
             "null"
           ]
         },
         "poolRef": {
-          "description": "PoolRef is a reference to the pool that this IPAddress was created from.",
+          "description": "poolRef is a reference to the pool that this IPAddress was created from.",
           "type": "object",
           "required": [
             "kind",
@@ -91,7 +91,7 @@
           "x-kubernetes-map-type": "atomic"
         },
         "prefix": {
-          "description": "Prefix is the prefix of the address.",
+          "description": "prefix is the prefix of the address.",
           "type": "integer"
         }
       }
@@ -104,5 +104,6 @@
       "version": "v1beta1"
     }
   ],
+  "x-kubernetes-selectable-fields": [],
   "$schema": "http://json-schema.org/schema#"
 }

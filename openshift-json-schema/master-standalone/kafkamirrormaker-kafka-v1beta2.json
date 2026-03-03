@@ -83,6 +83,13 @@
                     "null"
                   ]
                 },
+                "accessTokenLocation": {
+                  "description": "Path to the token file containing an access token to be used for authentication.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
                 "audience": {
                   "description": "OAuth audience to use when authenticating against the authorization server. Some authorization servers require the audience to be explicitly set. The possible values depend on how the authorization server is configured. By default, `audience` is not specified when performing the token endpoint request.",
                   "type": [
@@ -97,9 +104,9 @@
                     "null"
                   ],
                   "required": [
+                    "secretName",
                     "certificate",
-                    "key",
-                    "secretName"
+                    "key"
                   ],
                   "properties": {
                     "certificate": {
@@ -115,6 +122,41 @@
                       "type": "string"
                     }
                   }
+                },
+                "clientAssertion": {
+                  "description": "Link to Kubernetes secret containing the client assertion which was manually configured for the client.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "key",
+                    "secretName"
+                  ],
+                  "properties": {
+                    "key": {
+                      "description": "The key under which the secret value is stored in the Kubernetes Secret.",
+                      "type": "string"
+                    },
+                    "secretName": {
+                      "description": "The name of the Kubernetes Secret containing the secret value.",
+                      "type": "string"
+                    }
+                  }
+                },
+                "clientAssertionLocation": {
+                  "description": "Path to the file containing the client assertion to be used for authentication.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "clientAssertionType": {
+                  "description": "The client assertion type. If not set, and either `clientAssertion` or `clientAssertionLocation` is configured, this value defaults to `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 },
                 "clientId": {
                   "description": "OAuth Client ID which the Kafka client can use to authenticate against the OAuth server and use the token endpoint URI.",
@@ -179,6 +221,13 @@
                     "null"
                   ]
                 },
+                "includeAcceptHeader": {
+                  "description": "Whether the Accept header should be set in requests to the authorization servers. The default value is `true`.",
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
                 "maxTokenExpirySeconds": {
                   "description": "Set or limit time-to-live of the access tokens to the specified number of seconds. This should be set if the authorization server returns opaque tokens.",
                   "type": [
@@ -193,8 +242,8 @@
                     "null"
                   ],
                   "required": [
-                    "password",
-                    "secretName"
+                    "secretName",
+                    "password"
                   ],
                   "properties": {
                     "password": {
@@ -235,6 +284,19 @@
                     }
                   }
                 },
+                "saslExtensions": {
+                  "description": "SASL extensions parameters.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "additionalProperties": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
                 "scope": {
                   "description": "OAuth scope to use when authenticating against the authorization server. Some authorization servers require this to be set. The possible values depend on how authorization server is configured. By default `scope` is not specified when doing the token endpoint request.",
                   "type": [
@@ -254,13 +316,22 @@
                       "null"
                     ],
                     "required": [
-                      "certificate",
                       "secretName"
                     ],
                     "properties": {
                       "certificate": {
-                        "description": "The name of the file certificate in the Secret.",
-                        "type": "string"
+                        "description": "The name of the file certificate in the secret.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "pattern": {
+                        "description": "Pattern for the certificate files in the secret. Use the link:https://en.wikipedia.org/wiki/Glob_(programming)[_glob syntax_] for the pattern. All files in the secret that match the pattern are used.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
                       },
                       "secretName": {
                         "description": "The name of the Secret containing the certificate.",
@@ -342,13 +413,22 @@
                       "null"
                     ],
                     "required": [
-                      "certificate",
                       "secretName"
                     ],
                     "properties": {
                       "certificate": {
-                        "description": "The name of the file certificate in the Secret.",
-                        "type": "string"
+                        "description": "The name of the file certificate in the secret.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "pattern": {
+                        "description": "Pattern for the certificate files in the secret. Use the link:https://en.wikipedia.org/wiki/Glob_(programming)[_glob syntax_] for the pattern. All files in the secret that match the pattern are used.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
                       },
                       "secretName": {
                         "description": "The name of the Secret containing the certificate.",
@@ -362,7 +442,7 @@
           }
         },
         "image": {
-          "description": "The docker image for the pods.",
+          "description": "The container image used for Kafka MirrorMaker pods. If no image name is explicitly specified, it is determined based on the `spec.version` configuration. The image names are specifically mapped to corresponding versions in the Cluster Operator configuration.",
           "type": [
             "string",
             "null"
@@ -384,7 +464,16 @@
           "properties": {
             "-XX": {
               "description": "A map of -XX options to the JVM.",
-              "x-kubernetes-preserve-unknown-fields": true
+              "type": [
+                "object",
+                "null"
+              ],
+              "additionalProperties": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
             },
             "-Xms": {
               "description": "-Xms option to to the JVM.",
@@ -501,7 +590,16 @@
           "properties": {
             "loggers": {
               "description": "A Map from logger name to logger level.",
-              "x-kubernetes-preserve-unknown-fields": true
+              "type": [
+                "object",
+                "null"
+              ],
+              "additionalProperties": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
             },
             "type": {
               "description": "Logging type, must be either 'inline' or 'external'.",
@@ -568,7 +666,7 @@
               ]
             },
             "valueFrom": {
-              "description": "ConfigMap entry where the Prometheus JMX Exporter configuration is stored. For details of the structure of this configuration, see the {JMXExporter}.",
+              "description": "ConfigMap entry where the Prometheus JMX Exporter configuration is stored. ",
               "type": "object",
               "properties": {
                 "configMapKeyRef": {
@@ -654,6 +752,13 @@
                     "null"
                   ]
                 },
+                "accessTokenLocation": {
+                  "description": "Path to the token file containing an access token to be used for authentication.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
                 "audience": {
                   "description": "OAuth audience to use when authenticating against the authorization server. Some authorization servers require the audience to be explicitly set. The possible values depend on how the authorization server is configured. By default, `audience` is not specified when performing the token endpoint request.",
                   "type": [
@@ -668,9 +773,9 @@
                     "null"
                   ],
                   "required": [
+                    "secretName",
                     "certificate",
-                    "key",
-                    "secretName"
+                    "key"
                   ],
                   "properties": {
                     "certificate": {
@@ -686,6 +791,41 @@
                       "type": "string"
                     }
                   }
+                },
+                "clientAssertion": {
+                  "description": "Link to Kubernetes secret containing the client assertion which was manually configured for the client.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "key",
+                    "secretName"
+                  ],
+                  "properties": {
+                    "key": {
+                      "description": "The key under which the secret value is stored in the Kubernetes Secret.",
+                      "type": "string"
+                    },
+                    "secretName": {
+                      "description": "The name of the Kubernetes Secret containing the secret value.",
+                      "type": "string"
+                    }
+                  }
+                },
+                "clientAssertionLocation": {
+                  "description": "Path to the file containing the client assertion to be used for authentication.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "clientAssertionType": {
+                  "description": "The client assertion type. If not set, and either `clientAssertion` or `clientAssertionLocation` is configured, this value defaults to `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 },
                 "clientId": {
                   "description": "OAuth Client ID which the Kafka client can use to authenticate against the OAuth server and use the token endpoint URI.",
@@ -750,6 +890,13 @@
                     "null"
                   ]
                 },
+                "includeAcceptHeader": {
+                  "description": "Whether the Accept header should be set in requests to the authorization servers. The default value is `true`.",
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
                 "maxTokenExpirySeconds": {
                   "description": "Set or limit time-to-live of the access tokens to the specified number of seconds. This should be set if the authorization server returns opaque tokens.",
                   "type": [
@@ -764,8 +911,8 @@
                     "null"
                   ],
                   "required": [
-                    "password",
-                    "secretName"
+                    "secretName",
+                    "password"
                   ],
                   "properties": {
                     "password": {
@@ -806,6 +953,19 @@
                     }
                   }
                 },
+                "saslExtensions": {
+                  "description": "SASL extensions parameters.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "additionalProperties": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
                 "scope": {
                   "description": "OAuth scope to use when authenticating against the authorization server. Some authorization servers require this to be set. The possible values depend on how authorization server is configured. By default `scope` is not specified when doing the token endpoint request.",
                   "type": [
@@ -825,13 +985,22 @@
                       "null"
                     ],
                     "required": [
-                      "certificate",
                       "secretName"
                     ],
                     "properties": {
                       "certificate": {
-                        "description": "The name of the file certificate in the Secret.",
-                        "type": "string"
+                        "description": "The name of the file certificate in the secret.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "pattern": {
+                        "description": "Pattern for the certificate files in the secret. Use the link:https://en.wikipedia.org/wiki/Glob_(programming)[_glob syntax_] for the pattern. All files in the secret that match the pattern are used.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
                       },
                       "secretName": {
                         "description": "The name of the Secret containing the certificate.",
@@ -894,13 +1063,22 @@
                       "null"
                     ],
                     "required": [
-                      "certificate",
                       "secretName"
                     ],
                     "properties": {
                       "certificate": {
-                        "description": "The name of the file certificate in the Secret.",
-                        "type": "string"
+                        "description": "The name of the file certificate in the secret.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "pattern": {
+                        "description": "Pattern for the certificate files in the secret. Use the link:https://en.wikipedia.org/wiki/Glob_(programming)[_glob syntax_] for the pattern. All files in the secret that match the pattern are used.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
                       },
                       "secretName": {
                         "description": "The name of the Secret containing the certificate.",
@@ -995,10 +1173,24 @@
               }
             },
             "limits": {
-              "x-kubernetes-preserve-unknown-fields": true
+              "type": [
+                "object",
+                "null"
+              ],
+              "additionalProperties": {
+                "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                "x-kubernetes-int-or-string": true
+              }
             },
             "requests": {
-              "x-kubernetes-preserve-unknown-fields": true
+              "type": [
+                "object",
+                "null"
+              ],
+              "additionalProperties": {
+                "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                "x-kubernetes-int-or-string": true
+              }
             }
           }
         },
@@ -1036,11 +1228,29 @@
                   "properties": {
                     "annotations": {
                       "description": "Annotations added to the Kubernetes resource.",
-                      "x-kubernetes-preserve-unknown-fields": true
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "additionalProperties": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
                     },
                     "labels": {
                       "description": "Labels added to the Kubernetes resource.",
-                      "x-kubernetes-preserve-unknown-fields": true
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "additionalProperties": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
                     }
                   }
                 }
@@ -1078,6 +1288,69 @@
                           "string",
                           "null"
                         ]
+                      },
+                      "valueFrom": {
+                        "description": "Reference to the secret or config map property to which the environment variable is set.",
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {
+                          "configMapKeyRef": {
+                            "description": "Reference to a key in a config map.",
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "properties": {
+                              "key": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "name": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "optional": {
+                                "type": [
+                                  "boolean",
+                                  "null"
+                                ]
+                              }
+                            }
+                          },
+                          "secretKeyRef": {
+                            "description": "Reference to a key in a secret.",
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "properties": {
+                              "key": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "name": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "optional": {
+                                "type": [
+                                  "boolean",
+                                  "null"
+                                ]
+                              }
+                            }
+                          }
+                        }
                       }
                     }
                   }
@@ -1094,6 +1367,26 @@
                         "boolean",
                         "null"
                       ]
+                    },
+                    "appArmorProfile": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "localhostProfile": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "type": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
                     },
                     "capabilities": {
                       "type": [
@@ -1245,6 +1538,63 @@
                             "null"
                           ]
                         }
+                      }
+                    }
+                  }
+                },
+                "volumeMounts": {
+                  "description": "Additional volume mounts which should be applied to the container.",
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "mountPath": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "mountPropagation": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "name": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "readOnly": {
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "recursiveReadOnly": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "subPath": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "subPathExpr": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
                       }
                     }
                   }
@@ -1543,8 +1893,41 @@
                                         }
                                       },
                                       "matchLabels": {
-                                        "x-kubernetes-preserve-unknown-fields": true
+                                        "type": [
+                                          "object",
+                                          "null"
+                                        ],
+                                        "additionalProperties": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        }
                                       }
+                                    }
+                                  },
+                                  "matchLabelKeys": {
+                                    "type": [
+                                      "array",
+                                      "null"
+                                    ],
+                                    "items": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "mismatchLabelKeys": {
+                                    "type": [
+                                      "array",
+                                      "null"
+                                    ],
+                                    "items": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
                                     }
                                   },
                                   "namespaceSelector": {
@@ -1592,7 +1975,16 @@
                                         }
                                       },
                                       "matchLabels": {
-                                        "x-kubernetes-preserve-unknown-fields": true
+                                        "type": [
+                                          "object",
+                                          "null"
+                                        ],
+                                        "additionalProperties": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        }
                                       }
                                     }
                                   },
@@ -1681,8 +2073,41 @@
                                     }
                                   },
                                   "matchLabels": {
-                                    "x-kubernetes-preserve-unknown-fields": true
+                                    "type": [
+                                      "object",
+                                      "null"
+                                    ],
+                                    "additionalProperties": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    }
                                   }
+                                }
+                              },
+                              "matchLabelKeys": {
+                                "type": [
+                                  "array",
+                                  "null"
+                                ],
+                                "items": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "mismatchLabelKeys": {
+                                "type": [
+                                  "array",
+                                  "null"
+                                ],
+                                "items": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
                                 }
                               },
                               "namespaceSelector": {
@@ -1730,7 +2155,16 @@
                                     }
                                   },
                                   "matchLabels": {
-                                    "x-kubernetes-preserve-unknown-fields": true
+                                    "type": [
+                                      "object",
+                                      "null"
+                                    ],
+                                    "additionalProperties": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    }
                                   }
                                 }
                               },
@@ -1825,8 +2259,41 @@
                                         }
                                       },
                                       "matchLabels": {
-                                        "x-kubernetes-preserve-unknown-fields": true
+                                        "type": [
+                                          "object",
+                                          "null"
+                                        ],
+                                        "additionalProperties": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        }
                                       }
+                                    }
+                                  },
+                                  "matchLabelKeys": {
+                                    "type": [
+                                      "array",
+                                      "null"
+                                    ],
+                                    "items": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "mismatchLabelKeys": {
+                                    "type": [
+                                      "array",
+                                      "null"
+                                    ],
+                                    "items": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
                                     }
                                   },
                                   "namespaceSelector": {
@@ -1874,7 +2341,16 @@
                                         }
                                       },
                                       "matchLabels": {
-                                        "x-kubernetes-preserve-unknown-fields": true
+                                        "type": [
+                                          "object",
+                                          "null"
+                                        ],
+                                        "additionalProperties": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        }
                                       }
                                     }
                                   },
@@ -1963,8 +2439,41 @@
                                     }
                                   },
                                   "matchLabels": {
-                                    "x-kubernetes-preserve-unknown-fields": true
+                                    "type": [
+                                      "object",
+                                      "null"
+                                    ],
+                                    "additionalProperties": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    }
                                   }
+                                }
+                              },
+                              "matchLabelKeys": {
+                                "type": [
+                                  "array",
+                                  "null"
+                                ],
+                                "items": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "mismatchLabelKeys": {
+                                "type": [
+                                  "array",
+                                  "null"
+                                ],
+                                "items": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
                                 }
                               },
                               "namespaceSelector": {
@@ -2012,7 +2521,16 @@
                                     }
                                   },
                                   "matchLabels": {
-                                    "x-kubernetes-preserve-unknown-fields": true
+                                    "type": [
+                                      "object",
+                                      "null"
+                                    ],
+                                    "additionalProperties": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    }
                                   }
                                 }
                               },
@@ -2111,16 +2629,34 @@
                   "properties": {
                     "annotations": {
                       "description": "Annotations added to the Kubernetes resource.",
-                      "x-kubernetes-preserve-unknown-fields": true
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "additionalProperties": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
                     },
                     "labels": {
                       "description": "Labels added to the Kubernetes resource.",
-                      "x-kubernetes-preserve-unknown-fields": true
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "additionalProperties": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
                     }
                   }
                 },
                 "priorityClassName": {
-                  "description": "The name of the priority class used to assign priority to the pods. For more information about priority classes, see {K8sPriorityClass}.",
+                  "description": "The name of the priority class used to assign priority to the pods. ",
                   "type": [
                     "string",
                     "null"
@@ -2140,6 +2676,26 @@
                     "null"
                   ],
                   "properties": {
+                    "appArmorProfile": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "localhostProfile": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "type": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    },
                     "fsGroup": {
                       "type": [
                         "integer",
@@ -2303,7 +2859,7 @@
                   "minimum": 0
                 },
                 "tmpDirSizeLimit": {
-                  "description": "Defines the total amount (for example `1Gi`) of local storage required for temporary EmptyDir volume (`/tmp`). Default value is `5Mi`.",
+                  "description": "Defines the total amount of pod memory allocated for the temporary `EmptyDir` volume `/tmp`. Specify the allocation in memory units, for example, `100Mi` for 100 mebibytes. Default value is `5Mi`. The `/tmp` volume is backed by pod memory, not disk storage, so avoid setting a high value as it consumes pod memory resources.",
                   "type": [
                     "string",
                     "null"
@@ -2412,7 +2968,16 @@
                             }
                           },
                           "matchLabels": {
-                            "x-kubernetes-preserve-unknown-fields": true
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "additionalProperties": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            }
                           }
                         }
                       },
@@ -2466,6 +3031,255 @@
                       }
                     }
                   }
+                },
+                "volumes": {
+                  "description": "Additional volumes that can be mounted to the pod.",
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "configMap": {
+                        "description": "ConfigMap to use to populate the volume.",
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {
+                          "defaultMode": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ]
+                          },
+                          "items": {
+                            "type": [
+                              "array",
+                              "null"
+                            ],
+                            "items": {
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "properties": {
+                                "key": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "mode": {
+                                  "type": [
+                                    "integer",
+                                    "null"
+                                  ]
+                                },
+                                "path": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                }
+                              }
+                            }
+                          },
+                          "name": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "optional": {
+                            "type": [
+                              "boolean",
+                              "null"
+                            ]
+                          }
+                        }
+                      },
+                      "csi": {
+                        "description": "CSIVolumeSource object to use to populate the volume.",
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {
+                          "driver": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "fsType": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "nodePublishSecretRef": {
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "properties": {
+                              "name": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            }
+                          },
+                          "readOnly": {
+                            "type": [
+                              "boolean",
+                              "null"
+                            ]
+                          },
+                          "volumeAttributes": {
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "additionalProperties": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            }
+                          }
+                        }
+                      },
+                      "emptyDir": {
+                        "description": "EmptyDir to use to populate the volume.",
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {
+                          "medium": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "sizeLimit": {
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "properties": {
+                              "amount": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "format": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "name": {
+                        "description": "Name to use for the volume. Required.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "persistentVolumeClaim": {
+                        "description": "PersistentVolumeClaim object to use to populate the volume.",
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {
+                          "claimName": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "readOnly": {
+                            "type": [
+                              "boolean",
+                              "null"
+                            ]
+                          }
+                        }
+                      },
+                      "secret": {
+                        "description": "Secret to use populate the volume.",
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {
+                          "defaultMode": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ]
+                          },
+                          "items": {
+                            "type": [
+                              "array",
+                              "null"
+                            ],
+                            "items": {
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "properties": {
+                                "key": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "mode": {
+                                  "type": [
+                                    "integer",
+                                    "null"
+                                  ]
+                                },
+                                "path": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                }
+                              }
+                            }
+                          },
+                          "optional": {
+                            "type": [
+                              "boolean",
+                              "null"
+                            ]
+                          },
+                          "secretName": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
                 }
               }
             },
@@ -2493,11 +3307,29 @@
                   "properties": {
                     "annotations": {
                       "description": "Annotations added to the Kubernetes resource.",
-                      "x-kubernetes-preserve-unknown-fields": true
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "additionalProperties": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
                     },
                     "labels": {
                       "description": "Labels added to the Kubernetes resource.",
-                      "x-kubernetes-preserve-unknown-fields": true
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "additionalProperties": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
                     }
                   }
                 }
@@ -2519,11 +3351,29 @@
                   "properties": {
                     "annotations": {
                       "description": "Annotations added to the Kubernetes resource.",
-                      "x-kubernetes-preserve-unknown-fields": true
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "additionalProperties": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
                     },
                     "labels": {
                       "description": "Labels added to the Kubernetes resource.",
-                      "x-kubernetes-preserve-unknown-fields": true
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "additionalProperties": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
                     }
                   }
                 }
@@ -2542,7 +3392,7 @@
           ],
           "properties": {
             "type": {
-              "description": "Type of the tracing used. Currently the only supported types are `jaeger` for OpenTracing (Jaeger) tracing and `opentelemetry` for OpenTelemetry tracing. The OpenTracing (Jaeger) tracing is deprecated.",
+              "description": "Type of the tracing used. Currently the only supported type is `opentelemetry` for OpenTelemetry tracing. As of Strimzi 0.37.0, `jaeger` type is not supported anymore and this option is ignored.",
               "type": "string",
               "enum": [
                 "jaeger",
@@ -2552,7 +3402,7 @@
           }
         },
         "version": {
-          "description": "The Kafka MirrorMaker version. Defaults to {DefaultKafkaVersion}. Consult the documentation to understand the process required to upgrade or downgrade the version.",
+          "description": "The Kafka MirrorMaker version. Defaults to the latest version. Consult the documentation to understand the process required to upgrade or downgrade the version.",
           "type": [
             "string",
             "null"
@@ -2655,5 +3505,6 @@
       "version": "v1beta2"
     }
   ],
+  "x-kubernetes-selectable-fields": [],
   "$schema": "http://json-schema.org/schema#"
 }

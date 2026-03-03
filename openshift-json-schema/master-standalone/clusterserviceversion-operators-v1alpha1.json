@@ -68,7 +68,10 @@
               ],
               "items": {
                 "description": "APIServiceDescription provides details to OLM about apis provided via aggregation",
-                "type": "object",
+                "type": [
+                  "object",
+                  "null"
+                ],
                 "required": [
                   "group",
                   "kind",
@@ -314,7 +317,10 @@
               ],
               "items": {
                 "description": "APIServiceDescription provides details to OLM about apis provided via aggregation",
-                "type": "object",
+                "type": [
+                  "object",
+                  "null"
+                ],
                 "required": [
                   "group",
                   "kind",
@@ -571,7 +577,7 @@
           }
         },
         "customresourcedefinitions": {
-          "description": "CustomResourceDefinitions declares all of the CRDs managed or required by\nan operator being ran by ClusterServiceVersion.\n\n\nIf the CRD is present in the Owned list, it is implicitly required.",
+          "description": "CustomResourceDefinitions declares all of the CRDs managed or required by\nan operator being ran by ClusterServiceVersion.\n\nIf the CRD is present in the Owned list, it is implicitly required.",
           "type": [
             "object",
             "null"
@@ -584,7 +590,10 @@
               ],
               "items": {
                 "description": "CRDDescription provides details to OLM about the CRDs",
-                "type": "object",
+                "type": [
+                  "object",
+                  "null"
+                ],
                 "required": [
                   "kind",
                   "name",
@@ -813,7 +822,10 @@
               ],
               "items": {
                 "description": "CRDDescription provides details to OLM about the CRDs",
-                "type": "object",
+                "type": [
+                  "object",
+                  "null"
+                ],
                 "required": [
                   "kind",
                   "name",
@@ -1341,7 +1353,7 @@
                             ],
                             "properties": {
                               "rollingUpdate": {
-                                "description": "Rolling update config params. Present only if DeploymentStrategyType =\nRollingUpdate.\n---\nTODO: Update this to follow our convention for oneOf, whatever we decide it\nto be.",
+                                "description": "Rolling update config params. Present only if DeploymentStrategyType =\nRollingUpdate.",
                                 "type": [
                                   "object",
                                   "null"
@@ -1739,7 +1751,7 @@
                                                       "x-kubernetes-map-type": "atomic"
                                                     },
                                                     "matchLabelKeys": {
-                                                      "description": "MatchLabelKeys is a set of pod label keys to select which pods will\nbe taken into consideration. The keys are used to lookup values from the\nincoming pod labels, those key-value labels are merged with `labelSelector` as `key in (value)`\nto select the group of existing pods which pods will be taken into consideration\nfor the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming\npod labels will be ignored. The default value is empty.\nThe same key is forbidden to exist in both matchLabelKeys and labelSelector.\nAlso, matchLabelKeys cannot be set when labelSelector isn't set.\nThis is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.",
+                                                      "description": "MatchLabelKeys is a set of pod label keys to select which pods will\nbe taken into consideration. The keys are used to lookup values from the\nincoming pod labels, those key-value labels are merged with `labelSelector` as `key in (value)`\nto select the group of existing pods which pods will be taken into consideration\nfor the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming\npod labels will be ignored. The default value is empty.\nThe same key is forbidden to exist in both matchLabelKeys and labelSelector.\nAlso, matchLabelKeys cannot be set when labelSelector isn't set.\nThis is a beta field and requires enabling MatchLabelKeysInPodAffinity feature gate (enabled by default).",
                                                       "type": [
                                                         "array",
                                                         "null"
@@ -1753,7 +1765,7 @@
                                                       "x-kubernetes-list-type": "atomic"
                                                     },
                                                     "mismatchLabelKeys": {
-                                                      "description": "MismatchLabelKeys is a set of pod label keys to select which pods will\nbe taken into consideration. The keys are used to lookup values from the\nincoming pod labels, those key-value labels are merged with `labelSelector` as `key notin (value)`\nto select the group of existing pods which pods will be taken into consideration\nfor the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming\npod labels will be ignored. The default value is empty.\nThe same key is forbidden to exist in both mismatchLabelKeys and labelSelector.\nAlso, mismatchLabelKeys cannot be set when labelSelector isn't set.\nThis is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.",
+                                                      "description": "MismatchLabelKeys is a set of pod label keys to select which pods will\nbe taken into consideration. The keys are used to lookup values from the\nincoming pod labels, those key-value labels are merged with `labelSelector` as `key notin (value)`\nto select the group of existing pods which pods will be taken into consideration\nfor the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming\npod labels will be ignored. The default value is empty.\nThe same key is forbidden to exist in both mismatchLabelKeys and labelSelector.\nAlso, mismatchLabelKeys cannot be set when labelSelector isn't set.\nThis is a beta field and requires enabling MatchLabelKeysInPodAffinity feature gate (enabled by default).",
                                                       "type": [
                                                         "array",
                                                         "null"
@@ -1944,7 +1956,7 @@
                                                   "x-kubernetes-map-type": "atomic"
                                                 },
                                                 "matchLabelKeys": {
-                                                  "description": "MatchLabelKeys is a set of pod label keys to select which pods will\nbe taken into consideration. The keys are used to lookup values from the\nincoming pod labels, those key-value labels are merged with `labelSelector` as `key in (value)`\nto select the group of existing pods which pods will be taken into consideration\nfor the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming\npod labels will be ignored. The default value is empty.\nThe same key is forbidden to exist in both matchLabelKeys and labelSelector.\nAlso, matchLabelKeys cannot be set when labelSelector isn't set.\nThis is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.",
+                                                  "description": "MatchLabelKeys is a set of pod label keys to select which pods will\nbe taken into consideration. The keys are used to lookup values from the\nincoming pod labels, those key-value labels are merged with `labelSelector` as `key in (value)`\nto select the group of existing pods which pods will be taken into consideration\nfor the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming\npod labels will be ignored. The default value is empty.\nThe same key is forbidden to exist in both matchLabelKeys and labelSelector.\nAlso, matchLabelKeys cannot be set when labelSelector isn't set.\nThis is a beta field and requires enabling MatchLabelKeysInPodAffinity feature gate (enabled by default).",
                                                   "type": [
                                                     "array",
                                                     "null"
@@ -1958,7 +1970,7 @@
                                                   "x-kubernetes-list-type": "atomic"
                                                 },
                                                 "mismatchLabelKeys": {
-                                                  "description": "MismatchLabelKeys is a set of pod label keys to select which pods will\nbe taken into consideration. The keys are used to lookup values from the\nincoming pod labels, those key-value labels are merged with `labelSelector` as `key notin (value)`\nto select the group of existing pods which pods will be taken into consideration\nfor the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming\npod labels will be ignored. The default value is empty.\nThe same key is forbidden to exist in both mismatchLabelKeys and labelSelector.\nAlso, mismatchLabelKeys cannot be set when labelSelector isn't set.\nThis is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.",
+                                                  "description": "MismatchLabelKeys is a set of pod label keys to select which pods will\nbe taken into consideration. The keys are used to lookup values from the\nincoming pod labels, those key-value labels are merged with `labelSelector` as `key notin (value)`\nto select the group of existing pods which pods will be taken into consideration\nfor the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming\npod labels will be ignored. The default value is empty.\nThe same key is forbidden to exist in both mismatchLabelKeys and labelSelector.\nAlso, mismatchLabelKeys cannot be set when labelSelector isn't set.\nThis is a beta field and requires enabling MatchLabelKeysInPodAffinity feature gate (enabled by default).",
                                                   "type": [
                                                     "array",
                                                     "null"
@@ -2159,7 +2171,7 @@
                                                       "x-kubernetes-map-type": "atomic"
                                                     },
                                                     "matchLabelKeys": {
-                                                      "description": "MatchLabelKeys is a set of pod label keys to select which pods will\nbe taken into consideration. The keys are used to lookup values from the\nincoming pod labels, those key-value labels are merged with `labelSelector` as `key in (value)`\nto select the group of existing pods which pods will be taken into consideration\nfor the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming\npod labels will be ignored. The default value is empty.\nThe same key is forbidden to exist in both matchLabelKeys and labelSelector.\nAlso, matchLabelKeys cannot be set when labelSelector isn't set.\nThis is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.",
+                                                      "description": "MatchLabelKeys is a set of pod label keys to select which pods will\nbe taken into consideration. The keys are used to lookup values from the\nincoming pod labels, those key-value labels are merged with `labelSelector` as `key in (value)`\nto select the group of existing pods which pods will be taken into consideration\nfor the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming\npod labels will be ignored. The default value is empty.\nThe same key is forbidden to exist in both matchLabelKeys and labelSelector.\nAlso, matchLabelKeys cannot be set when labelSelector isn't set.\nThis is a beta field and requires enabling MatchLabelKeysInPodAffinity feature gate (enabled by default).",
                                                       "type": [
                                                         "array",
                                                         "null"
@@ -2173,7 +2185,7 @@
                                                       "x-kubernetes-list-type": "atomic"
                                                     },
                                                     "mismatchLabelKeys": {
-                                                      "description": "MismatchLabelKeys is a set of pod label keys to select which pods will\nbe taken into consideration. The keys are used to lookup values from the\nincoming pod labels, those key-value labels are merged with `labelSelector` as `key notin (value)`\nto select the group of existing pods which pods will be taken into consideration\nfor the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming\npod labels will be ignored. The default value is empty.\nThe same key is forbidden to exist in both mismatchLabelKeys and labelSelector.\nAlso, mismatchLabelKeys cannot be set when labelSelector isn't set.\nThis is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.",
+                                                      "description": "MismatchLabelKeys is a set of pod label keys to select which pods will\nbe taken into consideration. The keys are used to lookup values from the\nincoming pod labels, those key-value labels are merged with `labelSelector` as `key notin (value)`\nto select the group of existing pods which pods will be taken into consideration\nfor the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming\npod labels will be ignored. The default value is empty.\nThe same key is forbidden to exist in both mismatchLabelKeys and labelSelector.\nAlso, mismatchLabelKeys cannot be set when labelSelector isn't set.\nThis is a beta field and requires enabling MatchLabelKeysInPodAffinity feature gate (enabled by default).",
                                                       "type": [
                                                         "array",
                                                         "null"
@@ -2364,7 +2376,7 @@
                                                   "x-kubernetes-map-type": "atomic"
                                                 },
                                                 "matchLabelKeys": {
-                                                  "description": "MatchLabelKeys is a set of pod label keys to select which pods will\nbe taken into consideration. The keys are used to lookup values from the\nincoming pod labels, those key-value labels are merged with `labelSelector` as `key in (value)`\nto select the group of existing pods which pods will be taken into consideration\nfor the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming\npod labels will be ignored. The default value is empty.\nThe same key is forbidden to exist in both matchLabelKeys and labelSelector.\nAlso, matchLabelKeys cannot be set when labelSelector isn't set.\nThis is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.",
+                                                  "description": "MatchLabelKeys is a set of pod label keys to select which pods will\nbe taken into consideration. The keys are used to lookup values from the\nincoming pod labels, those key-value labels are merged with `labelSelector` as `key in (value)`\nto select the group of existing pods which pods will be taken into consideration\nfor the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming\npod labels will be ignored. The default value is empty.\nThe same key is forbidden to exist in both matchLabelKeys and labelSelector.\nAlso, matchLabelKeys cannot be set when labelSelector isn't set.\nThis is a beta field and requires enabling MatchLabelKeysInPodAffinity feature gate (enabled by default).",
                                                   "type": [
                                                     "array",
                                                     "null"
@@ -2378,7 +2390,7 @@
                                                   "x-kubernetes-list-type": "atomic"
                                                 },
                                                 "mismatchLabelKeys": {
-                                                  "description": "MismatchLabelKeys is a set of pod label keys to select which pods will\nbe taken into consideration. The keys are used to lookup values from the\nincoming pod labels, those key-value labels are merged with `labelSelector` as `key notin (value)`\nto select the group of existing pods which pods will be taken into consideration\nfor the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming\npod labels will be ignored. The default value is empty.\nThe same key is forbidden to exist in both mismatchLabelKeys and labelSelector.\nAlso, mismatchLabelKeys cannot be set when labelSelector isn't set.\nThis is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.",
+                                                  "description": "MismatchLabelKeys is a set of pod label keys to select which pods will\nbe taken into consideration. The keys are used to lookup values from the\nincoming pod labels, those key-value labels are merged with `labelSelector` as `key notin (value)`\nto select the group of existing pods which pods will be taken into consideration\nfor the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming\npod labels will be ignored. The default value is empty.\nThe same key is forbidden to exist in both mismatchLabelKeys and labelSelector.\nAlso, mismatchLabelKeys cannot be set when labelSelector isn't set.\nThis is a beta field and requires enabling MatchLabelKeysInPodAffinity feature gate (enabled by default).",
                                                   "type": [
                                                     "array",
                                                     "null"
@@ -2580,7 +2592,7 @@
                                                         "type": "string"
                                                       },
                                                       "name": {
-                                                        "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nTODO: Add other useful fields. apiVersion, kind, uid?\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names\nTODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.",
+                                                        "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                                         "type": [
                                                           "string",
                                                           "null"
@@ -2664,7 +2676,7 @@
                                                         "type": "string"
                                                       },
                                                       "name": {
-                                                        "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nTODO: Add other useful fields. apiVersion, kind, uid?\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names\nTODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.",
+                                                        "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                                         "type": [
                                                           "string",
                                                           "null"
@@ -2710,7 +2722,7 @@
                                                 ],
                                                 "properties": {
                                                   "name": {
-                                                    "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nTODO: Add other useful fields. apiVersion, kind, uid?\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names\nTODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.",
+                                                    "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                                     "type": [
                                                       "string",
                                                       "null"
@@ -2741,7 +2753,7 @@
                                                 ],
                                                 "properties": {
                                                   "name": {
-                                                    "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nTODO: Add other useful fields. apiVersion, kind, uid?\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names\nTODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.",
+                                                    "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                                     "type": [
                                                       "string",
                                                       "null"
@@ -2790,7 +2802,7 @@
                                               ],
                                               "properties": {
                                                 "exec": {
-                                                  "description": "Exec specifies the action to take.",
+                                                  "description": "Exec specifies a command to execute in the container.",
                                                   "type": [
                                                     "object",
                                                     "null"
@@ -2813,7 +2825,7 @@
                                                   }
                                                 },
                                                 "httpGet": {
-                                                  "description": "HTTPGet specifies the http request to perform.",
+                                                  "description": "HTTPGet specifies an HTTP GET request to perform.",
                                                   "type": [
                                                     "object",
                                                     "null"
@@ -2879,7 +2891,7 @@
                                                   }
                                                 },
                                                 "sleep": {
-                                                  "description": "Sleep represents the duration that the container should sleep before being terminated.",
+                                                  "description": "Sleep represents a duration that the container should sleep.",
                                                   "type": [
                                                     "object",
                                                     "null"
@@ -2896,7 +2908,7 @@
                                                   }
                                                 },
                                                 "tcpSocket": {
-                                                  "description": "Deprecated. TCPSocket is NOT supported as a LifecycleHandler and kept\nfor the backward compatibility. There are no validation of this field and\nlifecycle hooks will fail in runtime when tcp handler is specified.",
+                                                  "description": "Deprecated. TCPSocket is NOT supported as a LifecycleHandler and kept\nfor backward compatibility. There is no validation of this field and\nlifecycle hooks will fail at runtime when it is specified.",
                                                   "type": [
                                                     "object",
                                                     "null"
@@ -2928,7 +2940,7 @@
                                               ],
                                               "properties": {
                                                 "exec": {
-                                                  "description": "Exec specifies the action to take.",
+                                                  "description": "Exec specifies a command to execute in the container.",
                                                   "type": [
                                                     "object",
                                                     "null"
@@ -2951,7 +2963,7 @@
                                                   }
                                                 },
                                                 "httpGet": {
-                                                  "description": "HTTPGet specifies the http request to perform.",
+                                                  "description": "HTTPGet specifies an HTTP GET request to perform.",
                                                   "type": [
                                                     "object",
                                                     "null"
@@ -3017,7 +3029,7 @@
                                                   }
                                                 },
                                                 "sleep": {
-                                                  "description": "Sleep represents the duration that the container should sleep before being terminated.",
+                                                  "description": "Sleep represents a duration that the container should sleep.",
                                                   "type": [
                                                     "object",
                                                     "null"
@@ -3034,7 +3046,7 @@
                                                   }
                                                 },
                                                 "tcpSocket": {
-                                                  "description": "Deprecated. TCPSocket is NOT supported as a LifecycleHandler and kept\nfor the backward compatibility. There are no validation of this field and\nlifecycle hooks will fail in runtime when tcp handler is specified.",
+                                                  "description": "Deprecated. TCPSocket is NOT supported as a LifecycleHandler and kept\nfor backward compatibility. There is no validation of this field and\nlifecycle hooks will fail at runtime when it is specified.",
                                                   "type": [
                                                     "object",
                                                     "null"
@@ -3068,7 +3080,7 @@
                                           ],
                                           "properties": {
                                             "exec": {
-                                              "description": "Exec specifies the action to take.",
+                                              "description": "Exec specifies a command to execute in the container.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -3099,7 +3111,7 @@
                                               "format": "int32"
                                             },
                                             "grpc": {
-                                              "description": "GRPC specifies an action involving a GRPC port.",
+                                              "description": "GRPC specifies a GRPC HealthCheckRequest.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -3114,7 +3126,7 @@
                                                   "format": "int32"
                                                 },
                                                 "service": {
-                                                  "description": "Service is the name of the service to place in the gRPC HealthCheckRequest\n(see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).\n\n\nIf this is not specified, the default behavior is defined by gRPC.",
+                                                  "description": "Service is the name of the service to place in the gRPC HealthCheckRequest\n(see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).\n\nIf this is not specified, the default behavior is defined by gRPC.",
                                                   "type": [
                                                     "string",
                                                     "null"
@@ -3123,7 +3135,7 @@
                                               }
                                             },
                                             "httpGet": {
-                                              "description": "HTTPGet specifies the http request to perform.",
+                                              "description": "HTTPGet specifies an HTTP GET request to perform.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -3213,7 +3225,7 @@
                                               "format": "int32"
                                             },
                                             "tcpSocket": {
-                                              "description": "TCPSocket specifies an action involving a TCP port.",
+                                              "description": "TCPSocket specifies a connection to a TCP port.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -3323,7 +3335,7 @@
                                           ],
                                           "properties": {
                                             "exec": {
-                                              "description": "Exec specifies the action to take.",
+                                              "description": "Exec specifies a command to execute in the container.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -3354,7 +3366,7 @@
                                               "format": "int32"
                                             },
                                             "grpc": {
-                                              "description": "GRPC specifies an action involving a GRPC port.",
+                                              "description": "GRPC specifies a GRPC HealthCheckRequest.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -3369,7 +3381,7 @@
                                                   "format": "int32"
                                                 },
                                                 "service": {
-                                                  "description": "Service is the name of the service to place in the gRPC HealthCheckRequest\n(see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).\n\n\nIf this is not specified, the default behavior is defined by gRPC.",
+                                                  "description": "Service is the name of the service to place in the gRPC HealthCheckRequest\n(see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).\n\nIf this is not specified, the default behavior is defined by gRPC.",
                                                   "type": [
                                                     "string",
                                                     "null"
@@ -3378,7 +3390,7 @@
                                               }
                                             },
                                             "httpGet": {
-                                              "description": "HTTPGet specifies the http request to perform.",
+                                              "description": "HTTPGet specifies an HTTP GET request to perform.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -3468,7 +3480,7 @@
                                               "format": "int32"
                                             },
                                             "tcpSocket": {
-                                              "description": "TCPSocket specifies an action involving a TCP port.",
+                                              "description": "TCPSocket specifies a connection to a TCP port.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -3545,7 +3557,7 @@
                                           ],
                                           "properties": {
                                             "claims": {
-                                              "description": "Claims lists the names of resources, defined in spec.resourceClaims,\nthat are used by this container.\n\n\nThis is an alpha field and requires enabling the\nDynamicResourceAllocation feature gate.\n\n\nThis field is immutable. It can only be set for containers.",
+                                              "description": "Claims lists the names of resources, defined in spec.resourceClaims,\nthat are used by this container.\n\nThis is an alpha field and requires enabling the\nDynamicResourceAllocation feature gate.\n\nThis field is immutable. It can only be set for containers.",
                                               "type": [
                                                 "array",
                                                 "null"
@@ -3563,6 +3575,13 @@
                                                   "name": {
                                                     "description": "Name must match the name of one entry in pod.spec.resourceClaims of\nthe Pod where this field is used. It makes that resource available\ninside a container.",
                                                     "type": "string"
+                                                  },
+                                                  "request": {
+                                                    "description": "Request is the name chosen for a request in the referenced claim.\nIf empty, everything from the claim is made available, otherwise\nonly the result of this request.",
+                                                    "type": [
+                                                      "string",
+                                                      "null"
+                                                    ]
                                                   }
                                                 }
                                               },
@@ -3686,7 +3705,7 @@
                                               ]
                                             },
                                             "procMount": {
-                                              "description": "procMount denotes the type of proc mount to use for the containers.\nThe default is DefaultProcMount which uses the container runtime defaults for\nreadonly paths and masked paths.\nThis requires the ProcMountType feature flag to be enabled.\nNote that this field cannot be set when spec.os.name is windows.",
+                                              "description": "procMount denotes the type of proc mount to use for the containers.\nThe default value is Default which uses the container runtime defaults for\nreadonly paths and masked paths.\nThis requires the ProcMountType feature flag to be enabled.\nNote that this field cannot be set when spec.os.name is windows.",
                                               "type": [
                                                 "string",
                                                 "null"
@@ -3777,7 +3796,7 @@
                                                   ]
                                                 },
                                                 "type": {
-                                                  "description": "type indicates which kind of seccomp profile will be applied.\nValid options are:\n\n\nLocalhost - a profile defined in a file on the node should be used.\nRuntimeDefault - the container runtime default profile should be used.\nUnconfined - no profile should be applied.",
+                                                  "description": "type indicates which kind of seccomp profile will be applied.\nValid options are:\n\nLocalhost - a profile defined in a file on the node should be used.\nRuntimeDefault - the container runtime default profile should be used.\nUnconfined - no profile should be applied.",
                                                   "type": "string"
                                                 }
                                               }
@@ -3829,7 +3848,7 @@
                                           ],
                                           "properties": {
                                             "exec": {
-                                              "description": "Exec specifies the action to take.",
+                                              "description": "Exec specifies a command to execute in the container.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -3860,7 +3879,7 @@
                                               "format": "int32"
                                             },
                                             "grpc": {
-                                              "description": "GRPC specifies an action involving a GRPC port.",
+                                              "description": "GRPC specifies a GRPC HealthCheckRequest.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -3875,7 +3894,7 @@
                                                   "format": "int32"
                                                 },
                                                 "service": {
-                                                  "description": "Service is the name of the service to place in the gRPC HealthCheckRequest\n(see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).\n\n\nIf this is not specified, the default behavior is defined by gRPC.",
+                                                  "description": "Service is the name of the service to place in the gRPC HealthCheckRequest\n(see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).\n\nIf this is not specified, the default behavior is defined by gRPC.",
                                                   "type": [
                                                     "string",
                                                     "null"
@@ -3884,7 +3903,7 @@
                                               }
                                             },
                                             "httpGet": {
-                                              "description": "HTTPGet specifies the http request to perform.",
+                                              "description": "HTTPGet specifies an HTTP GET request to perform.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -3974,7 +3993,7 @@
                                               "format": "int32"
                                             },
                                             "tcpSocket": {
-                                              "description": "TCPSocket specifies an action involving a TCP port.",
+                                              "description": "TCPSocket specifies a connection to a TCP port.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -4121,7 +4140,7 @@
                                                 ]
                                               },
                                               "recursiveReadOnly": {
-                                                "description": "RecursiveReadOnly specifies whether read-only mounts should be handled\nrecursively.\n\n\nIf ReadOnly is false, this field has no meaning and must be unspecified.\n\n\nIf ReadOnly is true, and this field is set to Disabled, the mount is not made\nrecursively read-only.  If this field is set to IfPossible, the mount is made\nrecursively read-only, if it is supported by the container runtime.  If this\nfield is set to Enabled, the mount is made recursively read-only if it is\nsupported by the container runtime, otherwise the pod will not be started and\nan error will be generated to indicate the reason.\n\n\nIf this field is set to IfPossible or Enabled, MountPropagation must be set to\nNone (or be unspecified, which defaults to None).\n\n\nIf this field is not specified, it is treated as an equivalent of Disabled.",
+                                                "description": "RecursiveReadOnly specifies whether read-only mounts should be handled\nrecursively.\n\nIf ReadOnly is false, this field has no meaning and must be unspecified.\n\nIf ReadOnly is true, and this field is set to Disabled, the mount is not made\nrecursively read-only.  If this field is set to IfPossible, the mount is made\nrecursively read-only, if it is supported by the container runtime.  If this\nfield is set to Enabled, the mount is made recursively read-only if it is\nsupported by the container runtime, otherwise the pod will not be started and\nan error will be generated to indicate the reason.\n\nIf this field is set to IfPossible or Enabled, MountPropagation must be set to\nNone (or be unspecified, which defaults to None).\n\nIf this field is not specified, it is treated as an equivalent of Disabled.",
                                                 "type": [
                                                   "string",
                                                   "null"
@@ -4197,13 +4216,14 @@
                                           ],
                                           "properties": {
                                             "name": {
-                                              "description": "Required.",
+                                              "description": "Name is this DNS resolver option's name.\nRequired.",
                                               "type": [
                                                 "string",
                                                 "null"
                                               ]
                                             },
                                             "value": {
+                                              "description": "Value is this DNS resolver option's value.",
                                               "type": [
                                                 "string",
                                                 "null"
@@ -4250,7 +4270,7 @@
                                       "null"
                                     ],
                                     "items": {
-                                      "description": "An EphemeralContainer is a temporary container that you may add to an existing Pod for\nuser-initiated activities such as debugging. Ephemeral containers have no resource or\nscheduling guarantees, and they will not be restarted when they exit or when a Pod is\nremoved or restarted. The kubelet may evict a Pod if an ephemeral container causes the\nPod to exceed its resource allocation.\n\n\nTo add an ephemeral container, use the ephemeralcontainers subresource of an existing\nPod. Ephemeral containers may not be removed or restarted.",
+                                      "description": "An EphemeralContainer is a temporary container that you may add to an existing Pod for\nuser-initiated activities such as debugging. Ephemeral containers have no resource or\nscheduling guarantees, and they will not be restarted when they exit or when a Pod is\nremoved or restarted. The kubelet may evict a Pod if an ephemeral container causes the\nPod to exceed its resource allocation.\n\nTo add an ephemeral container, use the ephemeralcontainers subresource of an existing\nPod. Ephemeral containers may not be removed or restarted.",
                                       "type": [
                                         "object",
                                         "null"
@@ -4336,7 +4356,7 @@
                                                         "type": "string"
                                                       },
                                                       "name": {
-                                                        "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nTODO: Add other useful fields. apiVersion, kind, uid?\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names\nTODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.",
+                                                        "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                                         "type": [
                                                           "string",
                                                           "null"
@@ -4420,7 +4440,7 @@
                                                         "type": "string"
                                                       },
                                                       "name": {
-                                                        "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nTODO: Add other useful fields. apiVersion, kind, uid?\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names\nTODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.",
+                                                        "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                                         "type": [
                                                           "string",
                                                           "null"
@@ -4466,7 +4486,7 @@
                                                 ],
                                                 "properties": {
                                                   "name": {
-                                                    "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nTODO: Add other useful fields. apiVersion, kind, uid?\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names\nTODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.",
+                                                    "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                                     "type": [
                                                       "string",
                                                       "null"
@@ -4497,7 +4517,7 @@
                                                 ],
                                                 "properties": {
                                                   "name": {
-                                                    "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nTODO: Add other useful fields. apiVersion, kind, uid?\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names\nTODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.",
+                                                    "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                                     "type": [
                                                       "string",
                                                       "null"
@@ -4546,7 +4566,7 @@
                                               ],
                                               "properties": {
                                                 "exec": {
-                                                  "description": "Exec specifies the action to take.",
+                                                  "description": "Exec specifies a command to execute in the container.",
                                                   "type": [
                                                     "object",
                                                     "null"
@@ -4569,7 +4589,7 @@
                                                   }
                                                 },
                                                 "httpGet": {
-                                                  "description": "HTTPGet specifies the http request to perform.",
+                                                  "description": "HTTPGet specifies an HTTP GET request to perform.",
                                                   "type": [
                                                     "object",
                                                     "null"
@@ -4635,7 +4655,7 @@
                                                   }
                                                 },
                                                 "sleep": {
-                                                  "description": "Sleep represents the duration that the container should sleep before being terminated.",
+                                                  "description": "Sleep represents a duration that the container should sleep.",
                                                   "type": [
                                                     "object",
                                                     "null"
@@ -4652,7 +4672,7 @@
                                                   }
                                                 },
                                                 "tcpSocket": {
-                                                  "description": "Deprecated. TCPSocket is NOT supported as a LifecycleHandler and kept\nfor the backward compatibility. There are no validation of this field and\nlifecycle hooks will fail in runtime when tcp handler is specified.",
+                                                  "description": "Deprecated. TCPSocket is NOT supported as a LifecycleHandler and kept\nfor backward compatibility. There is no validation of this field and\nlifecycle hooks will fail at runtime when it is specified.",
                                                   "type": [
                                                     "object",
                                                     "null"
@@ -4684,7 +4704,7 @@
                                               ],
                                               "properties": {
                                                 "exec": {
-                                                  "description": "Exec specifies the action to take.",
+                                                  "description": "Exec specifies a command to execute in the container.",
                                                   "type": [
                                                     "object",
                                                     "null"
@@ -4707,7 +4727,7 @@
                                                   }
                                                 },
                                                 "httpGet": {
-                                                  "description": "HTTPGet specifies the http request to perform.",
+                                                  "description": "HTTPGet specifies an HTTP GET request to perform.",
                                                   "type": [
                                                     "object",
                                                     "null"
@@ -4773,7 +4793,7 @@
                                                   }
                                                 },
                                                 "sleep": {
-                                                  "description": "Sleep represents the duration that the container should sleep before being terminated.",
+                                                  "description": "Sleep represents a duration that the container should sleep.",
                                                   "type": [
                                                     "object",
                                                     "null"
@@ -4790,7 +4810,7 @@
                                                   }
                                                 },
                                                 "tcpSocket": {
-                                                  "description": "Deprecated. TCPSocket is NOT supported as a LifecycleHandler and kept\nfor the backward compatibility. There are no validation of this field and\nlifecycle hooks will fail in runtime when tcp handler is specified.",
+                                                  "description": "Deprecated. TCPSocket is NOT supported as a LifecycleHandler and kept\nfor backward compatibility. There is no validation of this field and\nlifecycle hooks will fail at runtime when it is specified.",
                                                   "type": [
                                                     "object",
                                                     "null"
@@ -4824,7 +4844,7 @@
                                           ],
                                           "properties": {
                                             "exec": {
-                                              "description": "Exec specifies the action to take.",
+                                              "description": "Exec specifies a command to execute in the container.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -4855,7 +4875,7 @@
                                               "format": "int32"
                                             },
                                             "grpc": {
-                                              "description": "GRPC specifies an action involving a GRPC port.",
+                                              "description": "GRPC specifies a GRPC HealthCheckRequest.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -4870,7 +4890,7 @@
                                                   "format": "int32"
                                                 },
                                                 "service": {
-                                                  "description": "Service is the name of the service to place in the gRPC HealthCheckRequest\n(see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).\n\n\nIf this is not specified, the default behavior is defined by gRPC.",
+                                                  "description": "Service is the name of the service to place in the gRPC HealthCheckRequest\n(see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).\n\nIf this is not specified, the default behavior is defined by gRPC.",
                                                   "type": [
                                                     "string",
                                                     "null"
@@ -4879,7 +4899,7 @@
                                               }
                                             },
                                             "httpGet": {
-                                              "description": "HTTPGet specifies the http request to perform.",
+                                              "description": "HTTPGet specifies an HTTP GET request to perform.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -4969,7 +4989,7 @@
                                               "format": "int32"
                                             },
                                             "tcpSocket": {
-                                              "description": "TCPSocket specifies an action involving a TCP port.",
+                                              "description": "TCPSocket specifies a connection to a TCP port.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -5079,7 +5099,7 @@
                                           ],
                                           "properties": {
                                             "exec": {
-                                              "description": "Exec specifies the action to take.",
+                                              "description": "Exec specifies a command to execute in the container.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -5110,7 +5130,7 @@
                                               "format": "int32"
                                             },
                                             "grpc": {
-                                              "description": "GRPC specifies an action involving a GRPC port.",
+                                              "description": "GRPC specifies a GRPC HealthCheckRequest.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -5125,7 +5145,7 @@
                                                   "format": "int32"
                                                 },
                                                 "service": {
-                                                  "description": "Service is the name of the service to place in the gRPC HealthCheckRequest\n(see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).\n\n\nIf this is not specified, the default behavior is defined by gRPC.",
+                                                  "description": "Service is the name of the service to place in the gRPC HealthCheckRequest\n(see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).\n\nIf this is not specified, the default behavior is defined by gRPC.",
                                                   "type": [
                                                     "string",
                                                     "null"
@@ -5134,7 +5154,7 @@
                                               }
                                             },
                                             "httpGet": {
-                                              "description": "HTTPGet specifies the http request to perform.",
+                                              "description": "HTTPGet specifies an HTTP GET request to perform.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -5224,7 +5244,7 @@
                                               "format": "int32"
                                             },
                                             "tcpSocket": {
-                                              "description": "TCPSocket specifies an action involving a TCP port.",
+                                              "description": "TCPSocket specifies a connection to a TCP port.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -5301,7 +5321,7 @@
                                           ],
                                           "properties": {
                                             "claims": {
-                                              "description": "Claims lists the names of resources, defined in spec.resourceClaims,\nthat are used by this container.\n\n\nThis is an alpha field and requires enabling the\nDynamicResourceAllocation feature gate.\n\n\nThis field is immutable. It can only be set for containers.",
+                                              "description": "Claims lists the names of resources, defined in spec.resourceClaims,\nthat are used by this container.\n\nThis is an alpha field and requires enabling the\nDynamicResourceAllocation feature gate.\n\nThis field is immutable. It can only be set for containers.",
                                               "type": [
                                                 "array",
                                                 "null"
@@ -5319,6 +5339,13 @@
                                                   "name": {
                                                     "description": "Name must match the name of one entry in pod.spec.resourceClaims of\nthe Pod where this field is used. It makes that resource available\ninside a container.",
                                                     "type": "string"
+                                                  },
+                                                  "request": {
+                                                    "description": "Request is the name chosen for a request in the referenced claim.\nIf empty, everything from the claim is made available, otherwise\nonly the result of this request.",
+                                                    "type": [
+                                                      "string",
+                                                      "null"
+                                                    ]
                                                   }
                                                 }
                                               },
@@ -5442,7 +5469,7 @@
                                               ]
                                             },
                                             "procMount": {
-                                              "description": "procMount denotes the type of proc mount to use for the containers.\nThe default is DefaultProcMount which uses the container runtime defaults for\nreadonly paths and masked paths.\nThis requires the ProcMountType feature flag to be enabled.\nNote that this field cannot be set when spec.os.name is windows.",
+                                              "description": "procMount denotes the type of proc mount to use for the containers.\nThe default value is Default which uses the container runtime defaults for\nreadonly paths and masked paths.\nThis requires the ProcMountType feature flag to be enabled.\nNote that this field cannot be set when spec.os.name is windows.",
                                               "type": [
                                                 "string",
                                                 "null"
@@ -5533,7 +5560,7 @@
                                                   ]
                                                 },
                                                 "type": {
-                                                  "description": "type indicates which kind of seccomp profile will be applied.\nValid options are:\n\n\nLocalhost - a profile defined in a file on the node should be used.\nRuntimeDefault - the container runtime default profile should be used.\nUnconfined - no profile should be applied.",
+                                                  "description": "type indicates which kind of seccomp profile will be applied.\nValid options are:\n\nLocalhost - a profile defined in a file on the node should be used.\nRuntimeDefault - the container runtime default profile should be used.\nUnconfined - no profile should be applied.",
                                                   "type": "string"
                                                 }
                                               }
@@ -5585,7 +5612,7 @@
                                           ],
                                           "properties": {
                                             "exec": {
-                                              "description": "Exec specifies the action to take.",
+                                              "description": "Exec specifies a command to execute in the container.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -5616,7 +5643,7 @@
                                               "format": "int32"
                                             },
                                             "grpc": {
-                                              "description": "GRPC specifies an action involving a GRPC port.",
+                                              "description": "GRPC specifies a GRPC HealthCheckRequest.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -5631,7 +5658,7 @@
                                                   "format": "int32"
                                                 },
                                                 "service": {
-                                                  "description": "Service is the name of the service to place in the gRPC HealthCheckRequest\n(see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).\n\n\nIf this is not specified, the default behavior is defined by gRPC.",
+                                                  "description": "Service is the name of the service to place in the gRPC HealthCheckRequest\n(see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).\n\nIf this is not specified, the default behavior is defined by gRPC.",
                                                   "type": [
                                                     "string",
                                                     "null"
@@ -5640,7 +5667,7 @@
                                               }
                                             },
                                             "httpGet": {
-                                              "description": "HTTPGet specifies the http request to perform.",
+                                              "description": "HTTPGet specifies an HTTP GET request to perform.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -5730,7 +5757,7 @@
                                               "format": "int32"
                                             },
                                             "tcpSocket": {
-                                              "description": "TCPSocket specifies an action involving a TCP port.",
+                                              "description": "TCPSocket specifies a connection to a TCP port.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -5785,7 +5812,7 @@
                                           ]
                                         },
                                         "targetContainerName": {
-                                          "description": "If set, the name of the container from PodSpec that this ephemeral container targets.\nThe ephemeral container will be run in the namespaces (IPC, PID, etc) of this container.\nIf not set then the ephemeral container uses the namespaces configured in the Pod spec.\n\n\nThe container runtime must implement support for this feature. If the runtime does not\nsupport namespace targeting then the result of setting this field is undefined.",
+                                          "description": "If set, the name of the container from PodSpec that this ephemeral container targets.\nThe ephemeral container will be run in the namespaces (IPC, PID, etc) of this container.\nIf not set then the ephemeral container uses the namespaces configured in the Pod spec.\n\nThe container runtime must implement support for this feature. If the runtime does not\nsupport namespace targeting then the result of setting this field is undefined.",
                                           "type": [
                                             "string",
                                             "null"
@@ -5884,7 +5911,7 @@
                                                 ]
                                               },
                                               "recursiveReadOnly": {
-                                                "description": "RecursiveReadOnly specifies whether read-only mounts should be handled\nrecursively.\n\n\nIf ReadOnly is false, this field has no meaning and must be unspecified.\n\n\nIf ReadOnly is true, and this field is set to Disabled, the mount is not made\nrecursively read-only.  If this field is set to IfPossible, the mount is made\nrecursively read-only, if it is supported by the container runtime.  If this\nfield is set to Enabled, the mount is made recursively read-only if it is\nsupported by the container runtime, otherwise the pod will not be started and\nan error will be generated to indicate the reason.\n\n\nIf this field is set to IfPossible or Enabled, MountPropagation must be set to\nNone (or be unspecified, which defaults to None).\n\n\nIf this field is not specified, it is treated as an equivalent of Disabled.",
+                                                "description": "RecursiveReadOnly specifies whether read-only mounts should be handled\nrecursively.\n\nIf ReadOnly is false, this field has no meaning and must be unspecified.\n\nIf ReadOnly is true, and this field is set to Disabled, the mount is not made\nrecursively read-only.  If this field is set to IfPossible, the mount is made\nrecursively read-only, if it is supported by the container runtime.  If this\nfield is set to Enabled, the mount is made recursively read-only if it is\nsupported by the container runtime, otherwise the pod will not be started and\nan error will be generated to indicate the reason.\n\nIf this field is set to IfPossible or Enabled, MountPropagation must be set to\nNone (or be unspecified, which defaults to None).\n\nIf this field is not specified, it is treated as an equivalent of Disabled.",
                                                 "type": [
                                                   "string",
                                                   "null"
@@ -6015,7 +6042,7 @@
                                       ],
                                       "properties": {
                                         "name": {
-                                          "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nTODO: Add other useful fields. apiVersion, kind, uid?\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names\nTODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.",
+                                          "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                           "type": [
                                             "string",
                                             "null"
@@ -6122,7 +6149,7 @@
                                                         "type": "string"
                                                       },
                                                       "name": {
-                                                        "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nTODO: Add other useful fields. apiVersion, kind, uid?\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names\nTODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.",
+                                                        "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                                         "type": [
                                                           "string",
                                                           "null"
@@ -6206,7 +6233,7 @@
                                                         "type": "string"
                                                       },
                                                       "name": {
-                                                        "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nTODO: Add other useful fields. apiVersion, kind, uid?\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names\nTODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.",
+                                                        "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                                         "type": [
                                                           "string",
                                                           "null"
@@ -6252,7 +6279,7 @@
                                                 ],
                                                 "properties": {
                                                   "name": {
-                                                    "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nTODO: Add other useful fields. apiVersion, kind, uid?\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names\nTODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.",
+                                                    "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                                     "type": [
                                                       "string",
                                                       "null"
@@ -6283,7 +6310,7 @@
                                                 ],
                                                 "properties": {
                                                   "name": {
-                                                    "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nTODO: Add other useful fields. apiVersion, kind, uid?\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names\nTODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.",
+                                                    "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                                     "type": [
                                                       "string",
                                                       "null"
@@ -6332,7 +6359,7 @@
                                               ],
                                               "properties": {
                                                 "exec": {
-                                                  "description": "Exec specifies the action to take.",
+                                                  "description": "Exec specifies a command to execute in the container.",
                                                   "type": [
                                                     "object",
                                                     "null"
@@ -6355,7 +6382,7 @@
                                                   }
                                                 },
                                                 "httpGet": {
-                                                  "description": "HTTPGet specifies the http request to perform.",
+                                                  "description": "HTTPGet specifies an HTTP GET request to perform.",
                                                   "type": [
                                                     "object",
                                                     "null"
@@ -6421,7 +6448,7 @@
                                                   }
                                                 },
                                                 "sleep": {
-                                                  "description": "Sleep represents the duration that the container should sleep before being terminated.",
+                                                  "description": "Sleep represents a duration that the container should sleep.",
                                                   "type": [
                                                     "object",
                                                     "null"
@@ -6438,7 +6465,7 @@
                                                   }
                                                 },
                                                 "tcpSocket": {
-                                                  "description": "Deprecated. TCPSocket is NOT supported as a LifecycleHandler and kept\nfor the backward compatibility. There are no validation of this field and\nlifecycle hooks will fail in runtime when tcp handler is specified.",
+                                                  "description": "Deprecated. TCPSocket is NOT supported as a LifecycleHandler and kept\nfor backward compatibility. There is no validation of this field and\nlifecycle hooks will fail at runtime when it is specified.",
                                                   "type": [
                                                     "object",
                                                     "null"
@@ -6470,7 +6497,7 @@
                                               ],
                                               "properties": {
                                                 "exec": {
-                                                  "description": "Exec specifies the action to take.",
+                                                  "description": "Exec specifies a command to execute in the container.",
                                                   "type": [
                                                     "object",
                                                     "null"
@@ -6493,7 +6520,7 @@
                                                   }
                                                 },
                                                 "httpGet": {
-                                                  "description": "HTTPGet specifies the http request to perform.",
+                                                  "description": "HTTPGet specifies an HTTP GET request to perform.",
                                                   "type": [
                                                     "object",
                                                     "null"
@@ -6559,7 +6586,7 @@
                                                   }
                                                 },
                                                 "sleep": {
-                                                  "description": "Sleep represents the duration that the container should sleep before being terminated.",
+                                                  "description": "Sleep represents a duration that the container should sleep.",
                                                   "type": [
                                                     "object",
                                                     "null"
@@ -6576,7 +6603,7 @@
                                                   }
                                                 },
                                                 "tcpSocket": {
-                                                  "description": "Deprecated. TCPSocket is NOT supported as a LifecycleHandler and kept\nfor the backward compatibility. There are no validation of this field and\nlifecycle hooks will fail in runtime when tcp handler is specified.",
+                                                  "description": "Deprecated. TCPSocket is NOT supported as a LifecycleHandler and kept\nfor backward compatibility. There is no validation of this field and\nlifecycle hooks will fail at runtime when it is specified.",
                                                   "type": [
                                                     "object",
                                                     "null"
@@ -6610,7 +6637,7 @@
                                           ],
                                           "properties": {
                                             "exec": {
-                                              "description": "Exec specifies the action to take.",
+                                              "description": "Exec specifies a command to execute in the container.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -6641,7 +6668,7 @@
                                               "format": "int32"
                                             },
                                             "grpc": {
-                                              "description": "GRPC specifies an action involving a GRPC port.",
+                                              "description": "GRPC specifies a GRPC HealthCheckRequest.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -6656,7 +6683,7 @@
                                                   "format": "int32"
                                                 },
                                                 "service": {
-                                                  "description": "Service is the name of the service to place in the gRPC HealthCheckRequest\n(see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).\n\n\nIf this is not specified, the default behavior is defined by gRPC.",
+                                                  "description": "Service is the name of the service to place in the gRPC HealthCheckRequest\n(see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).\n\nIf this is not specified, the default behavior is defined by gRPC.",
                                                   "type": [
                                                     "string",
                                                     "null"
@@ -6665,7 +6692,7 @@
                                               }
                                             },
                                             "httpGet": {
-                                              "description": "HTTPGet specifies the http request to perform.",
+                                              "description": "HTTPGet specifies an HTTP GET request to perform.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -6755,7 +6782,7 @@
                                               "format": "int32"
                                             },
                                             "tcpSocket": {
-                                              "description": "TCPSocket specifies an action involving a TCP port.",
+                                              "description": "TCPSocket specifies a connection to a TCP port.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -6865,7 +6892,7 @@
                                           ],
                                           "properties": {
                                             "exec": {
-                                              "description": "Exec specifies the action to take.",
+                                              "description": "Exec specifies a command to execute in the container.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -6896,7 +6923,7 @@
                                               "format": "int32"
                                             },
                                             "grpc": {
-                                              "description": "GRPC specifies an action involving a GRPC port.",
+                                              "description": "GRPC specifies a GRPC HealthCheckRequest.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -6911,7 +6938,7 @@
                                                   "format": "int32"
                                                 },
                                                 "service": {
-                                                  "description": "Service is the name of the service to place in the gRPC HealthCheckRequest\n(see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).\n\n\nIf this is not specified, the default behavior is defined by gRPC.",
+                                                  "description": "Service is the name of the service to place in the gRPC HealthCheckRequest\n(see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).\n\nIf this is not specified, the default behavior is defined by gRPC.",
                                                   "type": [
                                                     "string",
                                                     "null"
@@ -6920,7 +6947,7 @@
                                               }
                                             },
                                             "httpGet": {
-                                              "description": "HTTPGet specifies the http request to perform.",
+                                              "description": "HTTPGet specifies an HTTP GET request to perform.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -7010,7 +7037,7 @@
                                               "format": "int32"
                                             },
                                             "tcpSocket": {
-                                              "description": "TCPSocket specifies an action involving a TCP port.",
+                                              "description": "TCPSocket specifies a connection to a TCP port.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -7087,7 +7114,7 @@
                                           ],
                                           "properties": {
                                             "claims": {
-                                              "description": "Claims lists the names of resources, defined in spec.resourceClaims,\nthat are used by this container.\n\n\nThis is an alpha field and requires enabling the\nDynamicResourceAllocation feature gate.\n\n\nThis field is immutable. It can only be set for containers.",
+                                              "description": "Claims lists the names of resources, defined in spec.resourceClaims,\nthat are used by this container.\n\nThis is an alpha field and requires enabling the\nDynamicResourceAllocation feature gate.\n\nThis field is immutable. It can only be set for containers.",
                                               "type": [
                                                 "array",
                                                 "null"
@@ -7105,6 +7132,13 @@
                                                   "name": {
                                                     "description": "Name must match the name of one entry in pod.spec.resourceClaims of\nthe Pod where this field is used. It makes that resource available\ninside a container.",
                                                     "type": "string"
+                                                  },
+                                                  "request": {
+                                                    "description": "Request is the name chosen for a request in the referenced claim.\nIf empty, everything from the claim is made available, otherwise\nonly the result of this request.",
+                                                    "type": [
+                                                      "string",
+                                                      "null"
+                                                    ]
                                                   }
                                                 }
                                               },
@@ -7228,7 +7262,7 @@
                                               ]
                                             },
                                             "procMount": {
-                                              "description": "procMount denotes the type of proc mount to use for the containers.\nThe default is DefaultProcMount which uses the container runtime defaults for\nreadonly paths and masked paths.\nThis requires the ProcMountType feature flag to be enabled.\nNote that this field cannot be set when spec.os.name is windows.",
+                                              "description": "procMount denotes the type of proc mount to use for the containers.\nThe default value is Default which uses the container runtime defaults for\nreadonly paths and masked paths.\nThis requires the ProcMountType feature flag to be enabled.\nNote that this field cannot be set when spec.os.name is windows.",
                                               "type": [
                                                 "string",
                                                 "null"
@@ -7319,7 +7353,7 @@
                                                   ]
                                                 },
                                                 "type": {
-                                                  "description": "type indicates which kind of seccomp profile will be applied.\nValid options are:\n\n\nLocalhost - a profile defined in a file on the node should be used.\nRuntimeDefault - the container runtime default profile should be used.\nUnconfined - no profile should be applied.",
+                                                  "description": "type indicates which kind of seccomp profile will be applied.\nValid options are:\n\nLocalhost - a profile defined in a file on the node should be used.\nRuntimeDefault - the container runtime default profile should be used.\nUnconfined - no profile should be applied.",
                                                   "type": "string"
                                                 }
                                               }
@@ -7371,7 +7405,7 @@
                                           ],
                                           "properties": {
                                             "exec": {
-                                              "description": "Exec specifies the action to take.",
+                                              "description": "Exec specifies a command to execute in the container.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -7402,7 +7436,7 @@
                                               "format": "int32"
                                             },
                                             "grpc": {
-                                              "description": "GRPC specifies an action involving a GRPC port.",
+                                              "description": "GRPC specifies a GRPC HealthCheckRequest.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -7417,7 +7451,7 @@
                                                   "format": "int32"
                                                 },
                                                 "service": {
-                                                  "description": "Service is the name of the service to place in the gRPC HealthCheckRequest\n(see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).\n\n\nIf this is not specified, the default behavior is defined by gRPC.",
+                                                  "description": "Service is the name of the service to place in the gRPC HealthCheckRequest\n(see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).\n\nIf this is not specified, the default behavior is defined by gRPC.",
                                                   "type": [
                                                     "string",
                                                     "null"
@@ -7426,7 +7460,7 @@
                                               }
                                             },
                                             "httpGet": {
-                                              "description": "HTTPGet specifies the http request to perform.",
+                                              "description": "HTTPGet specifies an HTTP GET request to perform.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -7516,7 +7550,7 @@
                                               "format": "int32"
                                             },
                                             "tcpSocket": {
-                                              "description": "TCPSocket specifies an action involving a TCP port.",
+                                              "description": "TCPSocket specifies a connection to a TCP port.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -7663,7 +7697,7 @@
                                                 ]
                                               },
                                               "recursiveReadOnly": {
-                                                "description": "RecursiveReadOnly specifies whether read-only mounts should be handled\nrecursively.\n\n\nIf ReadOnly is false, this field has no meaning and must be unspecified.\n\n\nIf ReadOnly is true, and this field is set to Disabled, the mount is not made\nrecursively read-only.  If this field is set to IfPossible, the mount is made\nrecursively read-only, if it is supported by the container runtime.  If this\nfield is set to Enabled, the mount is made recursively read-only if it is\nsupported by the container runtime, otherwise the pod will not be started and\nan error will be generated to indicate the reason.\n\n\nIf this field is set to IfPossible or Enabled, MountPropagation must be set to\nNone (or be unspecified, which defaults to None).\n\n\nIf this field is not specified, it is treated as an equivalent of Disabled.",
+                                                "description": "RecursiveReadOnly specifies whether read-only mounts should be handled\nrecursively.\n\nIf ReadOnly is false, this field has no meaning and must be unspecified.\n\nIf ReadOnly is true, and this field is set to Disabled, the mount is not made\nrecursively read-only.  If this field is set to IfPossible, the mount is made\nrecursively read-only, if it is supported by the container runtime.  If this\nfield is set to Enabled, the mount is made recursively read-only if it is\nsupported by the container runtime, otherwise the pod will not be started and\nan error will be generated to indicate the reason.\n\nIf this field is set to IfPossible or Enabled, MountPropagation must be set to\nNone (or be unspecified, which defaults to None).\n\nIf this field is not specified, it is treated as an equivalent of Disabled.",
                                                 "type": [
                                                   "string",
                                                   "null"
@@ -7705,7 +7739,7 @@
                                     "x-kubernetes-list-type": "map"
                                   },
                                   "nodeName": {
-                                    "description": "NodeName is a request to schedule this pod onto a specific node. If it is non-empty,\nthe scheduler simply schedules this pod onto that node, assuming that it fits resource\nrequirements.",
+                                    "description": "NodeName indicates in which node this pod is scheduled.\nIf empty, this pod is a candidate for scheduling by the scheduler defined in schedulerName.\nOnce this field is set, the kubelet for this node becomes responsible for the lifecycle of this pod.\nThis field should not be used to express a desire for the pod to be scheduled on a specific node.\nhttps://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodename",
                                     "type": [
                                       "string",
                                       "null"
@@ -7726,7 +7760,7 @@
                                     "x-kubernetes-map-type": "atomic"
                                   },
                                   "os": {
-                                    "description": "Specifies the OS of the containers in the pod.\nSome pod and container fields are restricted if this is set.\n\n\nIf the OS field is set to linux, the following fields must be unset:\n-securityContext.windowsOptions\n\n\nIf the OS field is set to windows, following fields must be unset:\n- spec.hostPID\n- spec.hostIPC\n- spec.hostUsers\n- spec.securityContext.appArmorProfile\n- spec.securityContext.seLinuxOptions\n- spec.securityContext.seccompProfile\n- spec.securityContext.fsGroup\n- spec.securityContext.fsGroupChangePolicy\n- spec.securityContext.sysctls\n- spec.shareProcessNamespace\n- spec.securityContext.runAsUser\n- spec.securityContext.runAsGroup\n- spec.securityContext.supplementalGroups\n- spec.containers[*].securityContext.appArmorProfile\n- spec.containers[*].securityContext.seLinuxOptions\n- spec.containers[*].securityContext.seccompProfile\n- spec.containers[*].securityContext.capabilities\n- spec.containers[*].securityContext.readOnlyRootFilesystem\n- spec.containers[*].securityContext.privileged\n- spec.containers[*].securityContext.allowPrivilegeEscalation\n- spec.containers[*].securityContext.procMount\n- spec.containers[*].securityContext.runAsUser\n- spec.containers[*].securityContext.runAsGroup",
+                                    "description": "Specifies the OS of the containers in the pod.\nSome pod and container fields are restricted if this is set.\n\nIf the OS field is set to linux, the following fields must be unset:\n-securityContext.windowsOptions\n\nIf the OS field is set to windows, following fields must be unset:\n- spec.hostPID\n- spec.hostIPC\n- spec.hostUsers\n- spec.securityContext.appArmorProfile\n- spec.securityContext.seLinuxOptions\n- spec.securityContext.seccompProfile\n- spec.securityContext.fsGroup\n- spec.securityContext.fsGroupChangePolicy\n- spec.securityContext.sysctls\n- spec.shareProcessNamespace\n- spec.securityContext.runAsUser\n- spec.securityContext.runAsGroup\n- spec.securityContext.supplementalGroups\n- spec.securityContext.supplementalGroupsPolicy\n- spec.containers[*].securityContext.appArmorProfile\n- spec.containers[*].securityContext.seLinuxOptions\n- spec.containers[*].securityContext.seccompProfile\n- spec.containers[*].securityContext.capabilities\n- spec.containers[*].securityContext.readOnlyRootFilesystem\n- spec.containers[*].securityContext.privileged\n- spec.containers[*].securityContext.allowPrivilegeEscalation\n- spec.containers[*].securityContext.procMount\n- spec.containers[*].securityContext.runAsUser\n- spec.containers[*].securityContext.runAsGroup",
                                     "type": [
                                       "object",
                                       "null"
@@ -7799,13 +7833,13 @@
                                     "x-kubernetes-list-type": "atomic"
                                   },
                                   "resourceClaims": {
-                                    "description": "ResourceClaims defines which ResourceClaims must be allocated\nand reserved before the Pod is allowed to start. The resources\nwill be made available to those containers which consume them\nby name.\n\n\nThis is an alpha field and requires enabling the\nDynamicResourceAllocation feature gate.\n\n\nThis field is immutable.",
+                                    "description": "ResourceClaims defines which ResourceClaims must be allocated\nand reserved before the Pod is allowed to start. The resources\nwill be made available to those containers which consume them\nby name.\n\nThis is an alpha field and requires enabling the\nDynamicResourceAllocation feature gate.\n\nThis field is immutable.",
                                     "type": [
                                       "array",
                                       "null"
                                     ],
                                     "items": {
-                                      "description": "PodResourceClaim references exactly one ResourceClaim through a ClaimSource.\nIt adds a name to it that uniquely identifies the ResourceClaim inside the Pod.\nContainers that need access to the ResourceClaim reference it with this name.",
+                                      "description": "PodResourceClaim references exactly one ResourceClaim, either directly\nor by naming a ResourceClaimTemplate which is then turned into a ResourceClaim\nfor the pod.\n\nIt adds a name to it that uniquely identifies the ResourceClaim inside the Pod.\nContainers that need access to the ResourceClaim reference it with this name.",
                                       "type": [
                                         "object",
                                         "null"
@@ -7818,28 +7852,19 @@
                                           "description": "Name uniquely identifies this resource claim inside the pod.\nThis must be a DNS_LABEL.",
                                           "type": "string"
                                         },
-                                        "source": {
-                                          "description": "Source describes where to find the ResourceClaim.",
+                                        "resourceClaimName": {
+                                          "description": "ResourceClaimName is the name of a ResourceClaim object in the same\nnamespace as this pod.\n\nExactly one of ResourceClaimName and ResourceClaimTemplateName must\nbe set.",
                                           "type": [
-                                            "object",
+                                            "string",
                                             "null"
-                                          ],
-                                          "properties": {
-                                            "resourceClaimName": {
-                                              "description": "ResourceClaimName is the name of a ResourceClaim object in the same\nnamespace as this pod.",
-                                              "type": [
-                                                "string",
-                                                "null"
-                                              ]
-                                            },
-                                            "resourceClaimTemplateName": {
-                                              "description": "ResourceClaimTemplateName is the name of a ResourceClaimTemplate\nobject in the same namespace as this pod.\n\n\nThe template will be used to create a new ResourceClaim, which will\nbe bound to this pod. When this pod is deleted, the ResourceClaim\nwill also be deleted. The pod name and resource name, along with a\ngenerated component, will be used to form a unique name for the\nResourceClaim, which will be recorded in pod.status.resourceClaimStatuses.\n\n\nThis field is immutable and no changes will be made to the\ncorresponding ResourceClaim by the control plane after creating the\nResourceClaim.",
-                                              "type": [
-                                                "string",
-                                                "null"
-                                              ]
-                                            }
-                                          }
+                                          ]
+                                        },
+                                        "resourceClaimTemplateName": {
+                                          "description": "ResourceClaimTemplateName is the name of a ResourceClaimTemplate\nobject in the same namespace as this pod.\n\nThe template will be used to create a new ResourceClaim, which will\nbe bound to this pod. When this pod is deleted, the ResourceClaim\nwill also be deleted. The pod name and resource name, along with a\ngenerated component, will be used to form a unique name for the\nResourceClaim, which will be recorded in pod.status.resourceClaimStatuses.\n\nThis field is immutable and no changes will be made to the\ncorresponding ResourceClaim by the control plane after creating the\nResourceClaim.\n\nExactly one of ResourceClaimName and ResourceClaimTemplateName must\nbe set.",
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
                                         }
                                       }
                                     },
@@ -7847,6 +7872,71 @@
                                       "name"
                                     ],
                                     "x-kubernetes-list-type": "map"
+                                  },
+                                  "resources": {
+                                    "description": "Resources is the total amount of CPU and Memory resources required by all\ncontainers in the pod. It supports specifying Requests and Limits for\n\"cpu\" and \"memory\" resource names only. ResourceClaims are not supported.\n\nThis field enables fine-grained control over resource allocation for the\nentire pod, allowing resource sharing among containers in a pod.\n\nThis is an alpha field and requires enabling the PodLevelResources feature\ngate.",
+                                    "type": [
+                                      "object",
+                                      "null"
+                                    ],
+                                    "properties": {
+                                      "claims": {
+                                        "description": "Claims lists the names of resources, defined in spec.resourceClaims,\nthat are used by this container.\n\nThis is an alpha field and requires enabling the\nDynamicResourceAllocation feature gate.\n\nThis field is immutable. It can only be set for containers.",
+                                        "type": [
+                                          "array",
+                                          "null"
+                                        ],
+                                        "items": {
+                                          "description": "ResourceClaim references one entry in PodSpec.ResourceClaims.",
+                                          "type": [
+                                            "object",
+                                            "null"
+                                          ],
+                                          "required": [
+                                            "name"
+                                          ],
+                                          "properties": {
+                                            "name": {
+                                              "description": "Name must match the name of one entry in pod.spec.resourceClaims of\nthe Pod where this field is used. It makes that resource available\ninside a container.",
+                                              "type": "string"
+                                            },
+                                            "request": {
+                                              "description": "Request is the name chosen for a request in the referenced claim.\nIf empty, everything from the claim is made available, otherwise\nonly the result of this request.",
+                                              "type": [
+                                                "string",
+                                                "null"
+                                              ]
+                                            }
+                                          }
+                                        },
+                                        "x-kubernetes-list-map-keys": [
+                                          "name"
+                                        ],
+                                        "x-kubernetes-list-type": "map"
+                                      },
+                                      "limits": {
+                                        "description": "Limits describes the maximum amount of compute resources allowed.\nMore info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+                                        "type": [
+                                          "object",
+                                          "null"
+                                        ],
+                                        "additionalProperties": {
+                                          "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                                          "x-kubernetes-int-or-string": true
+                                        }
+                                      },
+                                      "requests": {
+                                        "description": "Requests describes the minimum amount of compute resources required.\nIf Requests is omitted for a container, it defaults to Limits if that is explicitly specified,\notherwise to an implementation-defined value. Requests cannot exceed Limits.\nMore info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+                                        "type": [
+                                          "object",
+                                          "null"
+                                        ],
+                                        "additionalProperties": {
+                                          "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                                          "x-kubernetes-int-or-string": true
+                                        }
+                                      }
+                                    }
                                   },
                                   "restartPolicy": {
                                     "description": "Restart policy for all containers within the pod.\nOne of Always, OnFailure, Never. In some contexts, only a subset of those values may be permitted.\nDefault to Always.\nMore info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy",
@@ -7870,7 +7960,7 @@
                                     ]
                                   },
                                   "schedulingGates": {
-                                    "description": "SchedulingGates is an opaque list of values that if specified will block scheduling the pod.\nIf schedulingGates is not empty, the pod will stay in the SchedulingGated state and the\nscheduler will not attempt to schedule the pod.\n\n\nSchedulingGates can only be set at pod creation time, and be removed only afterwards.",
+                                    "description": "SchedulingGates is an opaque list of values that if specified will block scheduling the pod.\nIf schedulingGates is not empty, the pod will stay in the SchedulingGated state and the\nscheduler will not attempt to schedule the pod.\n\nSchedulingGates can only be set at pod creation time, and be removed only afterwards.",
                                     "type": [
                                       "array",
                                       "null"
@@ -7927,7 +8017,7 @@
                                         }
                                       },
                                       "fsGroup": {
-                                        "description": "A special supplemental group that applies to all containers in a pod.\nSome volume types allow the Kubelet to change the ownership of that volume\nto be owned by the pod:\n\n\n1. The owning GID will be the FSGroup\n2. The setgid bit is set (new files created in the volume will be owned by FSGroup)\n3. The permission bits are OR'd with rw-rw----\n\n\nIf unset, the Kubelet will not modify the ownership and permissions of any volume.\nNote that this field cannot be set when spec.os.name is windows.",
+                                        "description": "A special supplemental group that applies to all containers in a pod.\nSome volume types allow the Kubelet to change the ownership of that volume\nto be owned by the pod:\n\n1. The owning GID will be the FSGroup\n2. The setgid bit is set (new files created in the volume will be owned by FSGroup)\n3. The permission bits are OR'd with rw-rw----\n\nIf unset, the Kubelet will not modify the ownership and permissions of any volume.\nNote that this field cannot be set when spec.os.name is windows.",
                                         "type": [
                                           "integer",
                                           "null"
@@ -7963,6 +8053,13 @@
                                           "null"
                                         ],
                                         "format": "int64"
+                                      },
+                                      "seLinuxChangePolicy": {
+                                        "description": "seLinuxChangePolicy defines how the container's SELinux label is applied to all volumes used by the Pod.\nIt has no effect on nodes that do not support SELinux or to volumes does not support SELinux.\nValid values are \"MountOption\" and \"Recursive\".\n\n\"Recursive\" means relabeling of all files on all Pod volumes by the container runtime.\nThis may be slow for large volumes, but allows mixing privileged and unprivileged Pods sharing the same volume on the same node.\n\n\"MountOption\" mounts all eligible Pod volumes with `-o context` mount option.\nThis requires all Pods that share the same volume to use the same SELinux label.\nIt is not possible to share the same volume among privileged and unprivileged Pods.\nEligible volumes are in-tree FibreChannel and iSCSI volumes, and all CSI volumes\nwhose CSI driver announces SELinux support by setting spec.seLinuxMount: true in their\nCSIDriver instance. Other volumes are always re-labelled recursively.\n\"MountOption\" value is allowed only when SELinuxMount feature gate is enabled.\n\nIf not specified and SELinuxMount feature gate is enabled, \"MountOption\" is used.\nIf not specified and SELinuxMount feature gate is disabled, \"MountOption\" is used for ReadWriteOncePod volumes\nand \"Recursive\" for all other volumes.\n\nThis field affects only Pods that have SELinux label set, either in PodSecurityContext or in SecurityContext of all containers.\n\nAll Pods that use the same volume should use the same seLinuxChangePolicy, otherwise some pods can get stuck in ContainerCreating state.\nNote that this field cannot be set when spec.os.name is windows.",
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
                                       },
                                       "seLinuxOptions": {
                                         "description": "The SELinux context to be applied to all containers.\nIf unspecified, the container runtime will allocate a random SELinux context for each\ncontainer.  May also be set in SecurityContext.  If set in\nboth SecurityContext and PodSecurityContext, the value specified in SecurityContext\ntakes precedence for that container.\nNote that this field cannot be set when spec.os.name is windows.",
@@ -8019,13 +8116,13 @@
                                             ]
                                           },
                                           "type": {
-                                            "description": "type indicates which kind of seccomp profile will be applied.\nValid options are:\n\n\nLocalhost - a profile defined in a file on the node should be used.\nRuntimeDefault - the container runtime default profile should be used.\nUnconfined - no profile should be applied.",
+                                            "description": "type indicates which kind of seccomp profile will be applied.\nValid options are:\n\nLocalhost - a profile defined in a file on the node should be used.\nRuntimeDefault - the container runtime default profile should be used.\nUnconfined - no profile should be applied.",
                                             "type": "string"
                                           }
                                         }
                                       },
                                       "supplementalGroups": {
-                                        "description": "A list of groups applied to the first process run in each container, in addition\nto the container's primary GID, the fsGroup (if specified), and group memberships\ndefined in the container image for the uid of the container process. If unspecified,\nno additional groups are added to any container. Note that group memberships\ndefined in the container image for the uid of the container process are still effective,\neven if they are not included in this list.\nNote that this field cannot be set when spec.os.name is windows.",
+                                        "description": "A list of groups applied to the first process run in each container, in\naddition to the container's primary GID and fsGroup (if specified).  If\nthe SupplementalGroupsPolicy feature is enabled, the\nsupplementalGroupsPolicy field determines whether these are in addition\nto or instead of any group memberships defined in the container image.\nIf unspecified, no additional groups are added, though group memberships\ndefined in the container image may still be used, depending on the\nsupplementalGroupsPolicy field.\nNote that this field cannot be set when spec.os.name is windows.",
                                         "type": [
                                           "array",
                                           "null"
@@ -8038,6 +8135,13 @@
                                           "format": "int64"
                                         },
                                         "x-kubernetes-list-type": "atomic"
+                                      },
+                                      "supplementalGroupsPolicy": {
+                                        "description": "Defines how supplemental groups of the first container processes are calculated.\nValid values are \"Merge\" and \"Strict\". If not specified, \"Merge\" is used.\n(Alpha) Using the field requires the SupplementalGroupsPolicy feature gate to be enabled\nand the container runtime must implement support for this feature.\nNote that this field cannot be set when spec.os.name is windows.",
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
                                       },
                                       "sysctls": {
                                         "description": "Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported\nsysctls (by the container runtime) might fail to launch.\nNote that this field cannot be set when spec.os.name is windows.",
@@ -8288,7 +8392,7 @@
                                           "x-kubernetes-map-type": "atomic"
                                         },
                                         "matchLabelKeys": {
-                                          "description": "MatchLabelKeys is a set of pod label keys to select the pods over which\nspreading will be calculated. The keys are used to lookup values from the\nincoming pod labels, those key-value labels are ANDed with labelSelector\nto select the group of existing pods over which spreading will be calculated\nfor the incoming pod. The same key is forbidden to exist in both MatchLabelKeys and LabelSelector.\nMatchLabelKeys cannot be set when LabelSelector isn't set.\nKeys that don't exist in the incoming pod labels will\nbe ignored. A null or empty list means only match against labelSelector.\n\n\nThis is a beta field and requires the MatchLabelKeysInPodTopologySpread feature gate to be enabled (enabled by default).",
+                                          "description": "MatchLabelKeys is a set of pod label keys to select the pods over which\nspreading will be calculated. The keys are used to lookup values from the\nincoming pod labels, those key-value labels are ANDed with labelSelector\nto select the group of existing pods over which spreading will be calculated\nfor the incoming pod. The same key is forbidden to exist in both MatchLabelKeys and LabelSelector.\nMatchLabelKeys cannot be set when LabelSelector isn't set.\nKeys that don't exist in the incoming pod labels will\nbe ignored. A null or empty list means only match against labelSelector.\n\nThis is a beta field and requires the MatchLabelKeysInPodTopologySpread feature gate to be enabled (enabled by default).",
                                           "type": [
                                             "array",
                                             "null"
@@ -8307,7 +8411,7 @@
                                           "format": "int32"
                                         },
                                         "minDomains": {
-                                          "description": "MinDomains indicates a minimum number of eligible domains.\nWhen the number of eligible domains with matching topology keys is less than minDomains,\nPod Topology Spread treats \"global minimum\" as 0, and then the calculation of Skew is performed.\nAnd when the number of eligible domains with matching topology keys equals or greater than minDomains,\nthis value has no effect on scheduling.\nAs a result, when the number of eligible domains is less than minDomains,\nscheduler won't schedule more than maxSkew Pods to those domains.\nIf value is nil, the constraint behaves as if MinDomains is equal to 1.\nValid values are integers greater than 0.\nWhen value is not nil, WhenUnsatisfiable must be DoNotSchedule.\n\n\nFor example, in a 3-zone cluster, MaxSkew is set to 2, MinDomains is set to 5 and pods with the same\nlabelSelector spread as 2/2/2:\n| zone1 | zone2 | zone3 |\n|  P P  |  P P  |  P P  |\nThe number of domains is less than 5(MinDomains), so \"global minimum\" is treated as 0.\nIn this situation, new pod with the same labelSelector cannot be scheduled,\nbecause computed skew will be 3(3 - 0) if new Pod is scheduled to any of the three zones,\nit will violate MaxSkew.",
+                                          "description": "MinDomains indicates a minimum number of eligible domains.\nWhen the number of eligible domains with matching topology keys is less than minDomains,\nPod Topology Spread treats \"global minimum\" as 0, and then the calculation of Skew is performed.\nAnd when the number of eligible domains with matching topology keys equals or greater than minDomains,\nthis value has no effect on scheduling.\nAs a result, when the number of eligible domains is less than minDomains,\nscheduler won't schedule more than maxSkew Pods to those domains.\nIf value is nil, the constraint behaves as if MinDomains is equal to 1.\nValid values are integers greater than 0.\nWhen value is not nil, WhenUnsatisfiable must be DoNotSchedule.\n\nFor example, in a 3-zone cluster, MaxSkew is set to 2, MinDomains is set to 5 and pods with the same\nlabelSelector spread as 2/2/2:\n| zone1 | zone2 | zone3 |\n|  P P  |  P P  |  P P  |\nThe number of domains is less than 5(MinDomains), so \"global minimum\" is treated as 0.\nIn this situation, new pod with the same labelSelector cannot be scheduled,\nbecause computed skew will be 3(3 - 0) if new Pod is scheduled to any of the three zones,\nit will violate MaxSkew.",
                                           "type": [
                                             "integer",
                                             "null"
@@ -8315,14 +8419,14 @@
                                           "format": "int32"
                                         },
                                         "nodeAffinityPolicy": {
-                                          "description": "NodeAffinityPolicy indicates how we will treat Pod's nodeAffinity/nodeSelector\nwhen calculating pod topology spread skew. Options are:\n- Honor: only nodes matching nodeAffinity/nodeSelector are included in the calculations.\n- Ignore: nodeAffinity/nodeSelector are ignored. All nodes are included in the calculations.\n\n\nIf this value is nil, the behavior is equivalent to the Honor policy.\nThis is a beta-level feature default enabled by the NodeInclusionPolicyInPodTopologySpread feature flag.",
+                                          "description": "NodeAffinityPolicy indicates how we will treat Pod's nodeAffinity/nodeSelector\nwhen calculating pod topology spread skew. Options are:\n- Honor: only nodes matching nodeAffinity/nodeSelector are included in the calculations.\n- Ignore: nodeAffinity/nodeSelector are ignored. All nodes are included in the calculations.\n\nIf this value is nil, the behavior is equivalent to the Honor policy.\nThis is a beta-level feature default enabled by the NodeInclusionPolicyInPodTopologySpread feature flag.",
                                           "type": [
                                             "string",
                                             "null"
                                           ]
                                         },
                                         "nodeTaintsPolicy": {
-                                          "description": "NodeTaintsPolicy indicates how we will treat node taints when calculating\npod topology spread skew. Options are:\n- Honor: nodes without taints, along with tainted nodes for which the incoming pod\nhas a toleration, are included.\n- Ignore: node taints are ignored. All nodes are included.\n\n\nIf this value is nil, the behavior is equivalent to the Ignore policy.\nThis is a beta-level feature default enabled by the NodeInclusionPolicyInPodTopologySpread feature flag.",
+                                          "description": "NodeTaintsPolicy indicates how we will treat node taints when calculating\npod topology spread skew. Options are:\n- Honor: nodes without taints, along with tainted nodes for which the incoming pod\nhas a toleration, are included.\n- Ignore: node taints are ignored. All nodes are included.\n\nIf this value is nil, the behavior is equivalent to the Ignore policy.\nThis is a beta-level feature default enabled by the NodeInclusionPolicyInPodTopologySpread feature flag.",
                                           "type": [
                                             "string",
                                             "null"
@@ -8361,7 +8465,7 @@
                                       ],
                                       "properties": {
                                         "awsElasticBlockStore": {
-                                          "description": "awsElasticBlockStore represents an AWS Disk resource that is attached to a\nkubelet's host machine and then exposed to the pod.\nMore info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore",
+                                          "description": "awsElasticBlockStore represents an AWS Disk resource that is attached to a\nkubelet's host machine and then exposed to the pod.\nDeprecated: AWSElasticBlockStore is deprecated. All operations for the in-tree\nawsElasticBlockStore type are redirected to the ebs.csi.aws.com CSI driver.\nMore info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore",
                                           "type": [
                                             "object",
                                             "null"
@@ -8371,7 +8475,7 @@
                                           ],
                                           "properties": {
                                             "fsType": {
-                                              "description": "fsType is the filesystem type of the volume that you want to mount.\nTip: Ensure that the filesystem type is supported by the host operating system.\nExamples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.\nMore info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore\nTODO: how do we prevent errors in the filesystem from compromising the machine",
+                                              "description": "fsType is the filesystem type of the volume that you want to mount.\nTip: Ensure that the filesystem type is supported by the host operating system.\nExamples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.\nMore info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore",
                                               "type": [
                                                 "string",
                                                 "null"
@@ -8399,7 +8503,7 @@
                                           }
                                         },
                                         "azureDisk": {
-                                          "description": "azureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.",
+                                          "description": "azureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.\nDeprecated: AzureDisk is deprecated. All operations for the in-tree azureDisk type\nare redirected to the disk.csi.azure.com CSI driver.",
                                           "type": [
                                             "object",
                                             "null"
@@ -8448,7 +8552,7 @@
                                           }
                                         },
                                         "azureFile": {
-                                          "description": "azureFile represents an Azure File Service mount on the host and bind mount to the pod.",
+                                          "description": "azureFile represents an Azure File Service mount on the host and bind mount to the pod.\nDeprecated: AzureFile is deprecated. All operations for the in-tree azureFile type\nare redirected to the file.csi.azure.com CSI driver.",
                                           "type": [
                                             "object",
                                             "null"
@@ -8476,7 +8580,7 @@
                                           }
                                         },
                                         "cephfs": {
-                                          "description": "cephFS represents a Ceph FS mount on the host that shares a pod's lifetime",
+                                          "description": "cephFS represents a Ceph FS mount on the host that shares a pod's lifetime.\nDeprecated: CephFS is deprecated and the in-tree cephfs type is no longer supported.",
                                           "type": [
                                             "object",
                                             "null"
@@ -8525,7 +8629,7 @@
                                               ],
                                               "properties": {
                                                 "name": {
-                                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nTODO: Add other useful fields. apiVersion, kind, uid?\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names\nTODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.",
+                                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                                   "type": [
                                                     "string",
                                                     "null"
@@ -8544,7 +8648,7 @@
                                           }
                                         },
                                         "cinder": {
-                                          "description": "cinder represents a cinder volume attached and mounted on kubelets host machine.\nMore info: https://examples.k8s.io/mysql-cinder-pd/README.md",
+                                          "description": "cinder represents a cinder volume attached and mounted on kubelets host machine.\nDeprecated: Cinder is deprecated. All operations for the in-tree cinder type\nare redirected to the cinder.csi.openstack.org CSI driver.\nMore info: https://examples.k8s.io/mysql-cinder-pd/README.md",
                                           "type": [
                                             "object",
                                             "null"
@@ -8575,7 +8679,7 @@
                                               ],
                                               "properties": {
                                                 "name": {
-                                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nTODO: Add other useful fields. apiVersion, kind, uid?\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names\nTODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.",
+                                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                                   "type": [
                                                     "string",
                                                     "null"
@@ -8643,7 +8747,7 @@
                                               "x-kubernetes-list-type": "atomic"
                                             },
                                             "name": {
-                                              "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nTODO: Add other useful fields. apiVersion, kind, uid?\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names\nTODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.",
+                                              "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                               "type": [
                                                 "string",
                                                 "null"
@@ -8660,7 +8764,7 @@
                                           "x-kubernetes-map-type": "atomic"
                                         },
                                         "csi": {
-                                          "description": "csi (Container Storage Interface) represents ephemeral storage that is handled by certain external CSI drivers (Beta feature).",
+                                          "description": "csi (Container Storage Interface) represents ephemeral storage that is handled by certain external CSI drivers.",
                                           "type": [
                                             "object",
                                             "null"
@@ -8688,7 +8792,7 @@
                                               ],
                                               "properties": {
                                                 "name": {
-                                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nTODO: Add other useful fields. apiVersion, kind, uid?\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names\nTODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.",
+                                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                                   "type": [
                                                     "string",
                                                     "null"
@@ -8843,14 +8947,14 @@
                                           }
                                         },
                                         "ephemeral": {
-                                          "description": "ephemeral represents a volume that is handled by a cluster storage driver.\nThe volume's lifecycle is tied to the pod that defines it - it will be created before the pod starts,\nand deleted when the pod is removed.\n\n\nUse this if:\na) the volume is only needed while the pod runs,\nb) features of normal volumes like restoring from snapshot or capacity\n   tracking are needed,\nc) the storage driver is specified through a storage class, and\nd) the storage driver supports dynamic volume provisioning through\n   a PersistentVolumeClaim (see EphemeralVolumeSource for more\n   information on the connection between this volume type\n   and PersistentVolumeClaim).\n\n\nUse PersistentVolumeClaim or one of the vendor-specific\nAPIs for volumes that persist for longer than the lifecycle\nof an individual pod.\n\n\nUse CSI for light-weight local ephemeral volumes if the CSI driver is meant to\nbe used that way - see the documentation of the driver for\nmore information.\n\n\nA pod can use both types of ephemeral volumes and\npersistent volumes at the same time.",
+                                          "description": "ephemeral represents a volume that is handled by a cluster storage driver.\nThe volume's lifecycle is tied to the pod that defines it - it will be created before the pod starts,\nand deleted when the pod is removed.\n\nUse this if:\na) the volume is only needed while the pod runs,\nb) features of normal volumes like restoring from snapshot or capacity\n   tracking are needed,\nc) the storage driver is specified through a storage class, and\nd) the storage driver supports dynamic volume provisioning through\n   a PersistentVolumeClaim (see EphemeralVolumeSource for more\n   information on the connection between this volume type\n   and PersistentVolumeClaim).\n\nUse PersistentVolumeClaim or one of the vendor-specific\nAPIs for volumes that persist for longer than the lifecycle\nof an individual pod.\n\nUse CSI for light-weight local ephemeral volumes if the CSI driver is meant to\nbe used that way - see the documentation of the driver for\nmore information.\n\nA pod can use both types of ephemeral volumes and\npersistent volumes at the same time.",
                                           "type": [
                                             "object",
                                             "null"
                                           ],
                                           "properties": {
                                             "volumeClaimTemplate": {
-                                              "description": "Will be used to create a stand-alone PVC to provision the volume.\nThe pod in which this EphemeralVolumeSource is embedded will be the\nowner of the PVC, i.e. the PVC will be deleted together with the\npod.  The name of the PVC will be `<pod name>-<volume name>` where\n`<volume name>` is the name from the `PodSpec.Volumes` array\nentry. Pod validation will reject the pod if the concatenated name\nis not valid for a PVC (for example, too long).\n\n\nAn existing PVC with that name that is not owned by the pod\nwill *not* be used for the pod to avoid using an unrelated\nvolume by mistake. Starting the pod is then blocked until\nthe unrelated PVC is removed. If such a pre-created PVC is\nmeant to be used by the pod, the PVC has to updated with an\nowner reference to the pod once the pod exists. Normally\nthis should not be necessary, but it may be useful when\nmanually reconstructing a broken cluster.\n\n\nThis field is read-only and no changes will be made by Kubernetes\nto the PVC after it has been created.\n\n\nRequired, must not be nil.",
+                                              "description": "Will be used to create a stand-alone PVC to provision the volume.\nThe pod in which this EphemeralVolumeSource is embedded will be the\nowner of the PVC, i.e. the PVC will be deleted together with the\npod.  The name of the PVC will be `<pod name>-<volume name>` where\n`<volume name>` is the name from the `PodSpec.Volumes` array\nentry. Pod validation will reject the pod if the concatenated name\nis not valid for a PVC (for example, too long).\n\nAn existing PVC with that name that is not owned by the pod\nwill *not* be used for the pod to avoid using an unrelated\nvolume by mistake. Starting the pod is then blocked until\nthe unrelated PVC is removed. If such a pre-created PVC is\nmeant to be used by the pod, the PVC has to updated with an\nowner reference to the pod once the pod exists. Normally\nthis should not be necessary, but it may be useful when\nmanually reconstructing a broken cluster.\n\nThis field is read-only and no changes will be made by Kubernetes\nto the PVC after it has been created.\n\nRequired, must not be nil.",
                                               "type": [
                                                 "object",
                                                 "null"
@@ -9053,7 +9157,7 @@
                                                       ]
                                                     },
                                                     "volumeAttributesClassName": {
-                                                      "description": "volumeAttributesClassName may be used to set the VolumeAttributesClass used by this claim.\nIf specified, the CSI driver will create or update the volume with the attributes defined\nin the corresponding VolumeAttributesClass. This has a different purpose than storageClassName,\nit can be changed after the claim is created. An empty string value means that no VolumeAttributesClass\nwill be applied to the claim but it's not allowed to reset this field to empty string once it is set.\nIf unspecified and the PersistentVolumeClaim is unbound, the default VolumeAttributesClass\nwill be set by the persistentvolume controller if it exists.\nIf the resource referred to by volumeAttributesClass does not exist, this PersistentVolumeClaim will be\nset to a Pending state, as reflected by the modifyVolumeStatus field, until such as a resource\nexists.\nMore info: https://kubernetes.io/docs/concepts/storage/volume-attributes-classes/\n(Alpha) Using this field requires the VolumeAttributesClass feature gate to be enabled.",
+                                                      "description": "volumeAttributesClassName may be used to set the VolumeAttributesClass used by this claim.\nIf specified, the CSI driver will create or update the volume with the attributes defined\nin the corresponding VolumeAttributesClass. This has a different purpose than storageClassName,\nit can be changed after the claim is created. An empty string value means that no VolumeAttributesClass\nwill be applied to the claim but it's not allowed to reset this field to empty string once it is set.\nIf unspecified and the PersistentVolumeClaim is unbound, the default VolumeAttributesClass\nwill be set by the persistentvolume controller if it exists.\nIf the resource referred to by volumeAttributesClass does not exist, this PersistentVolumeClaim will be\nset to a Pending state, as reflected by the modifyVolumeStatus field, until such as a resource\nexists.\nMore info: https://kubernetes.io/docs/concepts/storage/volume-attributes-classes/\n(Beta) Using this field requires the VolumeAttributesClass feature gate to be enabled (off by default).",
                                                       "type": [
                                                         "string",
                                                         "null"
@@ -9087,7 +9191,7 @@
                                           ],
                                           "properties": {
                                             "fsType": {
-                                              "description": "fsType is the filesystem type to mount.\nMust be a filesystem type supported by the host operating system.\nEx. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.\nTODO: how do we prevent errors in the filesystem from compromising the machine",
+                                              "description": "fsType is the filesystem type to mount.\nMust be a filesystem type supported by the host operating system.\nEx. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.",
                                               "type": [
                                                 "string",
                                                 "null"
@@ -9139,7 +9243,7 @@
                                           }
                                         },
                                         "flexVolume": {
-                                          "description": "flexVolume represents a generic volume resource that is\nprovisioned/attached using an exec based plugin.",
+                                          "description": "flexVolume represents a generic volume resource that is\nprovisioned/attached using an exec based plugin.\nDeprecated: FlexVolume is deprecated. Consider using a CSIDriver instead.",
                                           "type": [
                                             "object",
                                             "null"
@@ -9187,7 +9291,7 @@
                                               ],
                                               "properties": {
                                                 "name": {
-                                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nTODO: Add other useful fields. apiVersion, kind, uid?\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names\nTODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.",
+                                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                                   "type": [
                                                     "string",
                                                     "null"
@@ -9199,7 +9303,7 @@
                                           }
                                         },
                                         "flocker": {
-                                          "description": "flocker represents a Flocker volume attached to a kubelet's host machine. This depends on the Flocker control service being running",
+                                          "description": "flocker represents a Flocker volume attached to a kubelet's host machine. This depends on the Flocker control service being running.\nDeprecated: Flocker is deprecated and the in-tree flocker type is no longer supported.",
                                           "type": [
                                             "object",
                                             "null"
@@ -9222,7 +9326,7 @@
                                           }
                                         },
                                         "gcePersistentDisk": {
-                                          "description": "gcePersistentDisk represents a GCE Disk resource that is attached to a\nkubelet's host machine and then exposed to the pod.\nMore info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk",
+                                          "description": "gcePersistentDisk represents a GCE Disk resource that is attached to a\nkubelet's host machine and then exposed to the pod.\nDeprecated: GCEPersistentDisk is deprecated. All operations for the in-tree\ngcePersistentDisk type are redirected to the pd.csi.storage.gke.io CSI driver.\nMore info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk",
                                           "type": [
                                             "object",
                                             "null"
@@ -9232,7 +9336,7 @@
                                           ],
                                           "properties": {
                                             "fsType": {
-                                              "description": "fsType is filesystem type of the volume that you want to mount.\nTip: Ensure that the filesystem type is supported by the host operating system.\nExamples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.\nMore info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk\nTODO: how do we prevent errors in the filesystem from compromising the machine",
+                                              "description": "fsType is filesystem type of the volume that you want to mount.\nTip: Ensure that the filesystem type is supported by the host operating system.\nExamples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.\nMore info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk",
                                               "type": [
                                                 "string",
                                                 "null"
@@ -9260,7 +9364,7 @@
                                           }
                                         },
                                         "gitRepo": {
-                                          "description": "gitRepo represents a git repository at a particular revision.\nDEPRECATED: GitRepo is deprecated. To provision a container with a git repo, mount an\nEmptyDir into an InitContainer that clones the repo using git, then mount the EmptyDir\ninto the Pod's container.",
+                                          "description": "gitRepo represents a git repository at a particular revision.\nDeprecated: GitRepo is deprecated. To provision a container with a git repo, mount an\nEmptyDir into an InitContainer that clones the repo using git, then mount the EmptyDir\ninto the Pod's container.",
                                           "type": [
                                             "object",
                                             "null"
@@ -9290,7 +9394,7 @@
                                           }
                                         },
                                         "glusterfs": {
-                                          "description": "glusterfs represents a Glusterfs mount on the host that shares a pod's lifetime.\nMore info: https://examples.k8s.io/volumes/glusterfs/README.md",
+                                          "description": "glusterfs represents a Glusterfs mount on the host that shares a pod's lifetime.\nDeprecated: Glusterfs is deprecated and the in-tree glusterfs type is no longer supported.\nMore info: https://examples.k8s.io/volumes/glusterfs/README.md",
                                           "type": [
                                             "object",
                                             "null"
@@ -9318,7 +9422,7 @@
                                           }
                                         },
                                         "hostPath": {
-                                          "description": "hostPath represents a pre-existing file or directory on the host\nmachine that is directly exposed to the container. This is generally\nused for system agents or other privileged things that are allowed\nto see the host machine. Most containers will NOT need this.\nMore info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath\n---\nTODO(jonesdl) We need to restrict who can use host directory mounts and who can/can not\nmount host directories as read/write.",
+                                          "description": "hostPath represents a pre-existing file or directory on the host\nmachine that is directly exposed to the container. This is generally\nused for system agents or other privileged things that are allowed\nto see the host machine. Most containers will NOT need this.\nMore info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath",
                                           "type": [
                                             "object",
                                             "null"
@@ -9333,6 +9437,29 @@
                                             },
                                             "type": {
                                               "description": "type for HostPath Volume\nDefaults to \"\"\nMore info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath",
+                                              "type": [
+                                                "string",
+                                                "null"
+                                              ]
+                                            }
+                                          }
+                                        },
+                                        "image": {
+                                          "description": "image represents an OCI object (a container image or artifact) pulled and mounted on the kubelet's host machine.\nThe volume is resolved at pod startup depending on which PullPolicy value is provided:\n\n- Always: the kubelet always attempts to pull the reference. Container creation will fail If the pull fails.\n- Never: the kubelet never pulls the reference and only uses a local image or artifact. Container creation will fail if the reference isn't present.\n- IfNotPresent: the kubelet pulls if the reference isn't already present on disk. Container creation will fail if the reference isn't present and the pull fails.\n\nThe volume gets re-resolved if the pod gets deleted and recreated, which means that new remote content will become available on pod recreation.\nA failure to resolve or pull the image during pod startup will block containers from starting and may add significant latency. Failures will be retried using normal volume backoff and will be reported on the pod reason and message.\nThe types of objects that may be mounted by this volume are defined by the container runtime implementation on a host machine and at minimum must include all valid types supported by the container image field.\nThe OCI object gets mounted in a single directory (spec.containers[*].volumeMounts.mountPath) by merging the manifest layers in the same way as for container images.\nThe volume will be mounted read-only (ro) and non-executable files (noexec).\nSub path mounts for containers are not supported (spec.containers[*].volumeMounts.subpath).\nThe field spec.securityContext.fsGroupChangePolicy has no effect on this volume type.",
+                                          "type": [
+                                            "object",
+                                            "null"
+                                          ],
+                                          "properties": {
+                                            "pullPolicy": {
+                                              "description": "Policy for pulling OCI objects. Possible values are:\nAlways: the kubelet always attempts to pull the reference. Container creation will fail If the pull fails.\nNever: the kubelet never pulls the reference and only uses a local image or artifact. Container creation will fail if the reference isn't present.\nIfNotPresent: the kubelet pulls if the reference isn't already present on disk. Container creation will fail if the reference isn't present and the pull fails.\nDefaults to Always if :latest tag is specified, or IfNotPresent otherwise.",
+                                              "type": [
+                                                "string",
+                                                "null"
+                                              ]
+                                            },
+                                            "reference": {
+                                              "description": "Required: Image or artifact reference to be used.\nBehaves in the same way as pod.spec.containers[*].image.\nPull secrets will be assembled in the same way as for the container image by looking up node credentials, SA image pull secrets, and pod spec image pull secrets.\nMore info: https://kubernetes.io/docs/concepts/containers/images\nThis field is optional to allow higher level config management to default or override\ncontainer images in workload controllers like Deployments and StatefulSets.",
                                               "type": [
                                                 "string",
                                                 "null"
@@ -9367,7 +9494,7 @@
                                               ]
                                             },
                                             "fsType": {
-                                              "description": "fsType is the filesystem type of the volume that you want to mount.\nTip: Ensure that the filesystem type is supported by the host operating system.\nExamples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.\nMore info: https://kubernetes.io/docs/concepts/storage/volumes#iscsi\nTODO: how do we prevent errors in the filesystem from compromising the machine",
+                                              "description": "fsType is the filesystem type of the volume that you want to mount.\nTip: Ensure that the filesystem type is supported by the host operating system.\nExamples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.\nMore info: https://kubernetes.io/docs/concepts/storage/volumes#iscsi",
                                               "type": [
                                                 "string",
                                                 "null"
@@ -9425,7 +9552,7 @@
                                               ],
                                               "properties": {
                                                 "name": {
-                                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nTODO: Add other useful fields. apiVersion, kind, uid?\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names\nTODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.",
+                                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                                   "type": [
                                                     "string",
                                                     "null"
@@ -9496,7 +9623,7 @@
                                           }
                                         },
                                         "photonPersistentDisk": {
-                                          "description": "photonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine",
+                                          "description": "photonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine.\nDeprecated: PhotonPersistentDisk is deprecated and the in-tree photonPersistentDisk type is no longer supported.",
                                           "type": [
                                             "object",
                                             "null"
@@ -9519,7 +9646,7 @@
                                           }
                                         },
                                         "portworxVolume": {
-                                          "description": "portworxVolume represents a portworx volume attached and mounted on kubelets host machine",
+                                          "description": "portworxVolume represents a portworx volume attached and mounted on kubelets host machine.\nDeprecated: PortworxVolume is deprecated. All operations for the in-tree portworxVolume type\nare redirected to the pxd.portworx.com CSI driver when the CSIMigrationPortworx feature-gate\nis on.",
                                           "type": [
                                             "object",
                                             "null"
@@ -9564,20 +9691,20 @@
                                               "format": "int32"
                                             },
                                             "sources": {
-                                              "description": "sources is the list of volume projections",
+                                              "description": "sources is the list of volume projections. Each entry in this list\nhandles one source.",
                                               "type": [
                                                 "array",
                                                 "null"
                                               ],
                                               "items": {
-                                                "description": "Projection that may be projected along with other supported volume types",
+                                                "description": "Projection that may be projected along with other supported volume types.\nExactly one of these fields must be set.",
                                                 "type": [
                                                   "object",
                                                   "null"
                                                 ],
                                                 "properties": {
                                                   "clusterTrustBundle": {
-                                                    "description": "ClusterTrustBundle allows a pod to access the `.spec.trustBundle` field\nof ClusterTrustBundle objects in an auto-updating file.\n\n\nAlpha, gated by the ClusterTrustBundleProjection feature gate.\n\n\nClusterTrustBundle objects can either be selected by name, or by the\ncombination of signer name and a label selector.\n\n\nKubelet performs aggressive normalization of the PEM contents written\ninto the pod filesystem.  Esoteric PEM features such as inter-block\ncomments and block headers are stripped.  Certificates are deduplicated.\nThe ordering of certificates within the file is arbitrary, and Kubelet\nmay change the order over time.",
+                                                    "description": "ClusterTrustBundle allows a pod to access the `.spec.trustBundle` field\nof ClusterTrustBundle objects in an auto-updating file.\n\nAlpha, gated by the ClusterTrustBundleProjection feature gate.\n\nClusterTrustBundle objects can either be selected by name, or by the\ncombination of signer name and a label selector.\n\nKubelet performs aggressive normalization of the PEM contents written\ninto the pod filesystem.  Esoteric PEM features such as inter-block\ncomments and block headers are stripped.  Certificates are deduplicated.\nThe ordering of certificates within the file is arbitrary, and Kubelet\nmay change the order over time.",
                                                     "type": [
                                                       "object",
                                                       "null"
@@ -9724,7 +9851,7 @@
                                                         "x-kubernetes-list-type": "atomic"
                                                       },
                                                       "name": {
-                                                        "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nTODO: Add other useful fields. apiVersion, kind, uid?\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names\nTODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.",
+                                                        "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                                         "type": [
                                                           "string",
                                                           "null"
@@ -9879,7 +10006,7 @@
                                                         "x-kubernetes-list-type": "atomic"
                                                       },
                                                       "name": {
-                                                        "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nTODO: Add other useful fields. apiVersion, kind, uid?\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names\nTODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.",
+                                                        "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                                         "type": [
                                                           "string",
                                                           "null"
@@ -9933,7 +10060,7 @@
                                           }
                                         },
                                         "quobyte": {
-                                          "description": "quobyte represents a Quobyte mount on the host that shares a pod's lifetime",
+                                          "description": "quobyte represents a Quobyte mount on the host that shares a pod's lifetime.\nDeprecated: Quobyte is deprecated and the in-tree quobyte type is no longer supported.",
                                           "type": [
                                             "object",
                                             "null"
@@ -9982,7 +10109,7 @@
                                           }
                                         },
                                         "rbd": {
-                                          "description": "rbd represents a Rados Block Device mount on the host that shares a pod's lifetime.\nMore info: https://examples.k8s.io/volumes/rbd/README.md",
+                                          "description": "rbd represents a Rados Block Device mount on the host that shares a pod's lifetime.\nDeprecated: RBD is deprecated and the in-tree rbd type is no longer supported.\nMore info: https://examples.k8s.io/volumes/rbd/README.md",
                                           "type": [
                                             "object",
                                             "null"
@@ -9993,7 +10120,7 @@
                                           ],
                                           "properties": {
                                             "fsType": {
-                                              "description": "fsType is the filesystem type of the volume that you want to mount.\nTip: Ensure that the filesystem type is supported by the host operating system.\nExamples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.\nMore info: https://kubernetes.io/docs/concepts/storage/volumes#rbd\nTODO: how do we prevent errors in the filesystem from compromising the machine",
+                                              "description": "fsType is the filesystem type of the volume that you want to mount.\nTip: Ensure that the filesystem type is supported by the host operating system.\nExamples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.\nMore info: https://kubernetes.io/docs/concepts/storage/volumes#rbd",
                                               "type": [
                                                 "string",
                                                 "null"
@@ -10043,7 +10170,7 @@
                                               ],
                                               "properties": {
                                                 "name": {
-                                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nTODO: Add other useful fields. apiVersion, kind, uid?\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names\nTODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.",
+                                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                                   "type": [
                                                     "string",
                                                     "null"
@@ -10062,7 +10189,7 @@
                                           }
                                         },
                                         "scaleIO": {
-                                          "description": "scaleIO represents a ScaleIO persistent volume attached and mounted on Kubernetes nodes.",
+                                          "description": "scaleIO represents a ScaleIO persistent volume attached and mounted on Kubernetes nodes.\nDeprecated: ScaleIO is deprecated and the in-tree scaleIO type is no longer supported.",
                                           "type": [
                                             "object",
                                             "null"
@@ -10103,7 +10230,7 @@
                                               "type": "object",
                                               "properties": {
                                                 "name": {
-                                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nTODO: Add other useful fields. apiVersion, kind, uid?\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names\nTODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.",
+                                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                                   "type": [
                                                     "string",
                                                     "null"
@@ -10215,7 +10342,7 @@
                                           }
                                         },
                                         "storageos": {
-                                          "description": "storageOS represents a StorageOS volume attached and mounted on Kubernetes nodes.",
+                                          "description": "storageOS represents a StorageOS volume attached and mounted on Kubernetes nodes.\nDeprecated: StorageOS is deprecated and the in-tree storageos type is no longer supported.",
                                           "type": [
                                             "object",
                                             "null"
@@ -10243,7 +10370,7 @@
                                               ],
                                               "properties": {
                                                 "name": {
-                                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nTODO: Add other useful fields. apiVersion, kind, uid?\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names\nTODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.",
+                                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                                   "type": [
                                                     "string",
                                                     "null"
@@ -10269,7 +10396,7 @@
                                           }
                                         },
                                         "vsphereVolume": {
-                                          "description": "vsphereVolume represents a vSphere volume attached and mounted on kubelets host machine",
+                                          "description": "vsphereVolume represents a vSphere volume attached and mounted on kubelets host machine.\nDeprecated: VsphereVolume is deprecated. All operations for the in-tree vsphereVolume type\nare redirected to the csi.vsphere.vmware.com CSI driver.",
                                           "type": [
                                             "object",
                                             "null"
@@ -10918,7 +11045,7 @@
                       "x-kubernetes-list-type": "atomic"
                     },
                     "resources": {
-                      "description": "Resources is a list of resources this rule applies to.\n\n\nFor example:\n'pods' means pods.\n'pods/log' means the log subresource of pods.\n'*' means all resources, but not subresources.\n'pods/*' means all subresources of pods.\n'*/scale' means all scale subresources.\n'*/*' means all resources and their subresources.\n\n\nIf wildcard is present, the validation rule will ensure resources do not\noverlap with each other.\n\n\nDepending on the enclosing object, subresources might not be allowed.\nRequired.",
+                      "description": "Resources is a list of resources this rule applies to.\n\nFor example:\n'pods' means pods.\n'pods/log' means the log subresource of pods.\n'*' means all resources, but not subresources.\n'pods/*' means all subresources of pods.\n'*/scale' means all scale subresources.\n'*/*' means all resources and their subresources.\n\nIf wildcard is present, the validation rule will ensure resources do not\noverlap with each other.\n\nDepending on the enclosing object, subresources might not be allowed.\nRequired.",
                       "type": [
                         "array",
                         "null"
@@ -11252,5 +11379,6 @@
       "version": "v1alpha1"
     }
   ],
+  "x-kubernetes-selectable-fields": [],
   "$schema": "http://json-schema.org/schema#"
 }

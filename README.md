@@ -7,10 +7,21 @@ Vi trenger et fungerende Python 3 miljø for disse skriptene. Det enkleste er de
 ```sh
 pip3 install virtualenv
 virtualenv --python=python3 .
-source ./bin/activate
+source ./bin/activate 
+## or source .venv/bin/activate
+python -m pip install --upgrade pip setuptools wheel
 pip install pyyaml==5.4.1 --no-build-isolation
-pip install openapi2jsonschema
+pip install openapi2jsonschema2
 ```
+OBS! Hvis man bruker windows, er det best å kjøre disse kommandoene via wsl ubuntu. 
+Man velger først SDK i IntelliJ, så genererer man en.venv fil. Etterpå kjør disse kommandoene:
+```sh
+source .venv/bin/activate
+python -m pip install --upgrade pip setuptools wheel
+pip install pyyaml==5.4.1 --no-build-isolation
+pip install openapi2jsonschema2
+```
+
 
 For å oppdatere dette depotet logger man først inn på OpenShift, deretter kjører man:
 

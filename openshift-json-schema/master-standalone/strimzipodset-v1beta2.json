@@ -86,7 +86,16 @@
               }
             },
             "matchLabels": {
-              "x-kubernetes-preserve-unknown-fields": true
+              "type": [
+                "object",
+                "null"
+              ],
+              "additionalProperties": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
             }
           }
         }
@@ -187,5 +196,6 @@
       "version": "v1beta2"
     }
   ],
+  "x-kubernetes-selectable-fields": [],
   "$schema": "http://json-schema.org/schema#"
 }

@@ -1,5 +1,5 @@
 {
-  "description": "EgressRouter is a feature allowing the user to define an egress router that acts as a bridge between pods and external systems. The egress router runs a service that redirects egress traffic originating from a pod or a group of pods to a remote external system or multiple destinations as per configuration. \n It is consumed by the cluster-network-operator. More specifically, given an EgressRouter CR with <name>, the CNO will create and manage: - A service called <name> - An egress pod called <name> - A NAD called <name> \n Compatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer). \n EgressRouter is a single egressrouter pod configuration object.",
+  "description": "EgressRouter is a feature allowing the user to define an egress router\nthat acts as a bridge between pods and external systems. The egress router runs\na service that redirects egress traffic originating from a pod or a group of\npods to a remote external system or multiple destinations as per configuration.\n\nIt is consumed by the cluster-network-operator.\nMore specifically, given an EgressRouter CR with <name>, the CNO will create and manage:\n- A service called <name>\n- An egress pod called <name>\n- A NAD called <name>\n\nCompatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).\n\nEgressRouter is a single egressrouter pod configuration object.",
   "type": "object",
   "required": [
     "spec"
@@ -62,7 +62,7 @@
                 ]
               },
               "ip": {
-                "description": "IP is the address to configure on the router's interface. Can be IPv4 or IPv6.",
+                "description": "ip is the address to configure on the router's interface. Can be IPv4 or IPv6.",
                 "type": "string"
               }
             },
@@ -70,14 +70,14 @@
           }
         },
         "mode": {
-          "description": "Mode depicts the mode that is used for the egress router. The default mode is \"Redirect\" and is the only supported mode currently.",
+          "description": "mode depicts the mode that is used for the egress router. The default mode is \"Redirect\" and is the only supported mode currently.",
           "type": "string",
           "enum": [
             "Redirect"
           ]
         },
         "networkInterface": {
-          "description": "Specification of interface to create/use. The default is macvlan. Currently only macvlan is supported.",
+          "description": "Specification of interface to create/use. The default is macvlan.\nCurrently only macvlan is supported.",
           "type": "object",
           "properties": {
             "macvlan": {
@@ -98,7 +98,7 @@
                   ]
                 },
                 "mode": {
-                  "description": "Mode depicts the mode that is used for the macvlan interface; one of Bridge|Private|VEPA|Passthru. The default mode is \"Bridge\".",
+                  "description": "mode depicts the mode that is used for the macvlan interface; one of Bridge|Private|VEPA|Passthru. The default mode is \"Bridge\".",
                   "type": "string",
                   "enum": [
                     "Bridge",
@@ -114,14 +114,14 @@
           "additionalProperties": false
         },
         "redirect": {
-          "description": "Redirect represents the configuration parameters specific to redirect mode.",
+          "description": "redirect represents the configuration parameters specific to redirect mode.",
           "type": [
             "object",
             "null"
           ],
           "properties": {
             "fallbackIP": {
-              "description": "FallbackIP specifies the remote destination's IP address. Can be IPv4 or IPv6. If no redirect rules are specified, all traffic from the router are redirected to this IP. If redirect rules are specified, then any connections on any other port (undefined in the rules) on the router will be redirected to this IP. If redirect rules are specified and no fallback IP is provided, connections on other ports will simply be rejected.",
+              "description": "fallbackIP specifies the remote destination's IP address. Can be IPv4 or IPv6.\nIf no redirect rules are specified, all traffic from the router are redirected to this IP.\nIf redirect rules are specified, then any connections on any other port (undefined in the rules) on the router will be redirected to this IP.\nIf redirect rules are specified and no fallback IP is provided, connections on other ports will simply be rejected.",
               "type": [
                 "string",
                 "null"
@@ -150,14 +150,14 @@
                     "type": "string"
                   },
                   "port": {
-                    "description": "Port is the port number to which clients should send traffic to be redirected.",
+                    "description": "port is the port number to which clients should send traffic to be redirected.",
                     "type": "integer",
                     "format": "int32",
                     "maximum": 65535,
                     "minimum": 1
                   },
                   "protocol": {
-                    "description": "Protocol can be TCP, SCTP or UDP.",
+                    "description": "protocol can be TCP, SCTP or UDP.",
                     "type": "string",
                     "enum": [
                       "TCP",
@@ -166,7 +166,7 @@
                     ]
                   },
                   "targetPort": {
-                    "description": "TargetPort allows specifying the port number on the remote destination to which the traffic gets redirected to. If unspecified, the value from \"Port\" is used.",
+                    "description": "targetPort allows specifying the port number on the remote destination to which the traffic gets redirected to.\nIf unspecified, the value from \"Port\" is used.",
                     "type": [
                       "integer",
                       "null"
@@ -199,7 +199,7 @@
           "description": "Observed status of the egress router",
           "type": "array",
           "items": {
-            "description": "EgressRouterStatusCondition represents the state of the egress router's managed and monitored components.",
+            "description": "EgressRouterStatusCondition represents the state of the egress router's\nmanaged and monitored components.",
             "type": [
               "object",
               "null"
@@ -210,25 +210,25 @@
             ],
             "properties": {
               "lastTransitionTime": {
-                "description": "LastTransitionTime is the time of the last update to the current status property.",
+                "description": "lastTransitionTime is the time of the last update to the current status property.",
                 "format": "date-time"
               },
               "message": {
-                "description": "Message provides additional information about the current condition. This is only to be consumed by humans.  It may contain Line Feed characters (U+000A), which should be rendered as new lines.",
+                "description": "message provides additional information about the current condition.\nThis is only to be consumed by humans.  It may contain Line Feed\ncharacters (U+000A), which should be rendered as new lines.",
                 "type": [
                   "string",
                   "null"
                 ]
               },
               "reason": {
-                "description": "Reason is the CamelCase reason for the condition's current status.",
+                "description": "reason is the CamelCase reason for the condition's current status.",
                 "type": [
                   "string",
                   "null"
                 ]
               },
               "status": {
-                "description": "Status of the condition, one of True, False, Unknown.",
+                "description": "status of the condition, one of True, False, Unknown.",
                 "type": "string",
                 "enum": [
                   "True",
@@ -237,7 +237,7 @@
                 ]
               },
               "type": {
-                "description": "Type specifies the aspect reported by this condition; one of Available, Progressing, Degraded",
+                "description": "type specifies the aspect reported by this condition; one of Available, Progressing, Degraded",
                 "type": "string",
                 "enum": [
                   "Available",
@@ -247,7 +247,11 @@
               }
             },
             "additionalProperties": false
-          }
+          },
+          "x-kubernetes-list-map-keys": [
+            "type"
+          ],
+          "x-kubernetes-list-type": "map"
         }
       },
       "additionalProperties": false
@@ -260,6 +264,7 @@
       "version": "v1"
     }
   ],
+  "x-kubernetes-selectable-fields": [],
   "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

@@ -122,7 +122,7 @@
                 ],
                 "properties": {
                   "host": {
-                    "description": "The host from which the action described in the ACL rule is allowed or denied.",
+                    "description": "The host from which the action described in the ACL rule is allowed or denied. If not set, it defaults to `*`, allowing or denying the action from any host.",
                     "type": [
                       "string",
                       "null"
@@ -149,7 +149,7 @@
                     ]
                   },
                   "operations": {
-                    "description": "List of operations which will be allowed or denied. Supported operations are: Read, Write, Create, Delete, Alter, Describe, ClusterAction, AlterConfigs, DescribeConfigs, IdempotentWrite and All.",
+                    "description": "List of operations to allow or deny. Supported operations are: Read, Write, Create, Delete, Alter, Describe, ClusterAction, AlterConfigs, DescribeConfigs, IdempotentWrite and All. Only certain operations work with the specified resource.",
                     "type": [
                       "array",
                       "null"
@@ -226,7 +226,7 @@
               }
             },
             "type": {
-              "description": "Authorization type. Currently the only supported type is `simple`. `simple` authorization type uses Kafka's `kafka.security.authorizer.AclAuthorizer` class for authorization.",
+              "description": "Authorization type. Currently the only supported type is `simple`. `simple` authorization type uses the Kafka Admin API for managing the ACL rules.",
               "type": "string",
               "enum": [
                 "simple"
@@ -298,11 +298,29 @@
                   "properties": {
                     "annotations": {
                       "description": "Annotations added to the Kubernetes resource.",
-                      "x-kubernetes-preserve-unknown-fields": true
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "additionalProperties": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
                     },
                     "labels": {
                       "description": "Labels added to the Kubernetes resource.",
-                      "x-kubernetes-preserve-unknown-fields": true
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "additionalProperties": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
                     }
                   }
                 }
@@ -400,5 +418,6 @@
       "version": "v1alpha1"
     }
   ],
+  "x-kubernetes-selectable-fields": [],
   "$schema": "http://json-schema.org/schema#"
 }

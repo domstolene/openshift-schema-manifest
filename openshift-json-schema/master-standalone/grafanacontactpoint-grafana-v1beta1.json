@@ -36,10 +36,7 @@
         "null"
       ],
       "required": [
-        "instanceSelector",
-        "name",
-        "settings",
-        "type"
+        "instanceSelector"
       ],
       "properties": {
         "allowCrossNamespaceImport": {
@@ -50,9 +47,23 @@
           ]
         },
         "disableResolveMessage": {
+          "description": "Deprecated: define the receiver under .spec.receivers[]\nWill be removed in a later version",
           "type": [
             "boolean",
             "null"
+          ]
+        },
+        "editable": {
+          "description": "Whether to enable or disable editing of the contact point in Grafana UI",
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "x-kubernetes-validations": [
+            {
+              "message": "spec.editable is immutable",
+              "rule": "self == oldSelf"
+            }
           ]
         },
         "instanceSelector": {
@@ -125,7 +136,155 @@
           ]
         },
         "name": {
-          "type": "string"
+          "description": "Receivers are grouped under the same ContactPoint using the Name\nDefaults to the name of the CR",
+          "type": [
+            "string",
+            "null"
+          ],
+          "x-kubernetes-validations": [
+            {
+              "message": "spec.name is immutable",
+              "rule": "self == oldSelf"
+            }
+          ]
+        },
+        "receivers": {
+          "description": "List of receivers that Grafana will fan out notifications to",
+          "type": [
+            "array",
+            "null"
+          ],
+          "maxItems": 99,
+          "items": {
+            "description": "Represents an integration to external services that receive Grafana notifications",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "settings",
+              "type"
+            ],
+            "properties": {
+              "disableResolveMessage": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "settings": {
+                "x-kubernetes-preserve-unknown-fields": true
+              },
+              "type": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uid": {
+                "description": "Manually specify the UID the Contact Point is created with. Can be any string consisting of alphanumeric characters, - and _ with a maximum length of 40",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 40,
+                "pattern": "^[a-zA-Z0-9-_]+$"
+              },
+              "valuesFrom": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "maxItems": 99,
+                "items": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "targetPath",
+                    "valueFrom"
+                  ],
+                  "properties": {
+                    "targetPath": {
+                      "type": "string"
+                    },
+                    "valueFrom": {
+                      "type": "object",
+                      "properties": {
+                        "configMapKeyRef": {
+                          "description": "Selects a key of a ConfigMap.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "required": [
+                            "key"
+                          ],
+                          "properties": {
+                            "key": {
+                              "description": "The key to select.",
+                              "type": "string"
+                            },
+                            "name": {
+                              "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "optional": {
+                              "description": "Specify whether the ConfigMap or its key must be defined",
+                              "type": [
+                                "boolean",
+                                "null"
+                              ]
+                            }
+                          },
+                          "x-kubernetes-map-type": "atomic"
+                        },
+                        "secretKeyRef": {
+                          "description": "Selects a key of a Secret.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "required": [
+                            "key"
+                          ],
+                          "properties": {
+                            "key": {
+                              "description": "The key of the secret to select from.  Must be a valid secret key.",
+                              "type": "string"
+                            },
+                            "name": {
+                              "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "optional": {
+                              "description": "Specify whether the Secret or its key must be defined",
+                              "type": [
+                                "boolean",
+                                "null"
+                              ]
+                            }
+                          },
+                          "x-kubernetes-map-type": "atomic"
+                        }
+                      },
+                      "x-kubernetes-validations": [
+                        {
+                          "message": "Either configMapKeyRef or secretKeyRef must be set",
+                          "rule": "(has(self.configMapKeyRef) && !has(self.secretKeyRef)) || (!has(self.configMapKeyRef) && has(self.secretKeyRef))"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
         },
         "resyncPeriod": {
           "description": "How often the resource is synced, defaults to 10m0s if not set",
@@ -136,14 +295,26 @@
           "pattern": "^([0-9]+(\\.[0-9]+)?(ns|us|\u00b5s|ms|s|m|h))+$"
         },
         "settings": {
+          "description": "Deprecated: define the receiver under .spec.receivers[]\nWill be removed in a later version",
           "x-kubernetes-preserve-unknown-fields": true
         },
+        "suspend": {
+          "description": "Suspend pauses synchronizing attempts and tells the operator to ignore changes",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
         "type": {
-          "type": "string",
+          "description": "Deprecated: define the receiver under .spec.receivers[]\nWill be removed in a later version",
+          "type": [
+            "string",
+            "null"
+          ],
           "minLength": 1
         },
         "uid": {
-          "description": "Manually specify the UID the Contact Point is created with. Can be any string consisting of alphanumeric characters, - and _ with a maximum length of 40",
+          "description": "Deprecated: define the receiver under .spec.receivers[]\nManually specify the UID the Contact Point is created with. Can be any string consisting of alphanumeric characters, - and _ with a maximum length of 40",
           "type": [
             "string",
             "null"
@@ -158,6 +329,7 @@
           ]
         },
         "valuesFrom": {
+          "description": "Deprecated: define the receiver under .spec.receivers[]\nWill be removed in a later version",
           "type": [
             "array",
             "null"
@@ -255,8 +427,12 @@
       },
       "x-kubernetes-validations": [
         {
-          "message": "spec.uid is immutable",
-          "rule": "((!has(oldSelf.uid) && !has(self.uid)) || (has(oldSelf.uid) && has(self.uid)))"
+          "message": "spec.name is immutable",
+          "rule": "((!has(oldSelf.name) && !has(self.name)) || (has(oldSelf.name) && has(self.name)))"
+        },
+        {
+          "message": "spec.editable is immutable",
+          "rule": "((!has(oldSelf.editable) && !has(self.editable)) || (has(oldSelf.editable) && has(self.editable)))"
         },
         {
           "message": "disabling spec.allowCrossNamespaceImport requires a recreate to ensure desired state",
@@ -353,5 +529,6 @@
       "version": "v1beta1"
     }
   ],
+  "x-kubernetes-selectable-fields": [],
   "$schema": "http://json-schema.org/schema#"
 }

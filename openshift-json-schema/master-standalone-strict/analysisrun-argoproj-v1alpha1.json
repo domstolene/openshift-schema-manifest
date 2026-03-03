@@ -169,6 +169,9 @@
               "consecutiveErrorLimit": {
                 "x-kubernetes-int-or-string": true
               },
+              "consecutiveSuccessLimit": {
+                "x-kubernetes-int-or-string": true
+              },
               "count": {
                 "x-kubernetes-int-or-string": true
               },
@@ -393,6 +396,27 @@
                           "string",
                           "null"
                         ]
+                      },
+                      "secretRef": {
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {
+                          "name": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "namespaced": {
+                            "type": [
+                              "boolean",
+                              "null"
+                            ]
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "additionalProperties": false
@@ -6958,6 +6982,13 @@
                       },
                       "query": {
                         "type": "string"
+                      },
+                      "timeout": {
+                        "type": [
+                          "integer",
+                          "null"
+                        ],
+                        "format": "int64"
                       }
                     },
                     "additionalProperties": false
@@ -7088,6 +7119,33 @@
                           "string",
                           "null"
                         ]
+                      },
+                      "rangeQuery": {
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {
+                          "end": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "start": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "step": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "additionalProperties": false
                       },
                       "timeout": {
                         "type": [
@@ -7436,6 +7494,13 @@
                 ],
                 "format": "int32"
               },
+              "consecutiveSuccess": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32"
+              },
               "count": {
                 "type": [
                   "integer",
@@ -7636,6 +7701,7 @@
       "version": "v1alpha1"
     }
   ],
+  "x-kubernetes-selectable-fields": [],
   "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

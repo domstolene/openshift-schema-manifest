@@ -32,6 +32,32 @@
         "null"
       ],
       "properties": {
+        "alterOffsets": {
+          "description": "Configuration for altering offsets.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "fromConfigMap"
+          ],
+          "properties": {
+            "fromConfigMap": {
+              "description": "Reference to the ConfigMap where the new offsets are stored.",
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
         "autoRestart": {
           "description": "Automatic restart of connector and tasks configuration.",
           "type": [
@@ -43,6 +69,13 @@
               "description": "Whether automatic restart for failed connectors and tasks should be enabled or disabled.",
               "type": [
                 "boolean",
+                "null"
+              ]
+            },
+            "maxRestarts": {
+              "description": "The maximum number of connector restarts that the operator will try. If the connector remains in a failed state after reaching this limit, it must be restarted manually by the user. Defaults to an unlimited number of restarts.",
+              "type": [
+                "integer",
                 "null"
               ]
             }
@@ -57,14 +90,52 @@
           ]
         },
         "config": {
-          "description": "The Kafka Connector configuration. The following properties cannot be set: connector.class, tasks.max.",
+          "description": "The Kafka Connector configuration. The following properties cannot be set: name, connector.class, tasks.max.",
           "x-kubernetes-preserve-unknown-fields": true
+        },
+        "listOffsets": {
+          "description": "Configuration for listing offsets.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "toConfigMap"
+          ],
+          "properties": {
+            "toConfigMap": {
+              "description": "Reference to the ConfigMap where the list of offsets will be written to.",
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
         },
         "pause": {
           "description": "Whether the connector should be paused. Defaults to false.",
           "type": [
             "boolean",
             "null"
+          ]
+        },
+        "state": {
+          "description": "The state the connector should be in. Defaults to running.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "paused",
+            "stopped",
+            "running"
           ]
         },
         "tasksMax": {
@@ -209,6 +280,7 @@
       "version": "v1beta2"
     }
   ],
+  "x-kubernetes-selectable-fields": [],
   "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

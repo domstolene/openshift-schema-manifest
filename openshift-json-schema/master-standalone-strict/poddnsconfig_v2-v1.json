@@ -22,7 +22,7 @@
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodDNSConfigOption"
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodDNSConfigOption_v2"
       }
     },
     "searches": {
