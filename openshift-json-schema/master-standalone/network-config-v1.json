@@ -1,5 +1,5 @@
 {
-  "description": "Network holds cluster-wide information about Network. The canonical name is `cluster`. It is used to configure the desired network configuration, such as: IP address pools for services/pod IPs, network plugin, etc.\nPlease view network.spec for an explanation on what applies when configuring this resource.\n\nCompatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
+  "description": "Network holds cluster-wide information about Network. The canonical name is `cluster`. It is used to configure the desired network configuration, such as: IP address pools for services/pod IPs, network plugin, etc. Please view network.spec for an explanation on what applies when configuring this resource. \n Compatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
   "type": "object",
   "required": [
     "spec"
@@ -30,20 +30,20 @@
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     },
     "spec": {
-      "description": "spec holds user settable values for configuration.\nAs a general rule, this SHOULD NOT be read directly. Instead, you should\nconsume the NetworkStatus, as it indicates the currently deployed configuration.\nCurrently, most spec fields are immutable after installation. Please view the individual ones for further details on each.",
+      "description": "spec holds user settable values for configuration. As a general rule, this SHOULD NOT be read directly. Instead, you should consume the NetworkStatus, as it indicates the currently deployed configuration. Currently, most spec fields are immutable after installation. Please view the individual ones for further details on each.",
       "type": [
         "object",
         "null"
       ],
       "properties": {
         "clusterNetwork": {
-          "description": "IP address pool to use for pod IPs.\nThis field is immutable after installation.",
+          "description": "IP address pool to use for pod IPs. This field is immutable after installation.",
           "type": [
             "array",
             "null"
           ],
           "items": {
-            "description": "ClusterNetworkEntry is a contiguous block of IP addresses from which pod IPs\nare allocated.",
+            "description": "ClusterNetworkEntry is a contiguous block of IP addresses from which pod IPs are allocated.",
             "type": [
               "object",
               "null"
@@ -57,7 +57,7 @@
                 ]
               },
               "hostPrefix": {
-                "description": "The size (prefix) of block to allocate to each node. If this\nfield is not used by the plugin, it can be left unset.",
+                "description": "The size (prefix) of block to allocate to each node. If this field is not used by the plugin, it can be left unset.",
                 "type": [
                   "integer",
                   "null"
@@ -70,14 +70,14 @@
           "x-kubernetes-list-type": "atomic"
         },
         "externalIP": {
-          "description": "externalIP defines configuration for controllers that\naffect Service.ExternalIP. If nil, then ExternalIP is\nnot allowed to be set.",
+          "description": "externalIP defines configuration for controllers that affect Service.ExternalIP. If nil, then ExternalIP is not allowed to be set.",
           "type": [
             "object",
             "null"
           ],
           "properties": {
             "autoAssignCIDRs": {
-              "description": "autoAssignCIDRs is a list of CIDRs from which to automatically assign\nService.ExternalIP. These are assigned when the service is of type\nLoadBalancer. In general, this is only useful for bare-metal clusters.\nIn Openshift 3.x, this was misleadingly called \"IngressIPs\".\nAutomatically assigned External IPs are not affected by any\nExternalIPPolicy rules.\nCurrently, only one entry may be provided.",
+              "description": "autoAssignCIDRs is a list of CIDRs from which to automatically assign Service.ExternalIP. These are assigned when the service is of type LoadBalancer. In general, this is only useful for bare-metal clusters. In Openshift 3.x, this was misleadingly called \"IngressIPs\". Automatically assigned External IPs are not affected by any ExternalIPPolicy rules. Currently, only one entry may be provided.",
               "type": [
                 "array",
                 "null"
@@ -91,7 +91,7 @@
               "x-kubernetes-list-type": "atomic"
             },
             "policy": {
-              "description": "policy is a set of restrictions applied to the ExternalIP field.\nIf nil or empty, then ExternalIP is not allowed to be set.",
+              "description": "policy is a set of restrictions applied to the ExternalIP field. If nil or empty, then ExternalIP is not allowed to be set.",
               "type": [
                 "object",
                 "null"
@@ -112,7 +112,7 @@
                   "x-kubernetes-list-type": "atomic"
                 },
                 "rejectedCIDRs": {
-                  "description": "rejectedCIDRs is the list of disallowed CIDRs. These take precedence\nover allowedCIDRs.",
+                  "description": "rejectedCIDRs is the list of disallowed CIDRs. These take precedence over allowedCIDRs.",
                   "type": [
                     "array",
                     "null"
@@ -130,14 +130,14 @@
           }
         },
         "networkDiagnostics": {
-          "description": "networkDiagnostics defines network diagnostics configuration.\n\nTakes precedence over spec.disableNetworkDiagnostics in network.operator.openshift.io.\nIf networkDiagnostics is not specified or is empty,\nand the spec.disableNetworkDiagnostics flag in network.operator.openshift.io is set to true,\nthe network diagnostics feature will be disabled.",
+          "description": "networkDiagnostics defines network diagnostics configuration. \n Takes precedence over spec.disableNetworkDiagnostics in network.operator.openshift.io. If networkDiagnostics is not specified or is empty, and the spec.disableNetworkDiagnostics flag in network.operator.openshift.io is set to true, the network diagnostics feature will be disabled.",
           "type": [
             "object",
             "null"
           ],
           "properties": {
             "mode": {
-              "description": "mode controls the network diagnostics mode\n\nWhen omitted, this means the user has no opinion and the platform is left\nto choose reasonable defaults. These defaults are subject to change over time.\nThe current default is All.",
+              "description": "mode controls the network diagnostics mode \n When omitted, this means the user has no opinion and the platform is left to choose reasonable defaults. These defaults are subject to change over time. The current default is All.",
               "type": [
                 "string",
                 "null"
@@ -149,14 +149,14 @@
               ]
             },
             "sourcePlacement": {
-              "description": "sourcePlacement controls the scheduling of network diagnostics source deployment\n\nSee NetworkDiagnosticsSourcePlacement for more details about default values.",
+              "description": "sourcePlacement controls the scheduling of network diagnostics source deployment \n See NetworkDiagnosticsSourcePlacement for more details about default values.",
               "type": [
                 "object",
                 "null"
               ],
               "properties": {
                 "nodeSelector": {
-                  "description": "nodeSelector is the node selector applied to network diagnostics components\n\nWhen omitted, this means the user has no opinion and the platform is left\nto choose reasonable defaults. These defaults are subject to change over time.\nThe current default is `kubernetes.io/os: linux`.",
+                  "description": "nodeSelector is the node selector applied to network diagnostics components \n When omitted, this means the user has no opinion and the platform is left to choose reasonable defaults. These defaults are subject to change over time. The current default is `kubernetes.io/os: linux`.",
                   "type": [
                     "object",
                     "null"
@@ -169,41 +169,41 @@
                   }
                 },
                 "tolerations": {
-                  "description": "tolerations is a list of tolerations applied to network diagnostics components\n\nWhen omitted, this means the user has no opinion and the platform is left\nto choose reasonable defaults. These defaults are subject to change over time.\nThe current default is an empty list.",
+                  "description": "tolerations is a list of tolerations applied to network diagnostics components \n When omitted, this means the user has no opinion and the platform is left to choose reasonable defaults. These defaults are subject to change over time. The current default is an empty list.",
                   "type": [
                     "array",
                     "null"
                   ],
                   "items": {
-                    "description": "The pod this Toleration is attached to tolerates any taint that matches\nthe triple <key,value,effect> using the matching operator <operator>.",
+                    "description": "The pod this Toleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>.",
                     "type": [
                       "object",
                       "null"
                     ],
                     "properties": {
                       "effect": {
-                        "description": "Effect indicates the taint effect to match. Empty means match all taint effects.\nWhen specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.",
+                        "description": "Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.",
                         "type": [
                           "string",
                           "null"
                         ]
                       },
                       "key": {
-                        "description": "Key is the taint key that the toleration applies to. Empty means match all taint keys.\nIf the key is empty, operator must be Exists; this combination means to match all values and all keys.",
+                        "description": "Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.",
                         "type": [
                           "string",
                           "null"
                         ]
                       },
                       "operator": {
-                        "description": "Operator represents a key's relationship to the value.\nValid operators are Exists and Equal. Defaults to Equal.\nExists is equivalent to wildcard for value, so that a pod can\ntolerate all taints of a particular category.",
+                        "description": "Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a pod can tolerate all taints of a particular category.",
                         "type": [
                           "string",
                           "null"
                         ]
                       },
                       "tolerationSeconds": {
-                        "description": "TolerationSeconds represents the period of time the toleration (which must be\nof effect NoExecute, otherwise this field is ignored) tolerates the taint. By default,\nit is not set, which means tolerate the taint forever (do not evict). Zero and\nnegative values will be treated as 0 (evict immediately) by the system.",
+                        "description": "TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.",
                         "type": [
                           "integer",
                           "null"
@@ -211,7 +211,7 @@
                         "format": "int64"
                       },
                       "value": {
-                        "description": "Value is the taint value the toleration matches to.\nIf the operator is Exists, the value should be empty, otherwise just a regular string.",
+                        "description": "Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.",
                         "type": [
                           "string",
                           "null"
@@ -224,14 +224,14 @@
               }
             },
             "targetPlacement": {
-              "description": "targetPlacement controls the scheduling of network diagnostics target daemonset\n\nSee NetworkDiagnosticsTargetPlacement for more details about default values.",
+              "description": "targetPlacement controls the scheduling of network diagnostics target daemonset \n See NetworkDiagnosticsTargetPlacement for more details about default values.",
               "type": [
                 "object",
                 "null"
               ],
               "properties": {
                 "nodeSelector": {
-                  "description": "nodeSelector is the node selector applied to network diagnostics components\n\nWhen omitted, this means the user has no opinion and the platform is left\nto choose reasonable defaults. These defaults are subject to change over time.\nThe current default is `kubernetes.io/os: linux`.",
+                  "description": "nodeSelector is the node selector applied to network diagnostics components \n When omitted, this means the user has no opinion and the platform is left to choose reasonable defaults. These defaults are subject to change over time. The current default is `kubernetes.io/os: linux`.",
                   "type": [
                     "object",
                     "null"
@@ -244,41 +244,41 @@
                   }
                 },
                 "tolerations": {
-                  "description": "tolerations is a list of tolerations applied to network diagnostics components\n\nWhen omitted, this means the user has no opinion and the platform is left\nto choose reasonable defaults. These defaults are subject to change over time.\nThe current default is `- operator: \"Exists\"` which means that all taints are tolerated.",
+                  "description": "tolerations is a list of tolerations applied to network diagnostics components \n When omitted, this means the user has no opinion and the platform is left to choose reasonable defaults. These defaults are subject to change over time. The current default is `- operator: \"Exists\"` which means that all taints are tolerated.",
                   "type": [
                     "array",
                     "null"
                   ],
                   "items": {
-                    "description": "The pod this Toleration is attached to tolerates any taint that matches\nthe triple <key,value,effect> using the matching operator <operator>.",
+                    "description": "The pod this Toleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>.",
                     "type": [
                       "object",
                       "null"
                     ],
                     "properties": {
                       "effect": {
-                        "description": "Effect indicates the taint effect to match. Empty means match all taint effects.\nWhen specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.",
+                        "description": "Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.",
                         "type": [
                           "string",
                           "null"
                         ]
                       },
                       "key": {
-                        "description": "Key is the taint key that the toleration applies to. Empty means match all taint keys.\nIf the key is empty, operator must be Exists; this combination means to match all values and all keys.",
+                        "description": "Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.",
                         "type": [
                           "string",
                           "null"
                         ]
                       },
                       "operator": {
-                        "description": "Operator represents a key's relationship to the value.\nValid operators are Exists and Equal. Defaults to Equal.\nExists is equivalent to wildcard for value, so that a pod can\ntolerate all taints of a particular category.",
+                        "description": "Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a pod can tolerate all taints of a particular category.",
                         "type": [
                           "string",
                           "null"
                         ]
                       },
                       "tolerationSeconds": {
-                        "description": "TolerationSeconds represents the period of time the toleration (which must be\nof effect NoExecute, otherwise this field is ignored) tolerates the taint. By default,\nit is not set, which means tolerate the taint forever (do not evict). Zero and\nnegative values will be treated as 0 (evict immediately) by the system.",
+                        "description": "TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.",
                         "type": [
                           "integer",
                           "null"
@@ -286,7 +286,7 @@
                         "format": "int64"
                       },
                       "value": {
-                        "description": "Value is the taint value the toleration matches to.\nIf the operator is Exists, the value should be empty, otherwise just a regular string.",
+                        "description": "Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.",
                         "type": [
                           "string",
                           "null"
@@ -301,14 +301,14 @@
           }
         },
         "networkType": {
-          "description": "networkType is the plugin that is to be deployed (e.g. OVNKubernetes).\nThis should match a value that the cluster-network-operator understands,\nor else no networking will be installed.\nCurrently supported values are:\n- OVNKubernetes\nThis field is immutable after installation.",
+          "description": "NetworkType is the plugin that is to be deployed (e.g. OVNKubernetes). This should match a value that the cluster-network-operator understands, or else no networking will be installed. Currently supported values are: - OVNKubernetes This field is immutable after installation.",
           "type": [
             "string",
             "null"
           ]
         },
         "serviceNetwork": {
-          "description": "IP address pool for services.\nCurrently, we only support a single entry here.\nThis field is immutable after installation.",
+          "description": "IP address pool for services. Currently, we only support a single entry here. This field is immutable after installation.",
           "type": [
             "array",
             "null"
@@ -322,7 +322,7 @@
           "x-kubernetes-list-type": "atomic"
         },
         "serviceNodePortRange": {
-          "description": "The port range allowed for Services of type NodePort.\nIf not specified, the default of 30000-32767 will be used.\nSuch Services without a NodePort specified will have one\nautomatically allocated from this range.\nThis parameter can be updated after the cluster is\ninstalled.",
+          "description": "The port range allowed for Services of type NodePort. If not specified, the default of 30000-32767 will be used. Such Services without a NodePort specified will have one automatically allocated from this range. This parameter can be updated after the cluster is installed.",
           "type": [
             "string",
             "null"
@@ -351,7 +351,7 @@
             "null"
           ],
           "items": {
-            "description": "ClusterNetworkEntry is a contiguous block of IP addresses from which pod IPs\nare allocated.",
+            "description": "ClusterNetworkEntry is a contiguous block of IP addresses from which pod IPs are allocated.",
             "type": [
               "object",
               "null"
@@ -365,7 +365,7 @@
                 ]
               },
               "hostPrefix": {
-                "description": "The size (prefix) of block to allocate to each node. If this\nfield is not used by the plugin, it can be left unset.",
+                "description": "The size (prefix) of block to allocate to each node. If this field is not used by the plugin, it can be left unset.",
                 "type": [
                   "integer",
                   "null"
@@ -378,20 +378,20 @@
           "x-kubernetes-list-type": "atomic"
         },
         "clusterNetworkMTU": {
-          "description": "clusterNetworkMTU is the MTU for inter-pod networking.",
+          "description": "ClusterNetworkMTU is the MTU for inter-pod networking.",
           "type": [
             "integer",
             "null"
           ]
         },
         "conditions": {
-          "description": "conditions represents the observations of a network.config current state.\nKnown .status.conditions.type are: \"NetworkDiagnosticsAvailable\"",
+          "description": "conditions represents the observations of a network.config current state. Known .status.conditions.type are: \"NetworkDiagnosticsAvailable\"",
           "type": [
             "array",
             "null"
           ],
           "items": {
-            "description": "Condition contains details for one aspect of the current state of this API Resource.",
+            "description": "Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example, \n type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: \"Available\", \"Progressing\", and \"Degraded\" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:\"conditions,omitempty\" patchStrategy:\"merge\" patchMergeKey:\"type\" protobuf:\"bytes,1,rep,name=conditions\"` \n // other fields }",
             "type": [
               "object",
               "null"
@@ -405,17 +405,17 @@
             ],
             "properties": {
               "lastTransitionTime": {
-                "description": "lastTransitionTime is the last time the condition transitioned from one status to another.\nThis should be when the underlying condition changed.  If that is not known, then using the time when the API field changed is acceptable.",
+                "description": "lastTransitionTime is the last time the condition transitioned from one status to another. This should be when the underlying condition changed.  If that is not known, then using the time when the API field changed is acceptable.",
                 "type": "string",
                 "format": "date-time"
               },
               "message": {
-                "description": "message is a human readable message indicating details about the transition.\nThis may be an empty string.",
+                "description": "message is a human readable message indicating details about the transition. This may be an empty string.",
                 "type": "string",
                 "maxLength": 32768
               },
               "observedGeneration": {
-                "description": "observedGeneration represents the .metadata.generation that the condition was set based upon.\nFor instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date\nwith respect to the current state of the instance.",
+                "description": "observedGeneration represents the .metadata.generation that the condition was set based upon. For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date with respect to the current state of the instance.",
                 "type": [
                   "integer",
                   "null"
@@ -424,7 +424,7 @@
                 "minimum": 0
               },
               "reason": {
-                "description": "reason contains a programmatic identifier indicating the reason for the condition's last transition.\nProducers of specific condition types may define expected values and meanings for this field,\nand whether the values are considered a guaranteed API.\nThe value should be a CamelCase string.\nThis field may not be empty.",
+                "description": "reason contains a programmatic identifier indicating the reason for the condition's last transition. Producers of specific condition types may define expected values and meanings for this field, and whether the values are considered a guaranteed API. The value should be a CamelCase string. This field may not be empty.",
                 "type": "string",
                 "maxLength": 1024,
                 "minLength": 1,
@@ -440,7 +440,7 @@
                 ]
               },
               "type": {
-                "description": "type of condition in CamelCase or in foo.example.com/CamelCase.",
+                "description": "type of condition in CamelCase or in foo.example.com/CamelCase. --- Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be useful (see .node.status.conditions), the ability to deconflict is important. The regex it matches is (dns1123SubdomainFmt/)?(qualifiedNameFmt)",
                 "type": "string",
                 "maxLength": 316,
                 "pattern": "^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$"
@@ -453,28 +453,28 @@
           "x-kubernetes-list-type": "map"
         },
         "migration": {
-          "description": "migration contains the cluster network migration configuration.",
+          "description": "Migration contains the cluster network migration configuration.",
           "type": [
             "object",
             "null"
           ],
           "properties": {
             "mtu": {
-              "description": "mtu is the MTU configuration that is being deployed.",
+              "description": "MTU is the MTU configuration that is being deployed.",
               "type": [
                 "object",
                 "null"
               ],
               "properties": {
                 "machine": {
-                  "description": "machine contains MTU migration configuration for the machine's uplink.",
+                  "description": "Machine contains MTU migration configuration for the machine's uplink.",
                   "type": [
                     "object",
                     "null"
                   ],
                   "properties": {
                     "from": {
-                      "description": "from is the MTU to migrate from.",
+                      "description": "From is the MTU to migrate from.",
                       "type": [
                         "integer",
                         "null"
@@ -483,7 +483,7 @@
                       "minimum": 0
                     },
                     "to": {
-                      "description": "to is the MTU to migrate to.",
+                      "description": "To is the MTU to migrate to.",
                       "type": [
                         "integer",
                         "null"
@@ -494,14 +494,14 @@
                   }
                 },
                 "network": {
-                  "description": "network contains MTU migration configuration for the default network.",
+                  "description": "Network contains MTU migration configuration for the default network.",
                   "type": [
                     "object",
                     "null"
                   ],
                   "properties": {
                     "from": {
-                      "description": "from is the MTU to migrate from.",
+                      "description": "From is the MTU to migrate from.",
                       "type": [
                         "integer",
                         "null"
@@ -510,7 +510,7 @@
                       "minimum": 0
                     },
                     "to": {
-                      "description": "to is the MTU to migrate to.",
+                      "description": "To is the MTU to migrate to.",
                       "type": [
                         "integer",
                         "null"
@@ -523,7 +523,7 @@
               }
             },
             "networkType": {
-              "description": "networkType is the target plugin that is being deployed.\nDEPRECATED: network type migration is no longer supported,\nso this should always be unset.",
+              "description": "NetworkType is the target plugin that is being deployed. DEPRECATED: network type migration is no longer supported, so this should always be unset.",
               "type": [
                 "string",
                 "null"
@@ -532,14 +532,14 @@
           }
         },
         "networkType": {
-          "description": "networkType is the plugin that is deployed (e.g. OVNKubernetes).",
+          "description": "NetworkType is the plugin that is deployed (e.g. OVNKubernetes).",
           "type": [
             "string",
             "null"
           ]
         },
         "serviceNetwork": {
-          "description": "IP address pool for services.\nCurrently, we only support a single entry here.",
+          "description": "IP address pool for services. Currently, we only support a single entry here.",
           "type": [
             "array",
             "null"
@@ -562,6 +562,5 @@
       "version": "v1"
     }
   ],
-  "x-kubernetes-selectable-fields": [],
   "$schema": "http://json-schema.org/schema#"
 }

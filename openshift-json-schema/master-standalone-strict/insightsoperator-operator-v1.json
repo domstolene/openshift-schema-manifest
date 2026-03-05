@@ -230,7 +230,7 @@
                   "lastGatherDuration": {
                     "description": "lastGatherDuration represents the time spent gathering.",
                     "type": "string",
-                    "pattern": "^(([0-9]+(?:\\.[0-9]+)?(ns|us|\u00b5s|\u03bcs|ms|s|m|h))+)$"
+                    "pattern": "^([1-9][0-9]*(\\.[0-9]+)?(ns|us|\u00b5s|ms|s|m|h))+$"
                   },
                   "name": {
                     "description": "name is the name of the gatherer.",
@@ -249,7 +249,7 @@
                 "string",
                 "null"
               ],
-              "pattern": "^(0|([0-9]+(?:\\.[0-9]+)?(ns|us|\u00b5s|\u03bcs|ms|s|m|h))+)$"
+              "pattern": "^0|([1-9][0-9]*(\\.[0-9]+)?(ns|us|\u00b5s|ms|s|m|h))+$"
             },
             "lastGatherTime": {
               "description": "lastGatherTime is the last time when Insights data gathering finished. An empty value means that no data has been gathered yet.",
@@ -424,7 +424,6 @@
       "version": "v1"
     }
   ],
-  "x-kubernetes-selectable-fields": [],
   "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

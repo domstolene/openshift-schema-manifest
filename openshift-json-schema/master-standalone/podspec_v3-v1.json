@@ -38,7 +38,7 @@
     },
     "dnsConfig": {
       "description": "Specifies the DNS parameters of a pod. Parameters specified here will be merged to the generated DNS configuration based on DNSPolicy.",
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodDNSConfig_v3"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodDNSConfig_v2"
     },
     "dnsPolicy": {
       "description": "Set DNS policy for the pod. Defaults to \"ClusterFirst\". Valid values are 'ClusterFirstWithHostNet', 'ClusterFirst', 'Default' or 'None'. DNS parameters given in DNSConfig will be merged with the policy selected with DNSPolicy. To have DNS options set along with hostNetwork, you have to specify DNS policy explicitly to 'ClusterFirstWithHostNet'.\n\nPossible enum values:\n - `\"ClusterFirst\"` indicates that the pod should use cluster DNS first unless hostNetwork is true, if it is available, then fall back on the default (as determined by kubelet) DNS settings.\n - `\"ClusterFirstWithHostNet\"` indicates that the pod should use cluster DNS first, if it is available, then fall back on the default (as determined by kubelet) DNS settings.\n - `\"Default\"` indicates that the pod should use the default (as determined by kubelet) DNS settings.\n - `\"None\"` indicates that the pod should use empty DNS settings. DNS parameters such as nameservers and search paths should be defined via DNSConfig.",
@@ -221,7 +221,7 @@
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodResourceClaim_v2"
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodResourceClaim"
       },
       "x-kubernetes-list-map-keys": [
         "name"
@@ -353,7 +353,7 @@
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Volume_v3"
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Volume"
       },
       "x-kubernetes-patch-merge-key": "name",
       "x-kubernetes-patch-strategy": "merge,retainKeys"

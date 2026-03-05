@@ -1,5 +1,5 @@
 {
-  "description": "Tuned is a collection of rules that allows cluster-wide deployment\nof node-level sysctls and more flexibility to add custom tuning\nspecified by user needs.  These rules are translated and passed to all\ncontainerized Tuned daemons running in the cluster in the format that\nthe daemons understand. The responsibility for applying the node-level\ntuning then lies with the containerized Tuned daemons. More info:\nhttps://github.com/openshift/cluster-node-tuning-operator",
+  "description": "Tuned is a collection of rules that allows cluster-wide deployment of node-level sysctls and more flexibility to add custom tuning specified by user needs.  These rules are translated and passed to all containerized Tuned daemons running in the cluster in the format that the daemons understand. The responsibility for applying the node-level tuning then lies with the containerized Tuned daemons. More info: https://github.com/openshift/cluster-node-tuning-operator",
   "type": "object",
   "properties": {
     "apiVersion": {
@@ -27,14 +27,14 @@
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     },
     "spec": {
-      "description": "spec is the specification of the desired behavior of Tuned. More info:\nhttps://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status",
+      "description": "spec is the specification of the desired behavior of Tuned. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status",
       "type": [
         "object",
         "null"
       ],
       "properties": {
         "managementState": {
-          "description": "managementState indicates whether the registry instance represented\nby this config instance is under operator management or not.  Valid\nvalues are Force, Managed, Unmanaged, and Removed.",
+          "description": "managementState indicates whether the registry instance represented by this config instance is under operator management or not.  Valid values are Force, Managed, Unmanaged, and Removed.",
           "type": [
             "string",
             "null"
@@ -89,7 +89,7 @@
             ],
             "properties": {
               "machineConfigLabels": {
-                "description": "MachineConfigLabels specifies the labels for a MachineConfig. The MachineConfig is created\nautomatically to apply additional host settings (e.g. kernel boot parameters) profile 'Profile'\nneeds and can only be applied by creating a MachineConfig. This involves finding all\nMachineConfigPools with machineConfigSelector matching the MachineConfigLabels and setting the\nprofile 'Profile' on all nodes that match the MachineConfigPools' nodeSelectors.",
+                "description": "MachineConfigLabels specifies the labels for a MachineConfig. The MachineConfig is created automatically to apply additional host settings (e.g. kernel boot parameters) profile 'Profile' needs and can only be applied by creating a MachineConfig. This involves finding all MachineConfigPools with machineConfigSelector matching the MachineConfigLabels and setting the profile 'Profile' on all nodes that match the MachineConfigPools' nodeSelectors.",
                 "type": [
                   "object",
                   "null"
@@ -183,13 +183,6 @@
                       }
                     },
                     "additionalProperties": false
-                  },
-                  "verbosity": {
-                    "description": "klog logging verbosity",
-                    "type": [
-                      "integer",
-                      "null"
-                    ]
                   }
                 },
                 "additionalProperties": false
@@ -217,59 +210,7 @@
       "type": [
         "object",
         "null"
-      ],
-      "properties": {
-        "conditions": {
-          "description": "conditions represents the state of the Tuned profile",
-          "type": [
-            "array",
-            "null"
-          ],
-          "items": {
-            "description": "StatusCondition represents a partial state of the per-node Profile application.",
-            "type": [
-              "object",
-              "null"
-            ],
-            "required": [
-              "lastTransitionTime",
-              "status",
-              "type"
-            ],
-            "properties": {
-              "lastTransitionTime": {
-                "description": "lastTransitionTime is the time of the last update to the current status property.",
-                "type": "string",
-                "format": "date-time"
-              },
-              "message": {
-                "description": "message provides additional information about the current condition.\nThis is only to be consumed by humans.",
-                "type": [
-                  "string",
-                  "null"
-                ]
-              },
-              "reason": {
-                "description": "reason is the CamelCase reason for the condition's current status.",
-                "type": [
-                  "string",
-                  "null"
-                ]
-              },
-              "status": {
-                "description": "status of the condition, one of True, False, Unknown.",
-                "type": "string"
-              },
-              "type": {
-                "description": "type specifies the aspect reported by this condition.",
-                "type": "string"
-              }
-            },
-            "additionalProperties": false
-          }
-        }
-      },
-      "additionalProperties": false
+      ]
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -279,7 +220,6 @@
       "version": "v1"
     }
   ],
-  "x-kubernetes-selectable-fields": [],
   "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }
