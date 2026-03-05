@@ -19,10 +19,10 @@
         "apiextensions.k8s.io/v1beta1",
         "apiregistration.k8s.io/v1",
         "apiregistration.k8s.io/v1beta1",
+        "apps.openshift.io/v1",
         "apps/v1",
         "apps/v1beta1",
         "apps/v1beta2",
-        "apps.openshift.io/v1",
         "authentication.k8s.io/v1",
         "authentication.k8s.io/v1alpha1",
         "authentication.k8s.io/v1beta1",
@@ -40,7 +40,6 @@
         "certificates.k8s.io/v1alpha1",
         "certificates.k8s.io/v1beta1",
         "coordination.k8s.io/v1",
-        "coordination.k8s.io/v1alpha1",
         "coordination.k8s.io/v1beta1",
         "discovery.k8s.io/v1",
         "discovery.k8s.io/v1beta1",
@@ -52,6 +51,7 @@
         "networking.k8s.io/v1",
         "networking.k8s.io/v1alpha1",
         "networking.k8s.io/v1beta1",
+        "oauth.openshift.io/v1",
         "policy/v1",
         "policy/v1beta1",
         "project.openshift.io/v1",
@@ -59,7 +59,7 @@
         "rbac.authorization.k8s.io/v1",
         "rbac.authorization.k8s.io/v1alpha1",
         "rbac.authorization.k8s.io/v1beta1",
-        "resource.k8s.io/v1alpha3",
+        "resource.k8s.io/v1alpha2",
         "route.openshift.io/v1",
         "scheduling.k8s.io/v1",
         "scheduling.k8s.io/v1alpha1",
@@ -68,7 +68,8 @@
         "storage.k8s.io/v1",
         "storage.k8s.io/v1alpha1",
         "storage.k8s.io/v1beta1",
-        "template.openshift.io/v1"
+        "template.openshift.io/v1",
+        "user.openshift.io/v1"
       ]
     },
     "dryRun": {
@@ -173,6 +174,11 @@
       "version": "v1beta1"
     },
     {
+      "group": "apps.openshift.io",
+      "kind": "DeleteOptions",
+      "version": "v1"
+    },
+    {
       "group": "apps",
       "kind": "DeleteOptions",
       "version": "v1"
@@ -186,11 +192,6 @@
       "group": "apps",
       "kind": "DeleteOptions",
       "version": "v1beta2"
-    },
-    {
-      "group": "apps.openshift.io",
-      "kind": "DeleteOptions",
-      "version": "v1"
     },
     {
       "group": "authentication.k8s.io",
@@ -280,11 +281,6 @@
     {
       "group": "coordination.k8s.io",
       "kind": "DeleteOptions",
-      "version": "v1alpha1"
-    },
-    {
-      "group": "coordination.k8s.io",
-      "kind": "DeleteOptions",
       "version": "v1beta1"
     },
     {
@@ -338,6 +334,11 @@
       "version": "v1beta1"
     },
     {
+      "group": "oauth.openshift.io",
+      "kind": "DeleteOptions",
+      "version": "v1"
+    },
+    {
       "group": "policy",
       "kind": "DeleteOptions",
       "version": "v1"
@@ -375,7 +376,7 @@
     {
       "group": "resource.k8s.io",
       "kind": "DeleteOptions",
-      "version": "v1alpha3"
+      "version": "v1alpha2"
     },
     {
       "group": "route.openshift.io",
@@ -419,6 +420,11 @@
     },
     {
       "group": "template.openshift.io",
+      "kind": "DeleteOptions",
+      "version": "v1"
+    },
+    {
+      "group": "user.openshift.io",
       "kind": "DeleteOptions",
       "version": "v1"
     }

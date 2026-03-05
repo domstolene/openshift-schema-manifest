@@ -38,14 +38,13 @@
       ],
       "properties": {
         "authentication": {
-          "description": "Authentication settings for the PostgreSQL server",
           "type": [
             "object",
             "null"
           ],
           "properties": {
             "rules": {
-              "description": "Postgres compares every new connection to these rules in the order they are\ndefined. The first rule that matches determines if and how the connection\nmust then authenticate. Connections that match no rules are disconnected.\n\nWhen this is omitted or empty, Postgres accepts encrypted connections to any\ndatabase from users that have a password. To refuse all network connections,\nset this to one rule that matches \"host\" connections to the \"reject\" method.\n\nMore info: https://www.postgresql.org/docs/current/auth-pg-hba-conf.html",
+              "description": "More info: https://www.postgresql.org/docs/current/auth-pg-hba-conf.html",
               "type": [
                 "array",
                 "null"
@@ -101,7 +100,7 @@
                     ]
                   },
                   "method": {
-                    "description": "The authentication method to use when a connection matches this rule.\nThe special value \"reject\" refuses connections that match this rule.\n\nMore info: https://www.postgresql.org/docs/current/auth-methods.html",
+                    "description": "The authentication method to use when a connection matches this rule.\nThe special value \"reject\" refuses connections that match this rule.\nMore info: https://www.postgresql.org/docs/current/auth-methods.html",
                     "type": [
                       "string",
                       "null"
@@ -117,7 +116,6 @@
                     ]
                   },
                   "options": {
-                    "description": "Additional settings for this rule or its authentication method.",
                     "type": [
                       "object",
                       "null"
@@ -150,23 +148,11 @@
                 "x-kubernetes-validations": [
                   {
                     "message": "\"hba\" cannot be combined with other fields",
-                    "rule": "[has(self.hba), has(self.connection) || has(self.databases) || has(self.method) || has(self.options) || has(self.users)].exists_one(b,b)"
+                    "rule": "has(self.hba) ? !has(self.connection) && !has(self.databases) && !has(self.method) && !has(self.options) && !has(self.users) : true"
                   },
                   {
                     "message": "\"connection\" and \"method\" are required",
-                    "rule": "has(self.hba) || (has(self.connection) && has(self.method))"
-                  },
-                  {
-                    "message": "the \"ldap\" method requires an \"ldapbasedn\", \"ldapprefix\", or \"ldapsuffix\" option",
-                    "rule": "has(self.hba) || self.method != \"ldap\" || (has(self.options) && [\"ldapbasedn\",\"ldapprefix\",\"ldapsuffix\"].exists(k, k in self.options))"
-                  },
-                  {
-                    "message": "cannot use \"ldapbasedn\", \"ldapbinddn\", \"ldapbindpasswd\", \"ldapsearchattribute\", or \"ldapsearchfilter\" options with \"ldapprefix\" or \"ldapsuffix\" options",
-                    "rule": "has(self.hba) || self.method != \"ldap\" || !has(self.options) || [[\"ldapprefix\",\"ldapsuffix\"], [\"ldapbasedn\",\"ldapbinddn\",\"ldapbindpasswd\",\"ldapsearchattribute\",\"ldapsearchfilter\"]].exists_one(a, a.exists(k, k in self.options))"
-                  },
-                  {
-                    "message": "the \"radius\" method requires \"radiusservers\" and \"radiussecrets\" options",
-                    "rule": "has(self.hba) || self.method != \"radius\" || (has(self.options) && [\"radiusservers\",\"radiussecrets\"].all(k, k in self.options))"
+                    "rule": "has(self.hba) ? true : has(self.connection) && has(self.method)"
                   }
                 ],
                 "additionalProperties": false
@@ -5307,7 +5293,6 @@
           "additionalProperties": false
         },
         "config": {
-          "description": "General configuration of the PostgreSQL server",
           "type": [
             "object",
             "null"
@@ -5726,7 +5711,7 @@
                 },
                 {
                   "message": "TLS is always enabled",
-                  "rule": "!has(self.ssl) && !self.exists(k, k.startsWith(\"ssl_\") && !(k == 'ssl_groups' || k == 'ssl_ecdh_curve'))"
+                  "rule": "!has(self.ssl) && !self.exists(k, k.startsWith(\"ssl_\"))"
                 },
                 {
                   "message": "domain socket paths cannot be changed",
@@ -7934,6 +7919,7 @@
               },
               "x-kubernetes-validations": [
                 {
+                  "fieldPath": ".repo",
                   "message": "Only S3, GCS or Azure repos can be used as a pgBackRest data source.",
                   "rule": "!has(self.repo.volume)"
                 }
@@ -13692,174 +13678,6 @@
                   ],
                   "x-kubernetes-list-type": "map"
                 },
-                "environmentVariables": {
-                  "description": "EnvironmentVariables allows the user to add environment variables to the\ncollector container.",
-                  "type": [
-                    "array",
-                    "null"
-                  ],
-                  "minItems": 1,
-                  "items": {
-                    "description": "EnvVar represents an environment variable present in a Container.",
-                    "type": [
-                      "object",
-                      "null"
-                    ],
-                    "required": [
-                      "name"
-                    ],
-                    "properties": {
-                      "name": {
-                        "description": "Name of the environment variable. Must be a C_IDENTIFIER.",
-                        "type": "string"
-                      },
-                      "value": {
-                        "description": "Variable references $(VAR_NAME) are expanded\nusing the previously defined environment variables in the container and\nany service environment variables. If a variable cannot be resolved,\nthe reference in the input string will be unchanged. Double $$ are reduced\nto a single $, which allows for escaping the $(VAR_NAME) syntax: i.e.\n\"$$(VAR_NAME)\" will produce the string literal \"$(VAR_NAME)\".\nEscaped references will never be expanded, regardless of whether the variable\nexists or not.\nDefaults to \"\".",
-                        "type": [
-                          "string",
-                          "null"
-                        ]
-                      },
-                      "valueFrom": {
-                        "description": "Source for the environment variable's value. Cannot be used if value is not empty.",
-                        "type": [
-                          "object",
-                          "null"
-                        ],
-                        "properties": {
-                          "configMapKeyRef": {
-                            "description": "Selects a key of a ConfigMap.",
-                            "type": [
-                              "object",
-                              "null"
-                            ],
-                            "required": [
-                              "key"
-                            ],
-                            "properties": {
-                              "key": {
-                                "description": "The key to select.",
-                                "type": "string"
-                              },
-                              "name": {
-                                "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
-                                "type": [
-                                  "string",
-                                  "null"
-                                ]
-                              },
-                              "optional": {
-                                "description": "Specify whether the ConfigMap or its key must be defined",
-                                "type": [
-                                  "boolean",
-                                  "null"
-                                ]
-                              }
-                            },
-                            "x-kubernetes-map-type": "atomic",
-                            "additionalProperties": false
-                          },
-                          "fieldRef": {
-                            "description": "Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`,\nspec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.",
-                            "type": [
-                              "object",
-                              "null"
-                            ],
-                            "required": [
-                              "fieldPath"
-                            ],
-                            "properties": {
-                              "apiVersion": {
-                                "description": "Version of the schema the FieldPath is written in terms of, defaults to \"v1\".",
-                                "type": [
-                                  "string",
-                                  "null"
-                                ]
-                              },
-                              "fieldPath": {
-                                "description": "Path of the field to select in the specified API version.",
-                                "type": "string"
-                              }
-                            },
-                            "x-kubernetes-map-type": "atomic",
-                            "additionalProperties": false
-                          },
-                          "resourceFieldRef": {
-                            "description": "Selects a resource of the container: only resources limits and requests\n(limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.",
-                            "type": [
-                              "object",
-                              "null"
-                            ],
-                            "required": [
-                              "resource"
-                            ],
-                            "properties": {
-                              "containerName": {
-                                "description": "Container name: required for volumes, optional for env vars",
-                                "type": [
-                                  "string",
-                                  "null"
-                                ]
-                              },
-                              "divisor": {
-                                "description": "Specifies the output format of the exposed resources, defaults to \"1\"",
-                                "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
-                                "x-kubernetes-int-or-string": true
-                              },
-                              "resource": {
-                                "description": "Required: resource to select",
-                                "type": "string"
-                              }
-                            },
-                            "x-kubernetes-map-type": "atomic",
-                            "additionalProperties": false
-                          },
-                          "secretKeyRef": {
-                            "description": "Selects a key of a secret in the pod's namespace",
-                            "type": [
-                              "object",
-                              "null"
-                            ],
-                            "required": [
-                              "key"
-                            ],
-                            "properties": {
-                              "key": {
-                                "description": "The key of the secret to select from.  Must be a valid secret key.",
-                                "type": "string"
-                              },
-                              "name": {
-                                "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
-                                "type": [
-                                  "string",
-                                  "null"
-                                ]
-                              },
-                              "optional": {
-                                "description": "Specify whether the Secret or its key must be defined",
-                                "type": [
-                                  "boolean",
-                                  "null"
-                                ]
-                              }
-                            },
-                            "x-kubernetes-map-type": "atomic",
-                            "additionalProperties": false
-                          }
-                        },
-                        "additionalProperties": false
-                      }
-                    },
-                    "x-kubernetes-validations": [
-                      {
-                        "message": "Cannot overwrite environment variables set by operator",
-                        "rule": "self.name != 'K8S_POD_NAMESPACE' && self.name != 'K8S_POD_NAME' && self.name != 'PGPASSWORD'"
-                      }
-                    ],
-                    "additionalProperties": false
-                  },
-                  "x-kubernetes-list-type": "atomic"
-                },
                 "exporters": {
                   "description": "Exporters allows users to configure OpenTelemetry exporters that exist\nin the collector image.",
                   "x-kubernetes-preserve-unknown-fields": true
@@ -14398,19 +14216,6 @@
                               }
                             ]
                           },
-                          "databases": {
-                            "description": "The databases to target with added custom queries.\nDefault behavior is to target `postgres`.",
-                            "type": [
-                              "array",
-                              "null"
-                            ],
-                            "items": {
-                              "type": [
-                                "string",
-                                "null"
-                              ]
-                            }
-                          },
                           "name": {
                             "description": "The name of this batch of queries, which will be used in naming the OTel\nSqlQuery receiver.",
                             "type": "string",
@@ -14468,34 +14273,6 @@
                     }
                   },
                   "additionalProperties": false
-                },
-                "exporters": {
-                  "description": "The names of exporters that should send metrics.",
-                  "type": [
-                    "array",
-                    "null"
-                  ],
-                  "minItems": 1,
-                  "items": {
-                    "type": [
-                      "string",
-                      "null"
-                    ]
-                  },
-                  "x-kubernetes-list-type": "set"
-                },
-                "perDBMetricTargets": {
-                  "description": "User defined databases to target for default per-db metrics",
-                  "type": [
-                    "array",
-                    "null"
-                  ],
-                  "items": {
-                    "type": [
-                      "string",
-                      "null"
-                    ]
-                  }
                 }
               },
               "additionalProperties": false
@@ -15292,7 +15069,7 @@
         "postgresVersion": {
           "description": "The major version of PostgreSQL installed in the PostgreSQL image",
           "type": "integer",
-          "maximum": 18,
+          "maximum": 17,
           "minimum": 11
         },
         "proxy": {
@@ -21829,12 +21606,6 @@
           "x-kubernetes-list-type": "map"
         }
       },
-      "x-kubernetes-validations": [
-        {
-          "message": "The ssl_groups parameter is only available in pg18 and greater",
-          "rule": "!has(self.config) || !has(self.config.parameters) || !has(self.config.parameters.ssl_groups) || self.postgresVersion > 17"
-        }
-      ],
       "additionalProperties": false
     },
     "status": {
@@ -22400,6 +22171,21 @@
           },
           "additionalProperties": false
         },
+        "registrationRequired": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "pgoVersion": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
         "startupInstance": {
           "description": "The instance that should be started first when bootstrapping and/or starting a\nPostgresCluster.",
           "type": [
@@ -22409,6 +22195,12 @@
         },
         "startupInstanceSet": {
           "description": "The instance set associated with the startupInstance",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "tokenRequired": {
           "type": [
             "string",
             "null"
@@ -22459,7 +22251,6 @@
       "version": "v1beta1"
     }
   ],
-  "x-kubernetes-selectable-fields": [],
   "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

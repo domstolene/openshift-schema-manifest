@@ -74,13 +74,6 @@
             "tunedProfile": {
               "description": "TuneD profile to apply",
               "type": "string"
-            },
-            "verbosity": {
-              "description": "klog logging verbosity",
-              "type": [
-                "integer",
-                "null"
-              ]
             }
           }
         },
@@ -116,7 +109,7 @@
       }
     },
     "status": {
-      "description": "ProfileStatus is the status for a Profile resource; the status is for internal use only\nand its fields may be changed/removed in the future.",
+      "description": "ProfileStatus is the status for a Profile resource; the status is for internal use only and its fields may be changed/removed in the future.",
       "type": [
         "object",
         "null"
@@ -132,7 +125,7 @@
             "null"
           ],
           "items": {
-            "description": "StatusCondition represents a partial state of the per-node Profile application.",
+            "description": "ProfileStatusCondition represents a partial state of the per-node Profile application.",
             "type": [
               "object",
               "null"
@@ -149,7 +142,7 @@
                 "format": "date-time"
               },
               "message": {
-                "description": "message provides additional information about the current condition.\nThis is only to be consumed by humans.",
+                "description": "message provides additional information about the current condition. This is only to be consumed by humans.",
                 "type": [
                   "string",
                   "null"
@@ -173,14 +166,6 @@
             }
           }
         },
-        "observedGeneration": {
-          "description": "If set, this represents the .metadata.generation that the conditions were set based upon.",
-          "type": [
-            "integer",
-            "null"
-          ],
-          "format": "int64"
-        },
         "tunedProfile": {
           "description": "the current profile in use by the Tuned daemon",
           "type": "string"
@@ -195,6 +180,5 @@
       "version": "v1"
     }
   ],
-  "x-kubernetes-selectable-fields": [],
   "$schema": "http://json-schema.org/schema#"
 }

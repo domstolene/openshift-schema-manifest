@@ -144,18 +144,6 @@
             "receiver"
           ],
           "properties": {
-            "active_time_intervals": {
-              "type": [
-                "array",
-                "null"
-              ],
-              "items": {
-                "type": [
-                  "string",
-                  "null"
-                ]
-              }
-            },
             "continue": {
               "description": "continue",
               "type": [
@@ -367,13 +355,6 @@
               "x-kubernetes-preserve-unknown-fields": true
             }
           }
-        },
-        "suspend": {
-          "description": "Suspend pauses synchronizing attempts and tells the operator to ignore changes",
-          "type": [
-            "boolean",
-            "null"
-          ]
         }
       },
       "x-kubernetes-validations": [
@@ -488,6 +469,5 @@
       "version": "v1beta1"
     }
   ],
-  "x-kubernetes-selectable-fields": [],
   "$schema": "http://json-schema.org/schema#"
 }

@@ -46,16 +46,7 @@
           "properties": {
             "-XX": {
               "description": "A map of -XX options to the JVM.",
-              "type": [
-                "object",
-                "null"
-              ],
-              "additionalProperties": {
-                "type": [
-                  "string",
-                  "null"
-                ]
-              }
+              "x-kubernetes-preserve-unknown-fields": true
             },
             "-Xms": {
               "description": "-Xms option to to the JVM.",
@@ -144,24 +135,10 @@
               }
             },
             "limits": {
-              "type": [
-                "object",
-                "null"
-              ],
-              "additionalProperties": {
-                "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
-                "x-kubernetes-int-or-string": true
-              }
+              "x-kubernetes-preserve-unknown-fields": true
             },
             "requests": {
-              "type": [
-                "object",
-                "null"
-              ],
-              "additionalProperties": {
-                "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
-                "x-kubernetes-int-or-string": true
-              }
+              "x-kubernetes-preserve-unknown-fields": true
             }
           }
         },
@@ -208,18 +185,8 @@
               ],
               "minimum": 0
             },
-            "kraftMetadata": {
-              "description": "Specifies whether this volume should be used for storing KRaft metadata. This property is optional. When set, the only currently supported value is `shared`. At most one volume can have this property set.",
-              "type": [
-                "string",
-                "null"
-              ],
-              "enum": [
-                "shared"
-              ]
-            },
             "overrides": {
-              "description": "Overrides for individual brokers. The `overrides` field allows you to specify a different configuration for different brokers.",
+              "description": "Overrides for individual brokers. The `overrides` field allows to specify a different configuration for different brokers.",
               "type": [
                 "array",
                 "null"
@@ -249,19 +216,10 @@
             },
             "selector": {
               "description": "Specifies a specific persistent volume to use. It contains key:value pairs representing labels for selecting such a volume.",
-              "type": [
-                "object",
-                "null"
-              ],
-              "additionalProperties": {
-                "type": [
-                  "string",
-                  "null"
-                ]
-              }
+              "x-kubernetes-preserve-unknown-fields": true
             },
             "size": {
-              "description": "When `type=persistent-claim`, defines the size of the persistent volume claim, such as 100Gi. Mandatory when `type=persistent-claim`.",
+              "description": "When type=persistent-claim, defines the size of the persistent volume claim (i.e 1Gi). Mandatory when type=persistent-claim.",
               "type": [
                 "string",
                 "null"
@@ -314,25 +272,15 @@
                     ]
                   },
                   "id": {
-                    "description": "Storage identification number. Mandatory for storage volumes defined with a `jbod` storage type configuration.",
+                    "description": "Storage identification number. It is mandatory only for storage volumes defined in a storage of type 'jbod'.",
                     "type": [
                       "integer",
                       "null"
                     ],
                     "minimum": 0
                   },
-                  "kraftMetadata": {
-                    "description": "Specifies whether this volume should be used for storing KRaft metadata. This property is optional. When set, the only currently supported value is `shared`. At most one volume can have this property set.",
-                    "type": [
-                      "string",
-                      "null"
-                    ],
-                    "enum": [
-                      "shared"
-                    ]
-                  },
                   "overrides": {
-                    "description": "Overrides for individual brokers. The `overrides` field allows you to specify a different configuration for different brokers.",
+                    "description": "Overrides for individual brokers. The `overrides` field allows to specify a different configuration for different brokers.",
                     "type": [
                       "array",
                       "null"
@@ -362,19 +310,10 @@
                   },
                   "selector": {
                     "description": "Specifies a specific persistent volume to use. It contains key:value pairs representing labels for selecting such a volume.",
-                    "type": [
-                      "object",
-                      "null"
-                    ],
-                    "additionalProperties": {
-                      "type": [
-                        "string",
-                        "null"
-                      ]
-                    }
+                    "x-kubernetes-preserve-unknown-fields": true
                   },
                   "size": {
-                    "description": "When `type=persistent-claim`, defines the size of the persistent volume claim, such as 100Gi. Mandatory when `type=persistent-claim`.",
+                    "description": "When type=persistent-claim, defines the size of the persistent volume claim (i.e 1Gi). Mandatory when type=persistent-claim.",
                     "type": [
                       "string",
                       "null"
@@ -440,69 +379,6 @@
                           "string",
                           "null"
                         ]
-                      },
-                      "valueFrom": {
-                        "description": "Reference to the secret or config map property to which the environment variable is set.",
-                        "type": [
-                          "object",
-                          "null"
-                        ],
-                        "properties": {
-                          "configMapKeyRef": {
-                            "description": "Reference to a key in a config map.",
-                            "type": [
-                              "object",
-                              "null"
-                            ],
-                            "properties": {
-                              "key": {
-                                "type": [
-                                  "string",
-                                  "null"
-                                ]
-                              },
-                              "name": {
-                                "type": [
-                                  "string",
-                                  "null"
-                                ]
-                              },
-                              "optional": {
-                                "type": [
-                                  "boolean",
-                                  "null"
-                                ]
-                              }
-                            }
-                          },
-                          "secretKeyRef": {
-                            "description": "Reference to a key in a secret.",
-                            "type": [
-                              "object",
-                              "null"
-                            ],
-                            "properties": {
-                              "key": {
-                                "type": [
-                                  "string",
-                                  "null"
-                                ]
-                              },
-                              "name": {
-                                "type": [
-                                  "string",
-                                  "null"
-                                ]
-                              },
-                              "optional": {
-                                "type": [
-                                  "boolean",
-                                  "null"
-                                ]
-                              }
-                            }
-                          }
-                        }
                       }
                     }
                   }
@@ -519,26 +395,6 @@
                         "boolean",
                         "null"
                       ]
-                    },
-                    "appArmorProfile": {
-                      "type": [
-                        "object",
-                        "null"
-                      ],
-                      "properties": {
-                        "localhostProfile": {
-                          "type": [
-                            "string",
-                            "null"
-                          ]
-                        },
-                        "type": {
-                          "type": [
-                            "string",
-                            "null"
-                          ]
-                        }
-                      }
                     },
                     "capabilities": {
                       "type": [
@@ -690,63 +546,6 @@
                             "null"
                           ]
                         }
-                      }
-                    }
-                  }
-                },
-                "volumeMounts": {
-                  "description": "Additional volume mounts which should be applied to the container.",
-                  "type": [
-                    "array",
-                    "null"
-                  ],
-                  "items": {
-                    "type": [
-                      "object",
-                      "null"
-                    ],
-                    "properties": {
-                      "mountPath": {
-                        "type": [
-                          "string",
-                          "null"
-                        ]
-                      },
-                      "mountPropagation": {
-                        "type": [
-                          "string",
-                          "null"
-                        ]
-                      },
-                      "name": {
-                        "type": [
-                          "string",
-                          "null"
-                        ]
-                      },
-                      "readOnly": {
-                        "type": [
-                          "boolean",
-                          "null"
-                        ]
-                      },
-                      "recursiveReadOnly": {
-                        "type": [
-                          "string",
-                          "null"
-                        ]
-                      },
-                      "subPath": {
-                        "type": [
-                          "string",
-                          "null"
-                        ]
-                      },
-                      "subPathExpr": {
-                        "type": [
-                          "string",
-                          "null"
-                        ]
                       }
                     }
                   }
@@ -785,69 +584,6 @@
                           "string",
                           "null"
                         ]
-                      },
-                      "valueFrom": {
-                        "description": "Reference to the secret or config map property to which the environment variable is set.",
-                        "type": [
-                          "object",
-                          "null"
-                        ],
-                        "properties": {
-                          "configMapKeyRef": {
-                            "description": "Reference to a key in a config map.",
-                            "type": [
-                              "object",
-                              "null"
-                            ],
-                            "properties": {
-                              "key": {
-                                "type": [
-                                  "string",
-                                  "null"
-                                ]
-                              },
-                              "name": {
-                                "type": [
-                                  "string",
-                                  "null"
-                                ]
-                              },
-                              "optional": {
-                                "type": [
-                                  "boolean",
-                                  "null"
-                                ]
-                              }
-                            }
-                          },
-                          "secretKeyRef": {
-                            "description": "Reference to a key in a secret.",
-                            "type": [
-                              "object",
-                              "null"
-                            ],
-                            "properties": {
-                              "key": {
-                                "type": [
-                                  "string",
-                                  "null"
-                                ]
-                              },
-                              "name": {
-                                "type": [
-                                  "string",
-                                  "null"
-                                ]
-                              },
-                              "optional": {
-                                "type": [
-                                  "boolean",
-                                  "null"
-                                ]
-                              }
-                            }
-                          }
-                        }
                       }
                     }
                   }
@@ -864,26 +600,6 @@
                         "boolean",
                         "null"
                       ]
-                    },
-                    "appArmorProfile": {
-                      "type": [
-                        "object",
-                        "null"
-                      ],
-                      "properties": {
-                        "localhostProfile": {
-                          "type": [
-                            "string",
-                            "null"
-                          ]
-                        },
-                        "type": {
-                          "type": [
-                            "string",
-                            "null"
-                          ]
-                        }
-                      }
                     },
                     "capabilities": {
                       "type": [
@@ -1038,63 +754,6 @@
                       }
                     }
                   }
-                },
-                "volumeMounts": {
-                  "description": "Additional volume mounts which should be applied to the container.",
-                  "type": [
-                    "array",
-                    "null"
-                  ],
-                  "items": {
-                    "type": [
-                      "object",
-                      "null"
-                    ],
-                    "properties": {
-                      "mountPath": {
-                        "type": [
-                          "string",
-                          "null"
-                        ]
-                      },
-                      "mountPropagation": {
-                        "type": [
-                          "string",
-                          "null"
-                        ]
-                      },
-                      "name": {
-                        "type": [
-                          "string",
-                          "null"
-                        ]
-                      },
-                      "readOnly": {
-                        "type": [
-                          "boolean",
-                          "null"
-                        ]
-                      },
-                      "recursiveReadOnly": {
-                        "type": [
-                          "string",
-                          "null"
-                        ]
-                      },
-                      "subPath": {
-                        "type": [
-                          "string",
-                          "null"
-                        ]
-                      },
-                      "subPathExpr": {
-                        "type": [
-                          "string",
-                          "null"
-                        ]
-                      }
-                    }
-                  }
                 }
               }
             },
@@ -1114,29 +773,11 @@
                   "properties": {
                     "annotations": {
                       "description": "Annotations added to the Kubernetes resource.",
-                      "type": [
-                        "object",
-                        "null"
-                      ],
-                      "additionalProperties": {
-                        "type": [
-                          "string",
-                          "null"
-                        ]
-                      }
+                      "x-kubernetes-preserve-unknown-fields": true
                     },
                     "labels": {
                       "description": "Labels added to the Kubernetes resource.",
-                      "type": [
-                        "object",
-                        "null"
-                      ],
-                      "additionalProperties": {
-                        "type": [
-                          "string",
-                          "null"
-                        ]
-                      }
+                      "x-kubernetes-preserve-unknown-fields": true
                     }
                   }
                 }
@@ -1158,29 +799,11 @@
                   "properties": {
                     "annotations": {
                       "description": "Annotations added to the Kubernetes resource.",
-                      "type": [
-                        "object",
-                        "null"
-                      ],
-                      "additionalProperties": {
-                        "type": [
-                          "string",
-                          "null"
-                        ]
-                      }
+                      "x-kubernetes-preserve-unknown-fields": true
                     },
                     "labels": {
                       "description": "Labels added to the Kubernetes resource.",
-                      "type": [
-                        "object",
-                        "null"
-                      ],
-                      "additionalProperties": {
-                        "type": [
-                          "string",
-                          "null"
-                        ]
-                      }
+                      "x-kubernetes-preserve-unknown-fields": true
                     }
                   }
                 }
@@ -1202,29 +825,11 @@
                   "properties": {
                     "annotations": {
                       "description": "Annotations added to the Kubernetes resource.",
-                      "type": [
-                        "object",
-                        "null"
-                      ],
-                      "additionalProperties": {
-                        "type": [
-                          "string",
-                          "null"
-                        ]
-                      }
+                      "x-kubernetes-preserve-unknown-fields": true
                     },
                     "labels": {
                       "description": "Labels added to the Kubernetes resource.",
-                      "type": [
-                        "object",
-                        "null"
-                      ],
-                      "additionalProperties": {
-                        "type": [
-                          "string",
-                          "null"
-                        ]
-                      }
+                      "x-kubernetes-preserve-unknown-fields": true
                     }
                   }
                 }
@@ -1246,29 +851,11 @@
                   "properties": {
                     "annotations": {
                       "description": "Annotations added to the Kubernetes resource.",
-                      "type": [
-                        "object",
-                        "null"
-                      ],
-                      "additionalProperties": {
-                        "type": [
-                          "string",
-                          "null"
-                        ]
-                      }
+                      "x-kubernetes-preserve-unknown-fields": true
                     },
                     "labels": {
                       "description": "Labels added to the Kubernetes resource.",
-                      "type": [
-                        "object",
-                        "null"
-                      ],
-                      "additionalProperties": {
-                        "type": [
-                          "string",
-                          "null"
-                        ]
-                      }
+                      "x-kubernetes-preserve-unknown-fields": true
                     }
                   }
                 }
@@ -1566,41 +1153,8 @@
                                         }
                                       },
                                       "matchLabels": {
-                                        "type": [
-                                          "object",
-                                          "null"
-                                        ],
-                                        "additionalProperties": {
-                                          "type": [
-                                            "string",
-                                            "null"
-                                          ]
-                                        }
+                                        "x-kubernetes-preserve-unknown-fields": true
                                       }
-                                    }
-                                  },
-                                  "matchLabelKeys": {
-                                    "type": [
-                                      "array",
-                                      "null"
-                                    ],
-                                    "items": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    }
-                                  },
-                                  "mismatchLabelKeys": {
-                                    "type": [
-                                      "array",
-                                      "null"
-                                    ],
-                                    "items": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
                                     }
                                   },
                                   "namespaceSelector": {
@@ -1648,16 +1202,7 @@
                                         }
                                       },
                                       "matchLabels": {
-                                        "type": [
-                                          "object",
-                                          "null"
-                                        ],
-                                        "additionalProperties": {
-                                          "type": [
-                                            "string",
-                                            "null"
-                                          ]
-                                        }
+                                        "x-kubernetes-preserve-unknown-fields": true
                                       }
                                     }
                                   },
@@ -1746,41 +1291,8 @@
                                     }
                                   },
                                   "matchLabels": {
-                                    "type": [
-                                      "object",
-                                      "null"
-                                    ],
-                                    "additionalProperties": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    }
+                                    "x-kubernetes-preserve-unknown-fields": true
                                   }
-                                }
-                              },
-                              "matchLabelKeys": {
-                                "type": [
-                                  "array",
-                                  "null"
-                                ],
-                                "items": {
-                                  "type": [
-                                    "string",
-                                    "null"
-                                  ]
-                                }
-                              },
-                              "mismatchLabelKeys": {
-                                "type": [
-                                  "array",
-                                  "null"
-                                ],
-                                "items": {
-                                  "type": [
-                                    "string",
-                                    "null"
-                                  ]
                                 }
                               },
                               "namespaceSelector": {
@@ -1828,16 +1340,7 @@
                                     }
                                   },
                                   "matchLabels": {
-                                    "type": [
-                                      "object",
-                                      "null"
-                                    ],
-                                    "additionalProperties": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    }
+                                    "x-kubernetes-preserve-unknown-fields": true
                                   }
                                 }
                               },
@@ -1932,41 +1435,8 @@
                                         }
                                       },
                                       "matchLabels": {
-                                        "type": [
-                                          "object",
-                                          "null"
-                                        ],
-                                        "additionalProperties": {
-                                          "type": [
-                                            "string",
-                                            "null"
-                                          ]
-                                        }
+                                        "x-kubernetes-preserve-unknown-fields": true
                                       }
-                                    }
-                                  },
-                                  "matchLabelKeys": {
-                                    "type": [
-                                      "array",
-                                      "null"
-                                    ],
-                                    "items": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    }
-                                  },
-                                  "mismatchLabelKeys": {
-                                    "type": [
-                                      "array",
-                                      "null"
-                                    ],
-                                    "items": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
                                     }
                                   },
                                   "namespaceSelector": {
@@ -2014,16 +1484,7 @@
                                         }
                                       },
                                       "matchLabels": {
-                                        "type": [
-                                          "object",
-                                          "null"
-                                        ],
-                                        "additionalProperties": {
-                                          "type": [
-                                            "string",
-                                            "null"
-                                          ]
-                                        }
+                                        "x-kubernetes-preserve-unknown-fields": true
                                       }
                                     }
                                   },
@@ -2112,41 +1573,8 @@
                                     }
                                   },
                                   "matchLabels": {
-                                    "type": [
-                                      "object",
-                                      "null"
-                                    ],
-                                    "additionalProperties": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    }
+                                    "x-kubernetes-preserve-unknown-fields": true
                                   }
-                                }
-                              },
-                              "matchLabelKeys": {
-                                "type": [
-                                  "array",
-                                  "null"
-                                ],
-                                "items": {
-                                  "type": [
-                                    "string",
-                                    "null"
-                                  ]
-                                }
-                              },
-                              "mismatchLabelKeys": {
-                                "type": [
-                                  "array",
-                                  "null"
-                                ],
-                                "items": {
-                                  "type": [
-                                    "string",
-                                    "null"
-                                  ]
                                 }
                               },
                               "namespaceSelector": {
@@ -2194,16 +1622,7 @@
                                     }
                                   },
                                   "matchLabels": {
-                                    "type": [
-                                      "object",
-                                      "null"
-                                    ],
-                                    "additionalProperties": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    }
+                                    "x-kubernetes-preserve-unknown-fields": true
                                   }
                                 }
                               },
@@ -2302,34 +1721,16 @@
                   "properties": {
                     "annotations": {
                       "description": "Annotations added to the Kubernetes resource.",
-                      "type": [
-                        "object",
-                        "null"
-                      ],
-                      "additionalProperties": {
-                        "type": [
-                          "string",
-                          "null"
-                        ]
-                      }
+                      "x-kubernetes-preserve-unknown-fields": true
                     },
                     "labels": {
                       "description": "Labels added to the Kubernetes resource.",
-                      "type": [
-                        "object",
-                        "null"
-                      ],
-                      "additionalProperties": {
-                        "type": [
-                          "string",
-                          "null"
-                        ]
-                      }
+                      "x-kubernetes-preserve-unknown-fields": true
                     }
                   }
                 },
                 "priorityClassName": {
-                  "description": "The name of the priority class used to assign priority to the pods. ",
+                  "description": "The name of the priority class used to assign priority to the pods. For more information about priority classes, see {K8sPriorityClass}.",
                   "type": [
                     "string",
                     "null"
@@ -2349,26 +1750,6 @@
                     "null"
                   ],
                   "properties": {
-                    "appArmorProfile": {
-                      "type": [
-                        "object",
-                        "null"
-                      ],
-                      "properties": {
-                        "localhostProfile": {
-                          "type": [
-                            "string",
-                            "null"
-                          ]
-                        },
-                        "type": {
-                          "type": [
-                            "string",
-                            "null"
-                          ]
-                        }
-                      }
-                    },
                     "fsGroup": {
                       "type": [
                         "integer",
@@ -2532,7 +1913,7 @@
                   "minimum": 0
                 },
                 "tmpDirSizeLimit": {
-                  "description": "Defines the total amount of pod memory allocated for the temporary `EmptyDir` volume `/tmp`. Specify the allocation in memory units, for example, `100Mi` for 100 mebibytes. Default value is `5Mi`. The `/tmp` volume is backed by pod memory, not disk storage, so avoid setting a high value as it consumes pod memory resources.",
+                  "description": "Defines the total amount (for example `1Gi`) of local storage required for temporary EmptyDir volume (`/tmp`). Default value is `5Mi`.",
                   "type": [
                     "string",
                     "null"
@@ -2641,16 +2022,7 @@
                             }
                           },
                           "matchLabels": {
-                            "type": [
-                              "object",
-                              "null"
-                            ],
-                            "additionalProperties": {
-                              "type": [
-                                "string",
-                                "null"
-                              ]
-                            }
+                            "x-kubernetes-preserve-unknown-fields": true
                           }
                         }
                       },
@@ -2704,255 +2076,6 @@
                       }
                     }
                   }
-                },
-                "volumes": {
-                  "description": "Additional volumes that can be mounted to the pod.",
-                  "type": [
-                    "array",
-                    "null"
-                  ],
-                  "items": {
-                    "type": [
-                      "object",
-                      "null"
-                    ],
-                    "properties": {
-                      "configMap": {
-                        "description": "ConfigMap to use to populate the volume.",
-                        "type": [
-                          "object",
-                          "null"
-                        ],
-                        "properties": {
-                          "defaultMode": {
-                            "type": [
-                              "integer",
-                              "null"
-                            ]
-                          },
-                          "items": {
-                            "type": [
-                              "array",
-                              "null"
-                            ],
-                            "items": {
-                              "type": [
-                                "object",
-                                "null"
-                              ],
-                              "properties": {
-                                "key": {
-                                  "type": [
-                                    "string",
-                                    "null"
-                                  ]
-                                },
-                                "mode": {
-                                  "type": [
-                                    "integer",
-                                    "null"
-                                  ]
-                                },
-                                "path": {
-                                  "type": [
-                                    "string",
-                                    "null"
-                                  ]
-                                }
-                              }
-                            }
-                          },
-                          "name": {
-                            "type": [
-                              "string",
-                              "null"
-                            ]
-                          },
-                          "optional": {
-                            "type": [
-                              "boolean",
-                              "null"
-                            ]
-                          }
-                        }
-                      },
-                      "csi": {
-                        "description": "CSIVolumeSource object to use to populate the volume.",
-                        "type": [
-                          "object",
-                          "null"
-                        ],
-                        "properties": {
-                          "driver": {
-                            "type": [
-                              "string",
-                              "null"
-                            ]
-                          },
-                          "fsType": {
-                            "type": [
-                              "string",
-                              "null"
-                            ]
-                          },
-                          "nodePublishSecretRef": {
-                            "type": [
-                              "object",
-                              "null"
-                            ],
-                            "properties": {
-                              "name": {
-                                "type": [
-                                  "string",
-                                  "null"
-                                ]
-                              }
-                            }
-                          },
-                          "readOnly": {
-                            "type": [
-                              "boolean",
-                              "null"
-                            ]
-                          },
-                          "volumeAttributes": {
-                            "type": [
-                              "object",
-                              "null"
-                            ],
-                            "additionalProperties": {
-                              "type": [
-                                "string",
-                                "null"
-                              ]
-                            }
-                          }
-                        }
-                      },
-                      "emptyDir": {
-                        "description": "EmptyDir to use to populate the volume.",
-                        "type": [
-                          "object",
-                          "null"
-                        ],
-                        "properties": {
-                          "medium": {
-                            "type": [
-                              "string",
-                              "null"
-                            ]
-                          },
-                          "sizeLimit": {
-                            "type": [
-                              "object",
-                              "null"
-                            ],
-                            "properties": {
-                              "amount": {
-                                "type": [
-                                  "string",
-                                  "null"
-                                ]
-                              },
-                              "format": {
-                                "type": [
-                                  "string",
-                                  "null"
-                                ]
-                              }
-                            }
-                          }
-                        }
-                      },
-                      "name": {
-                        "description": "Name to use for the volume. Required.",
-                        "type": [
-                          "string",
-                          "null"
-                        ]
-                      },
-                      "persistentVolumeClaim": {
-                        "description": "PersistentVolumeClaim object to use to populate the volume.",
-                        "type": [
-                          "object",
-                          "null"
-                        ],
-                        "properties": {
-                          "claimName": {
-                            "type": [
-                              "string",
-                              "null"
-                            ]
-                          },
-                          "readOnly": {
-                            "type": [
-                              "boolean",
-                              "null"
-                            ]
-                          }
-                        }
-                      },
-                      "secret": {
-                        "description": "Secret to use populate the volume.",
-                        "type": [
-                          "object",
-                          "null"
-                        ],
-                        "properties": {
-                          "defaultMode": {
-                            "type": [
-                              "integer",
-                              "null"
-                            ]
-                          },
-                          "items": {
-                            "type": [
-                              "array",
-                              "null"
-                            ],
-                            "items": {
-                              "type": [
-                                "object",
-                                "null"
-                              ],
-                              "properties": {
-                                "key": {
-                                  "type": [
-                                    "string",
-                                    "null"
-                                  ]
-                                },
-                                "mode": {
-                                  "type": [
-                                    "integer",
-                                    "null"
-                                  ]
-                                },
-                                "path": {
-                                  "type": [
-                                    "string",
-                                    "null"
-                                  ]
-                                }
-                              }
-                            }
-                          },
-                          "optional": {
-                            "type": [
-                              "boolean",
-                              "null"
-                            ]
-                          },
-                          "secretName": {
-                            "type": [
-                              "string",
-                              "null"
-                            ]
-                          }
-                        }
-                      }
-                    }
-                  }
                 }
               }
             },
@@ -2972,29 +2095,11 @@
                   "properties": {
                     "annotations": {
                       "description": "Annotations added to the Kubernetes resource.",
-                      "type": [
-                        "object",
-                        "null"
-                      ],
-                      "additionalProperties": {
-                        "type": [
-                          "string",
-                          "null"
-                        ]
-                      }
+                      "x-kubernetes-preserve-unknown-fields": true
                     },
                     "labels": {
                       "description": "Labels added to the Kubernetes resource.",
-                      "type": [
-                        "object",
-                        "null"
-                      ],
-                      "additionalProperties": {
-                        "type": [
-                          "string",
-                          "null"
-                        ]
-                      }
+                      "x-kubernetes-preserve-unknown-fields": true
                     }
                   }
                 }
@@ -3101,23 +2206,6 @@
             "integer",
             "null"
           ]
-        },
-        "roles": {
-          "description": "The roles currently assigned to this pool.",
-          "type": [
-            "array",
-            "null"
-          ],
-          "items": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "enum": [
-              "controller",
-              "broker"
-            ]
-          }
         }
       }
     }
@@ -3129,6 +2217,5 @@
       "version": "v1beta2"
     }
   ],
-  "x-kubernetes-selectable-fields": [],
   "$schema": "http://json-schema.org/schema#"
 }

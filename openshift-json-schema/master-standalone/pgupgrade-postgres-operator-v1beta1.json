@@ -1133,7 +1133,7 @@
           "description": "The major version of PostgreSQL before the upgrade.",
           "type": "integer",
           "format": "int32",
-          "maximum": 18,
+          "maximum": 17,
           "minimum": 11
         },
         "image": {
@@ -1303,7 +1303,7 @@
           "description": "The major version of PostgreSQL to be upgraded to.",
           "type": "integer",
           "format": "int32",
-          "maximum": 18,
+          "maximum": 17,
           "minimum": 11
         },
         "tolerations": {
@@ -1481,6 +1481,5 @@
       "version": "v1beta1"
     }
   ],
-  "x-kubernetes-selectable-fields": [],
   "$schema": "http://json-schema.org/schema#"
 }

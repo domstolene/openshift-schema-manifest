@@ -43,7 +43,7 @@
       ]
     },
     "kubeProxyVersion": {
-      "description": "Deprecated: KubeProxy Version reported by the node.",
+      "description": "KubeProxy Version reported by the node.",
       "type": [
         "string",
         "null"

@@ -9,7 +9,7 @@
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NamespaceCondition_v2"
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NamespaceCondition"
       },
       "x-kubernetes-patch-merge-key": "type",
       "x-kubernetes-patch-strategy": "merge"

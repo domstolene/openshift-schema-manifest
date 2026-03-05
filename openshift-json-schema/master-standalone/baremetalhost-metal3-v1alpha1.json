@@ -37,14 +37,14 @@
       ],
       "properties": {
         "architecture": {
-          "description": "CPU architecture of the host, e.g. \"x86_64\" or \"aarch64\". If unset,\neventually populated by inspection.",
+          "description": "CPU architecture of the host, e.g. \"x86_64\" or \"aarch64\". If unset, eventually populated by inspection.",
           "type": [
             "string",
             "null"
           ]
         },
         "automatedCleaningMode": {
-          "description": "When set to disabled, automated cleaning will be skipped\nduring provisioning and deprovisioning.",
+          "description": "When set to disabled, automated cleaning will be avoided during provisioning and deprovisioning.",
           "type": [
             "string",
             "null"
@@ -55,7 +55,7 @@
           ]
         },
         "bmc": {
-          "description": "How do we connect to the BMC (Baseboard Management Controller) on\nthe host?",
+          "description": "How do we connect to the BMC?",
           "type": [
             "object",
             "null"
@@ -66,15 +66,15 @@
           ],
           "properties": {
             "address": {
-              "description": "Address holds the URL for accessing the controller on the network.\nThe scheme part designates the driver to use with the host.",
+              "description": "Address holds the URL for accessing the controller on the network.",
               "type": "string"
             },
             "credentialsName": {
-              "description": "The name of the secret containing the BMC credentials (requires\nkeys \"username\" and \"password\").",
+              "description": "The name of the secret containing the BMC credentials (requires keys \"username\" and \"password\").",
               "type": "string"
             },
             "disableCertificateVerification": {
-              "description": "DisableCertificateVerification disables verification of server\ncertificates when using HTTPS to connect to the BMC. This is\nrequired when the server certificate is self-signed, but is\ninsecure because it allows a man-in-the-middle to intercept the\nconnection.",
+              "description": "DisableCertificateVerification disables verification of server certificates when using HTTPS to connect to the BMC. This is required when the server certificate is self-signed, but is insecure because it allows a man-in-the-middle to intercept the connection.",
               "type": [
                 "boolean",
                 "null"
@@ -83,7 +83,7 @@
           }
         },
         "bootMACAddress": {
-          "description": "The MAC address of the NIC used for provisioning the host. In case\nof network boot, this is the MAC address of the PXE booting\ninterface. The MAC address of the BMC must never be used here!",
+          "description": "Which MAC address will PXE boot? This is optional for some types, but required for libvirt VMs driven by vbmc.",
           "type": [
             "string",
             "null"
@@ -91,7 +91,7 @@
           "pattern": "[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}"
         },
         "bootMode": {
-          "description": "Select the method of initializing the hardware during boot.\nDefaults to UEFI. Legacy boot should only be used for hardware that\ndoes not support UEFI correctly. Set to UEFISecureBoot to turn\nsecure boot on automatically after provisioning.",
+          "description": "Select the method of initializing the hardware during boot. Defaults to UEFI.",
           "type": [
             "string",
             "null"
@@ -103,7 +103,7 @@
           ]
         },
         "consumerRef": {
-          "description": "ConsumerRef can be used to store information about something\nthat is using a host. When it is not empty, the host is\nconsidered \"in use\". The common use case is a link to a Machine\nresource when the host is used by Cluster API.",
+          "description": "ConsumerRef can be used to store information about something that is using a host. When it is not empty, the host is considered \"in use\".",
           "type": [
             "object",
             "null"
@@ -117,42 +117,42 @@
               ]
             },
             "fieldPath": {
-              "description": "If referring to a piece of an object instead of an entire object, this string\nshould contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2].\nFor example, if the object reference is to a container within a pod, this would take on a value like:\n\"spec.containers{name}\" (where \"name\" refers to the name of the container that triggered\nthe event) or if no container name is specified \"spec.containers[2]\" (container with\nindex 2 in this pod). This syntax is chosen only to have some well-defined way of\nreferencing a part of an object.",
+              "description": "If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: \"spec.containers{name}\" (where \"name\" refers to the name of the container that triggered the event) or if no container name is specified \"spec.containers[2]\" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object. TODO: this design is not final and this field is subject to change in the future.",
               "type": [
                 "string",
                 "null"
               ]
             },
             "kind": {
-              "description": "Kind of the referent.\nMore info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+              "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
               "type": [
                 "string",
                 "null"
               ]
             },
             "name": {
-              "description": "Name of the referent.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+              "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
               "type": [
                 "string",
                 "null"
               ]
             },
             "namespace": {
-              "description": "Namespace of the referent.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/",
+              "description": "Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/",
               "type": [
                 "string",
                 "null"
               ]
             },
             "resourceVersion": {
-              "description": "Specific resourceVersion to which this reference is made, if any.\nMore info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency",
+              "description": "Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency",
               "type": [
                 "string",
                 "null"
               ]
             },
             "uid": {
-              "description": "UID of the referent.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids",
+              "description": "UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids",
               "type": [
                 "string",
                 "null"
@@ -162,7 +162,7 @@
           "x-kubernetes-map-type": "atomic"
         },
         "customDeploy": {
-          "description": "A custom deploy procedure. This is an advanced feature that allows\nusing a custom deploy step provided by a site-specific deployment\nramdisk. Most users will want to use \"image\" instead. Setting this\nfield triggers provisioning.",
+          "description": "A custom deploy procedure.",
           "type": [
             "object",
             "null"
@@ -172,41 +172,34 @@
           ],
           "properties": {
             "method": {
-              "description": "Custom deploy method name.\nThis name is specific to the deploy ramdisk used. If you don't have\na custom deploy ramdisk, you shouldn't use CustomDeploy.",
+              "description": "Custom deploy method name. This name is specific to the deploy ramdisk used. If you don't have a custom deploy ramdisk, you shouldn't use CustomDeploy.",
               "type": "string"
             }
           }
         },
         "description": {
-          "description": "Description is a human-entered text used to help identify the host.",
+          "description": "Description is a human-entered text used to help identify the host",
           "type": [
             "string",
             "null"
           ]
         },
-        "disablePowerOff": {
-          "description": "When set to true, power off of the node will be disabled,\ninstead, a reboot will be used in place of power on/off",
-          "type": [
-            "boolean",
-            "null"
-          ]
-        },
         "externallyProvisioned": {
-          "description": "ExternallyProvisioned means something else has provisioned the\nimage running on the host, and the operator should only manage\nthe power status. This field is used for integration with already\nprovisioned hosts and when pivoting hosts between clusters. If\nunsure, leave this field as false.",
+          "description": "ExternallyProvisioned means something else is managing the image running on the host and the operator should only manage the power status and hardware inventory inspection. If the Image field is filled in, this field is ignored.",
           "type": [
             "boolean",
             "null"
           ]
         },
         "firmware": {
-          "description": "Firmware (BIOS) configuration for bare metal server. If set, the\nrequested settings will be applied before the host is provisioned.\nOnly some vendor drivers support this field. An alternative is to\nuse HostFirmwareSettings resources that allow changing arbitrary\nvalues and support the generic Redfish-based drivers.",
+          "description": "BIOS configuration for bare metal server",
           "type": [
             "object",
             "null"
           ],
           "properties": {
             "simultaneousMultithreadingEnabled": {
-              "description": "Allows a single physical processor core to appear as several logical processors.",
+              "description": "Allows a single physical processor core to appear as several logical processors. This supports following options: true, false.",
               "type": [
                 "boolean",
                 "null"
@@ -217,7 +210,7 @@
               ]
             },
             "sriovEnabled": {
-              "description": "SR-IOV support enables a hypervisor to create virtual instances of a PCI-express device, potentially increasing performance.",
+              "description": "SR-IOV support enables a hypervisor to create virtual instances of a PCI-express device, potentially increasing performance. This supports following options: true, false.",
               "type": [
                 "boolean",
                 "null"
@@ -228,7 +221,7 @@
               ]
             },
             "virtualizationEnabled": {
-              "description": "Supports the virtualization of platform hardware.",
+              "description": "Supports the virtualization of platform hardware. This supports following options: true, false.",
               "type": [
                 "boolean",
                 "null"
@@ -241,14 +234,14 @@
           }
         },
         "hardwareProfile": {
-          "description": "What is the name of the hardware profile for this host?\nHardware profiles are deprecated and should not be used.\nUse the separate fields Architecture and RootDeviceHints instead.\nSet to \"empty\" to prepare for the future version of the API\nwithout hardware profiles.",
+          "description": "What is the name of the hardware profile for this host? Hardware profiles are deprecated and should not be used. Use the separate fields Architecture and RootDeviceHints instead. Set to \"empty\" to prepare for the future version of the API without hardware profiles.",
           "type": [
             "string",
             "null"
           ]
         },
         "image": {
-          "description": "Image holds the details of the image to be provisioned. Populating\nthe image will cause the host to start provisioning.",
+          "description": "Image holds the details of the image to be provisioned.",
           "type": [
             "object",
             "null"
@@ -258,14 +251,14 @@
           ],
           "properties": {
             "checksum": {
-              "description": "Checksum is the checksum for the image. Required for all formats\nexcept for \"live-iso\".",
+              "description": "Checksum is the checksum for the image.",
               "type": [
                 "string",
                 "null"
               ]
             },
             "checksumType": {
-              "description": "ChecksumType is the checksum algorithm for the image, e.g md5, sha256 or sha512.\nThe special value \"auto\" can be used to detect the algorithm from the checksum.\nIf missing, MD5 is used. If in doubt, use \"auto\".",
+              "description": "ChecksumType is the checksum algorithm for the image, e.g md5, sha256 or sha512. The special value \"auto\" can be used to detect the algorithm from the checksum. If missing, MD5 is used. If in doubt, use \"auto\".",
               "type": [
                 "string",
                 "null"
@@ -278,7 +271,7 @@
               ]
             },
             "format": {
-              "description": "Format contains the format of the image (raw, qcow2, ...).\nWhen set to \"live-iso\", an ISO 9660 image referenced by the url will\nbe live-booted and not deployed to disk.",
+              "description": "DiskFormat contains the format of the image (raw, qcow2, ...). Needs to be set to raw for raw images streaming. Note live-iso means an iso referenced by the url will be live-booted and not deployed to disk, and in this case the checksum options are not required and if specified will be ignored.",
               "type": [
                 "string",
                 "null"
@@ -298,7 +291,7 @@
           }
         },
         "metaData": {
-          "description": "MetaData holds the reference to the Secret containing host metadata\nwhich is passed to the Config Drive. By default, metadata will be\ngenerated for the host, so most users do not need to set this field.",
+          "description": "MetaData holds the reference to the Secret containing host metadata (e.g. meta_data.json) which is passed to the Config Drive.",
           "type": [
             "object",
             "null"
@@ -322,7 +315,7 @@
           "x-kubernetes-map-type": "atomic"
         },
         "networkData": {
-          "description": "NetworkData holds the reference to the Secret containing network\nconfiguration which is passed to the Config Drive and interpreted\nby the first boot software such as cloud-init.",
+          "description": "NetworkData holds the reference to the Secret containing network configuration (e.g content of network_data.json) which is passed to the Config Drive.",
           "type": [
             "object",
             "null"
@@ -346,48 +339,48 @@
           "x-kubernetes-map-type": "atomic"
         },
         "online": {
-          "description": "Should the host be powered on? If the host is currently in a stable\nstate (e.g. provisioned), its power state will be forced to match\nthis value.",
+          "description": "Should the server be online?",
           "type": "boolean"
         },
         "preprovisioningNetworkDataName": {
-          "description": "PreprovisioningNetworkDataName is the name of the Secret in the\nlocal namespace containing network configuration which is passed to\nthe preprovisioning image, and to the Config Drive if not overridden\nby specifying NetworkData.",
+          "description": "PreprovisioningNetworkDataName is the name of the Secret in the local namespace containing network configuration (e.g content of network_data.json) which is passed to the preprovisioning image, and to the Config Drive if not overridden by specifying NetworkData.",
           "type": [
             "string",
             "null"
           ]
         },
         "raid": {
-          "description": "RAID configuration for bare metal server. If set, the RAID settings\nwill be applied before the host is provisioned. If not, the current\nsettings will not be modified. Only one of the sub-fields\nhardwareRAIDVolumes and softwareRAIDVolumes can be set at the same\ntime.",
+          "description": "RAID configuration for bare metal server",
           "type": [
             "object",
             "null"
           ],
           "properties": {
             "hardwareRAIDVolumes": {
-              "description": "The list of logical disks for hardware RAID, if rootDeviceHints isn't used, first volume is root volume.\nYou can set the value of this field to `[]` to clear all the hardware RAID configurations."
+              "description": "The list of logical disks for hardware RAID, if rootDeviceHints isn't used, first volume is root volume. You can set the value of this field to `[]` to clear all the hardware RAID configurations."
             },
             "softwareRAIDVolumes": {
-              "description": "The list of logical disks for software RAID, if rootDeviceHints isn't used, first volume is root volume.\nIf HardwareRAIDVolumes is set this item will be invalid.\nThe number of created Software RAID devices must be 1 or 2.\nIf there is only one Software RAID device, it has to be a RAID-1.\nIf there are two, the first one has to be a RAID-1, while the RAID level for the second one can be 0, 1, or 1+0.\nAs the first RAID device will be the deployment device,\nenforcing a RAID-1 reduces the risk of ending up with a non-booting host in case of a disk failure.\nSoftware RAID will always be deleted.",
+              "description": "The list of logical disks for software RAID, if rootDeviceHints isn't used, first volume is root volume. If HardwareRAIDVolumes is set this item will be invalid. The number of created Software RAID devices must be 1 or 2. If there is only one Software RAID device, it has to be a RAID-1. If there are two, the first one has to be a RAID-1, while the RAID level for the second one can be 0, 1, or 1+0. As the first RAID device will be the deployment device, enforcing a RAID-1 reduces the risk of ending up with a non-booting node in case of a disk failure. Software RAID will always be deleted.",
               "maxItems": 2
             }
           }
         },
         "rootDeviceHints": {
-          "description": "Provide guidance about how to choose the device for the image\nbeing provisioned. The default is currently to use /dev/sda as\nthe root device.",
+          "description": "Provide guidance about how to choose the device for the image being provisioned.",
           "type": [
             "object",
             "null"
           ],
           "properties": {
             "deviceName": {
-              "description": "A Linux device name like \"/dev/vda\", or a by-path link to it like\n\"/dev/disk/by-path/pci-0000:01:00.0-scsi-0:2:0:0\". The hint must match\nthe actual value exactly.",
+              "description": "A Linux device name like \"/dev/vda\", or a by-path link to it like \"/dev/disk/by-path/pci-0000:01:00.0-scsi-0:2:0:0\". The hint must match the actual value exactly.",
               "type": [
                 "string",
                 "null"
               ]
             },
             "hctl": {
-              "description": "A SCSI bus address like 0:0:0:0. The hint must match the actual\nvalue exactly.",
+              "description": "A SCSI bus address like 0:0:0:0. The hint must match the actual value exactly.",
               "type": [
                 "string",
                 "null"
@@ -402,7 +395,7 @@
               "minimum": 0
             },
             "model": {
-              "description": "A vendor-specific device identifier. The hint can be a\nsubstring of the actual value.",
+              "description": "A vendor-specific device identifier. The hint can be a substring of the actual value.",
               "type": [
                 "string",
                 "null"
@@ -416,35 +409,35 @@
               ]
             },
             "serialNumber": {
-              "description": "Device serial number. The hint must match the actual value\nexactly.",
+              "description": "Device serial number. The hint must match the actual value exactly.",
               "type": [
                 "string",
                 "null"
               ]
             },
             "vendor": {
-              "description": "The name of the vendor or manufacturer of the device. The hint\ncan be a substring of the actual value.",
+              "description": "The name of the vendor or manufacturer of the device. The hint can be a substring of the actual value.",
               "type": [
                 "string",
                 "null"
               ]
             },
             "wwn": {
-              "description": "Unique storage identifier. The hint must match the actual value\nexactly.",
+              "description": "Unique storage identifier. The hint must match the actual value exactly.",
               "type": [
                 "string",
                 "null"
               ]
             },
             "wwnVendorExtension": {
-              "description": "Unique vendor storage identifier. The hint must match the\nactual value exactly.",
+              "description": "Unique vendor storage identifier. The hint must match the actual value exactly.",
               "type": [
                 "string",
                 "null"
               ]
             },
             "wwnWithExtension": {
-              "description": "Unique storage identifier with the vendor extension\nappended. The hint must match the actual value exactly.",
+              "description": "Unique storage identifier with the vendor extension appended. The hint must match the actual value exactly.",
               "type": [
                 "string",
                 "null"
@@ -453,13 +446,13 @@
           }
         },
         "taints": {
-          "description": "Taints is the full, authoritative list of taints to apply to\nthe corresponding Machine. This list will overwrite any\nmodifications made to the Machine on an ongoing basis.",
+          "description": "Taints is the full, authoritative list of taints to apply to the corresponding Machine. This list will overwrite any modifications made to the Machine on an ongoing basis.",
           "type": [
             "array",
             "null"
           ],
           "items": {
-            "description": "The node this Taint is attached to has the \"effect\" on\nany pod that does not tolerate the Taint.",
+            "description": "The node this Taint is attached to has the \"effect\" on any pod that does not tolerate the Taint.",
             "type": [
               "object",
               "null"
@@ -470,7 +463,7 @@
             ],
             "properties": {
               "effect": {
-                "description": "Required. The effect of the taint on pods\nthat do not tolerate the taint.\nValid effects are NoSchedule, PreferNoSchedule and NoExecute.",
+                "description": "Required. The effect of the taint on pods that do not tolerate the taint. Valid effects are NoSchedule, PreferNoSchedule and NoExecute.",
                 "type": "string"
               },
               "key": {
@@ -478,7 +471,7 @@
                 "type": "string"
               },
               "timeAdded": {
-                "description": "TimeAdded represents the time at which the taint was added.\nIt is only written for NoExecute taints.",
+                "description": "TimeAdded represents the time at which the taint was added. It is only written for NoExecute taints.",
                 "type": [
                   "string",
                   "null"
@@ -496,7 +489,7 @@
           }
         },
         "userData": {
-          "description": "UserData holds the reference to the Secret containing the user data\nwhich is passed to the Config Drive and interpreted by the\nfirst-boot software such as cloud-init. The format of user data is\nspecific to the first-boot software.",
+          "description": "UserData holds the reference to the Secret containing the user data to be passed to the host before it boots.",
           "type": [
             "object",
             "null"
@@ -530,6 +523,7 @@
       "required": [
         "errorCount",
         "errorMessage",
+        "hardwareProfile",
         "operationalStatus",
         "poweredOn",
         "provisioning"
@@ -540,11 +534,11 @@
           "type": "integer"
         },
         "errorMessage": {
-          "description": "The last error message reported by the provisioning subsystem.",
+          "description": "the last error message reported by the provisioning subsystem",
           "type": "string"
         },
         "errorType": {
-          "description": "ErrorType indicates the type of failure encountered when the\nOperationalStatus is OperationalStatusError",
+          "description": "ErrorType indicates the type of failure encountered when the OperationalStatus is OperationalStatusError",
           "type": [
             "string",
             "null"
@@ -555,19 +549,18 @@
             "inspection error",
             "preparation error",
             "provisioning error",
-            "power management error",
-            "servicing error"
+            "power management error"
           ]
         },
         "goodCredentials": {
-          "description": "The last credentials we were able to validate as working.",
+          "description": "the last credentials we were able to validate as working",
           "type": [
             "object",
             "null"
           ],
           "properties": {
             "credentials": {
-              "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret\nin any namespace",
+              "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace",
               "type": [
                 "object",
                 "null"
@@ -599,14 +592,14 @@
           }
         },
         "hardware": {
-          "description": "The hardware discovered to exist on the host.\nThis field will be removed in the next API version in favour of the\nseparate HardwareData resource.",
+          "description": "The hardware discovered to exist on the host.",
           "type": [
             "object",
             "null"
           ],
           "properties": {
             "cpu": {
-              "description": "Details of the CPU(s) in the system.",
+              "description": "CPU describes one processor on the host.",
               "type": [
                 "object",
                 "null"
@@ -653,7 +646,7 @@
               }
             },
             "firmware": {
-              "description": "System firmware information.",
+              "description": "Firmware describes the firmware on the host.",
               "type": [
                 "object",
                 "null"
@@ -698,7 +691,6 @@
               ]
             },
             "nics": {
-              "description": "List of network interfaces for the host.",
               "type": [
                 "array",
                 "null"
@@ -711,7 +703,7 @@
                 ],
                 "properties": {
                   "ip": {
-                    "description": "The IP address of the interface. This will be an IPv4 or IPv6 address\nif one is present.  If both IPv4 and IPv6 addresses are present in a\ndual-stack environment, two nics will be output, one with each IP.",
+                    "description": "The IP address of the interface. This will be an IPv4 or IPv6 address if one is present.  If both IPv4 and IPv6 addresses are present in a dual-stack environment, two nics will be output, one with each IP.",
                     "type": [
                       "string",
                       "null"
@@ -799,14 +791,12 @@
               }
             },
             "ramMebibytes": {
-              "description": "The host's amount of memory in Mebibytes.",
               "type": [
                 "integer",
                 "null"
               ]
             },
             "storage": {
-              "description": "List of storage (disk, SSD, etc.) available to the host.",
               "type": [
                 "array",
                 "null"
@@ -819,7 +809,7 @@
                 ],
                 "properties": {
                   "alternateNames": {
-                    "description": "A list of alternate Linux device names of the disk, e.g. \"/dev/sda\".\nNote that this list is not exhaustive, and names may not be stable\nacross reboots.",
+                    "description": "A list of alternate Linux device names of the disk, e.g. \"/dev/sda\". Note that this list is not exhaustive, and names may not be stable across reboots.",
                     "type": [
                       "array",
                       "null"
@@ -846,14 +836,14 @@
                     ]
                   },
                   "name": {
-                    "description": "A Linux device name of the disk, e.g.\n\"/dev/disk/by-path/pci-0000:01:00.0-scsi-0:2:0:0\". This will be a name\nthat is stable across reboots if one is available.",
+                    "description": "A Linux device name of the disk, e.g. \"/dev/disk/by-path/pci-0000:01:00.0-scsi-0:2:0:0\". This will be a name that is stable across reboots if one is available.",
                     "type": [
                       "string",
                       "null"
                     ]
                   },
                   "rotational": {
-                    "description": "Whether this disk represents rotational storage.\nThis field is not recommended for usage, please\nprefer using 'Type' field instead, this field\nwill be deprecated eventually.",
+                    "description": "Whether this disk represents rotational storage. This field is not recommended for usage, please prefer using 'Type' field instead, this field will be deprecated eventually.",
                     "type": [
                       "boolean",
                       "null"
@@ -918,7 +908,7 @@
               }
             },
             "systemVendor": {
-              "description": "System vendor information.",
+              "description": "HardwareSystemVendor stores details about the whole hardware system.",
               "type": [
                 "object",
                 "null"
@@ -947,11 +937,8 @@
           }
         },
         "hardwareProfile": {
-          "description": "The name of the profile matching the hardware details.\nHardware profiles are deprecated and should not be relied on.",
-          "type": [
-            "string",
-            "null"
-          ]
+          "description": "The name of the profile matching the hardware details.",
+          "type": "string"
         },
         "lastUpdated": {
           "description": "LastUpdated identifies when this status was last observed.",
@@ -962,14 +949,14 @@
           "format": "date-time"
         },
         "operationHistory": {
-          "description": "OperationHistory holds information about operations performed\non this host.",
+          "description": "OperationHistory holds information about operations performed on this host.",
           "type": [
             "object",
             "null"
           ],
           "properties": {
             "deprovision": {
-              "description": "OperationMetric contains metadata about an operation (inspection,\nprovisioning, etc.) used for tracking metrics.",
+              "description": "OperationMetric contains metadata about an operation (inspection, provisioning, etc.) used for tracking metrics.",
               "type": [
                 "object",
                 "null"
@@ -984,7 +971,7 @@
               }
             },
             "inspect": {
-              "description": "OperationMetric contains metadata about an operation (inspection,\nprovisioning, etc.) used for tracking metrics.",
+              "description": "OperationMetric contains metadata about an operation (inspection, provisioning, etc.) used for tracking metrics.",
               "type": [
                 "object",
                 "null"
@@ -999,7 +986,7 @@
               }
             },
             "provision": {
-              "description": "OperationMetric contains metadata about an operation (inspection,\nprovisioning, etc.) used for tracking metrics.",
+              "description": "OperationMetric contains metadata about an operation (inspection, provisioning, etc.) used for tracking metrics.",
               "type": [
                 "object",
                 "null"
@@ -1014,7 +1001,7 @@
               }
             },
             "register": {
-              "description": "OperationMetric contains metadata about an operation (inspection,\nprovisioning, etc.) used for tracking metrics.",
+              "description": "OperationMetric contains metadata about an operation (inspection, provisioning, etc.) used for tracking metrics.",
               "type": [
                 "object",
                 "null"
@@ -1039,12 +1026,11 @@
             "discovered",
             "error",
             "delayed",
-            "detached",
-            "servicing"
+            "detached"
           ]
         },
         "poweredOn": {
-          "description": "The currently detected power state of the host. This field may get\nbriefly out of sync with the actual state of the hardware while\nprovisioning processes are running.",
+          "description": "indicator for whether or not the host is powered on",
           "type": "boolean"
         },
         "provisioning": {
@@ -1056,11 +1042,11 @@
           ],
           "properties": {
             "ID": {
-              "description": "The hosts's ID from the underlying provisioning tool (e.g. the\nIronic node UUID).",
+              "description": "The machine's UUID from the underlying provisioning tool",
               "type": "string"
             },
             "bootMode": {
-              "description": "BootMode indicates the boot mode used to provision the host.",
+              "description": "BootMode indicates the boot mode used to provision the node",
               "type": [
                 "string",
                 "null"
@@ -1082,20 +1068,20 @@
               ],
               "properties": {
                 "method": {
-                  "description": "Custom deploy method name.\nThis name is specific to the deploy ramdisk used. If you don't have\na custom deploy ramdisk, you shouldn't use CustomDeploy.",
+                  "description": "Custom deploy method name. This name is specific to the deploy ramdisk used. If you don't have a custom deploy ramdisk, you shouldn't use CustomDeploy.",
                   "type": "string"
                 }
               }
             },
             "firmware": {
-              "description": "The firmware settings that have been applied.",
+              "description": "The Bios set by the user",
               "type": [
                 "object",
                 "null"
               ],
               "properties": {
                 "simultaneousMultithreadingEnabled": {
-                  "description": "Allows a single physical processor core to appear as several logical processors.",
+                  "description": "Allows a single physical processor core to appear as several logical processors. This supports following options: true, false.",
                   "type": [
                     "boolean",
                     "null"
@@ -1106,7 +1092,7 @@
                   ]
                 },
                 "sriovEnabled": {
-                  "description": "SR-IOV support enables a hypervisor to create virtual instances of a PCI-express device, potentially increasing performance.",
+                  "description": "SR-IOV support enables a hypervisor to create virtual instances of a PCI-express device, potentially increasing performance. This supports following options: true, false.",
                   "type": [
                     "boolean",
                     "null"
@@ -1117,7 +1103,7 @@
                   ]
                 },
                 "virtualizationEnabled": {
-                  "description": "Supports the virtualization of platform hardware.",
+                  "description": "Supports the virtualization of platform hardware. This supports following options: true, false.",
                   "type": [
                     "boolean",
                     "null"
@@ -1130,7 +1116,7 @@
               }
             },
             "image": {
-              "description": "Image holds the details of the last image successfully\nprovisioned to the host.",
+              "description": "Image holds the details of the last image successfully provisioned to the host.",
               "type": [
                 "object",
                 "null"
@@ -1140,14 +1126,14 @@
               ],
               "properties": {
                 "checksum": {
-                  "description": "Checksum is the checksum for the image. Required for all formats\nexcept for \"live-iso\".",
+                  "description": "Checksum is the checksum for the image.",
                   "type": [
                     "string",
                     "null"
                   ]
                 },
                 "checksumType": {
-                  "description": "ChecksumType is the checksum algorithm for the image, e.g md5, sha256 or sha512.\nThe special value \"auto\" can be used to detect the algorithm from the checksum.\nIf missing, MD5 is used. If in doubt, use \"auto\".",
+                  "description": "ChecksumType is the checksum algorithm for the image, e.g md5, sha256 or sha512. The special value \"auto\" can be used to detect the algorithm from the checksum. If missing, MD5 is used. If in doubt, use \"auto\".",
                   "type": [
                     "string",
                     "null"
@@ -1160,7 +1146,7 @@
                   ]
                 },
                 "format": {
-                  "description": "Format contains the format of the image (raw, qcow2, ...).\nWhen set to \"live-iso\", an ISO 9660 image referenced by the url will\nbe live-booted and not deployed to disk.",
+                  "description": "DiskFormat contains the format of the image (raw, qcow2, ...). Needs to be set to raw for raw images streaming. Note live-iso means an iso referenced by the url will be live-booted and not deployed to disk, and in this case the checksum options are not required and if specified will be ignored.",
                   "type": [
                     "string",
                     "null"
@@ -1180,37 +1166,37 @@
               }
             },
             "raid": {
-              "description": "The RAID configuration that has been applied.",
+              "description": "The Raid set by the user",
               "type": [
                 "object",
                 "null"
               ],
               "properties": {
                 "hardwareRAIDVolumes": {
-                  "description": "The list of logical disks for hardware RAID, if rootDeviceHints isn't used, first volume is root volume.\nYou can set the value of this field to `[]` to clear all the hardware RAID configurations."
+                  "description": "The list of logical disks for hardware RAID, if rootDeviceHints isn't used, first volume is root volume. You can set the value of this field to `[]` to clear all the hardware RAID configurations."
                 },
                 "softwareRAIDVolumes": {
-                  "description": "The list of logical disks for software RAID, if rootDeviceHints isn't used, first volume is root volume.\nIf HardwareRAIDVolumes is set this item will be invalid.\nThe number of created Software RAID devices must be 1 or 2.\nIf there is only one Software RAID device, it has to be a RAID-1.\nIf there are two, the first one has to be a RAID-1, while the RAID level for the second one can be 0, 1, or 1+0.\nAs the first RAID device will be the deployment device,\nenforcing a RAID-1 reduces the risk of ending up with a non-booting host in case of a disk failure.\nSoftware RAID will always be deleted.",
+                  "description": "The list of logical disks for software RAID, if rootDeviceHints isn't used, first volume is root volume. If HardwareRAIDVolumes is set this item will be invalid. The number of created Software RAID devices must be 1 or 2. If there is only one Software RAID device, it has to be a RAID-1. If there are two, the first one has to be a RAID-1, while the RAID level for the second one can be 0, 1, or 1+0. As the first RAID device will be the deployment device, enforcing a RAID-1 reduces the risk of ending up with a non-booting node in case of a disk failure. Software RAID will always be deleted.",
                   "maxItems": 2
                 }
               }
             },
             "rootDeviceHints": {
-              "description": "The root device hints used to provision the host.",
+              "description": "The RootDevicehints set by the user",
               "type": [
                 "object",
                 "null"
               ],
               "properties": {
                 "deviceName": {
-                  "description": "A Linux device name like \"/dev/vda\", or a by-path link to it like\n\"/dev/disk/by-path/pci-0000:01:00.0-scsi-0:2:0:0\". The hint must match\nthe actual value exactly.",
+                  "description": "A Linux device name like \"/dev/vda\", or a by-path link to it like \"/dev/disk/by-path/pci-0000:01:00.0-scsi-0:2:0:0\". The hint must match the actual value exactly.",
                   "type": [
                     "string",
                     "null"
                   ]
                 },
                 "hctl": {
-                  "description": "A SCSI bus address like 0:0:0:0. The hint must match the actual\nvalue exactly.",
+                  "description": "A SCSI bus address like 0:0:0:0. The hint must match the actual value exactly.",
                   "type": [
                     "string",
                     "null"
@@ -1225,7 +1211,7 @@
                   "minimum": 0
                 },
                 "model": {
-                  "description": "A vendor-specific device identifier. The hint can be a\nsubstring of the actual value.",
+                  "description": "A vendor-specific device identifier. The hint can be a substring of the actual value.",
                   "type": [
                     "string",
                     "null"
@@ -1239,35 +1225,35 @@
                   ]
                 },
                 "serialNumber": {
-                  "description": "Device serial number. The hint must match the actual value\nexactly.",
+                  "description": "Device serial number. The hint must match the actual value exactly.",
                   "type": [
                     "string",
                     "null"
                   ]
                 },
                 "vendor": {
-                  "description": "The name of the vendor or manufacturer of the device. The hint\ncan be a substring of the actual value.",
+                  "description": "The name of the vendor or manufacturer of the device. The hint can be a substring of the actual value.",
                   "type": [
                     "string",
                     "null"
                   ]
                 },
                 "wwn": {
-                  "description": "Unique storage identifier. The hint must match the actual value\nexactly.",
+                  "description": "Unique storage identifier. The hint must match the actual value exactly.",
                   "type": [
                     "string",
                     "null"
                   ]
                 },
                 "wwnVendorExtension": {
-                  "description": "Unique vendor storage identifier. The hint must match the\nactual value exactly.",
+                  "description": "Unique vendor storage identifier. The hint must match the actual value exactly.",
                   "type": [
                     "string",
                     "null"
                   ]
                 },
                 "wwnWithExtension": {
-                  "description": "Unique storage identifier with the vendor extension\nappended. The hint must match the actual value exactly.",
+                  "description": "Unique storage identifier with the vendor extension appended. The hint must match the actual value exactly.",
                   "type": [
                     "string",
                     "null"
@@ -1276,20 +1262,20 @@
               }
             },
             "state": {
-              "description": "An indicator for what the provisioner is doing with the host.",
+              "description": "An indiciator for what the provisioner is doing with the host.",
               "type": "string"
             }
           }
         },
         "triedCredentials": {
-          "description": "The last credentials we sent to the provisioning backend.",
+          "description": "the last credentials we sent to the provisioning backend",
           "type": [
             "object",
             "null"
           ],
           "properties": {
             "credentials": {
-              "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret\nin any namespace",
+              "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace",
               "type": [
                 "object",
                 "null"
@@ -1330,6 +1316,5 @@
       "version": "v1alpha1"
     }
   ],
-  "x-kubernetes-selectable-fields": [],
   "$schema": "http://json-schema.org/schema#"
 }

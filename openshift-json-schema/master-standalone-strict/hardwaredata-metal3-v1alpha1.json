@@ -41,7 +41,7 @@
           ],
           "properties": {
             "cpu": {
-              "description": "Details of the CPU(s) in the system.",
+              "description": "CPU describes one processor on the host.",
               "type": [
                 "object",
                 "null"
@@ -89,7 +89,7 @@
               "additionalProperties": false
             },
             "firmware": {
-              "description": "System firmware information.",
+              "description": "Firmware describes the firmware on the host.",
               "type": [
                 "object",
                 "null"
@@ -136,7 +136,6 @@
               ]
             },
             "nics": {
-              "description": "List of network interfaces for the host.",
               "type": [
                 "array",
                 "null"
@@ -149,7 +148,7 @@
                 ],
                 "properties": {
                   "ip": {
-                    "description": "The IP address of the interface. This will be an IPv4 or IPv6 address\nif one is present.  If both IPv4 and IPv6 addresses are present in a\ndual-stack environment, two nics will be output, one with each IP.",
+                    "description": "The IP address of the interface. This will be an IPv4 or IPv6 address if one is present.  If both IPv4 and IPv6 addresses are present in a dual-stack environment, two nics will be output, one with each IP.",
                     "type": [
                       "string",
                       "null"
@@ -239,14 +238,12 @@
               }
             },
             "ramMebibytes": {
-              "description": "The host's amount of memory in Mebibytes.",
               "type": [
                 "integer",
                 "null"
               ]
             },
             "storage": {
-              "description": "List of storage (disk, SSD, etc.) available to the host.",
               "type": [
                 "array",
                 "null"
@@ -259,7 +256,7 @@
                 ],
                 "properties": {
                   "alternateNames": {
-                    "description": "A list of alternate Linux device names of the disk, e.g. \"/dev/sda\".\nNote that this list is not exhaustive, and names may not be stable\nacross reboots.",
+                    "description": "A list of alternate Linux device names of the disk, e.g. \"/dev/sda\". Note that this list is not exhaustive, and names may not be stable across reboots.",
                     "type": [
                       "array",
                       "null"
@@ -286,14 +283,14 @@
                     ]
                   },
                   "name": {
-                    "description": "A Linux device name of the disk, e.g.\n\"/dev/disk/by-path/pci-0000:01:00.0-scsi-0:2:0:0\". This will be a name\nthat is stable across reboots if one is available.",
+                    "description": "A Linux device name of the disk, e.g. \"/dev/disk/by-path/pci-0000:01:00.0-scsi-0:2:0:0\". This will be a name that is stable across reboots if one is available.",
                     "type": [
                       "string",
                       "null"
                     ]
                   },
                   "rotational": {
-                    "description": "Whether this disk represents rotational storage.\nThis field is not recommended for usage, please\nprefer using 'Type' field instead, this field\nwill be deprecated eventually.",
+                    "description": "Whether this disk represents rotational storage. This field is not recommended for usage, please prefer using 'Type' field instead, this field will be deprecated eventually.",
                     "type": [
                       "boolean",
                       "null"
@@ -359,7 +356,7 @@
               }
             },
             "systemVendor": {
-              "description": "System vendor information.",
+              "description": "HardwareSystemVendor stores details about the whole hardware system.",
               "type": [
                 "object",
                 "null"
@@ -400,7 +397,6 @@
       "version": "v1alpha1"
     }
   ],
-  "x-kubernetes-selectable-fields": [],
   "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

@@ -1,5 +1,5 @@
 {
-  "description": "Local represents directly-attached storage with node affinity",
+  "description": "Local represents directly-attached storage with node affinity (Beta feature)",
   "type": "object",
   "required": [
     "path"

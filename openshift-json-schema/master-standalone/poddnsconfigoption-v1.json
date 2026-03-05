@@ -3,14 +3,13 @@
   "type": "object",
   "properties": {
     "name": {
-      "description": "Name is this DNS resolver option's name. Required.",
+      "description": "Required.",
       "type": [
         "string",
         "null"
       ]
     },
     "value": {
-      "description": "Value is this DNS resolver option's value.",
       "type": [
         "string",
         "null"

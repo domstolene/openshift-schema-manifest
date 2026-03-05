@@ -1,5 +1,5 @@
 {
-  "description": "Build configures the behavior of OpenShift builds for the entire cluster.\nThis includes default settings that can be overridden in BuildConfig objects, and overrides which are applied to all builds.\n\nThe canonical name is \"cluster\"\n\nCompatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
+  "description": "Build configures the behavior of OpenShift builds for the entire cluster. This includes default settings that can be overridden in BuildConfig objects, and overrides which are applied to all builds. \n The canonical name is \"cluster\" \n Compatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
   "type": "object",
   "required": [
     "spec"
@@ -30,14 +30,14 @@
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     },
     "spec": {
-      "description": "spec holds user-settable values for the build controller configuration",
+      "description": "Spec holds user-settable values for the build controller configuration",
       "type": [
         "object",
         "null"
       ],
       "properties": {
         "additionalTrustedCA": {
-          "description": "additionalTrustedCA is a reference to a ConfigMap containing additional CAs that\nshould be trusted for image pushes and pulls during builds.\nThe namespace for this config map is openshift-config.\n\nDEPRECATED: Additional CAs for image pull and push should be set on\nimage.config.openshift.io/cluster instead.",
+          "description": "AdditionalTrustedCA is a reference to a ConfigMap containing additional CAs that should be trusted for image pushes and pulls during builds. The namespace for this config map is openshift-config. \n DEPRECATED: Additional CAs for image pull and push should be set on image.config.openshift.io/cluster instead.",
           "type": [
             "object",
             "null"
@@ -54,14 +54,14 @@
           "additionalProperties": false
         },
         "buildDefaults": {
-          "description": "buildDefaults controls the default information for Builds",
+          "description": "BuildDefaults controls the default information for Builds",
           "type": [
             "object",
             "null"
           ],
           "properties": {
             "defaultProxy": {
-              "description": "defaultProxy contains the default proxy settings for all build operations, including image pull/push\nand source download.\n\nValues can be overrode by setting the `HTTP_PROXY`, `HTTPS_PROXY`, and `NO_PROXY` environment variables\nin the build config's strategy.",
+              "description": "DefaultProxy contains the default proxy settings for all build operations, including image pull/push and source download. \n Values can be overrode by setting the `HTTP_PROXY`, `HTTPS_PROXY`, and `NO_PROXY` environment variables in the build config's strategy.",
               "type": [
                 "object",
                 "null"
@@ -82,7 +82,7 @@
                   ]
                 },
                 "noProxy": {
-                  "description": "noProxy is a comma-separated list of hostnames and/or CIDRs and/or IPs for which the proxy should not be used.\nEmpty means unset and will not result in an env var.",
+                  "description": "noProxy is a comma-separated list of hostnames and/or CIDRs and/or IPs for which the proxy should not be used. Empty means unset and will not result in an env var.",
                   "type": [
                     "string",
                     "null"
@@ -102,7 +102,7 @@
                   }
                 },
                 "trustedCA": {
-                  "description": "trustedCA is a reference to a ConfigMap containing a CA certificate bundle.\nThe trustedCA field should only be consumed by a proxy validator. The\nvalidator is responsible for reading the certificate bundle from the required\nkey \"ca-bundle.crt\", merging it with the system default trust bundle,\nand writing the merged trust bundle to a ConfigMap named \"trusted-ca-bundle\"\nin the \"openshift-config-managed\" namespace. Clients that expect to make\nproxy connections must use the trusted-ca-bundle for all HTTPS requests to\nthe proxy, and may use the trusted-ca-bundle for non-proxy HTTPS requests as\nwell.\n\nThe namespace for the ConfigMap referenced by trustedCA is\n\"openshift-config\". Here is an example ConfigMap (in yaml):\n\napiVersion: v1\nkind: ConfigMap\nmetadata:\n name: user-ca-bundle\n namespace: openshift-config\n data:\n   ca-bundle.crt: |\n     -----BEGIN CERTIFICATE-----\n     Custom CA certificate bundle.\n     -----END CERTIFICATE-----",
+                  "description": "trustedCA is a reference to a ConfigMap containing a CA certificate bundle. The trustedCA field should only be consumed by a proxy validator. The validator is responsible for reading the certificate bundle from the required key \"ca-bundle.crt\", merging it with the system default trust bundle, and writing the merged trust bundle to a ConfigMap named \"trusted-ca-bundle\" in the \"openshift-config-managed\" namespace. Clients that expect to make proxy connections must use the trusted-ca-bundle for all HTTPS requests to the proxy, and may use the trusted-ca-bundle for non-proxy HTTPS requests as well. \n The namespace for the ConfigMap referenced by trustedCA is \"openshift-config\". Here is an example ConfigMap (in yaml): \n apiVersion: v1 kind: ConfigMap metadata: name: user-ca-bundle namespace: openshift-config data: ca-bundle.crt: | -----BEGIN CERTIFICATE----- Custom CA certificate bundle. -----END CERTIFICATE-----",
                   "type": [
                     "object",
                     "null"
@@ -122,7 +122,7 @@
               "additionalProperties": false
             },
             "env": {
-              "description": "env is a set of default environment variables that will be applied to the\nbuild if the specified variables do not exist on the build",
+              "description": "Env is a set of default environment variables that will be applied to the build if the specified variables do not exist on the build",
               "type": [
                 "array",
                 "null"
@@ -142,7 +142,7 @@
                     "type": "string"
                   },
                   "value": {
-                    "description": "Variable references $(VAR_NAME) are expanded\nusing the previously defined environment variables in the container and\nany service environment variables. If a variable cannot be resolved,\nthe reference in the input string will be unchanged. Double $$ are reduced\nto a single $, which allows for escaping the $(VAR_NAME) syntax: i.e.\n\"$$(VAR_NAME)\" will produce the string literal \"$(VAR_NAME)\".\nEscaped references will never be expanded, regardless of whether the variable\nexists or not.\nDefaults to \"\".",
+                    "description": "Variable references $(VAR_NAME) are expanded using the previously defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. \"$$(VAR_NAME)\" will produce the string literal \"$(VAR_NAME)\". Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to \"\".",
                     "type": [
                       "string",
                       "null"
@@ -170,7 +170,7 @@
                             "type": "string"
                           },
                           "name": {
-                            "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                            "description": "Name of the referent. This field is effectively required, but due to backwards compatibility is allowed to be empty. Instances of this type with an empty value here are almost certainly wrong. TODO: Add other useful fields. apiVersion, kind, uid? More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.",
                             "type": [
                               "string",
                               "null"
@@ -188,7 +188,7 @@
                         "additionalProperties": false
                       },
                       "fieldRef": {
-                        "description": "Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`,\nspec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.",
+                        "description": "Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`, spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.",
                         "type": [
                           "object",
                           "null"
@@ -213,7 +213,7 @@
                         "additionalProperties": false
                       },
                       "resourceFieldRef": {
-                        "description": "Selects a resource of the container: only resources limits and requests\n(limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.",
+                        "description": "Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.",
                         "type": [
                           "object",
                           "null"
@@ -257,7 +257,7 @@
                             "type": "string"
                           },
                           "name": {
-                            "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                            "description": "Name of the referent. This field is effectively required, but due to backwards compatibility is allowed to be empty. Instances of this type with an empty value here are almost certainly wrong. TODO: Add other useful fields. apiVersion, kind, uid? More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.",
                             "type": [
                               "string",
                               "null"
@@ -282,7 +282,7 @@
               }
             },
             "gitProxy": {
-              "description": "gitProxy contains the proxy settings for git operations only. If set, this will override\nany Proxy settings for all git commands, such as git clone.\n\nValues that are not set here will be inherited from DefaultProxy.",
+              "description": "GitProxy contains the proxy settings for git operations only. If set, this will override any Proxy settings for all git commands, such as git clone. \n Values that are not set here will be inherited from DefaultProxy.",
               "type": [
                 "object",
                 "null"
@@ -303,7 +303,7 @@
                   ]
                 },
                 "noProxy": {
-                  "description": "noProxy is a comma-separated list of hostnames and/or CIDRs and/or IPs for which the proxy should not be used.\nEmpty means unset and will not result in an env var.",
+                  "description": "noProxy is a comma-separated list of hostnames and/or CIDRs and/or IPs for which the proxy should not be used. Empty means unset and will not result in an env var.",
                   "type": [
                     "string",
                     "null"
@@ -323,7 +323,7 @@
                   }
                 },
                 "trustedCA": {
-                  "description": "trustedCA is a reference to a ConfigMap containing a CA certificate bundle.\nThe trustedCA field should only be consumed by a proxy validator. The\nvalidator is responsible for reading the certificate bundle from the required\nkey \"ca-bundle.crt\", merging it with the system default trust bundle,\nand writing the merged trust bundle to a ConfigMap named \"trusted-ca-bundle\"\nin the \"openshift-config-managed\" namespace. Clients that expect to make\nproxy connections must use the trusted-ca-bundle for all HTTPS requests to\nthe proxy, and may use the trusted-ca-bundle for non-proxy HTTPS requests as\nwell.\n\nThe namespace for the ConfigMap referenced by trustedCA is\n\"openshift-config\". Here is an example ConfigMap (in yaml):\n\napiVersion: v1\nkind: ConfigMap\nmetadata:\n name: user-ca-bundle\n namespace: openshift-config\n data:\n   ca-bundle.crt: |\n     -----BEGIN CERTIFICATE-----\n     Custom CA certificate bundle.\n     -----END CERTIFICATE-----",
+                  "description": "trustedCA is a reference to a ConfigMap containing a CA certificate bundle. The trustedCA field should only be consumed by a proxy validator. The validator is responsible for reading the certificate bundle from the required key \"ca-bundle.crt\", merging it with the system default trust bundle, and writing the merged trust bundle to a ConfigMap named \"trusted-ca-bundle\" in the \"openshift-config-managed\" namespace. Clients that expect to make proxy connections must use the trusted-ca-bundle for all HTTPS requests to the proxy, and may use the trusted-ca-bundle for non-proxy HTTPS requests as well. \n The namespace for the ConfigMap referenced by trustedCA is \"openshift-config\". Here is an example ConfigMap (in yaml): \n apiVersion: v1 kind: ConfigMap metadata: name: user-ca-bundle namespace: openshift-config data: ca-bundle.crt: | -----BEGIN CERTIFICATE----- Custom CA certificate bundle. -----END CERTIFICATE-----",
                   "type": [
                     "object",
                     "null"
@@ -343,7 +343,7 @@
               "additionalProperties": false
             },
             "imageLabels": {
-              "description": "imageLabels is a list of docker labels that are applied to the resulting image.\nUser can override a default label by providing a label with the same name in their\nBuild/BuildConfig.",
+              "description": "ImageLabels is a list of docker labels that are applied to the resulting image. User can override a default label by providing a label with the same name in their Build/BuildConfig.",
               "type": [
                 "array",
                 "null"
@@ -355,14 +355,14 @@
                 ],
                 "properties": {
                   "name": {
-                    "description": "name defines the name of the label. It must have non-zero length.",
+                    "description": "Name defines the name of the label. It must have non-zero length.",
                     "type": [
                       "string",
                       "null"
                     ]
                   },
                   "value": {
-                    "description": "value defines the literal value of the label.",
+                    "description": "Value defines the literal value of the label.",
                     "type": [
                       "string",
                       "null"
@@ -373,14 +373,14 @@
               }
             },
             "resources": {
-              "description": "resources defines resource requirements to execute the build.",
+              "description": "Resources defines resource requirements to execute the build.",
               "type": [
                 "object",
                 "null"
               ],
               "properties": {
                 "claims": {
-                  "description": "Claims lists the names of resources, defined in spec.resourceClaims,\nthat are used by this container.\n\nThis is an alpha field and requires enabling the\nDynamicResourceAllocation feature gate.\n\nThis field is immutable. It can only be set for containers.",
+                  "description": "Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container. \n This is an alpha field and requires enabling the DynamicResourceAllocation feature gate. \n This field is immutable. It can only be set for containers.",
                   "type": [
                     "array",
                     "null"
@@ -396,15 +396,8 @@
                     ],
                     "properties": {
                       "name": {
-                        "description": "Name must match the name of one entry in pod.spec.resourceClaims of\nthe Pod where this field is used. It makes that resource available\ninside a container.",
+                        "description": "Name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container.",
                         "type": "string"
-                      },
-                      "request": {
-                        "description": "Request is the name chosen for a request in the referenced claim.\nIf empty, everything from the claim is made available, otherwise\nonly the result of this request.",
-                        "type": [
-                          "string",
-                          "null"
-                        ]
                       }
                     },
                     "additionalProperties": false
@@ -415,7 +408,7 @@
                   "x-kubernetes-list-type": "map"
                 },
                 "limits": {
-                  "description": "Limits describes the maximum amount of compute resources allowed.\nMore info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+                  "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
                   "type": [
                     "object",
                     "null"
@@ -426,7 +419,7 @@
                   }
                 },
                 "requests": {
-                  "description": "Requests describes the minimum amount of compute resources required.\nIf Requests is omitted for a container, it defaults to Limits if that is explicitly specified,\notherwise to an implementation-defined value. Requests cannot exceed Limits.\nMore info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+                  "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. Requests cannot exceed Limits. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
                   "type": [
                     "object",
                     "null"
@@ -443,21 +436,21 @@
           "additionalProperties": false
         },
         "buildOverrides": {
-          "description": "buildOverrides controls override settings for builds",
+          "description": "BuildOverrides controls override settings for builds",
           "type": [
             "object",
             "null"
           ],
           "properties": {
             "forcePull": {
-              "description": "forcePull overrides, if set, the equivalent value in the builds,\ni.e. false disables force pull for all builds,\ntrue enables force pull for all builds,\nindependently of what each build specifies itself",
+              "description": "ForcePull overrides, if set, the equivalent value in the builds, i.e. false disables force pull for all builds, true enables force pull for all builds, independently of what each build specifies itself",
               "type": [
                 "boolean",
                 "null"
               ]
             },
             "imageLabels": {
-              "description": "imageLabels is a list of docker labels that are applied to the resulting image.\nIf user provided a label in their Build/BuildConfig with the same name as one in this\nlist, the user's label will be overwritten.",
+              "description": "ImageLabels is a list of docker labels that are applied to the resulting image. If user provided a label in their Build/BuildConfig with the same name as one in this list, the user's label will be overwritten.",
               "type": [
                 "array",
                 "null"
@@ -469,14 +462,14 @@
                 ],
                 "properties": {
                   "name": {
-                    "description": "name defines the name of the label. It must have non-zero length.",
+                    "description": "Name defines the name of the label. It must have non-zero length.",
                     "type": [
                       "string",
                       "null"
                     ]
                   },
                   "value": {
-                    "description": "value defines the literal value of the label.",
+                    "description": "Value defines the literal value of the label.",
                     "type": [
                       "string",
                       "null"
@@ -487,7 +480,7 @@
               }
             },
             "nodeSelector": {
-              "description": "nodeSelector is a selector which must be true for the build pod to fit on a node",
+              "description": "NodeSelector is a selector which must be true for the build pod to fit on a node",
               "type": [
                 "object",
                 "null"
@@ -500,41 +493,41 @@
               }
             },
             "tolerations": {
-              "description": "tolerations is a list of Tolerations that will override any existing\ntolerations set on a build pod.",
+              "description": "Tolerations is a list of Tolerations that will override any existing tolerations set on a build pod.",
               "type": [
                 "array",
                 "null"
               ],
               "items": {
-                "description": "The pod this Toleration is attached to tolerates any taint that matches\nthe triple <key,value,effect> using the matching operator <operator>.",
+                "description": "The pod this Toleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>.",
                 "type": [
                   "object",
                   "null"
                 ],
                 "properties": {
                   "effect": {
-                    "description": "Effect indicates the taint effect to match. Empty means match all taint effects.\nWhen specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.",
+                    "description": "Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.",
                     "type": [
                       "string",
                       "null"
                     ]
                   },
                   "key": {
-                    "description": "Key is the taint key that the toleration applies to. Empty means match all taint keys.\nIf the key is empty, operator must be Exists; this combination means to match all values and all keys.",
+                    "description": "Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.",
                     "type": [
                       "string",
                       "null"
                     ]
                   },
                   "operator": {
-                    "description": "Operator represents a key's relationship to the value.\nValid operators are Exists and Equal. Defaults to Equal.\nExists is equivalent to wildcard for value, so that a pod can\ntolerate all taints of a particular category.",
+                    "description": "Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a pod can tolerate all taints of a particular category.",
                     "type": [
                       "string",
                       "null"
                     ]
                   },
                   "tolerationSeconds": {
-                    "description": "TolerationSeconds represents the period of time the toleration (which must be\nof effect NoExecute, otherwise this field is ignored) tolerates the taint. By default,\nit is not set, which means tolerate the taint forever (do not evict). Zero and\nnegative values will be treated as 0 (evict immediately) by the system.",
+                    "description": "TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.",
                     "type": [
                       "integer",
                       "null"
@@ -542,7 +535,7 @@
                     "format": "int64"
                   },
                   "value": {
-                    "description": "Value is the taint value the toleration matches to.\nIf the operator is Exists, the value should be empty, otherwise just a regular string.",
+                    "description": "Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.",
                     "type": [
                       "string",
                       "null"
@@ -566,7 +559,6 @@
       "version": "v1"
     }
   ],
-  "x-kubernetes-selectable-fields": [],
   "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

@@ -40,15 +40,15 @@
       ],
       "properties": {
         "address": {
-          "description": "address is the IP address.",
+          "description": "Address is the IP address.",
           "type": "string"
         },
         "claimRef": {
-          "description": "claimRef is a reference to the claim this IPAddress was created for.",
+          "description": "ClaimRef is a reference to the claim this IPAddress was created for.",
           "type": "object",
           "properties": {
             "name": {
-              "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+              "description": "Name of the referent.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names\nTODO: Add other useful fields. apiVersion, kind, uid?",
               "type": [
                 "string",
                 "null"
@@ -59,14 +59,14 @@
           "additionalProperties": false
         },
         "gateway": {
-          "description": "gateway is the network gateway of the network the address is from.",
+          "description": "Gateway is the network gateway of the network the address is from.",
           "type": [
             "string",
             "null"
           ]
         },
         "poolRef": {
-          "description": "poolRef is a reference to the pool that this IPAddress was created from.",
+          "description": "PoolRef is a reference to the pool that this IPAddress was created from.",
           "type": "object",
           "required": [
             "kind",
@@ -93,7 +93,7 @@
           "additionalProperties": false
         },
         "prefix": {
-          "description": "prefix is the prefix of the address.",
+          "description": "Prefix is the prefix of the address.",
           "type": "integer"
         }
       },
@@ -107,7 +107,6 @@
       "version": "v1alpha1"
     }
   ],
-  "x-kubernetes-selectable-fields": [],
   "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

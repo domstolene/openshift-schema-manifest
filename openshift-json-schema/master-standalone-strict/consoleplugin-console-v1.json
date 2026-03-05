@@ -1,5 +1,5 @@
 {
-  "description": "ConsolePlugin is an extension for customizing OpenShift web console by\ndynamically loading code from another service running on the cluster.\n\nCompatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
+  "description": "ConsolePlugin is an extension for customizing OpenShift web console by dynamically loading code from another service running on the cluster. \n Compatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
   "type": "object",
   "required": [
     "metadata",
@@ -31,7 +31,7 @@
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     },
     "spec": {
-      "description": "spec contains the desired configuration for the console plugin.",
+      "description": "ConsolePluginSpec is the desired plugin configuration.",
       "type": [
         "object",
         "null"
@@ -49,7 +49,7 @@
           ],
           "properties": {
             "service": {
-              "description": "service is a Kubernetes Service that exposes the plugin using a\ndeployment with an HTTP server. The Service must use HTTPS and\nService serving certificate. The console backend will proxy the\nplugins assets from the Service using the service CA bundle.",
+              "description": "service is a Kubernetes Service that exposes the plugin using a deployment with an HTTP server. The Service must use HTTPS and Service serving certificate. The console backend will proxy the plugins assets from the Service using the service CA bundle.",
               "type": [
                 "object",
                 "null"
@@ -61,7 +61,7 @@
               ],
               "properties": {
                 "basePath": {
-                  "description": "basePath is the path to the plugin's assets. The primary asset it the\nmanifest file called `plugin-manifest.json`, which is a JSON document\nthat contains metadata about the plugin and the extensions.",
+                  "description": "basePath is the path to the plugin's assets. The primary asset it the manifest file called `plugin-manifest.json`, which is a JSON document that contains metadata about the plugin and the extensions.",
                   "type": [
                     "string",
                     "null"
@@ -93,7 +93,7 @@
               "additionalProperties": false
             },
             "type": {
-              "description": "type is the backend type which servers the console's plugin. Currently only \"Service\" is supported.\n",
+              "description": "type is the backend type which servers the console's plugin. Currently only \"Service\" is supported. \n ---",
               "type": "string",
               "enum": [
                 "Service"
@@ -102,96 +102,8 @@
           },
           "additionalProperties": false
         },
-        "contentSecurityPolicy": {
-          "description": "contentSecurityPolicy is a list of Content-Security-Policy (CSP) directives for the plugin.\nEach directive specifies a list of values, appropriate for the given directive type,\nfor example a list of remote endpoints for fetch directives such as ScriptSrc.\nConsole web application uses CSP to detect and mitigate certain types of attacks,\nsuch as cross-site scripting (XSS) and data injection attacks.\nDynamic plugins should specify this field if need to load assets from outside\nthe cluster or if violation reports are observed. Dynamic plugins should always prefer\nloading their assets from within the cluster, either by vendoring them, or fetching\nfrom a cluster service.\nCSP violation reports can be viewed in the browser's console logs during development and\ntesting of the plugin in the OpenShift web console.\nAvailable directive types are DefaultSrc, ScriptSrc, StyleSrc, ImgSrc, FontSrc and ConnectSrc.\nEach of the available directives may be defined only once in the list.\nThe value 'self' is automatically included in all fetch directives by the OpenShift web\nconsole's backend.\nFor more information about the CSP directives, see:\nhttps://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy\n\nThe OpenShift web console server aggregates the CSP directives and values across\nits own default values and all enabled ConsolePlugin CRs, merging them into a single\npolicy string that is sent to the browser via `Content-Security-Policy` HTTP response header.\n\nExample:\n  ConsolePlugin A directives:\n    script-src: https://script1.com/, https://script2.com/\n    font-src: https://font1.com/\n\n  ConsolePlugin B directives:\n    script-src: https://script2.com/, https://script3.com/\n    font-src: https://font2.com/\n    img-src: https://img1.com/\n\n  Unified set of CSP directives, passed to the OpenShift web console server:\n    script-src: https://script1.com/, https://script2.com/, https://script3.com/\n    font-src: https://font1.com/, https://font2.com/\n    img-src: https://img1.com/\n\n  OpenShift web console server CSP response header:\n    Content-Security-Policy: default-src 'self'; base-uri 'self'; script-src 'self' https://script1.com/ https://script2.com/ https://script3.com/; font-src 'self' https://font1.com/ https://font2.com/; img-src 'self' https://img1.com/; style-src 'self'; frame-src 'none'; object-src 'none'",
-          "type": [
-            "array",
-            "null"
-          ],
-          "maxItems": 5,
-          "items": {
-            "description": "ConsolePluginCSP holds configuration for a specific CSP directive",
-            "type": [
-              "object",
-              "null"
-            ],
-            "required": [
-              "directive",
-              "values"
-            ],
-            "properties": {
-              "directive": {
-                "description": "directive specifies which Content-Security-Policy directive to configure.\nAvailable directive types are DefaultSrc, ScriptSrc, StyleSrc, ImgSrc, FontSrc and ConnectSrc.\nDefaultSrc directive serves as a fallback for the other CSP fetch directives.\nFor more information about the DefaultSrc directive, see:\nhttps://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/default-src\nScriptSrc directive specifies valid sources for JavaScript.\nFor more information about the ScriptSrc directive, see:\nhttps://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src\nStyleSrc directive specifies valid sources for stylesheets.\nFor more information about the StyleSrc directive, see:\nhttps://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/style-src\nImgSrc directive specifies a valid sources of images and favicons.\nFor more information about the ImgSrc directive, see:\nhttps://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/img-src\nFontSrc directive specifies valid sources for fonts loaded using @font-face.\nFor more information about the FontSrc directive, see:\nhttps://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/font-src\nConnectSrc directive restricts the URLs which can be loaded using script interfaces.\nFor more information about the ConnectSrc directive, see:\nhttps://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/connect-src",
-                "type": "string",
-                "enum": [
-                  "DefaultSrc",
-                  "ScriptSrc",
-                  "StyleSrc",
-                  "ImgSrc",
-                  "FontSrc",
-                  "ConnectSrc"
-                ]
-              },
-              "values": {
-                "description": "values defines an array of values to append to the console defaults for this directive.\nEach ConsolePlugin may define their own directives with their values. These will be set\nby the OpenShift web console's backend, as part of its Content-Security-Policy header.\nThe array can contain at most 16 values. Each directive value must have a maximum length\nof 1024 characters and must not contain whitespace, commas (,), semicolons (;) or single\nquotes ('). The value '*' is not permitted.\nEach value in the array must be unique.",
-                "type": "array",
-                "maxItems": 16,
-                "minItems": 1,
-                "items": {
-                  "description": "CSPDirectiveValue is single value for a Content-Security-Policy directive.\nEach directive value must have a maximum length of 1024 characters and must not contain\nwhitespace, commas (,), semicolons (;) or single quotes ('). The value '*' is not permitted.",
-                  "type": [
-                    "string",
-                    "null"
-                  ],
-                  "maxLength": 1024,
-                  "minLength": 1,
-                  "x-kubernetes-validations": [
-                    {
-                      "message": "CSP directive value cannot contain a quote",
-                      "rule": "!self.contains(\"'\")"
-                    },
-                    {
-                      "message": "CSP directive value cannot contain a whitespace",
-                      "rule": "!self.matches('\\\\s')"
-                    },
-                    {
-                      "message": "CSP directive value cannot contain a comma",
-                      "rule": "!self.contains(',')"
-                    },
-                    {
-                      "message": "CSP directive value cannot contain a semi-colon",
-                      "rule": "!self.contains(';')"
-                    },
-                    {
-                      "message": "CSP directive value cannot be a wildcard",
-                      "rule": "self != '*'"
-                    }
-                  ]
-                },
-                "x-kubernetes-list-type": "atomic",
-                "x-kubernetes-validations": [
-                  {
-                    "message": "each CSP directive value must be unique",
-                    "rule": "self.all(x, self.exists_one(y, x == y))"
-                  }
-                ]
-              }
-            },
-            "additionalProperties": false
-          },
-          "x-kubernetes-list-map-keys": [
-            "directive"
-          ],
-          "x-kubernetes-list-type": "map",
-          "x-kubernetes-validations": [
-            {
-              "message": "the total combined size of values of all directives must not exceed 8192 (8kb)",
-              "rule": "self.map(x, x.values.map(y, y.size()).sum()).sum() < 8192"
-            }
-          ]
-        },
         "displayName": {
-          "description": "displayName is the display name of the plugin.\nThe dispalyName should be between 1 and 128 characters.",
+          "description": "displayName is the display name of the plugin. The dispalyName should be between 1 and 128 characters.",
           "type": "string",
           "maxLength": 128,
           "minLength": 1
@@ -207,7 +119,7 @@
           ],
           "properties": {
             "loadType": {
-              "description": "loadType indicates how the plugin's localization resource should be loaded.\nValid values are Preload, Lazy and the empty string.\nWhen set to Preload, all localization resources are fetched when the plugin is loaded.\nWhen set to Lazy, localization resources are lazily loaded as and when they are required by the console.\nWhen omitted or set to the empty string, the behaviour is equivalent to Lazy type.",
+              "description": "loadType indicates how the plugin's localization resource should be loaded. Valid values are Preload, Lazy and the empty string. When set to Preload, all localization resources are fetched when the plugin is loaded. When set to Lazy, localization resources are lazily loaded as and when they are required by the console. When omitted or set to the empty string, the behaviour is equivalent to Lazy type.",
               "type": "string",
               "enum": [
                 "Preload",
@@ -219,13 +131,13 @@
           "additionalProperties": false
         },
         "proxy": {
-          "description": "proxy is a list of proxies that describe various service type\nto which the plugin needs to connect to.",
+          "description": "proxy is a list of proxies that describe various service type to which the plugin needs to connect to.",
           "type": [
             "array",
             "null"
           ],
           "items": {
-            "description": "ConsolePluginProxy holds information on various service types\nto which console's backend will proxy the plugin's requests.",
+            "description": "ConsolePluginProxy holds information on various service types to which console's backend will proxy the plugin's requests.",
             "type": [
               "object",
               "null"
@@ -236,14 +148,14 @@
             ],
             "properties": {
               "alias": {
-                "description": "alias is a proxy name that identifies the plugin's proxy. An alias name\nshould be unique per plugin. The console backend exposes following\nproxy endpoint:\n\n/api/proxy/plugin/<plugin-name>/<proxy-alias>/<request-path>?<optional-query-parameters>\n\nRequest example path:\n\n/api/proxy/plugin/acm/search/pods?namespace=openshift-apiserver",
+                "description": "alias is a proxy name that identifies the plugin's proxy. An alias name should be unique per plugin. The console backend exposes following proxy endpoint: \n /api/proxy/plugin/<plugin-name>/<proxy-alias>/<request-path>?<optional-query-parameters> \n Request example path: \n /api/proxy/plugin/acm/search/pods?namespace=openshift-apiserver",
                 "type": "string",
                 "maxLength": 128,
                 "minLength": 1,
                 "pattern": "^[A-Za-z0-9-_]+$"
               },
               "authorization": {
-                "description": "authorization provides information about authorization type,\nwhich the proxied request should contain",
+                "description": "authorization provides information about authorization type, which the proxied request should contain",
                 "type": [
                   "string",
                   "null"
@@ -254,7 +166,7 @@
                 ]
               },
               "caCertificate": {
-                "description": "caCertificate provides the cert authority certificate contents,\nin case the proxied Service is using custom service CA.\nBy default, the service CA bundle provided by the service-ca operator is used.",
+                "description": "caCertificate provides the cert authority certificate contents, in case the proxied Service is using custom service CA. By default, the service CA bundle provided by the service-ca operator is used.",
                 "type": [
                   "string",
                   "null"
@@ -269,7 +181,7 @@
                 ],
                 "properties": {
                   "service": {
-                    "description": "service is an in-cluster Service that the plugin will connect to.\nThe Service must use HTTPS. The console backend exposes an endpoint\nin order to proxy communication between the plugin and the Service.\nNote: service field is required for now, since currently only \"Service\"\ntype is supported.",
+                    "description": "service is an in-cluster Service that the plugin will connect to. The Service must use HTTPS. The console backend exposes an endpoint in order to proxy communication between the plugin and the Service. Note: service field is required for now, since currently only \"Service\" type is supported.",
                     "type": [
                       "object",
                       "null"
@@ -293,7 +205,7 @@
                         "minLength": 1
                       },
                       "port": {
-                        "description": "port on which the Service that the plugin needs to connect to\nis listening on.",
+                        "description": "port on which the Service that the plugin needs to connect to is listening on.",
                         "type": "integer",
                         "format": "int32",
                         "maximum": 65535,
@@ -303,7 +215,7 @@
                     "additionalProperties": false
                   },
                   "type": {
-                    "description": "type is the type of the console plugin's proxy. Currently only \"Service\" is supported.\n",
+                    "description": "type is the type of the console plugin's proxy. Currently only \"Service\" is supported. \n ---",
                     "type": "string",
                     "enum": [
                       "Service"
@@ -314,8 +226,7 @@
               }
             },
             "additionalProperties": false
-          },
-          "x-kubernetes-list-type": "atomic"
+          }
         }
       },
       "additionalProperties": false
@@ -328,7 +239,6 @@
       "version": "v1"
     }
   ],
-  "x-kubernetes-selectable-fields": [],
   "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

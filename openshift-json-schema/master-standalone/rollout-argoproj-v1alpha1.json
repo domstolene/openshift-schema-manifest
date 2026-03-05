@@ -1493,23 +1493,6 @@
                           }
                         }
                       },
-                      "plugin": {
-                        "type": [
-                          "object",
-                          "null"
-                        ],
-                        "required": [
-                          "name"
-                        ],
-                        "properties": {
-                          "config": {
-                            "x-kubernetes-preserve-unknown-fields": true
-                          },
-                          "name": {
-                            "type": "string"
-                          }
-                        }
-                      },
                       "setCanaryScale": {
                         "type": [
                           "object",
@@ -2163,18 +2146,6 @@
                             "string",
                             "null"
                           ]
-                        },
-                        "canaryIngressAnnotations": {
-                          "type": [
-                            "object",
-                            "null"
-                          ],
-                          "additionalProperties": {
-                            "type": [
-                              "string",
-                              "null"
-                            ]
-                          }
                         },
                         "stableIngress": {
                           "type": [
@@ -8515,90 +8486,6 @@
                 "null"
               ]
             },
-            "stepPluginStatuses": {
-              "type": [
-                "array",
-                "null"
-              ],
-              "items": {
-                "type": [
-                  "object",
-                  "null"
-                ],
-                "required": [
-                  "index",
-                  "name",
-                  "operation"
-                ],
-                "properties": {
-                  "backoff": {
-                    "type": [
-                      "string",
-                      "null"
-                    ]
-                  },
-                  "disabled": {
-                    "type": [
-                      "boolean",
-                      "null"
-                    ]
-                  },
-                  "executions": {
-                    "type": [
-                      "integer",
-                      "null"
-                    ],
-                    "format": "int32"
-                  },
-                  "finishedAt": {
-                    "type": [
-                      "string",
-                      "null"
-                    ],
-                    "format": "date-time"
-                  },
-                  "index": {
-                    "type": "integer",
-                    "format": "int32"
-                  },
-                  "message": {
-                    "type": [
-                      "string",
-                      "null"
-                    ]
-                  },
-                  "name": {
-                    "type": "string"
-                  },
-                  "operation": {
-                    "type": "string"
-                  },
-                  "phase": {
-                    "type": [
-                      "string",
-                      "null"
-                    ]
-                  },
-                  "startedAt": {
-                    "type": [
-                      "string",
-                      "null"
-                    ],
-                    "format": "date-time"
-                  },
-                  "status": {
-                    "x-kubernetes-preserve-unknown-fields": true
-                  },
-                  "updatedAt": {
-                    "type": [
-                      "string",
-                      "null"
-                    ],
-                    "format": "date-time"
-                  }
-                }
-              }
-            },
             "weights": {
               "type": [
                 "object",
@@ -8879,6 +8766,5 @@
       "version": "v1alpha1"
     }
   ],
-  "x-kubernetes-selectable-fields": [],
   "$schema": "http://json-schema.org/schema#"
 }

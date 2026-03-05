@@ -37,7 +37,7 @@
       ],
       "properties": {
         "url": {
-          "description": "Url is the address of the dataImage that we want to attach\nto a BareMetalHost",
+          "description": "Url is the address of the dataImage that we want to attach to a BareMetalHost",
           "type": "string"
         }
       },
@@ -105,7 +105,6 @@
       "version": "v1alpha1"
     }
   ],
-  "x-kubernetes-selectable-fields": [],
   "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

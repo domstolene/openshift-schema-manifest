@@ -1,5 +1,4 @@
 {
-  "description": "PortStatus represents the error condition of a service port",
   "type": "object",
   "required": [
     "port",
