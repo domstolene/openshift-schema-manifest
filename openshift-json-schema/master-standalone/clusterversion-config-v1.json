@@ -102,7 +102,7 @@
           }
         },
         "channel": {
-          "description": "channel is an identifier for explicitly requesting that a non-default\nset of updates be applied to this cluster. The default channel will be\ncontain stable updates that are appropriate for production clusters.",
+          "description": "channel is an identifier for explicitly requesting a non-default set\nof updates to be applied to this cluster. The default channel will\ncontain stable updates that are appropriate for production clusters.",
           "type": [
             "string",
             "null"
@@ -113,7 +113,7 @@
           "type": "string"
         },
         "desiredUpdate": {
-          "description": "desiredUpdate is an optional field that indicates the desired value of\nthe cluster version. Setting this value will trigger an upgrade (if\nthe current version does not match the desired version). The set of\nrecommended update values is listed as part of available updates in\nstatus, and setting values outside that range may cause the upgrade\nto fail.\n\nSome of the fields are inter-related with restrictions and meanings described here.\n1. image is specified, version is specified, architecture is specified. API validation error.\n2. image is specified, version is specified, architecture is not specified. You should not do this. version is silently ignored and image is used.\n3. image is specified, version is not specified, architecture is specified. API validation error.\n4. image is specified, version is not specified, architecture is not specified. image is used.\n5. image is not specified, version is specified, architecture is specified. version and desired architecture are used to select an image.\n6. image is not specified, version is specified, architecture is not specified. version and current architecture are used to select an image.\n7. image is not specified, version is not specified, architecture is specified. API validation error.\n8. image is not specified, version is not specified, architecture is not specified. API validation error.\n\nIf an upgrade fails the operator will halt and report status\nabout the failing component. Setting the desired update value back to\nthe previous version will cause a rollback to be attempted. Not all\nrollbacks will succeed.",
+          "description": "desiredUpdate is an optional field that indicates the desired value of\nthe cluster version. Setting this value will trigger an upgrade (if\nthe current version does not match the desired version). The set of\nrecommended update values is listed as part of available updates in\nstatus, and setting values outside that range may cause the upgrade\nto fail.\n\nSome of the fields are inter-related with restrictions and meanings described here.\n1. image is specified, version is specified, architecture is specified. API validation error.\n2. image is specified, version is specified, architecture is not specified. The version extracted from the referenced image must match the specified version.\n3. image is specified, version is not specified, architecture is specified. API validation error.\n4. image is specified, version is not specified, architecture is not specified. image is used.\n5. image is not specified, version is specified, architecture is specified. version and desired architecture are used to select an image.\n6. image is not specified, version is specified, architecture is not specified. version and current architecture are used to select an image.\n7. image is not specified, version is not specified, architecture is specified. API validation error.\n8. image is not specified, version is not specified, architecture is not specified. API validation error.\n\nIf an upgrade fails the operator will halt and report status\nabout the failing component. Setting the desired update value back to\nthe previous version will cause a rollback to be attempted. Not all\nrollbacks will succeed.",
           "type": [
             "object",
             "null"
@@ -138,14 +138,14 @@
               ]
             },
             "image": {
-              "description": "image is a container image location that contains the update.\nimage should be used when the desired version does not exist in availableUpdates or history.\nWhen image is set, version is ignored. When image is set, version should be empty.\nWhen image is set, architecture cannot be specified.",
+              "description": "image is a container image location that contains the update.\nimage should be used when the desired version does not exist in availableUpdates or history.\nWhen image is set, architecture cannot be specified.\nIf both version and image are set, the version extracted from the referenced image must match the specified version.",
               "type": [
                 "string",
                 "null"
               ]
             },
             "version": {
-              "description": "version is a semantic version identifying the update version.\nversion is ignored if image is specified and required if\narchitecture is specified.",
+              "description": "version is a semantic version identifying the update version.\nversion is required if architecture is specified.\nIf both version and image are set, the version extracted from the referenced image must match the specified version.",
               "type": [
                 "string",
                 "null"
@@ -636,7 +636,7 @@
             ],
             "properties": {
               "acceptedRisks": {
-                "description": "acceptedRisks records risks which were accepted to initiate the update.\nFor example, it may menition an Upgradeable=False or missing signature\nthat was overriden via desiredUpdate.force, or an update that was\ninitiated despite not being in the availableUpdates set of recommended\nupdate targets.",
+                "description": "acceptedRisks records risks which were accepted to initiate the update.\nFor example, it may menition an Upgradeable=False or missing signature\nthat was overridden via desiredUpdate.force, or an update that was\ninitiated despite not being in the availableUpdates set of recommended\nupdate targets.",
                 "type": [
                   "string",
                   "null"
@@ -693,7 +693,6 @@
       "version": "v1"
     }
   ],
-  "x-kubernetes-selectable-fields": [],
   "x-kubernetes-validations": [
     {
       "message": "the `marketplace` capability requires the `OperatorLifecycleManager` capability, which is neither explicitly or implicitly enabled in this cluster, please enable the `OperatorLifecycleManager` capability",

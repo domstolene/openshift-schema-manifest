@@ -50,7 +50,7 @@
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EnvFromSource"
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EnvFromSource_v2"
       }
     },
     "image": {
@@ -74,7 +74,7 @@
     },
     "lifecycle": {
       "description": "Lifecycle is not allowed for ephemeral containers.",
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Lifecycle"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Lifecycle_v2"
     },
     "livenessProbe": {
       "description": "Probes are not allowed for ephemeral containers.",

@@ -8014,6 +8014,18 @@
                                             },
                                             "signerName": {
                                               "type": "string"
+                                            },
+                                            "userAnnotations": {
+                                              "type": [
+                                                "object",
+                                                "null"
+                                              ],
+                                              "additionalProperties": {
+                                                "type": [
+                                                  "string",
+                                                  "null"
+                                                ]
+                                              }
                                             }
                                           }
                                         },
@@ -8463,6 +8475,7 @@
             "null"
           ],
           "required": [
+            "tenantNamespace",
             "url"
           ],
           "properties": {
@@ -8559,6 +8572,16 @@
               },
               "x-kubernetes-map-type": "atomic"
             },
+            "tenantNamespace": {
+              "description": "TenantNamespace is used as the `namespace` value for GrafanaManifest resources in multi-tenant scenarios\ndefaults to `default`",
+              "type": "string",
+              "x-kubernetes-validations": [
+                {
+                  "message": "Value is immutable",
+                  "rule": "self == oldSelf"
+                }
+              ]
+            },
             "tls": {
               "description": "DEPRECATED, use top level `tls` instead.",
               "type": [
@@ -8607,7 +8630,8 @@
             },
             "url": {
               "description": "URL of the external grafana instance you want to manage.",
-              "type": "string"
+              "type": "string",
+              "pattern": "^https?://.+$"
             }
           }
         },
@@ -12124,7 +12148,7 @@
           ]
         },
         "version": {
-          "description": "Version sets the tag of the default image: docker.io/grafana/grafana.\nAllows full image refs with/without sha256checksum: \"registry/repo/image:tag@sha\"\ndefault: 12.3.0",
+          "description": "Version sets the tag of the default image: docker.io/grafana/grafana.\nAllows full image refs with/without sha256checksum: \"registry/repo/image:tag@sha\"\ndefault: 12.3.3",
           "type": [
             "string",
             "null"
@@ -12286,6 +12310,18 @@
             ]
           }
         },
+        "manifests": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
         "muteTimings": {
           "type": [
             "array",
@@ -12350,6 +12386,5 @@
       "version": "v1beta1"
     }
   ],
-  "x-kubernetes-selectable-fields": [],
   "$schema": "http://json-schema.org/schema#"
 }

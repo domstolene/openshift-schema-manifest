@@ -272,6 +272,24 @@
           },
           "additionalProperties": false
         },
+        "scaleUp": {
+          "description": "Configuration of scale up operation",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "newPodScaleUpDelay": {
+              "description": "Scale up delay for new pods, if omitted defaults to 0 seconds",
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "([0-9]*(\\.[0-9]*)?[a-z]+)+"
+            }
+          },
+          "additionalProperties": false
+        },
         "skipNodesWithLocalStorage": {
           "description": "Enables/Disables `--skip-nodes-with-local-storage` CA feature flag. If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. true by default at autoscaler",
           "type": [
@@ -297,7 +315,6 @@
       "version": "v1"
     }
   ],
-  "x-kubernetes-selectable-fields": [],
   "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

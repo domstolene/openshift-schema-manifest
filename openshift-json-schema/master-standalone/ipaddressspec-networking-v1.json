@@ -1,0 +1,14 @@
+{
+  "description": "IPAddressSpec describe the attributes in an IP Address.",
+  "type": "object",
+  "required": [
+    "parentRef"
+  ],
+  "properties": {
+    "parentRef": {
+      "description": "ParentRef references the resource that an IPAddress is attached to. An IPAddress must reference a parent object.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.networking.v1.ParentReference"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

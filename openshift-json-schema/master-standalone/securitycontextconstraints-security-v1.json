@@ -138,6 +138,17 @@
     "supplementalGroups": {
       "description": "supplementalGroups is the strategy that will dictate what supplemental groups are used by the SecurityContext."
     },
+    "userNamespaceLevel": {
+      "description": "userNamespaceLevel determines if the policy allows host users in containers.\nValid values are \"AllowHostLevel\", \"RequirePodLevel\", and omitted.\nWhen \"AllowHostLevel\" is set, a pod author may set `hostUsers` to either `true` or `false`.\nWhen \"RequirePodLevel\" is set, a pod author must set `hostUsers` to `false`.\nWhen omitted, the default value is \"AllowHostLevel\".",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "AllowHostLevel",
+        "RequirePodLevel"
+      ]
+    },
     "users": {
       "description": "The users who have permissions to use this security context constraints",
       "x-kubernetes-list-type": "atomic"
@@ -154,6 +165,5 @@
       "version": "v1"
     }
   ],
-  "x-kubernetes-selectable-fields": [],
   "$schema": "http://json-schema.org/schema#"
 }

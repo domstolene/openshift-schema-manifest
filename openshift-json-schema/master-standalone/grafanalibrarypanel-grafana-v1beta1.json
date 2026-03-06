@@ -506,7 +506,8 @@
           "type": [
             "string",
             "null"
-          ]
+          ],
+          "pattern": "^https?://.+$"
         },
         "urlAuthorization": {
           "description": "authorization options for model from url",
@@ -611,7 +612,7 @@
       ],
       "properties": {
         "conditions": {
-          "description": "Results when synchonizing resource with Grafana instances",
+          "description": "Results when synchronizing resource with Grafana instances",
           "type": [
             "array",
             "null"
@@ -724,6 +725,5 @@
       "version": "v1beta1"
     }
   ],
-  "x-kubernetes-selectable-fields": [],
   "$schema": "http://json-schema.org/schema#"
 }

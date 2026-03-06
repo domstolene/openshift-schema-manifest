@@ -1,5 +1,5 @@
 {
-  "description": "EndpointPort is a tuple that describes a single port.",
+  "description": "EndpointPort is a tuple that describes a single port. Deprecated: This API is deprecated in v1.33+.",
   "type": "object",
   "required": [
     "port"

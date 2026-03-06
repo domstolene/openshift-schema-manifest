@@ -27,7 +27,7 @@
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     },
     "spec": {
-      "description": "IPAddressSpec is the desired state of an IPAddress.",
+      "description": "spec is the desired state of IPAddress.",
       "type": [
         "object",
         "null"
@@ -41,7 +41,9 @@
       "properties": {
         "address": {
           "description": "address is the IP address.",
-          "type": "string"
+          "type": "string",
+          "maxLength": 39,
+          "minLength": 1
         },
         "claimRef": {
           "description": "claimRef is a reference to the claim this IPAddress was created for.",
@@ -63,7 +65,9 @@
           "type": [
             "string",
             "null"
-          ]
+          ],
+          "maxLength": 39,
+          "minLength": 1
         },
         "poolRef": {
           "description": "poolRef is a reference to the pool that this IPAddress was created from.",
@@ -107,7 +111,6 @@
       "version": "v1beta1"
     }
   ],
-  "x-kubernetes-selectable-fields": [],
   "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

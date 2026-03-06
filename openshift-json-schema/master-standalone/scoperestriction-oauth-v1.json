@@ -3,7 +3,7 @@
   "type": "object",
   "properties": {
     "clusterRole": {
-      "description": "ClusterRole describes a set of restrictions for cluster role scoping.",
+      "description": "clusterRole describes a set of restrictions for cluster role scoping.",
       "$ref": "_definitions.json#/definitions/com.github.openshift.api.oauth.v1.ClusterRoleScopeRestriction"
     },
     "literals": {

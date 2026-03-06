@@ -162,6 +162,7 @@
                 "array",
                 "null"
               ],
+              "maxItems": 32,
               "items": {
                 "description": "APIServerNamedServingCert maps a server DNS name, as understood by a client, to a certificate.",
                 "type": [
@@ -175,6 +176,7 @@
                       "array",
                       "null"
                     ],
+                    "maxItems": 64,
                     "items": {
                       "type": [
                         "string",
@@ -256,6 +258,5 @@
       "version": "v1"
     }
   ],
-  "x-kubernetes-selectable-fields": [],
   "$schema": "http://json-schema.org/schema#"
 }

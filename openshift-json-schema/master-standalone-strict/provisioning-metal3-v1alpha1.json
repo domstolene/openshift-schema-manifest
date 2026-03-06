@@ -176,6 +176,23 @@
             "null"
           ]
         },
+        "unsupportedConfigOverrides": {
+          "description": "UnsupportedConfigOverrides are site-specific overrides that are not\nofficially supported in the Metal platform and may cause the\ndeployment to fail. Carefully check the description of each field\nyou modify to understand its implications for stability and\nupgradability of your cluster.\nWhen reporting a bug, please make sure to reproduce it with\nUnsupportedConfigOverrides set to nil.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "ironicAgentImage": {
+              "description": "Override for the IPA container image.\nThe image must be based on openshift/ironic-agent-image of the same\nrelease as the cluster. After each cluster upgrade, it must be\nrebased and updated immediately, before any BareMetalHosts are\nenrolled, provisioned or deprovisioned.",
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
         "virtualMediaViaExternalNetwork": {
           "description": "VirtualMediaViaExternalNetwork flag when set to \"true\" allows for workers\nto boot via Virtual Media and contact metal3 over the External Network.\nWhen the flag is set to \"false\" (which is the default), virtual media\ndeployments can still happen based on the configuration specified in the\nProvisioningNetwork i.e when in Disabled mode, over the External Network\nand over Provisioning Network when in Managed mode.\nPXE deployments will always use the Provisioning Network and will not be\naffected by this flag.",
           "type": [
@@ -347,7 +364,6 @@
       "version": "v1alpha1"
     }
   ],
-  "x-kubernetes-selectable-fields": [],
   "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

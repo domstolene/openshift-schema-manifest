@@ -16,7 +16,7 @@
       ]
     },
     "items": {
-      "description": "Items is the list of OAuth clients",
+      "description": "items is the list of OAuth clients",
       "type": [
         "array",
         "null"

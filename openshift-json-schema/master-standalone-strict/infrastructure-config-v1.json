@@ -836,7 +836,7 @@
                           "networks": {
                             "description": "networks is the list of port group network names within this failure domain.\nIf feature gate VSphereMultiNetworks is enabled, up to 10 network adapters may be defined.\n10 is the maximum number of virtual network devices which may be attached to a VM as defined by:\nhttps://configmax.esp.vmware.com/guest?vmwareproduct=vSphere&release=vSphere%208.0&categories=1-0\nThe available networks (port groups) can be listed using\n`govc ls 'network/*'`\nNetworks should be in the form of an absolute path:\n/<datacenter>/network/<portgroup>.",
                             "type": "array",
-                            "maxItems": 1,
+                            "maxItems": 10,
                             "minItems": 1,
                             "items": {
                               "type": [
@@ -1220,6 +1220,7 @@
           ],
           "enum": [
             "HighlyAvailable",
+            "HighlyAvailableArbiter",
             "SingleReplica",
             "External"
           ]
@@ -2635,7 +2636,6 @@
       "version": "v1"
     }
   ],
-  "x-kubernetes-selectable-fields": [],
   "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }
