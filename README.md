@@ -46,10 +46,10 @@ Se [Validating OpenShift Manifests in a GitOps World](https://cloud.redhat.com/b
 
 ## Troubleshooting
 
-Hvis en definisjon ikke finns etter endringen, så er en god måtte å finne ut hvilken å gjøre det her:
+Hvis en definisjon ikke finnes etter endringen, så er en god måtte å finne ut hvilken å gjøre det her:
 1. Gå til repoet hvor valideringen feiler.
 2. Finn ut hvor `--schema-location` av `kubeconform` sin kommando er satt.
 3. Legg på `--schema-location "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master"`
 4. Når valideringen feiler ville den vise hvilket filnavn den leter etter (e.g `stdin - Group argocd-responsible-t-okonomi.at failed validation: error while downloading schema at https://openshiftjsonschema.dev/master-standalone/group-user-v1.json - received HTTP status 403`)
 5. Sjekk hvis filen eksisterer
-6. Sjekk hvis referansen finns i `_definitions.json` fil (e.g. for å finne ut hvis `Group` finns, let etter `com.github.openshift.api.user.v1.Group` i `_definition.json` fil )
+6. Sjekk hvis referansen finnes i `_definitions.json` fil (e.g. for å finne ut hvis `Group` finns, let etter `com.github.openshift.api.user.v1.Group` i `_definition.json` fil )
