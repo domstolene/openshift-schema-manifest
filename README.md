@@ -22,7 +22,7 @@ pip install pyyaml==5.4.1 --no-build-isolation
 pip install openapi2jsonschema2
 ```
 
-Det er best å slette allt under mappen master-standalone og master-standalone-strict. Så må man logge seg inn på OpenShift i TEST.
+Det er best å slette alt under mappen master-standalone og master-standalone-strict. Så må man logge seg inn på OpenShift i TEST.
 Deretter kjører man:
 
 ```sh
