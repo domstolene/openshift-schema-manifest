@@ -175,7 +175,7 @@
       ],
       "properties": {
         "conditions": {
-          "description": "Results when synchonizing resource with Grafana instances",
+          "description": "Results when synchronizing resource with Grafana instances",
           "type": [
             "array",
             "null"

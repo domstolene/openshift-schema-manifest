@@ -468,10 +468,12 @@
             ],
             "properties": {
               "name": {
-                "type": "string"
+                "type": "string",
+                "minLength": 1
               },
               "version": {
-                "type": "string"
+                "type": "string",
+                "pattern": "^((0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?|latest)$"
               }
             }
           }
@@ -511,7 +513,8 @@
           "type": [
             "string",
             "null"
-          ]
+          ],
+          "pattern": "^https?://.+$"
         },
         "urlAuthorization": {
           "description": "authorization options for model from url",
@@ -627,7 +630,7 @@
           ]
         },
         "conditions": {
-          "description": "Results when synchonizing resource with Grafana instances",
+          "description": "Results when synchronizing resource with Grafana instances",
           "type": [
             "array",
             "null"
