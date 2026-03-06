@@ -39,18 +39,6 @@
         "receiver"
       ],
       "properties": {
-        "active_time_intervals": {
-          "type": [
-            "array",
-            "null"
-          ],
-          "items": {
-            "type": [
-              "string",
-              "null"
-            ]
-          }
-        },
         "continue": {
           "description": "continue",
           "type": [
@@ -352,6 +340,5 @@
       "version": "v1beta1"
     }
   ],
-  "x-kubernetes-selectable-fields": [],
   "$schema": "http://json-schema.org/schema#"
 }

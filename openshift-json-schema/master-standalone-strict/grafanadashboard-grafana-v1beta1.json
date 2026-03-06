@@ -481,12 +481,10 @@
             ],
             "properties": {
               "name": {
-                "type": "string",
-                "minLength": 1
+                "type": "string"
               },
               "version": {
-                "type": "string",
-                "pattern": "^((0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?|latest)$"
+                "type": "string"
               }
             },
             "additionalProperties": false
@@ -763,7 +761,6 @@
       "version": "v1beta1"
     }
   ],
-  "x-kubernetes-selectable-fields": [],
   "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

@@ -271,6 +271,5 @@
       "version": "v1beta2"
     }
   ],
-  "x-kubernetes-selectable-fields": [],
   "$schema": "http://json-schema.org/schema#"
 }

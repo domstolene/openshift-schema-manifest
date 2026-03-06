@@ -56,6 +56,7 @@
         "node.k8s.io/v1",
         "node.k8s.io/v1alpha1",
         "node.k8s.io/v1beta1",
+        "oauth.openshift.io/v1",
         "policy/v1",
         "policy/v1beta1",
         "rbac.authorization.k8s.io/v1",
@@ -63,13 +64,15 @@
         "rbac.authorization.k8s.io/v1beta1",
         "resource.k8s.io/v1alpha3",
         "resource.k8s.io/v1beta1",
+        "resource.k8s.io/v1beta2",
         "scheduling.k8s.io/v1",
         "scheduling.k8s.io/v1alpha1",
         "scheduling.k8s.io/v1beta1",
         "storage.k8s.io/v1",
         "storage.k8s.io/v1alpha1",
         "storage.k8s.io/v1beta1",
-        "storagemigration.k8s.io/v1alpha1"
+        "storagemigration.k8s.io/v1alpha1",
+        "user.openshift.io/v1"
       ]
     },
     "dryRun": {
@@ -367,6 +370,11 @@
       "version": "v1beta1"
     },
     {
+      "group": "oauth.openshift.io",
+      "kind": "DeleteOptions",
+      "version": "v1"
+    },
+    {
       "group": "policy",
       "kind": "DeleteOptions",
       "version": "v1"
@@ -402,6 +410,11 @@
       "version": "v1beta1"
     },
     {
+      "group": "resource.k8s.io",
+      "kind": "DeleteOptions",
+      "version": "v1beta2"
+    },
+    {
       "group": "scheduling.k8s.io",
       "kind": "DeleteOptions",
       "version": "v1"
@@ -435,6 +448,11 @@
       "group": "storagemigration.k8s.io",
       "kind": "DeleteOptions",
       "version": "v1alpha1"
+    },
+    {
+      "group": "user.openshift.io",
+      "kind": "DeleteOptions",
+      "version": "v1"
     }
   ],
   "$schema": "http://json-schema.org/schema#"

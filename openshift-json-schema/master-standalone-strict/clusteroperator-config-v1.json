@@ -1,5 +1,5 @@
 {
-  "description": "ClusterOperator is the Custom Resource object which holds the current state\nof an operator. This object is used by operators to convey their state to\nthe rest of the cluster.\n\nCompatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
+  "description": "ClusterOperator holds the status of a core or optional OpenShift component\nmanaged by the Cluster Version Operator (CVO). This object is used by\noperators to convey their state to the rest of the cluster.\nCompatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
   "type": "object",
   "required": [
     "spec"
@@ -180,7 +180,6 @@
       "version": "v1"
     }
   ],
-  "x-kubernetes-selectable-fields": [],
   "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

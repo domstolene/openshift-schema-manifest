@@ -16,7 +16,7 @@
       ]
     },
     "items": {
-      "description": "List of ReplicaSets. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller",
+      "description": "List of ReplicaSets. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicaset",
       "type": [
         "array",
         "null"

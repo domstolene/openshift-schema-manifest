@@ -63,6 +63,13 @@
           ],
           "pattern": "(^0|([0-9]*[.])?[0-9]+((K|M|G|T|E|P)i?)?B)$"
         },
+        "convertClassicHistogramsToNHCB": {
+          "description": "Whether to convert all scraped classic histograms into a native histogram with custom buckets.\nIt requires Prometheus >= v3.0.0.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
         "fallbackScrapeProtocol": {
           "description": "The protocol to use if a scrape returns blank, unparseable, or otherwise invalid Content-Type.\n\nIt requires Prometheus >= v3.0.0.",
           "type": [
@@ -461,6 +468,13 @@
                   }
                 }
               },
+              "noProxy": {
+                "description": "`noProxy` is a comma-separated string that can contain IPs, CIDR notation, domain names\nthat should be excluded from proxying. IP and domain names can\ncontain port numbers.\n\nIt requires Prometheus >= v2.43.0, Alertmanager >= v0.25.0 or Thanos >= v0.32.0.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
               "oauth2": {
                 "description": "`oauth2` configures the OAuth2 settings to use when scraping the target.\n\nIt requires Prometheus >= 2.27.0.\n\nCannot be set at the same time as `authorization`, or `basicAuth`.",
                 "type": [
@@ -583,14 +597,14 @@
                     }
                   },
                   "noProxy": {
-                    "description": "`noProxy` is a comma-separated string that can contain IPs, CIDR notation, domain names\nthat should be excluded from proxying. IP and domain names can\ncontain port numbers.\n\nIt requires Prometheus >= v2.43.0 or Alertmanager >= 0.25.0.",
+                    "description": "`noProxy` is a comma-separated string that can contain IPs, CIDR notation, domain names\nthat should be excluded from proxying. IP and domain names can\ncontain port numbers.\n\nIt requires Prometheus >= v2.43.0, Alertmanager >= v0.25.0 or Thanos >= v0.32.0.",
                     "type": [
                       "string",
                       "null"
                     ]
                   },
                   "proxyConnectHeader": {
-                    "description": "ProxyConnectHeader optionally specifies headers to send to\nproxies during CONNECT requests.\n\nIt requires Prometheus >= v2.43.0 or Alertmanager >= 0.25.0.",
+                    "description": "ProxyConnectHeader optionally specifies headers to send to\nproxies during CONNECT requests.\n\nIt requires Prometheus >= v2.43.0, Alertmanager >= v0.25.0 or Thanos >= v0.32.0.",
                     "type": [
                       "object",
                       "null"
@@ -635,7 +649,7 @@
                     "x-kubernetes-map-type": "atomic"
                   },
                   "proxyFromEnvironment": {
-                    "description": "Whether to use the proxy configuration defined by environment variables (HTTP_PROXY, HTTPS_PROXY, and NO_PROXY).\n\nIt requires Prometheus >= v2.43.0 or Alertmanager >= 0.25.0.",
+                    "description": "Whether to use the proxy configuration defined by environment variables (HTTP_PROXY, HTTPS_PROXY, and NO_PROXY).\n\nIt requires Prometheus >= v2.43.0, Alertmanager >= v0.25.0 or Thanos >= v0.32.0.",
                     "type": [
                       "boolean",
                       "null"
@@ -647,7 +661,7 @@
                       "string",
                       "null"
                     ],
-                    "pattern": "^http(s)?://.+$"
+                    "pattern": "^(http|https|socks5)://.+$"
                   },
                   "scopes": {
                     "description": "`scopes` defines the OAuth2 scopes used for the token request.",
@@ -850,7 +864,7 @@
                         "x-kubernetes-map-type": "atomic"
                       },
                       "maxVersion": {
-                        "description": "Maximum acceptable TLS version.\n\nIt requires Prometheus >= v2.41.0.",
+                        "description": "Maximum acceptable TLS version.\n\nIt requires Prometheus >= v2.41.0 or Thanos >= v0.31.0.",
                         "type": [
                           "string",
                           "null"
@@ -863,7 +877,7 @@
                         ]
                       },
                       "minVersion": {
-                        "description": "Minimum acceptable TLS version.\n\nIt requires Prometheus >= v2.35.0.",
+                        "description": "Minimum acceptable TLS version.\n\nIt requires Prometheus >= v2.35.0 or Thanos >= v0.28.0.",
                         "type": [
                           "string",
                           "null"
@@ -934,12 +948,65 @@
                 "maximum": 65535,
                 "minimum": 1
               },
+              "proxyConnectHeader": {
+                "description": "ProxyConnectHeader optionally specifies headers to send to\nproxies during CONNECT requests.\n\nIt requires Prometheus >= v2.43.0, Alertmanager >= v0.25.0 or Thanos >= v0.32.0.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "additionalProperties": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "description": "SecretKeySelector selects a key of a Secret.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "required": [
+                      "key"
+                    ],
+                    "properties": {
+                      "key": {
+                        "description": "The key of the secret to select from.  Must be a valid secret key.",
+                        "type": "string"
+                      },
+                      "name": {
+                        "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "optional": {
+                        "description": "Specify whether the Secret or its key must be defined",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      }
+                    },
+                    "x-kubernetes-map-type": "atomic"
+                  }
+                },
+                "x-kubernetes-map-type": "atomic"
+              },
+              "proxyFromEnvironment": {
+                "description": "Whether to use the proxy configuration defined by environment variables (HTTP_PROXY, HTTPS_PROXY, and NO_PROXY).\n\nIt requires Prometheus >= v2.43.0, Alertmanager >= v0.25.0 or Thanos >= v0.32.0.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
               "proxyUrl": {
-                "description": "`proxyURL` configures the HTTP Proxy URL (e.g.\n\"http://proxyserver:2195\") to go through when scraping the target.",
+                "description": "`proxyURL` defines the HTTP proxy server to use.",
                 "type": [
                   "string",
                   "null"
-                ]
+                ],
+                "pattern": "^(http|https|socks5)://.+$"
               },
               "relabelings": {
                 "description": "`relabelings` configures the relabeling rules to apply the target's\nmetadata labels.\n\nThe Operator automatically adds relabelings for a few standard Kubernetes fields.\n\nThe original scrape job's name is available via the `__tmp_prometheus_job_name` label.\n\nMore info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config",
@@ -1250,7 +1317,7 @@
                     "x-kubernetes-map-type": "atomic"
                   },
                   "maxVersion": {
-                    "description": "Maximum acceptable TLS version.\n\nIt requires Prometheus >= v2.41.0.",
+                    "description": "Maximum acceptable TLS version.\n\nIt requires Prometheus >= v2.41.0 or Thanos >= v0.31.0.",
                     "type": [
                       "string",
                       "null"
@@ -1263,7 +1330,7 @@
                     ]
                   },
                   "minVersion": {
-                    "description": "Minimum acceptable TLS version.\n\nIt requires Prometheus >= v2.35.0.",
+                    "description": "Minimum acceptable TLS version.\n\nIt requires Prometheus >= v2.35.0 or Thanos >= v0.28.0.",
                     "type": [
                       "string",
                       "null"
@@ -1324,7 +1391,7 @@
           "minLength": 1
         },
         "scrapeClassicHistograms": {
-          "description": "Whether to scrape a classic histogram that is also exposed as a native histogram.\nIt requires Prometheus >= v2.45.0.",
+          "description": "Whether to scrape a classic histogram that is also exposed as a native histogram.\nIt requires Prometheus >= v2.45.0.\n\nNotice: `scrapeClassicHistograms` corresponds to the `always_scrape_classic_histograms` field in the Prometheus configuration.",
           "type": [
             "boolean",
             "null"
@@ -1444,6 +1511,5 @@
       "version": "v1"
     }
   ],
-  "x-kubernetes-selectable-fields": [],
   "$schema": "http://json-schema.org/schema#"
 }

@@ -18,7 +18,7 @@
       ]
     },
     "extra": {
-      "description": "Extra holds extra information about this identity",
+      "description": "extra holds extra information about this identity",
       "type": [
         "object",
         "null"
@@ -45,21 +45,21 @@
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     },
     "providerName": {
-      "description": "ProviderName is the source of identity information",
+      "description": "providerName is the source of identity information",
       "type": [
         "string",
         "null"
       ]
     },
     "providerUserName": {
-      "description": "ProviderUserName uniquely represents this identity in the scope of the provider",
+      "description": "providerUserName uniquely represents this identity in the scope of the provider",
       "type": [
         "string",
         "null"
       ]
     },
     "user": {
-      "description": "User is a reference to the user this identity is associated with Both Name and UID must be set",
+      "description": "user is a reference to the user this identity is associated with Both Name and UID must be set",
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference"
     }
   },

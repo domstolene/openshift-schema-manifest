@@ -1,5 +1,5 @@
 {
-  "description": "OperatorHub is the Schema for the operatorhubs API. It can be used to change the state of the default hub sources for OperatorHub on the cluster from enabled to disabled and vice versa. \n Compatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
+  "description": "OperatorHub is the Schema for the operatorhubs API. It can be used to change\nthe state of the default hub sources for OperatorHub on the cluster from\nenabled to disabled and vice versa.\n\nCompatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
   "type": "object",
   "properties": {
     "apiVersion": {
@@ -34,14 +34,14 @@
       ],
       "properties": {
         "disableAllDefaultSources": {
-          "description": "disableAllDefaultSources allows you to disable all the default hub sources. If this is true, a specific entry in sources can be used to enable a default source. If this is false, a specific entry in sources can be used to disable or enable a default source.",
+          "description": "disableAllDefaultSources allows you to disable all the default hub\nsources. If this is true, a specific entry in sources can be used to\nenable a default source. If this is false, a specific entry in\nsources can be used to disable or enable a default source.",
           "type": [
             "boolean",
             "null"
           ]
         },
         "sources": {
-          "description": "sources is the list of default hub sources and their configuration. If the list is empty, it implies that the default hub sources are enabled on the cluster unless disableAllDefaultSources is true. If disableAllDefaultSources is true and sources is not empty, the configuration present in sources will take precedence. The list of default hub sources and their current state will always be reflected in the status block.",
+          "description": "sources is the list of default hub sources and their configuration.\nIf the list is empty, it implies that the default hub sources are\nenabled on the cluster unless disableAllDefaultSources is true.\nIf disableAllDefaultSources is true and sources is not empty,\nthe configuration present in sources will take precedence. The list of\ndefault hub sources and their current state will always be reflected in\nthe status block.",
           "type": [
             "array",
             "null"
@@ -75,20 +75,20 @@
       }
     },
     "status": {
-      "description": "OperatorHubStatus defines the observed state of OperatorHub. The current state of the default hub sources will always be reflected here.",
+      "description": "OperatorHubStatus defines the observed state of OperatorHub. The current\nstate of the default hub sources will always be reflected here.",
       "type": [
         "object",
         "null"
       ],
       "properties": {
         "sources": {
-          "description": "sources encapsulates the result of applying the configuration for each hub source",
+          "description": "sources encapsulates the result of applying the configuration for each\nhub source",
           "type": [
             "array",
             "null"
           ],
           "items": {
-            "description": "HubSourceStatus is used to reflect the current state of applying the configuration to a default source",
+            "description": "HubSourceStatus is used to reflect the current state of applying the\nconfiguration to a default source",
             "type": [
               "object",
               "null"
@@ -137,6 +137,5 @@
       "version": "v1"
     }
   ],
-  "x-kubernetes-selectable-fields": [],
   "$schema": "http://json-schema.org/schema#"
 }

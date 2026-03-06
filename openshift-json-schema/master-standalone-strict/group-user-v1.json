@@ -30,7 +30,7 @@
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     },
     "users": {
-      "description": "Users is the list of users in this group.",
+      "description": "users is the list of users in this group.",
       "type": [
         "array",
         "null"

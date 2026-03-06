@@ -50,7 +50,7 @@
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EnvFromSource"
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EnvFromSource_v3"
       }
     },
     "image": {
@@ -74,7 +74,7 @@
     },
     "lifecycle": {
       "description": "Actions that the management system should take in response to container lifecycle events. Cannot be updated.",
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Lifecycle"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Lifecycle_v3"
     },
     "livenessProbe": {
       "description": "Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",

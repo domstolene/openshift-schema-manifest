@@ -16,7 +16,7 @@
       ]
     },
     "items": {
-      "description": "Items is the list of users",
+      "description": "items is the list of users",
       "type": [
         "array",
         "null"

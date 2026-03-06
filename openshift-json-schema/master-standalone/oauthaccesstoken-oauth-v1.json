@@ -13,21 +13,21 @@
       ]
     },
     "authorizeToken": {
-      "description": "AuthorizeToken contains the token that authorized this token",
+      "description": "authorizeToken contains the token that authorized this token",
       "type": [
         "string",
         "null"
       ]
     },
     "clientName": {
-      "description": "ClientName references the client that created this token.",
+      "description": "clientName references the client that created this token.",
       "type": [
         "string",
         "null"
       ]
     },
     "expiresIn": {
-      "description": "ExpiresIn is the seconds from CreationTime before this token expires.",
+      "description": "expiresIn is the seconds from CreationTime before this token expires.",
       "type": [
         "integer",
         "null"
@@ -35,7 +35,7 @@
       "format": "int64"
     },
     "inactivityTimeoutSeconds": {
-      "description": "InactivityTimeoutSeconds is the value in seconds, from the CreationTimestamp, after which this token can no longer be used. The value is automatically incremented when the token is used.",
+      "description": "inactivityTimeoutSeconds is the value in seconds, from the CreationTimestamp, after which this token can no longer be used. The value is automatically incremented when the token is used.",
       "type": [
         "integer",
         "null"
@@ -57,21 +57,21 @@
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     },
     "redirectURI": {
-      "description": "RedirectURI is the redirection associated with the token.",
+      "description": "redirectURI is the redirection associated with the token.",
       "type": [
         "string",
         "null"
       ]
     },
     "refreshToken": {
-      "description": "RefreshToken is the value by which this token can be renewed. Can be blank.",
+      "description": "refreshToken is the value by which this token can be renewed. Can be blank.",
       "type": [
         "string",
         "null"
       ]
     },
     "scopes": {
-      "description": "Scopes is an array of the requested scopes.",
+      "description": "scopes is an array of the requested scopes.",
       "type": [
         "array",
         "null"
@@ -84,14 +84,14 @@
       }
     },
     "userName": {
-      "description": "UserName is the user name associated with this token",
+      "description": "userName is the user name associated with this token",
       "type": [
         "string",
         "null"
       ]
     },
     "userUID": {
-      "description": "UserUID is the unique UID associated with this token",
+      "description": "userUID is the unique UID associated with this token",
       "type": [
         "string",
         "null"

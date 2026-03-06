@@ -13,28 +13,28 @@
       ]
     },
     "clientName": {
-      "description": "ClientName references the client that created this token.",
+      "description": "clientName references the client that created this token.",
       "type": [
         "string",
         "null"
       ]
     },
     "codeChallenge": {
-      "description": "CodeChallenge is the optional code_challenge associated with this authorization code, as described in rfc7636",
+      "description": "codeChallenge is the optional code_challenge associated with this authorization code, as described in rfc7636",
       "type": [
         "string",
         "null"
       ]
     },
     "codeChallengeMethod": {
-      "description": "CodeChallengeMethod is the optional code_challenge_method associated with this authorization code, as described in rfc7636",
+      "description": "codeChallengeMethod is the optional code_challenge_method associated with this authorization code, as described in rfc7636",
       "type": [
         "string",
         "null"
       ]
     },
     "expiresIn": {
-      "description": "ExpiresIn is the seconds from CreationTime before this token expires.",
+      "description": "expiresIn is the seconds from CreationTime before this token expires.",
       "type": [
         "integer",
         "null"
@@ -56,14 +56,14 @@
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     },
     "redirectURI": {
-      "description": "RedirectURI is the redirection associated with the token.",
+      "description": "redirectURI is the redirection associated with the token.",
       "type": [
         "string",
         "null"
       ]
     },
     "scopes": {
-      "description": "Scopes is an array of the requested scopes.",
+      "description": "scopes is an array of the requested scopes.",
       "type": [
         "array",
         "null"
@@ -76,21 +76,21 @@
       }
     },
     "state": {
-      "description": "State data from request",
+      "description": "state data from request",
       "type": [
         "string",
         "null"
       ]
     },
     "userName": {
-      "description": "UserName is the user name associated with this token",
+      "description": "userName is the user name associated with this token",
       "type": [
         "string",
         "null"
       ]
     },
     "userUID": {
-      "description": "UserUID is the unique UID associated with this token. UserUID and UserName must both match for this token to be valid.",
+      "description": "userUID is the unique UID associated with this token. UserUID and UserName must both match for this token to be valid.",
       "type": [
         "string",
         "null"

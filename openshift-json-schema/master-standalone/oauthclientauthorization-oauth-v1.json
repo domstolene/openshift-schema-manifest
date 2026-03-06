@@ -13,7 +13,7 @@
       ]
     },
     "clientName": {
-      "description": "ClientName references the client that created this authorization",
+      "description": "clientName references the client that created this authorization",
       "type": [
         "string",
         "null"
@@ -34,7 +34,7 @@
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     },
     "scopes": {
-      "description": "Scopes is an array of the granted scopes.",
+      "description": "scopes is an array of the granted scopes.",
       "type": [
         "array",
         "null"
@@ -47,14 +47,14 @@
       }
     },
     "userName": {
-      "description": "UserName is the user name that authorized this client",
+      "description": "userName is the user name that authorized this client",
       "type": [
         "string",
         "null"
       ]
     },
     "userUID": {
-      "description": "UserUID is the unique UID associated with this authorization. UserUID and UserName must both match for this authorization to be valid.",
+      "description": "userUID is the unique UID associated with this authorization. UserUID and UserName must both match for this authorization to be valid.",
       "type": [
         "string",
         "null"

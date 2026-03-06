@@ -16,14 +16,14 @@
       ]
     },
     "fullName": {
-      "description": "FullName is the full name of user",
+      "description": "fullName is the full name of user",
       "type": [
         "string",
         "null"
       ]
     },
     "groups": {
-      "description": "Groups specifies group names this user is a member of. This field is deprecated and will be removed in a future release. Instead, create a Group object containing the name of this User.",
+      "description": "groups specifies group names this user is a member of. This field is deprecated and will be removed in a future release. Instead, create a Group object containing the name of this User.",
       "type": [
         "array",
         "null"
@@ -36,7 +36,7 @@
       }
     },
     "identities": {
-      "description": "Identities are the identities associated with this user",
+      "description": "identities are the identities associated with this user",
       "type": [
         "array",
         "null"
